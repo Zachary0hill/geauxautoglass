@@ -52,6 +52,55 @@
   }
   if (phone.addEventListener) phone.addEventListener('change', rebreak); else if (phone.addListener) phone.addListener(rebreak);
 
+  /* ---- phone menu ---- */
+  // The button at the top right of the bar opens the header links over the page.
+  // The bar and the tab bar stay on top of it. Registered before the anchor jump
+  // below, so a link to a section on this page unlocks the scroll first.
+  var menuTimer = 0;
+  function menuEl() { return document.getElementById('PhoneMenu'); }
+  function menuState(open) {
+    Array.prototype.forEach.call(document.querySelectorAll('[data-menu-open]'), function (b) { b.setAttribute('aria-expanded', open ? 'true' : 'false'); });
+    document.body.classList.toggle('menu-locked', open);
+    // The page behind the menu is out of reach for the keyboard and screen readers.
+    Array.prototype.forEach.call(document.querySelectorAll('main, .shopify-section-group-footer-group, footer'), function (el) { if (open) el.setAttribute('inert', ''); else el.removeAttribute('inert'); });
+  }
+  function menuOpen() {
+    var m = menuEl();
+    if (!m || m.classList.contains('is-open')) return;
+    clearTimeout(menuTimer);
+    // The tab bar comes back with the menu, so Call, the quote and Visit sit under it.
+    if (tab) { tab.classList.remove('tabbar--hidden'); document.body.classList.remove('tab-hidden'); downRun = 0; upRun = 0; }
+    m.hidden = false;
+    m.scrollTop = 0;
+    void m.offsetWidth;
+    m.classList.add('is-open');
+    menuState(true);
+  }
+  function menuClose() {
+    var m = menuEl();
+    if (!m || !m.classList.contains('is-open')) return;
+    m.classList.remove('is-open');
+    menuState(false);
+    menuTimer = setTimeout(function () { m.hidden = true; }, reduce ? 0 : 260);
+  }
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest) return;
+    var m = menuEl();
+    if (!m) return;
+    if (e.target.closest('[data-menu-open]')) { if (m.classList.contains('is-open')) menuClose(); else menuOpen(); return; }
+    // Any link taken while the menu is open closes it: a menu item, the logo, a tab.
+    if (m.classList.contains('is-open') && e.target.closest('a[href]')) menuClose();
+  });
+  document.addEventListener('keydown', function (e) {
+    var m = menuEl();
+    if (e.key !== 'Escape' || !m || !m.classList.contains('is-open')) return;
+    menuClose();
+    var b = document.querySelector('[data-menu-open]'); if (b) b.focus();
+  });
+  function menuReset() { if (!phone.matches) menuClose(); }
+  if (phone.addEventListener) phone.addEventListener('change', menuReset); else if (phone.addListener) phone.addListener(menuReset);
+  addEventListener('pageshow', function (e) { if (e.persisted) menuClose(); });
+
   /* ---- smooth anchor scroll (same page only) ---- */
   // The jump goes in the history, so Back returns to where the reader was and
   // the address can be shared. Focus follows the jump for keyboards and readers.
@@ -217,16 +266,19 @@
   }
 
   // Phone hero: the cover photo is a band that runs from the top of the screen
-  // to the top of the copy, so a wide shot shows whole at any screen height.
+  // to the top of the copy, and the fade into the ground ends on the copy
+  // (--hero-split), so no empty band opens between them on a tall screen.
   // Measured at rest only. Without it the stylesheet holds the band at 46%.
   function heroBand() {
     if (!heroStage || !heroPhoto || !heroCopy) return;
-    if (!phone.matches) { heroPhoto.style.height = ''; return; }
+    if (!phone.matches) { heroPhoto.style.height = ''; heroStage.style.removeProperty('--hero-split'); heroStage.classList.remove('hero--split'); return; }
     if (scrollY > 40 || document.body.classList.contains('tab-hidden')) return;
     var s = heroStage.getBoundingClientRect(), c = heroCopy.getBoundingClientRect();
-    var h = Math.round(c.top - s.top + 56);
-    h = Math.max(150, Math.min(h, s.height * 0.6));
-    heroPhoto.style.height = h + 'px';
+    var split = Math.round(c.top - s.top);
+    var h = Math.max(150, Math.min(split + 56, s.height * 0.8));
+    heroPhoto.style.height = Math.round(h) + 'px';
+    heroStage.style.setProperty('--hero-split', Math.min(split, Math.round(h) - 40) + 'px');
+    heroStage.classList.add('hero--split');
   }
 
   // Location cards: "Show map" swaps the photo for a Google map of that shop.

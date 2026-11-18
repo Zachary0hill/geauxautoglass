@@ -20,8 +20,16 @@
     render 'phone', phone: settings.phone_lafayette
   endcapture
   assign tel = tel | strip
+  assign phone_menu = false
+  if section.settings.show_menu_button
+    if section.settings.menu != blank and section.settings.menu.links.size > 0
+      assign phone_menu = true
+    elsif section.blocks.size > 0
+      assign phone_menu = true
+    endif
+  endif
 -%}
-<header class="bar">
+<header class="bar{% if phone_menu %} bar--menu{% endif %}">
   <a class="bar__mark" href="{{ home_href }}" aria-label="{{ 'sections.header.home_label' | t: name: biz | escape }}">
     {%- if settings.logo != blank -%}
       <img class="bar__logo" src="{{ settings.logo | image_url: width: 480 }}" srcset="{{ settings.logo | image_url: width: 240 }} 240w, {{ settings.logo | image_url: width: 480 }} 480w" sizes="230px" alt="{{ settings.logo.alt | default: biz | escape }}" width="{{ settings.logo.width }}" height="{{ settings.logo.height }}" loading="eager">
@@ -62,7 +70,40 @@
     <a class="bar__cart" href="{{ routes.cart_url }}"{% if cart_open %} data-cart-open{% endif %}>{{ 'sections.header.cart' | t }} (<span data-cart-count>{{ cart.item_count }}</span>)</a>
   {%- endif -%}
   {%- render 'action-link', action: section.settings.cta_action, label: section.settings.cta_label, url: section.settings.cta_link, class: 'bar__cta' -%}
+  {%- if phone_menu -%}
+    <button type="button" class="bar__menu" data-menu-open aria-expanded="false" aria-controls="PhoneMenu" aria-label="{{ 'sections.header.menu' | t }}">
+      <svg class="bar__menu-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+      <svg class="bar__menu-shut" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg>
+    </button>
+  {%- endif -%}
 </header>
+
+{%- comment -%} Phone menu: the header links, opened from the button at the top right. It sits under the bar and above the page; the tab bar stays in reach. {%- endcomment -%}
+{%- if phone_menu -%}
+  <nav class="mmenu" id="PhoneMenu" aria-label="{{ 'sections.header.menu' | t }}" hidden>
+    <div class="mmenu__list">
+      {%- if section.settings.menu != blank and section.settings.menu.links.size > 0 -%}
+        {%- for link in section.settings.menu.links -%}
+          <a href="{{ link.url }}"{% if link.current or link.child_current %} aria-current="page"{% endif %}>{{ link.title | escape }}</a>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign is_current = false
+            if block.settings.current_on != 'none'
+              if block.settings.current_on == here
+                assign is_current = true
+              elsif block.settings.current_on == 'shop' and on_shop
+                assign is_current = true
+              endif
+            endif
+            render 'action-link', action: block.settings.action, label: block.settings.label, url: block.settings.link, current: is_current
+          -%}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </nav>
+{%- endif -%}
 
 {%- if section.settings.show_tabbar -%}
   <nav class="tabbar" aria-label="{{ 'sections.header.quick_actions' | t }}">
@@ -92,6 +133,7 @@
       <span>{{ section.settings.tab_visit_label | escape }}</span>
     </a>
   </nav>
+
 {%- endif -%}
 
 {% schema %}
@@ -103,6 +145,7 @@
     { "type": "link_list", "id": "menu", "label": "Menu", "info": "Optional. When empty, the header uses the links added as blocks below." },
     { "type": "checkbox", "id": "show_phone", "label": "Show the phone number", "info": "Wide screens only. It hides under 1180px.", "default": true },
     { "type": "checkbox", "id": "show_cart", "label": "Show the cart link", "info": "On the merchandise, product and cart pages only.", "default": true },
+    { "type": "checkbox", "id": "show_menu_button", "label": "Show a menu button on phones", "info": "Top right. Opens the header links. Phones have no other menu.", "default": true },
     { "type": "header", "content": "Button" },
     { "type": "text", "id": "cta_label", "label": "Label", "default": "Get a quote" },
     { "type": "select", "id": "cta_action", "label": "Goes to", "options": [{"value": "quote", "label": "Quote form"}, {"value": "call_lafayette", "label": "Call Lafayette"}, {"value": "call_new_orleans", "label": "Call New Orleans"}, {"value": "text_lafayette", "label": "Text Lafayette"}, {"value": "email", "label": "Email"}, {"value": "enterprise_email", "label": "Enterprise email"}, {"value": "enterprise_form", "label": "Enterprise claim form"}, {"value": "enterprise_photo", "label": "Enterprise photo upload"}, {"value": "shop", "label": "Merchandise (all products)"}, {"value": "google_lafayette", "label": "Google, Lafayette"}, {"value": "google_new_orleans", "label": "Google, New Orleans"}, {"value": "custom", "label": "Custom link (below)"}], "default": "quote" },

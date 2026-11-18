@@ -405,6 +405,8 @@ button.link { background: none; border: 0; padding: 0; font: inherit; font-weigh
   /* hero */
   .hero .sc-scrim--lead { display: none; }
   .hero__band { display: block; background: linear-gradient(to top, var(--sc-canvas) 0%, var(--sc-canvas) 52%, color-mix(in oklab, var(--sc-canvas) 70%, transparent) 60%, transparent 72%); }
+  /* theme.js measures where the copy starts (--hero-split); the fade then ends on the copy at any screen height. */
+  .hero--split .hero__band { background: linear-gradient(to bottom, transparent calc(var(--hero-split) - 9rem), color-mix(in oklab, var(--sc-canvas) 70%, transparent) calc(var(--hero-split) - 3rem), var(--sc-canvas) calc(var(--hero-split) + 1rem)); }
   .hero__photo { inset: 0 0 auto 0; height: 46%; object-position: 74% 50%;
     -webkit-mask-image: linear-gradient(to bottom, black 0%, black 64%, transparent 100%); mask-image: linear-gradient(to bottom, black 0%, black 64%, transparent 100%); }
   /* the copy carries its own ground, so it reads on any screen height and over any cover photo */
@@ -732,6 +734,45 @@ button.link { background: none; border: 0; padding: 0; font: inherit; font-weigh
   /* The header button arrives as the tab bar leaves, instead of popping in. */
   body.tab-hidden .bar__cta { animation: gx-cta-in 260ms var(--sc-ease-out) both; }
 }
+@media (max-width: 860px) {
+  /* Shop pages: the cart is the header action on phones. Logo, cart and the quote button do not fit
+     side by side at 390px, so the quote stays in the tab bar. */
+  .bar:has(.bar__cart:not([hidden])) .bar__cta { display: none; }
+  /* Narrow phones (under 380px): the logo gives way before the quote button runs off the edge. */
+  .bar__mark { flex: 0 1 auto; min-width: 0; }
+  .bar__mark img { min-width: 0; max-width: 100%; object-fit: contain; object-position: left center; }
+  .bar__cta { flex: none; white-space: nowrap; }
+  /* Chip labels hold 12px on phones. */
+  .svc__band-cities li, .program__schools li, .mitem__type { font-size: .75rem; }
+}
+/* ---- phone menu: a button at the top right of the bar opens the header links ---- */
+.bar__menu, .mmenu { display: none; }
+@media (max-width: 860px) {
+  .bar--menu .bar__mark { margin-right: auto; }
+  .bar--menu .bar__cart, .bar--menu .bar__cta { margin-left: 0; }
+  .bar__menu { flex: none; display: grid; place-items: center; width: 2.75rem; height: 2.75rem; margin: 0 -.6rem 0 0; padding: 0; border: 0; border-radius: var(--sc-r-sm); background: none; color: var(--sc-ink); cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .bar__menu svg { grid-area: 1 / 1; width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 2.25; stroke-linecap: round; transition: opacity 160ms var(--sc-ease-out), rotate 220ms var(--sc-ease-out); }
+  .bar__menu-shut { opacity: 0; rotate: -45deg; }
+  .bar__menu[aria-expanded="true"] .bar__menu-open { opacity: 0; rotate: 45deg; }
+  .bar__menu[aria-expanded="true"] .bar__menu-shut { opacity: 1; rotate: 0deg; }
+
+  /* Under the bar (z 60) and the tab bar (z 70), over the page: logo, close, Call, quote and Visit stay in reach. */
+  .mmenu:not([hidden]) { display: block; position: fixed; inset: 0; z-index: 58; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
+    background: var(--sc-canvas); color: var(--sc-ink);
+    padding: calc(var(--bar-h) + var(--sc-3)) var(--sc-gutter) calc(4.2rem + env(safe-area-inset-bottom) + var(--sc-5));
+    opacity: 0; translate: 0 -10px; transition: opacity 200ms var(--sc-ease-out), translate 240ms var(--sc-ease-out); }
+  .mmenu.is-open { opacity: 1; translate: 0 0; }
+  .mmenu__list { display: grid; border-top: 4px solid var(--sc-accent); }
+  .mmenu__list a { display: flex; align-items: center; justify-content: space-between; min-height: 4rem; font-family: var(--sc-font-display); font-size: clamp(1.5rem, 1.1rem + 2vw, 2rem); line-height: 1.05; text-transform: uppercase; text-decoration: none; color: var(--sc-ink); border-bottom: 1px solid var(--sc-hairline); }
+  .mmenu__list a::after { content: ""; flex: none; width: .5em; height: .5em; margin-left: var(--sc-3); border-top: 2px solid var(--sc-accent); border-right: 2px solid var(--sc-accent); rotate: 45deg; }
+  .mmenu__list a[aria-current="page"] { color: var(--sc-accent-text); }
+  body.menu-locked { overflow: hidden; }
+  /* With the menu open the bar reads as part of it. */
+  body.menu-locked .bar { background: var(--sc-canvas); box-shadow: 0 1px 0 var(--sc-hairline); backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
+/* Logo, quote button and menu button fit side by side from 430px up; under that the quote stays in the tab bar. */
+@media (max-width: 429px) { .bar.bar--menu .bar__cta { display: none; } }
+@media (prefers-reduced-motion: reduce) { .mmenu:not([hidden]), .bar__menu svg { transition: none; } }
 @keyframes gx-cta-in { from { opacity: 0; translate: 0 -6px; } }
 @media (prefers-reduced-motion: reduce) { body.tab-hidden .bar__cta { animation: none; } }
 /* Services grid without the band (services page): the section closes on its own padding,

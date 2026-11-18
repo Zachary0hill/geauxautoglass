@@ -16,6 +16,7 @@
         "menu": "",
         "show_phone": true,
         "show_cart": true,
+        "show_menu_button": true,
         "cta_label": "Get a quote",
         "cta_action": "quote",
         "cta_link": "",

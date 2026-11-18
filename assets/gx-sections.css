@@ -615,3 +615,13 @@ fieldset.variant { border: 0; padding: 0; margin: 0; min-width: 0; }
 .collection-banner:not(.collection-banner--image) { padding-top: clamp(1.5rem, 4vw, 3.5rem); display: grid; gap: var(--sc-4); }
 .collection-banner:not(.collection-banner--image) .collection-banner__title { font-size: var(--sc-t-3xl); margin: 0; }
 @media (max-width: 860px) { .cart__head { flex-wrap: wrap; align-items: start; } }
+/* Phones: every tap target holds 44px, and the sort menu holds 16px type so iOS does not zoom on focus. */
+@media (max-width: 860px) {
+  .collection__tool, .account__tab { min-height: 2.75rem; }
+  .collection__tool--icon { width: 2.75rem; }
+  .collection__sort .select__select { min-height: 2.75rem; font-size: 1rem; }
+  /* The label keeps its place; the hit area grows down and to the sides. */
+  .cart-item__remove { display: inline-flex; align-items: flex-start; justify-self: start; min-height: 2.75rem; padding: 0.25rem 0.5rem 0; margin: -0.25rem -0.5rem -1.25rem; }
+  .quantity--sm .quantity__button { width: 2.75rem; }
+  .quantity--sm .quantity__input { width: 2.75rem; min-height: 2.75rem; font-size: 1rem; }
+}

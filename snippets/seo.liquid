@@ -1,0 +1,36 @@
+{%- comment -%}
+  Title, description, social tags and structured data for every page.
+  Rendered once from layout/theme.liquid. Wording comes from
+  Theme settings > Search and local SEO; the business name from Branding.
+  Home: its own title and description unless Online Store > Preferences sets them.
+  Everything else: the page's own SEO title and description.
+{%- endcomment -%}
+{%- liquid
+  assign seo_site = settings.brand_name | default: shop.name
+  assign seo_title = page_title
+  assign seo_description = page_description
+
+  if template.name == 'index'
+    if page_title == blank or page_title == shop.name
+      assign seo_title = settings.seo_home_title | default: seo_site
+    endif
+    if seo_description == blank
+      assign seo_description = settings.seo_home_description
+    endif
+  endif
+
+  if seo_description == blank
+    assign seo_description = shop.description
+  endif
+-%}
+<title>
+  {{- seo_title | escape -}}
+  {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' | escape }}"{% endif -%}
+  {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+  {%- unless seo_title contains seo_site %} · {{ seo_site | escape }}{% endunless -%}
+</title>
+{%- if seo_description != blank %}
+<meta name="description" content="{{ seo_description | escape }}">
+{%- endif %}
+{% render 'meta-tags', seo_title: seo_title, seo_description: seo_description, seo_site: seo_site %}
+{% render 'structured-data', seo_site: seo_site, seo_description: seo_description %}

@@ -1,0 +1,484 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Geaux Auto Glass",
+    "theme_author": "ZZMEDIA Studio",
+    "theme_version": "1.0.0",
+    "theme_documentation_url": "https://zzmediastudio.com",
+    "theme_support_url": "https://zzmediastudio.com"
+  },
+  {
+    "name": "Business",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Every phone number, email and form link on the site reads from here. Change it once and every button follows."
+      },
+      {
+        "type": "header",
+        "content": "Phones"
+      },
+      {
+        "type": "text",
+        "id": "phone_lafayette",
+        "label": "Lafayette phone",
+        "default": "(337) 295-2874",
+        "info": "Main number: header, tab bar and every Call button."
+      },
+      {
+        "type": "text",
+        "id": "phone_new_orleans",
+        "label": "New Orleans phone",
+        "default": "(504) 920-3065"
+      },
+      {
+        "type": "header",
+        "content": "Email"
+      },
+      {
+        "type": "text",
+        "id": "email",
+        "label": "Email",
+        "default": "geauxautoglass@gmail.com"
+      },
+      {
+        "type": "text",
+        "id": "enterprise_email",
+        "label": "Enterprise claims email",
+        "default": "erac1120@gmail.com"
+      },
+      {
+        "type": "header",
+        "content": "Forms"
+      },
+      {
+        "type": "text",
+        "id": "quote_url",
+        "label": "Quote form link",
+        "default": "https://form.jotform.com/261553371340148",
+        "info": "Every Get a quote button opens this."
+      },
+      {
+        "type": "text",
+        "id": "enterprise_form_url",
+        "label": "Enterprise claim form link",
+        "default": "https://form.jotform.com/262147078498166"
+      },
+      {
+        "type": "text",
+        "id": "enterprise_photo_url",
+        "label": "Enterprise photo upload link",
+        "default": "https://form.jotform.com/262147742087158"
+      },
+      {
+        "type": "header",
+        "content": "Google"
+      },
+      {
+        "type": "text",
+        "id": "google_lafayette_url",
+        "label": "Google link, Lafayette",
+        "default": "https://www.google.com/maps/search/?api=1&query=Geaux+Auto+Glass+409A+Mecca+St+Lafayette+LA+70508"
+      },
+      {
+        "type": "text",
+        "id": "google_new_orleans_url",
+        "label": "Google link, New Orleans",
+        "default": "https://www.google.com/maps/search/?api=1&query=Geaux+Auto+Glass+2837+Tifton+St+Kenner+LA+70062"
+      },
+      {
+        "type": "header",
+        "content": "Footer"
+      },
+      {
+        "type": "text",
+        "id": "footer_line",
+        "label": "Footer line",
+        "default": "Website by ZZMEDIA Studio",
+        "info": "Shown after the copyright."
+      },
+      {
+        "type": "text",
+        "id": "founded_year",
+        "label": "Copyright year",
+        "default": "",
+        "info": "Leave empty for the current year."
+      }
+    ]
+  },
+  {
+    "name": "Search and local SEO",
+    "settings": [
+      {
+        "type": "text",
+        "id": "seo_home_title",
+        "label": "Home page title",
+        "default": "Geaux Auto Glass · Mobile windshield replacements in Lafayette and New Orleans",
+        "info": "Used unless Online Store > Preferences sets a home page title."
+      },
+      {
+        "type": "textarea",
+        "id": "seo_home_description",
+        "label": "Home page description",
+        "default": "Geaux Auto Glass. Mobile windshield replacements, chip repairs, door glass and ADAS recalibration. Shops in Lafayette and New Orleans, serving all of Louisiana. Same day or next day. Insurance policies accepted."
+      },
+      {
+        "type": "header",
+        "content": "Main shop address (for search engines)"
+      },
+      {
+        "type": "text",
+        "id": "business_street",
+        "label": "Street",
+        "default": "409A Mecca Street"
+      },
+      {
+        "type": "text",
+        "id": "business_city",
+        "label": "City",
+        "default": "Lafayette"
+      },
+      {
+        "type": "text",
+        "id": "business_region",
+        "label": "State",
+        "default": "LA"
+      },
+      {
+        "type": "text",
+        "id": "business_postal",
+        "label": "ZIP",
+        "default": "70508"
+      },
+      {
+        "type": "textarea",
+        "id": "seo_areas_served",
+        "label": "Areas served",
+        "default": "Lafayette, Louisiana\nNew Orleans, Louisiana\nLouisiana",
+        "info": "One per line."
+      }
+    ]
+  },
+  {
+    "name": "Branding",
+    "settings": [
+      {
+        "type": "text",
+        "id": "brand_name",
+        "label": "Business name",
+        "default": "Geaux Auto Glass",
+        "info": "Used in page titles and for search engines."
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo for dark grounds",
+        "info": "Header on desktop. Empty: the bundled logo."
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_compact",
+        "label": "Compact logo",
+        "info": "Header on phones. Empty: the bundled compact logo."
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_light",
+        "label": "Logo for white grounds",
+        "info": "Footer. Empty: the bundled logo."
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "Empty: the bundled diamond mark."
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Dark sections"
+      },
+      {
+        "type": "color",
+        "id": "color_canvas",
+        "label": "Page",
+        "default": "#0a0a0b"
+      },
+      {
+        "type": "color",
+        "id": "color_surface",
+        "label": "Raised surface",
+        "default": "#17171a"
+      },
+      {
+        "type": "color",
+        "id": "color_ink",
+        "label": "Text",
+        "default": "#f7f7f7"
+      },
+      {
+        "type": "color",
+        "id": "color_ink_soft",
+        "label": "Secondary text",
+        "default": "#bdb7b7"
+      },
+      {
+        "type": "color",
+        "id": "color_glass",
+        "label": "Glass",
+        "default": "#2c2c31"
+      },
+      {
+        "type": "header",
+        "content": "Accent"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent fill",
+        "default": "#e20000"
+      },
+      {
+        "type": "color",
+        "id": "color_accent_ink",
+        "label": "Text on accent",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_red_deep",
+        "label": "Accent hover, red text on white",
+        "default": "#c90000"
+      },
+      {
+        "type": "color",
+        "id": "color_accent_text",
+        "label": "Red text on dark",
+        "default": "#ff4545"
+      },
+      {
+        "type": "header",
+        "content": "White sections"
+      },
+      {
+        "type": "color",
+        "id": "color_paper",
+        "label": "White section",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_paper_2",
+        "label": "Off-white section",
+        "default": "#f7f7f7"
+      },
+      {
+        "type": "color",
+        "id": "color_ink_dark",
+        "label": "Text on white, dark cards",
+        "default": "#101012"
+      },
+      {
+        "type": "color",
+        "id": "color_ink_mid",
+        "label": "Secondary text on white",
+        "default": "#494949"
+      },
+      {
+        "type": "header",
+        "content": "Shop"
+      },
+      {
+        "type": "color",
+        "id": "color_sale",
+        "label": "Sale badge",
+        "default": "#e20000"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "use_brand_fonts",
+        "label": "Use the brand fonts",
+        "info": "Archivo Black and Inter, bundled with the theme. Off: the font pickers below.",
+        "default": true
+      },
+      {
+        "type": "font_picker",
+        "id": "type_heading_font",
+        "label": "Heading font (when brand fonts are off)",
+        "default": "assistant_n7"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "label": "Body font (when brand fonts are off)",
+        "default": "assistant_n4"
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "range",
+        "id": "page_width",
+        "min": 1032,
+        "max": 1792,
+        "step": 40,
+        "unit": "px",
+        "label": "Page width",
+        "default": 1312
+      },
+      {
+        "type": "range",
+        "id": "corner_radius",
+        "min": 0,
+        "max": 24,
+        "step": 2,
+        "unit": "px",
+        "label": "Corner radius",
+        "default": 4,
+        "info": "Buttons and chips. Cards and photos use twice this value."
+      }
+    ]
+  },
+  {
+    "name": "Product cards",
+    "settings": [
+      {
+        "type": "select",
+        "id": "card_ratio",
+        "label": "Image ratio",
+        "options": [
+          {
+            "value": "square",
+            "label": "Square"
+          },
+          {
+            "value": "portrait",
+            "label": "Portrait"
+          },
+          {
+            "value": "landscape",
+            "label": "Landscape"
+          }
+        ],
+        "default": "square"
+      },
+      {
+        "type": "checkbox",
+        "id": "card_show_vendor",
+        "label": "Show vendor",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "Motion",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "scroll_motion",
+        "label": "Enable scroll motion",
+        "info": "Pinned hero, the before and after wipe, image reveals, counters and the footer ticker. Visitors who prefer reduced motion always get the static page.",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_grain",
+        "label": "Film grain overlay",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "text",
+        "id": "instagram_url",
+        "label": "Instagram",
+        "default": "https://www.instagram.com/geauxautoglass"
+      },
+      {
+        "type": "text",
+        "id": "tiktok_url",
+        "label": "TikTok",
+        "default": "https://www.tiktok.com/@geauxautoglass"
+      },
+      {
+        "type": "text",
+        "id": "facebook_url",
+        "label": "Facebook",
+        "default": "https://www.facebook.com/people/Geaux-Auto-Glass/61556908207858"
+      },
+      {
+        "type": "header",
+        "content": "Counts"
+      },
+      {
+        "type": "paragraph",
+        "content": "Shown in the social bar and the home page stats. A shop metafield with the same name (custom.instagram_followers, custom.tiktok_likes, custom.facebook_followers) wins over the value here, so a scheduled job can keep them current."
+      },
+      {
+        "type": "text",
+        "id": "instagram_followers",
+        "label": "Instagram followers",
+        "default": "6,145"
+      },
+      {
+        "type": "text",
+        "id": "tiktok_likes",
+        "label": "TikTok likes",
+        "default": "122.2K"
+      },
+      {
+        "type": "text",
+        "id": "facebook_followers",
+        "label": "Facebook followers",
+        "default": "575"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Cart type",
+        "options": [
+          {
+            "value": "drawer",
+            "label": "Drawer (opens from the side)"
+          },
+          {
+            "value": "page",
+            "label": "Page"
+          }
+        ],
+        "default": "drawer"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_show_note",
+        "label": "Enable order notes",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_show_vendor",
+        "label": "Show vendor on cart lines",
+        "default": false
+      }
+    ]
+  }
+]

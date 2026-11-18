@@ -1,0 +1,5 @@
+node_modules/
+_dev/preview/
+_dev/*.zip
+.DS_Store
+.claude/

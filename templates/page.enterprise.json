@@ -1,0 +1,112 @@
+{
+  "sections": {
+    "head": {
+      "type": "page-head",
+      "settings": {
+        "style": "default",
+        "bundled": "svc-fleet",
+        "image_alt": "",
+        "focal": "50% 42%",
+        "show_crumbs": true,
+        "parent_label": "Insurance",
+        "parent_link": "/pages/insurance",
+        "crumb": "Enterprise claims",
+        "tag": "Enterprise claim submission",
+        "heading": "Approved vendor for Enterprise Rent-A-Car.",
+        "highlight": "Enterprise Rent-A-Car.",
+        "lede": "Submit your claim quickly and our team handles the rest. Fast, friendly service.",
+        "btn_1_label": "Fill out the claim form",
+        "btn_1_action": "enterprise_form",
+        "btn_1_link": "",
+        "btn_2_label": "",
+        "btn_2_action": "text_lafayette",
+        "btn_2_link": "",
+        "schools": "",
+        "offer_1": "",
+        "offer_2": ""
+      }
+    },
+    "routes": {
+      "type": "tiles",
+      "blocks": {
+        "tile1": {
+          "type": "tile",
+          "settings": {
+            "label": "",
+            "title": "Fill out the claim form",
+            "keep": "",
+            "text": "Opens the Enterprise claim form.",
+            "action": "enterprise_form",
+            "link": ""
+          }
+        },
+        "tile2": {
+          "type": "tile",
+          "settings": {
+            "label": "",
+            "title": "Upload a photo of the claim page",
+            "keep": "",
+            "text": "Opens the photo upload form.",
+            "action": "enterprise_photo",
+            "link": ""
+          }
+        },
+        "tile3": {
+          "type": "tile",
+          "settings": {
+            "label": "",
+            "title": "Text the claim",
+            "keep": "",
+            "text": "",
+            "action": "text_lafayette",
+            "link": ""
+          }
+        },
+        "tile4": {
+          "type": "tile",
+          "settings": {
+            "label": "",
+            "title": "Email the claim",
+            "keep": "",
+            "text": "",
+            "action": "enterprise_email",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "tile1",
+        "tile2",
+        "tile3",
+        "tile4"
+      ],
+      "settings": {
+        "tag": "Submit a claim",
+        "heading": "Four ways to send it in.",
+        "highlight": "send it in.",
+        "text": "",
+        "columns": "2",
+        "ground": "paper",
+        "anchor_id": ""
+      }
+    },
+    "cta": {
+      "type": "cta-band",
+      "settings": {
+        "heading": "Submit your Enterprise claim.",
+        "btn_1_label": "Fill out the claim form",
+        "btn_1_action": "enterprise_form",
+        "btn_1_link": "",
+        "btn_2_label": "",
+        "btn_2_action": "call_lafayette",
+        "btn_2_link": "",
+        "anchor_id": ""
+      }
+    }
+  },
+  "order": [
+    "head",
+    "routes",
+    "cta"
+  ]
+}

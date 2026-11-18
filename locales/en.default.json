@@ -1,0 +1,452 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "accessibility": {
+    "close": "Close",
+    "refresh_page": "Choosing a selection results in a full page refresh.",
+    "skip_to_content": "Skip to content"
+  },
+  "general": {
+    "service_area": {
+      "in_area": "in {{ area }}"
+    },
+    "404": {
+      "title": "Nothing here yet.",
+      "subtext": "The page you were looking for has moved or never existed. Try a search, or start from the front.",
+      "home": "Back to the front",
+      "shop": "Shop the wood store"
+    },
+    "page": {
+      "caption": "Page"
+    },
+    "pagination": {
+      "label": "Pagination",
+      "next": "Next page",
+      "previous": "Previous page",
+      "page": "Page {{ number }}"
+    },
+    "password_page": {
+      "login_form_heading": "Enter store using password",
+      "login_form_password_label": "Password",
+      "login_form_password_placeholder": "Your password",
+      "login_form_submit": "Enter",
+      "admin_link_html": "Are you the store owner? <a href=\"/admin\" class=\"link\">Log in here</a>"
+    },
+    "search": {
+      "search": "Search",
+      "placeholder": "Search the wood store",
+      "results_title": "Results for \"{{ terms }}\"",
+      "results_count": {
+        "one": "{{ count }} result",
+        "other": "{{ count }} results"
+      },
+      "no_results": "No results for \"{{ terms }}\". Check the spelling or try a different word.",
+      "no_suggestions": "No suggestions for \"{{ terms }}\"",
+      "browse_all": "Browse everything",
+      "products": "Products",
+      "pages": "Pages",
+      "page": "Page",
+      "articles": "Articles",
+      "article": "Article",
+      "collections": "Collections",
+      "pages_and_articles": "Pages and articles",
+      "suggestions": "Search suggestions",
+      "view_all": "View all results",
+      "hint": "Try a car, a brand, or a collection. Press Esc to close."
+    },
+    "share": {
+      "url": "Link",
+      "copy": "Copy link",
+      "copied": "Link copied"
+    },
+    "call_number": "Call {{ phone }}",
+    "text_number": "Text {{ phone }}",
+    "email_address": "Email {{ email }}",
+    "home": "Home"
+  },
+  "sections": {
+    "announcement": {
+      "label": "Announcement"
+    },
+    "header": {
+      "menu": "Menu",
+      "cart": "Cart",
+      "all_in": "All {{ title }}",
+      "home_label": "{{ name }} home",
+      "primary": "Primary",
+      "quick_actions": "Quick actions",
+      "call_label": "Call {{ phone }}",
+      "logo_alt": "Geaux Auto Glass. Mobile Windshield Replacements."
+    },
+    "footer": {
+      "nav_label": "Footer",
+      "back_to_top": "Back to top",
+      "services": {
+        "windshield": "Windshield replacement",
+        "chip": "Chip repair",
+        "back-glass": "Back glass",
+        "adas": "ADAS recalibration",
+        "door-glass": "Door glass",
+        "commercial": "Commercial vehicles"
+      },
+      "customers": {
+        "insurance": "Insurance policy claims",
+        "enterprise": "Enterprise claims",
+        "enterprise_form": "Enterprise claim form",
+        "student": "Student discount",
+        "reviews": "Google reviews",
+        "new_orleans": "New Orleans location"
+      },
+      "social": {
+        "facebook": "Facebook",
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "google_lafayette": "Google, Lafayette",
+        "google_new_orleans": "Google, New Orleans",
+        "shop": "Shop apparel"
+      }
+    },
+    "featured_collection": {
+      "view_all": "View all",
+      "view_all_count": "View all {{ count }} products",
+      "placeholder_title": "Example product"
+    },
+    "gallery_rail": {
+      "placeholder_title": "Collection",
+      "collection": "Collection",
+      "pieces": {
+        "one": "{{ count }} product",
+        "other": "{{ count }} products"
+      }
+    },
+    "collection_tiles": {
+      "shop": "Shop"
+    },
+    "collection": {
+      "caption": "Collection",
+      "product_count": {
+        "one": "{{ count }} product",
+        "other": "{{ count }} products"
+      },
+      "sort_by": "Sort by",
+      "sort_apply": "Sort",
+      "filter": "Filter",
+      "apply": "Apply filters",
+      "clear_all": "Clear all",
+      "clear_filters": "Clear filters",
+      "empty": "Nothing here yet.",
+      "no_filters": "No filters are set up. Add them in Search & Discovery.",
+      "price_from": "From",
+      "price_to": "To",
+      "all": "Everything",
+      "density": "Grid size",
+      "density_large": "Larger cards",
+      "density_small": "Smaller cards",
+      "showing": "Showing {{ from }} to {{ to }} of {{ total }}",
+      "empty_text": "Nothing matches those filters yet. Clear them or try another collection.",
+      "no_active": "No filters applied",
+      "done": "Done"
+    },
+    "collection_list": {
+      "caption": "Index",
+      "title": "Collections"
+    },
+    "cover": {
+      "scroll": "Scroll to the next section"
+    },
+    "social": {
+      "instagram": "Instagram followers",
+      "tiktok": "TikTok likes",
+      "facebook": "Facebook followers"
+    },
+    "student": {
+      "schools": "Schools"
+    },
+    "locations": {
+      "directions": "Directions",
+      "show_map": "Show map",
+      "show_photo": "Show photo",
+      "map_title": "Map of the {{ name }} shop",
+      "address": "Address",
+      "phone": "Phone",
+      "hours": "Hours"
+    },
+    "signature": {
+      "before": "Before",
+      "after": "After"
+    },
+    "merch": {
+      "all": "All",
+      "filter_label": "Filter by type",
+      "from_price": "From {{ price }}",
+      "empty": "No items yet."
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart",
+      "added_to_cart": "Added to your cart",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "on_sale": "Sale",
+      "include_taxes": "Tax included.",
+      "shipping_policy_html": "<a href=\"{{ link }}\">Shipping</a> calculated at checkout.",
+      "inventory_low": "Only {{ quantity }} left",
+      "inventory_in_stock": "In stock",
+      "media": {
+        "gallery": "Product gallery",
+        "load_image": "Show image {{ index }}"
+      },
+      "pickup_availability": {
+        "title": "Pickup",
+        "pick_up_available": "Pickup available",
+        "unavailable": "Pickup currently unavailable"
+      },
+      "price": {
+        "from": "From {{ price }}",
+        "regular_price": "Regular price",
+        "sale_price": "Sale price",
+        "unit_price": "Unit price"
+      },
+      "quantity": {
+        "label": "Quantity",
+        "decrease": "Decrease quantity for {{ product }}",
+        "increase": "Increase quantity for {{ product }}"
+      },
+      "quick_add": "Add",
+      "choose_options": "Options"
+    }
+  },
+  "recipient": {
+    "form": {
+      "checkbox": "I want to send this as a gift",
+      "email_label": "Recipient email",
+      "name_label": "Recipient name (optional)",
+      "message_label": "Message (optional)",
+      "max_characters": "{{ max_chars }} characters max",
+      "send_on_label": "Send on (optional)"
+    }
+  },
+  "newsletter": {
+    "label": "Email",
+    "button": "Subscribe",
+    "success": "Thanks. You are on the list."
+  },
+  "cart": {
+    "general": {
+      "title": "Your cart",
+      "empty": "Your cart is empty.",
+      "continue_shopping": "Continue shopping",
+      "login_html": "Have an account? <a href=\"{{ link }}\" class=\"link\">Log in</a> to check out faster.",
+      "summary": "Summary",
+      "note": "Order note",
+      "subtotal": "Subtotal",
+      "checkout": "Check out",
+      "update": "Update cart",
+      "remove": "Remove",
+      "view_cart": "View cart",
+      "error": "Something went wrong. Please try again.",
+      "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout.",
+      "taxes_and_shipping_policy_at_checkout_html": "Taxes and <a href=\"{{ link }}\">shipping</a> calculated at checkout.",
+      "taxes_included_but_shipping_at_checkout": "Tax included. Shipping calculated at checkout.",
+      "taxes_included_shipping_at_checkout_html": "Tax included. <a href=\"{{ link }}\">Shipping</a> calculated at checkout."
+    },
+    "label": {
+      "product": "Product",
+      "quantity": "Quantity",
+      "total": "Total"
+    },
+    "drawer": {
+      "empty_text": "Your cart is empty. Have a look at the wood store."
+    }
+  },
+  "contact": {
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "comment": "Message",
+      "send": "Send",
+      "post_success": "Thanks for getting in touch. We will get back to you as soon as we can.",
+      "error_heading": "Please adjust the following:",
+      "caption": "Contact",
+      "note": "We read everything and reply from a real inbox."
+    }
+  },
+  "blogs": {
+    "general": {
+      "caption": "Journal",
+      "empty": "No posts yet."
+    },
+    "article": {
+      "back": "Back to the journal",
+      "comments": {
+        "one": "{{ count }} comment",
+        "other": "{{ count }} comments"
+      },
+      "leave_comment": "Leave a comment",
+      "name": "Name",
+      "email": "Email",
+      "message": "Comment",
+      "post": "Post comment",
+      "moderated": "Comments are moderated and will appear once approved.",
+      "comment_success": "Your comment was posted.",
+      "comment_moderated": "Your comment was posted. It will appear once approved."
+    }
+  },
+  "customer": {
+    "log_in": "Log in",
+    "log_out": "Log out",
+    "account": {
+      "caption": "Account",
+      "title": "Account",
+      "orders": "Orders",
+      "addresses": "Addresses",
+      "details": "Details",
+      "view_addresses": "View addresses",
+      "return": "Back to account",
+      "welcome": "Welcome back, {{ name }}",
+      "overview": "Overview",
+      "orders_count": {
+        "one": "{{ count }} order",
+        "other": "{{ count }} orders"
+      },
+      "addresses_count": {
+        "one": "{{ count }} address",
+        "other": "{{ count }} addresses"
+      },
+      "default_address": "Default address",
+      "no_address": "No address saved yet.",
+      "recent": "Recent orders",
+      "view_all_orders": "All orders"
+    },
+    "orders": {
+      "title": "Order history",
+      "order_number": "Order",
+      "date": "Date",
+      "payment_status": "Payment",
+      "fulfillment_status": "Fulfillment",
+      "total": "Total",
+      "none": "You have not placed any orders yet."
+    },
+    "order": {
+      "title": "Order {{ name }}",
+      "date_html": "Placed on {{ date }}",
+      "cancelled_html": "Cancelled on {{ date }}",
+      "product": "Product",
+      "sku": "SKU",
+      "price": "Price",
+      "quantity": "Quantity",
+      "total": "Total",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "tax": "Tax",
+      "total_duties": "Duties",
+      "total_refunded": "Refunded",
+      "billing_address": "Billing address",
+      "shipping_address": "Shipping address",
+      "payment_status": "Payment status",
+      "fulfillment_status": "Fulfillment status",
+      "fulfilled_at_html": "Fulfilled {{ date }}",
+      "track_shipment": "Track shipment"
+    },
+    "login_page": {
+      "title": "Log in",
+      "email": "Email",
+      "password": "Password",
+      "sign_in": "Sign in",
+      "forgot_password": "Forgot your password?",
+      "new_customer": "New here?",
+      "create_account": "Create an account",
+      "error": "Please adjust the following:",
+      "guest_title": "Continue as a guest",
+      "guest_continue": "Continue",
+      "panel_caption": "Members",
+      "panel_heading": "Your orders and addresses.",
+      "panel_text": "Sign in to track orders, save addresses, and check out faster next time."
+    },
+    "recover_password": {
+      "title": "Reset your password",
+      "subtext": "We will send you an email to reset your password.",
+      "submit": "Send reset email",
+      "cancel": "Cancel",
+      "success": "We have sent you an email with a link to update your password."
+    },
+    "register": {
+      "title": "Create account",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Create account",
+      "have_account": "Already have an account?"
+    },
+    "activate_account": {
+      "title": "Activate account",
+      "subtext": "Create your password to activate your account.",
+      "password": "Password",
+      "password_confirm": "Confirm password",
+      "submit": "Activate account",
+      "cancel": "Decline invitation"
+    },
+    "reset_password": {
+      "title": "Reset account password",
+      "subtext": "Enter a new password for your account.",
+      "password": "Password",
+      "password_confirm": "Confirm password",
+      "submit": "Reset password"
+    },
+    "addresses": {
+      "title": "Addresses",
+      "add_new": "Add a new address",
+      "edit_address": "Edit address",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "company": "Company",
+      "address1": "Address 1",
+      "address2": "Address 2",
+      "city": "City",
+      "country": "Country/region",
+      "province": "Province",
+      "zip": "Postal/ZIP code",
+      "phone": "Phone",
+      "set_default": "Set as default address",
+      "add": "Add address",
+      "update": "Update address",
+      "cancel": "Cancel",
+      "edit": "Edit",
+      "delete": "Delete",
+      "delete_confirm": "Are you sure you wish to delete this address?",
+      "default": "Default"
+    }
+  },
+  "localization": {
+    "country_label": "Country/region",
+    "language_label": "Language",
+    "update": "Update"
+  },
+  "gift_cards": {
+    "issued": {
+      "title": "Here is your {{ value }} gift card for {{ shop }}",
+      "title_short": "Your gift card",
+      "subtext": "Gift card",
+      "gift_card_code": "Gift card code",
+      "shop_link": "Continue shopping",
+      "remaining_html": "{{ balance }} left",
+      "add_to_apple_wallet": "Add to Apple Wallet",
+      "qr_image_alt": "Scan to redeem in store",
+      "copy_code": "Copy code",
+      "copy_code_success": "Copied",
+      "print_gift_card": "Print",
+      "expired": "Expired",
+      "expiration_date": "Expires {{ expires_on }}"
+    }
+  }
+}

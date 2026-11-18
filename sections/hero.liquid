@@ -1,0 +1,57 @@
+{%- comment -%} Home hero: pinned act, parallax photo, promise, two actions, proof line. {%- endcomment -%}
+<section class="act-hero"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id | handle }}"{% endif %} data-sc-act="pin" data-sc-span="1.7" data-phone-span="1.4" data-sc-drift="{{ settings.color_canvas }}">
+  <div data-sc-stage class="hero">
+    {%- render 'photo', image: section.settings.image, bundled: 'hero', alt: section.settings.image_alt, class: 'hero__photo', sizes: '100vw', loading: 'eager', priority: true, attrs: 'data-sc-parallax="-0.08"' -%}
+    <div class="hero__top" aria-hidden="true"></div>
+    <div class="sc-scrim sc-scrim--lead" aria-hidden="true"></div>
+    <div class="sc-scrim sc-scrim--band hero__band" aria-hidden="true"></div>
+    <div class="sc-copy sc-copy--lead" data-sc-cue="0 1.5 0">
+      {%- if section.settings.tag != blank -%}<p class="tag">{{ section.settings.tag | escape }}</p>{%- endif -%}
+      <h1 class="sc-display hero__h">
+        {%- if section.settings.kicker != blank -%}<span class="hero__kick">{{ section.settings.kicker | escape }}</span> {% endif -%}
+        <span class="hero__big">{{ section.settings.headline_1 | escape }}{% if section.settings.headline_2 != blank %}<br>{{ section.settings.headline_2 | escape }}{% endif %}</span>
+      </h1>
+      {%- if section.settings.lede != blank -%}<p class="sc-lede">{{ section.settings.lede | escape }}</p>{%- endif -%}
+      <div class="hero__actions">
+        {%- render 'action-link', action: section.settings.btn_1_action, label: section.settings.btn_1_label, url: section.settings.btn_1_link, class: 'btn btn--accent' -%}
+        {%- render 'action-link', action: section.settings.btn_2_action, label: section.settings.btn_2_label, url: section.settings.btn_2_link, class: 'btn btn--ghost' -%}
+      </div>
+      {%- if section.settings.rating != blank or section.settings.proof != blank -%}
+        <p class="hero__proof">{% if section.settings.show_stars %}<span class="stars" aria-hidden="true">★★★★★</span> {% endif %}{% if section.settings.rating != blank %}<b>{{ section.settings.rating | escape }}</b> {% endif %}{{ section.settings.proof | escape }}{% if section.settings.proof_extra != blank %}<span class="hero__proof-x"> · {{ section.settings.proof_extra | escape }}</span>{% endif %}</p>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "tag": "div",
+  "limit": 1,
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Photo", "info": "Landscape, 2000px wide or more. Empty: the bundled photo. Desktop keeps the subject in the right half. Phones show it as a band across the top." },
+    { "type": "text", "id": "image_alt", "label": "Photo description", "default": "Two Geaux Auto Glass vans parked in front of the Lafayette shop" },
+    { "type": "text", "id": "tag", "label": "Tag", "default": "Serving all of Louisiana" },
+    { "type": "text", "id": "kicker", "label": "Red bar line", "default": "Mobile auto glass." },
+    { "type": "text", "id": "headline_1", "label": "Headline, line 1", "default": "We come" },
+    { "type": "text", "id": "headline_2", "label": "Headline, line 2", "default": "to you." },
+    { "type": "textarea", "id": "lede", "label": "Lede", "default": "Windshield replacements, chip repairs and ADAS recalibration. Same day or next day, in shop or mobile." },
+    { "type": "header", "content": "First button" },
+    { "type": "text", "id": "btn_1_label", "label": "Label", "default": "Get a quote" },
+    { "type": "select", "id": "btn_1_action", "label": "Goes to", "options": [{"value": "quote", "label": "Quote form"}, {"value": "call_lafayette", "label": "Call Lafayette"}, {"value": "call_new_orleans", "label": "Call New Orleans"}, {"value": "text_lafayette", "label": "Text Lafayette"}, {"value": "email", "label": "Email"}, {"value": "enterprise_email", "label": "Enterprise email"}, {"value": "enterprise_form", "label": "Enterprise claim form"}, {"value": "enterprise_photo", "label": "Enterprise photo upload"}, {"value": "shop", "label": "Merchandise (all products)"}, {"value": "google_lafayette", "label": "Google, Lafayette"}, {"value": "google_new_orleans", "label": "Google, New Orleans"}, {"value": "custom", "label": "Custom link (below)"}], "default": "quote" },
+    { "type": "text", "id": "btn_1_link", "label": "Custom link" },
+    { "type": "header", "content": "Second button" },
+    { "type": "text", "id": "btn_2_label", "label": "Label", "info": "Empty on a call button: Call and the number." },
+    { "type": "select", "id": "btn_2_action", "label": "Goes to", "options": [{"value": "quote", "label": "Quote form"}, {"value": "call_lafayette", "label": "Call Lafayette"}, {"value": "call_new_orleans", "label": "Call New Orleans"}, {"value": "text_lafayette", "label": "Text Lafayette"}, {"value": "email", "label": "Email"}, {"value": "enterprise_email", "label": "Enterprise email"}, {"value": "enterprise_form", "label": "Enterprise claim form"}, {"value": "enterprise_photo", "label": "Enterprise photo upload"}, {"value": "shop", "label": "Merchandise (all products)"}, {"value": "google_lafayette", "label": "Google, Lafayette"}, {"value": "google_new_orleans", "label": "Google, New Orleans"}, {"value": "custom", "label": "Custom link (below)"}], "default": "call_lafayette" },
+    { "type": "text", "id": "btn_2_link", "label": "Custom link" },
+    { "type": "header", "content": "Proof line" },
+    { "type": "checkbox", "id": "show_stars", "label": "Show stars", "default": true },
+    { "type": "text", "id": "rating", "label": "Rating", "default": "4.8" },
+    { "type": "text", "id": "proof", "label": "Text after the rating", "default": "on Google · 174 reviews" },
+    { "type": "text", "id": "proof_extra", "label": "Extra (hidden on phones)", "default": "Locally owned and operated" },
+    { "type": "text", "id": "anchor_id", "label": "Anchor id" }
+  ],
+  "presets": [{ "name": "Hero" }],
+  "disabled_on": { "groups": ["header", "footer"] }
+}
+{% endschema %}

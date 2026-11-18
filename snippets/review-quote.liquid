@@ -1,0 +1,2 @@
+{%- comment -%} One review card. Params: block (a review block). {%- endcomment -%}
+<blockquote class="rev" {{ block.shopify_attributes }}><p>“{{ block.settings.quote | escape }}”</p><cite>{{ block.settings.name | escape }}{% if block.settings.source != blank %} · {{ block.settings.source | escape }}{% endif %}{% if block.settings.date != blank %} · {{ block.settings.date | escape }}{% endif %}</cite></blockquote>

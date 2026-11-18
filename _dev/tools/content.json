@@ -1,0 +1,168 @@
+{
+ "STRIP_BLOCKS": [
+  {
+   "name": "State Farm",
+   "bundled": "statefarm",
+   "size": "w"
+  },
+  {
+   "name": "Progressive",
+   "bundled": "progressive",
+   "size": "w"
+  },
+  {
+   "name": "GEICO",
+   "bundled": "geico",
+   "size": "m"
+  },
+  {
+   "name": "Allstate",
+   "bundled": "allstate",
+   "size": "m"
+  },
+  {
+   "name": "Liberty Mutual",
+   "bundled": "libertymutual",
+   "size": "t"
+  }
+ ],
+ "TICKS": [
+  "Insurance policies accepted",
+  "Cars, SUVs and trucks",
+  "Minor chip repair",
+  "Mobile services available",
+  "Domestic and foreign",
+  "Appointment only"
+ ],
+ "SERVICES": [
+  [
+   "svc-windshield",
+   "Windshield replacement",
+   "Mobile service at home or work, or in-shop installation.",
+   "left"
+  ],
+  [
+   "svc-chip",
+   "Chip repair",
+   "Minor chip repair.",
+   "up"
+  ],
+  [
+   "svc-back",
+   "Back glass",
+   "All vehicle types.",
+   "right"
+  ],
+  [
+   "svc-adas",
+   "ADAS recalibration",
+   "ADAS calibration for cars, SUVs and trucks.",
+   "iris"
+  ],
+  [
+   "svc-door",
+   "Door glass",
+   "Door glass replacements. Domestic and foreign.",
+   "up"
+  ],
+  [
+   "svc-fleet",
+   "Commercial vehicles",
+   "Both personal and commercial vehicles.",
+   "left"
+  ]
+ ],
+ "STEPS": [
+  [
+   "First, contact your insurance",
+   "Call your insurance and use the company name Geaux Auto Glass to begin the filing."
+  ],
+  [
+   "Confirm coverage",
+   "Comprehensive coverage covers glass damage."
+  ],
+  [
+   "Policy details",
+   "Send in basic info: VIN number, year, make and model, and which glass is needed."
+  ],
+  [
+   "File the claim",
+   "We handle the rest and set you up for scheduling."
+  ]
+ ],
+ "RATINGS": [
+  [
+   "4.8",
+   "Google, Lafayette",
+   "174 reviews"
+  ],
+  [
+   "5.0",
+   "Google, Kenner",
+   "6 reviews"
+  ],
+  [
+   "100%",
+   "Recommend on Facebook",
+   "6 reviews"
+  ]
+ ],
+ "REVIEWS": [
+  [
+   "Nicest place and awesome owner and employees!",
+   "Shannon",
+   "Google, Lafayette",
+   "November 2026"
+  ],
+  [
+   "Exceptional service, best all around.",
+   "Arlissa",
+   "Google, Lafayette",
+   "October 2026"
+  ],
+  [
+   "Did a great job on my car and were super professional.",
+   "Marissa",
+   "Google, Lafayette",
+   "August 2026"
+  ],
+  [
+   "They came to my house & replaced my windshield in 30 minutes!",
+   "Jarriel",
+   "Google, Kenner",
+   "June 2026"
+  ]
+ ],
+ "LOCS": [
+  {
+   "name": "Lafayette",
+   "bundled": "loc-lafayette",
+   "image_alt": "",
+   "address_1": "409A Mecca Street",
+   "address_2": "Lafayette, LA 70508",
+   "phone": "lafayette",
+   "phone_custom": "",
+   "hours": "Monday to Friday 8 AM to 4:30 PM\nSaturday and Sunday closed",
+   "directions": "google_lafayette",
+   "directions_link": "",
+   "map_url": "https://www.google.com/maps?q=Geaux+Auto+Glass+409A+Mecca+St+Lafayette+LA+70508&output=embed",
+   "page_label": "",
+   "page_link": ""
+  },
+  {
+   "name": "New Orleans",
+   "bundled": "loc-kenner",
+   "image_alt": "",
+   "address_1": "2837 Tifton St Unit B",
+   "address_2": "Kenner, LA 70062",
+   "phone": "new_orleans",
+   "phone_custom": "",
+   "hours": "Monday to Friday 8 AM to 5 PM\nSaturday 8 AM to 2 PM\nSunday closed",
+   "directions": "google_new_orleans",
+   "directions_link": "",
+   "map_url": "https://www.google.com/maps?q=Geaux+Auto+Glass+2837+Tifton+St+Kenner+LA+70062&output=embed",
+   "page_label": "Location page",
+   "page_link": "/pages/new-orleans"
+  }
+ ]
+}

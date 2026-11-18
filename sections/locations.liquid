@@ -1,0 +1,102 @@
+{%- comment -%}
+  Closing act: heading, two actions, one card per shop. Pinned on desktop with two cards,
+  plain flow on phones (data-phone-flow) and whenever there are three or more cards.
+{%- endcomment -%}
+{%- liquid
+  assign pin = true
+  if section.blocks.size > 2
+    assign pin = false
+  endif
+-%}
+<section{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id | handle }}"{% endif %} class="act-close" {% if pin %}data-sc-act="pin" data-sc-span="1.25" data-phone-flow{% else %}data-sc-act="flow"{% endif %} data-sc-drift="{{ settings.color_canvas }}">
+  <div {% if pin %}data-sc-stage {% endif %}class="close">
+    <div class="close__inner">
+      <div class="close__head" {% if pin %}data-sc-cue="0 1.5 0" data-phone-in="70"{% else %}data-sc-in data-sc-stagger="70"{% endif %}>
+        {%- if section.settings.heading != blank -%}<h2 class="sc-display sc-display--md">{{ section.settings.heading | escape }}</h2>{%- endif -%}
+        <div class="close__actions">
+          {%- render 'action-link', action: section.settings.btn_1_action, label: section.settings.btn_1_label, url: section.settings.btn_1_link, class: 'btn btn--accent' -%}
+          {%- render 'action-link', action: section.settings.btn_2_action, label: section.settings.btn_2_label, url: section.settings.btn_2_link, class: 'btn btn--ghost' -%}
+        </div>
+      </div>
+      <div class="close__locs" {% if pin %}data-sc-cue="0 1.5 0" data-phone-in="90"{% else %}data-sc-in data-sc-stagger="90"{% endif %}>
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign phone_number = block.settings.phone_custom
+            if block.settings.phone == 'lafayette'
+              assign phone_number = settings.phone_lafayette
+            elsif block.settings.phone == 'new_orleans'
+              assign phone_number = settings.phone_new_orleans
+            endif
+            capture tel
+              render 'phone', phone: phone_number
+            endcapture
+            assign directions = block.settings.directions_link
+            if block.settings.directions == 'google_lafayette'
+              assign directions = settings.google_lafayette_url
+            elsif block.settings.directions == 'google_new_orleans'
+              assign directions = settings.google_new_orleans_url
+            endif
+            assign hours = block.settings.hours | newline_to_br | strip_newlines | split: '<br />'
+            assign map_title = 'sections.locations.map_title' | t: name: block.settings.name
+          -%}
+          <div class="loc" {{ block.shopify_attributes }}>
+            <div class="loc__fig">{% render 'photo', image: block.settings.image, bundled: block.settings.bundled, alt: block.settings.image_alt, sizes: '(max-width: 860px) 92vw, 20vw' %}</div>
+            <div class="loc__body">
+              <h3>{{ block.settings.name | escape }}</h3>
+              {%- if block.settings.address_1 != blank -%}<p class="loc__addr">{{ block.settings.address_1 | escape }}{% if block.settings.address_2 != blank %}<br>{{ block.settings.address_2 | escape }}{% endif %}</p>{%- endif -%}
+              {%- if phone_number != blank -%}<a class="loc__tel" href="{{ tel | strip }}">{{ phone_number | escape }}</a>{%- endif -%}
+              {%- if hours.size > 0 -%}
+                <p class="loc__hours">{% for line in hours %}{% assign row = line | strip %}{% if row != blank %}<span class="ln">{{ row | escape }}</span> {% endif %}{% endfor %}</p>
+              {%- endif -%}
+              <p class="loc__links">
+                {%- if directions != blank -%}<a class="link" href="{{ directions }}" target="_blank" rel="noopener">{{ 'sections.locations.directions' | t }}</a> {% endif -%}
+                {%- if block.settings.map_url != blank -%}<button class="link loc__map" type="button" aria-pressed="false" data-map="{{ block.settings.map_url | escape }}" data-map-title="{{ map_title | escape }}" data-label-on="{{ 'sections.locations.show_photo' | t | escape }}" data-label-off="{{ 'sections.locations.show_map' | t | escape }}">{{ 'sections.locations.show_map' | t }}</button> {% endif -%}
+                {%- if block.settings.page_label != blank and block.settings.page_link != blank -%}<a class="link" href="{{ block.settings.page_link }}">{{ block.settings.page_label | escape }}</a>{%- endif -%}
+              </p>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Locations",
+  "tag": "div",
+  "limit": 1,
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Get your windshield replaced today." },
+    { "type": "text", "id": "btn_1_label", "label": "First button label", "default": "Get a quote" },
+    { "type": "select", "id": "btn_1_action", "label": "First button goes to", "options": [{"value": "quote", "label": "Quote form"}, {"value": "call_lafayette", "label": "Call Lafayette"}, {"value": "call_new_orleans", "label": "Call New Orleans"}, {"value": "text_lafayette", "label": "Text Lafayette"}, {"value": "email", "label": "Email"}, {"value": "enterprise_email", "label": "Enterprise email"}, {"value": "enterprise_form", "label": "Enterprise claim form"}, {"value": "enterprise_photo", "label": "Enterprise photo upload"}, {"value": "shop", "label": "Merchandise (all products)"}, {"value": "google_lafayette", "label": "Google, Lafayette"}, {"value": "google_new_orleans", "label": "Google, New Orleans"}, {"value": "custom", "label": "Custom link (below)"}], "default": "quote" },
+    { "type": "text", "id": "btn_1_link", "label": "First button custom link" },
+    { "type": "text", "id": "btn_2_label", "label": "Second button label", "info": "Empty on an email button: the address." },
+    { "type": "select", "id": "btn_2_action", "label": "Second button goes to", "options": [{"value": "quote", "label": "Quote form"}, {"value": "call_lafayette", "label": "Call Lafayette"}, {"value": "call_new_orleans", "label": "Call New Orleans"}, {"value": "text_lafayette", "label": "Text Lafayette"}, {"value": "email", "label": "Email"}, {"value": "enterprise_email", "label": "Enterprise email"}, {"value": "enterprise_form", "label": "Enterprise claim form"}, {"value": "enterprise_photo", "label": "Enterprise photo upload"}, {"value": "shop", "label": "Merchandise (all products)"}, {"value": "google_lafayette", "label": "Google, Lafayette"}, {"value": "google_new_orleans", "label": "Google, New Orleans"}, {"value": "custom", "label": "Custom link (below)"}], "default": "email" },
+    { "type": "text", "id": "btn_2_link", "label": "Second button custom link" },
+    { "type": "paragraph", "content": "Two cards hold on screen while the page scrolls (desktop). With three or more, the section scrolls normally." },
+    { "type": "text", "id": "anchor_id", "label": "Anchor id", "default": "visit" }
+  ],
+  "blocks": [
+    { "type": "location", "name": "Location", "settings": [
+      { "type": "text", "id": "name", "label": "Name", "default": "Lafayette" },
+      { "type": "image_picker", "id": "image", "label": "Photo", "info": "Landscape, 1240px wide. Empty: the bundled photo picked below." },
+      { "type": "select", "id": "bundled", "label": "Bundled photo", "options": [{"value": "none", "label": "None"}, {"value": "hero", "label": "Vans at the Lafayette shop"}, {"value": "trust", "label": "Technicians lifting a windshield"}, {"value": "svc-windshield", "label": "Windshield going on a Ford"}, {"value": "svc-chip", "label": "Star chip close up"}, {"value": "svc-back", "label": "Tesla, back glass out"}, {"value": "svc-adas", "label": "ADAS targets"}, {"value": "svc-door", "label": "Shattered door glass"}, {"value": "svc-fleet", "label": "Sprinter van in the shop"}, {"value": "svc-mobile", "label": "Black van outside the shop"}, {"value": "bleed-insurance", "label": "Windshield on a red SUV"}, {"value": "story", "label": "Fleet outside the storefront"}, {"value": "loc-lafayette", "label": "Lafayette shop front"}, {"value": "loc-kenner", "label": "Kenner shop entrance"}, {"value": "loc-nola-van", "label": "New Orleans van"}, {"value": "ba-before", "label": "Jeep, glass out"}, {"value": "ba-after", "label": "Jeep, glass in"}], "default": "none" },
+      { "type": "text", "id": "image_alt", "label": "Photo description", "info": "Empty: the photo's own description." },
+      { "type": "text", "id": "address_1", "label": "Address line 1" },
+      { "type": "text", "id": "address_2", "label": "Address line 2" },
+      { "type": "select", "id": "phone", "label": "Phone", "options": [{ "value": "lafayette", "label": "Lafayette (Theme settings)" }, { "value": "new_orleans", "label": "New Orleans (Theme settings)" }, { "value": "custom", "label": "Other (below)" }], "default": "lafayette" },
+      { "type": "text", "id": "phone_custom", "label": "Other phone" },
+      { "type": "textarea", "id": "hours", "label": "Hours", "info": "One line per row." },
+      { "type": "select", "id": "directions", "label": "Directions link", "options": [{ "value": "google_lafayette", "label": "Google, Lafayette (Theme settings)" }, { "value": "google_new_orleans", "label": "Google, New Orleans (Theme settings)" }, { "value": "custom", "label": "Other (below)" }], "default": "google_lafayette" },
+      { "type": "text", "id": "directions_link", "label": "Other directions link" },
+      { "type": "text", "id": "map_url", "label": "Map embed link", "info": "The src of a Google Maps embed. Empty hides Show map." },
+      { "type": "text", "id": "page_label", "label": "Page link label" },
+      { "type": "text", "id": "page_link", "label": "Page link" }
+    ] }
+  ],
+  "presets": [{ "name": "Locations" }],
+  "disabled_on": { "groups": ["header", "footer"] }
+}
+{% endschema %}

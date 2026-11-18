@@ -1,0 +1,37 @@
+{%- comment -%} A heading with a checklist in three columns. {%- endcomment -%}
+<section class="sc-section paper{% if section.settings.ground == 'paper-2' %} paper--2{% endif %}"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id | handle }}"{% endif %} data-sc-act="flow" data-sc-drift="{{ settings.color_canvas }}">
+  <div class="sc-wrap">
+    {%- render 'section-head', tag: section.settings.tag, heading: section.settings.heading, highlight: section.settings.highlight, text: section.settings.text -%}
+    {%- if section.blocks.size > 0 -%}
+      <ul class="ticks ticks--3" data-sc-in>
+        {%- for block in section.blocks -%}
+          <li {{ block.shopify_attributes }}>{% if block.settings.link != blank %}<a href="{{ block.settings.link }}">{{ block.settings.text | escape }}</a>{% else %}{{ block.settings.text | escape }}{% endif %}</li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Checklist",
+  "tag": "div",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "text", "id": "tag", "label": "Tag", "default": "Your trusted auto glass experts" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "We fix all types of auto glass." },
+    { "type": "text", "id": "highlight", "label": "Words on the red bar", "info": "Optional. Must match words in the heading exactly.", "default": "all types" },
+    { "type": "textarea", "id": "text", "label": "Text" },
+    { "type": "select", "id": "ground", "label": "Ground", "options": [{ "value": "paper", "label": "White" }, { "value": "paper-2", "label": "Off-white" }], "default": "paper-2" },
+    { "type": "text", "id": "anchor_id", "label": "Anchor id" }
+  ],
+  "blocks": [
+    { "type": "tick", "name": "Checklist item", "settings": [
+      { "type": "text", "id": "text", "label": "Text", "default": "Insurance policies accepted" },
+      { "type": "text", "id": "link", "label": "Link", "info": "Optional." }
+    ] }
+  ],
+  "presets": [{ "name": "Checklist", "blocks": [{ "type": "tick" }, { "type": "tick" }, { "type": "tick" }] }],
+  "disabled_on": { "groups": ["header", "footer"] }
+}
+{% endschema %}

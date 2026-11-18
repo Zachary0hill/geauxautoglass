@@ -1,0 +1,25 @@
+{%- comment -%}
+  Student discount card: the varsity patch. Solid red ground, sleeve stripes, stitched
+  inset border, tonal pennant, round offer patch. Type only, no school marks.
+  The round patch text is CSS content in theme.css (.program--student::after).
+  Params: tag, heading, text, schools (comma separated), link_1_label, link_1_action, link_1_link,
+          link_2_label, link_2_link, attrs
+{%- endcomment -%}
+<div class="program program--student" data-type-only{% if attrs != blank %} {{ attrs }}{% endif %}>
+  {%- render 'varsity-pennant' -%}
+  <span class="stitch" aria-hidden="true"></span>
+  {%- if tag != blank -%}<p class="tag">{{ tag | escape }}</p>{%- endif -%}
+  {%- if heading != blank -%}<h3>{{ heading | escape }}</h3>{%- endif -%}
+  {%- if text != blank -%}<p>{{ text | escape }}</p>{%- endif -%}
+  {%- assign school_list = schools | split: ',' -%}
+  {%- if school_list.size > 0 -%}
+    <ul class="program__schools" aria-label="{{ 'sections.student.schools' | t }}">
+      {%- for school in school_list -%}{%- assign name = school | strip -%}{%- if name != blank -%}<li>{{ name | escape }}</li>{%- endif -%}{%- endfor -%}
+    </ul>
+  {%- endif -%}
+  <ul class="program__links">
+    {%- capture l1 -%}{%- render 'action-link', action: link_1_action, label: link_1_label, url: link_1_link -%}{%- endcapture -%}
+    {%- if l1 != blank -%}<li>{{ l1 }}</li>{%- endif -%}
+    {%- if link_2_label != blank and link_2_link != blank -%}<li><a href="{{ link_2_link }}">{{ link_2_label | escape }}</a></li>{%- endif -%}
+  </ul>
+</div>

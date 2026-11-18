@@ -1,0 +1,31 @@
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "header": {
+      "type": "header",
+      "blocks": {
+        "enterprise": { "type": "link", "settings": { "label": "Enterprise", "action": "enterprise_form", "link": "", "current_on": "none" } },
+        "services": { "type": "link", "settings": { "label": "Services", "action": "custom", "link": "/#services", "current_on": "page.services" } },
+        "insurance": { "type": "link", "settings": { "label": "Insurance", "action": "custom", "link": "/#insurance", "current_on": "page.insurance" } },
+        "merch": { "type": "link", "settings": { "label": "Merchandise", "action": "shop", "link": "", "current_on": "shop" } },
+        "locations": { "type": "link", "settings": { "label": "Locations", "action": "custom", "link": "/#visit", "current_on": "page.location" } }
+      },
+      "block_order": ["enterprise", "services", "insurance", "merch", "locations"],
+      "settings": {
+        "menu": "",
+        "show_phone": true,
+        "show_cart": true,
+        "cta_label": "Get a quote",
+        "cta_action": "quote",
+        "cta_link": "",
+        "show_tabbar": true,
+        "tab_call_label": "Call",
+        "tab_cta_label": "Get a quote",
+        "tab_visit_label": "Visit",
+        "tab_visit_link": "/#visit"
+      }
+    }
+  },
+  "order": ["header"]
+}

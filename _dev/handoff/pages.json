@@ -1,0 +1,491 @@
+{
+ "name": "Geaux Auto Glass site",
+ "generated": "2026-11-17",
+ "viewports": {
+  "desktop": "1440x900",
+  "phone": "390x844"
+ },
+ "order": [
+  "index",
+  "services",
+  "insurance",
+  "enterprise",
+  "student-discount",
+  "reviews",
+  "new-orleans",
+  "merchandise"
+ ],
+ "pages": [
+  {
+   "file": "site/index.html",
+   "title": "Geaux Auto Glass \u00b7 Mobile windshield replacements in Lafayette and New Orleans",
+   "description": "Geaux Auto Glass. Mobile windshield replacements, chip repairs, door glass and ADAS recalibration. Shops in Lafayette and New Orleans, serving all of Louisiana. Same day or next day. Insurance policies accepted.",
+   "body_class": "",
+   "regions": [
+    {
+     "tag": "header",
+     "class": "bar"
+    },
+    {
+     "tag": "nav",
+     "class": "tabbar"
+    },
+    {
+     "tag": "section",
+     "class": "act-hero",
+     "act": "pin",
+     "span": "1.7",
+     "phone_span": "1.4"
+    },
+    {
+     "tag": "section",
+     "class": "strip",
+     "act": "flow"
+    },
+    {
+     "tag": "section",
+     "class": "sc-section paper",
+     "act": "flow"
+    },
+    {
+     "tag": "section",
+     "class": "sc-section svc",
+     "id": "services",
+     "act": "flow"
+    },
+    {
+     "tag": "section",
+     "class": "ins paper paper--2",
+     "id": "insurance",
+     "act": "flow"
+    },
+    {
+     "tag": "section",
+     "class": "act-sig",
+     "act": "pin",
+     "span": "2.6",
+     "phone_span": "2.4"
+    },
+    {
+     "tag": "section",
+     "class": "sc-section paper",
+     "id": "reviews",
+     "act": "flow"
+    },
+    {
+     "tag": "section",
+     "class": "act-close",
+     "id": "visit",
+     "act": "pin",
+     "span": "1.25",
+     "phone_flow": true
+    },
+    {
+     "tag": "footer",
+     "class": "vanfoot paper",
+     "id": "footer"
+    }
+   ],
+   "images": [
+    "assets/ba-after.jpg",
+    "assets/ba-before.jpg",
+    "assets/bleed-insurance.jpg",
+    "assets/carriers/allstate.svg",
+    "assets/carriers/geico.svg",
+    "assets/carriers/libertymutual.svg",
+    "assets/carriers/progressive.svg",
+    "assets/carriers/statefarm.svg",
+    "assets/hero.jpg",
+    "assets/illus/mark.svg",
+    "assets/loc-kenner.jpg",
+    "assets/loc-lafayette.jpg",
+    "assets/logo-compact.png",
+    "assets/logo-light-ground.png",
+    "assets/logo.png",
+    "assets/story.jpg",
+    "assets/svc-adas.jpg",
+    "assets/svc-back.jpg",
+    "assets/svc-chip.jpg",
+    "assets/svc-door.jpg",
+    "assets/svc-fleet.jpg",
+    "assets/svc-mobile.jpg",
+    "assets/svc-windshield.jpg",
+    "assets/trust.jpg"
+   ],
+   "screenshots": [
+    "screenshots/index--desktop-full.png",
+    "screenshots/index--phone-full.png"
+   ]
+  },
+  {
+   "file": "site/services.html",
+   "title": "Auto glass services \u00b7 Geaux Auto Glass",
+   "description": "Windshield replacement, chip repair, back glass, ADAS recalibration, door glass and commercial vehicles. Shops in Lafayette and New Orleans, serving all of Louisiana.",
+   "body_class": "page-sub",
+   "regions": [
+    {
+     "tag": "header",
+     "class": "bar"
+    },
+    {
+     "tag": "nav",
+     "class": "tabbar"
+    },
+    {
+     "tag": "section",
+     "class": "phead",
+     "act": "flow"
+    },
+    {
+     "tag": "section",
+     "class": "sc-section paper",
+     "act": "flow"
+    },
+    {
+     "tag": "section",
+     "class": "sc-section paper paper--2",
+     "act": "flow"
+    },
+    {
+     "tag": "section",
+     "class": "cta",
+     "act": "flow"
+    },
+    {
+     "tag": "footer",
+     "class": "vanfoot paper",
+     "id": "footer"
+    }
+   ],
+   "images": [
+    "assets/illus/mark.svg",
+    "assets/logo-compact.png",
+    "assets/logo-light-ground.png",
+    "assets/logo.png",
+    "assets/svc-adas.jpg",
+    "assets/svc-back.jpg",
+    "assets/svc-chip.jpg",
+    "assets/svc-door.jpg",
+    "assets/svc-fleet.jpg",
+    "assets/svc-windshield.jpg",
+    "assets/trust.jpg"
+   ],
+   "screenshots": [
+    "screenshots/services--desktop-full.png",
+    "screenshots/services--phone-full.png"
+   ]
+  },
+  {
+   "file": "site/insurance.html",
+   "title": "Insurance policy claims \u00b7 Geaux Auto Glass",
+   "description": "File a glass claim with Geaux Auto Glass. We work with all insurance providers. Four steps, then we handle the rest and set you up for scheduling.",
+   "body_class": "page-sub",
+   "regions": [
+    {
+     "tag": "header",
+     "class": "bar"
+    },
+    {
+     "tag": "nav",
+     "class": "tabbar"
+    },
+    {
+     "tag": "section",
+     "class": "phead",
+     "act": "flow"
+    },
+    {
+     "tag": "section",
+     "class": "sc-section paper",
+     "act": "flow"
+    },
+    {
+     "tag": "section",
+     "class": "strip",
+     "act": "flow"
+    },
+    {
+     "tag": "section",
+     "class": "sc-section paper paper--2",
+     "act": "flow"
+    },
+    {
+     "tag": "section",
+     "class": "cta",
+     "act": "flow"
+    },
+    {
+     "tag": "footer",
+     "class": "vanfoot paper",
+     "id": "footer"
+    }
+   ],
+   "images": [
+    "assets/bleed-insurance.jpg",
+    "assets/carriers/allstate.svg",
+    "assets/carriers/geico.svg",
+    "assets/carriers/libertymutual.svg",
+    "assets/carriers/progressive.svg",
+    "assets/carriers/statefarm.svg",
+    "assets/illus/mark.svg",
+    "assets/logo-compact.png",
+    "assets/logo-light-ground.png",
+    "assets/logo.png"
+   ],
+   "screenshots": [
+    "screenshots/insurance--desktop-full.png",
+    "screenshots/insurance--phone-full.png"
+   ]
+  },
+  {
+   "file": "site/enterprise.html",
+   "title": "Enterprise claims \u00b7 Geaux Auto Glass",
+   "description": "Geaux Auto Glass is an approved vendor for Enterprise Rent-A-Car. Submit your claim by form, photo, text or email and our team handles the rest.",
+   "body_class": "page-sub",
+   "regions": [
+    {
+     "tag": "header",
+     "class": "bar"
+    },
+    {
+     "tag": "nav",
+     "class": "tabbar"
+    },
+    {
+     "tag": "section",
+     "class": "phead",
+     "act": "flow"
+    },
+    {
+     "tag": "section",
+     "class": "sc-section paper",
+     "act": "flow"
+    },
+    {
+     "tag": "section",
+     "class": "cta",
+     "act": "flow"
+    },
+    {
+     "tag": "footer",
+     "class": "vanfoot paper",
+     "id": "footer"
+    }
+   ],
+   "images": [
+    "assets/illus/mark.svg",
+    "assets/logo-compact.png",
+    "assets/logo-light-ground.png",
+    "assets/logo.png",
+    "assets/svc-fleet.jpg"
+   ],
+   "screenshots": [
+    "screenshots/enterprise--desktop-full.png",
+    "screenshots/enterprise--phone-full.png"
+   ]
+  },
+  {
+   "file": "site/student-discount.html",
+   "title": "Student discount \u00b7 Geaux Auto Glass",
+   "description": "10% off all services for college students at University of Louisiana at Lafayette or South Louisiana Community College. All car, SUV and truck glass.",
+   "body_class": "page-sub",
+   "regions": [
+    {
+     "tag": "header",
+     "class": "bar"
+    },
+    {
+     "tag": "nav",
+     "class": "tabbar"
+    },
+    {
+     "tag": "section",
+     "class": "phead phead--varsity phead--plain",
+     "act": "flow"
+    },
+    {
+     "tag": "section",
+     "class": "sc-section paper",
+     "act": "flow"
+    },
+    {
+     "tag": "section",
+     "class": "cta",
+     "act": "flow"
+    },
+    {
+     "tag": "footer",
+     "class": "vanfoot paper",
+     "id": "footer"
+    }
+   ],
+   "images": [
+    "assets/illus/mark.svg",
+    "assets/logo-compact.png",
+    "assets/logo-light-ground.png",
+    "assets/logo.png",
+    "assets/svc-adas.jpg",
+    "assets/svc-back.jpg",
+    "assets/svc-chip.jpg",
+    "assets/svc-door.jpg",
+    "assets/svc-fleet.jpg",
+    "assets/svc-windshield.jpg"
+   ],
+   "screenshots": [
+    "screenshots/student-discount--desktop-full.png",
+    "screenshots/student-discount--phone-full.png"
+   ]
+  },
+  {
+   "file": "site/reviews.html",
+   "title": "Google reviews \u00b7 Geaux Auto Glass",
+   "description": "Geaux Auto Glass holds a 4.8 Google rating in Lafayette across 174 reviews and a 5.0 rating in Kenner. Read what customers say.",
+   "body_class": "page-sub",
+   "regions": [
+    {
+     "tag": "header",
+     "class": "bar"
+    },
+    {
+     "tag": "nav",
+     "class": "tabbar"
+    },
+    {
+     "tag": "section",
+     "class": "phead",
+     "act": "flow"
+    },
+    {
+     "tag": "section",
+     "class": "sc-section paper",
+     "act": "flow"
+    },
+    {
+     "tag": "section",
+     "class": "sc-section paper paper--2",
+     "act": "flow"
+    },
+    {
+     "tag": "section",
+     "class": "cta",
+     "act": "flow"
+    },
+    {
+     "tag": "footer",
+     "class": "vanfoot paper",
+     "id": "footer"
+    }
+   ],
+   "images": [
+    "assets/illus/mark.svg",
+    "assets/logo-compact.png",
+    "assets/logo-light-ground.png",
+    "assets/logo.png",
+    "assets/story.jpg"
+   ],
+   "screenshots": [
+    "screenshots/reviews--desktop-full.png",
+    "screenshots/reviews--phone-full.png"
+   ]
+  },
+  {
+   "file": "site/new-orleans.html",
+   "title": "Auto glass in New Orleans and Kenner \u00b7 Geaux Auto Glass",
+   "description": "Geaux Auto Glass New Orleans. 2837 Tifton St Unit B, Kenner, LA 70062. Windshield replacements, chip repairs, door glass and ADAS recalibration. Call (504) 920-3065.",
+   "body_class": "page-sub",
+   "regions": [
+    {
+     "tag": "header",
+     "class": "bar"
+    },
+    {
+     "tag": "nav",
+     "class": "tabbar"
+    },
+    {
+     "tag": "section",
+     "class": "phead",
+     "act": "flow"
+    },
+    {
+     "tag": "section",
+     "class": "sc-section paper",
+     "act": "flow"
+    },
+    {
+     "tag": "section",
+     "class": "sc-section paper paper--2",
+     "act": "flow"
+    },
+    {
+     "tag": "section",
+     "class": "cta",
+     "act": "flow"
+    },
+    {
+     "tag": "footer",
+     "class": "vanfoot paper",
+     "id": "footer"
+    }
+   ],
+   "images": [
+    "assets/illus/mark.svg",
+    "assets/loc-kenner.jpg",
+    "assets/loc-nola-van.jpg",
+    "assets/logo-compact.png",
+    "assets/logo-light-ground.png",
+    "assets/logo.png"
+   ],
+   "screenshots": [
+    "screenshots/new-orleans--desktop-full.png",
+    "screenshots/new-orleans--phone-full.png"
+   ]
+  },
+  {
+   "file": "site/merchandise.html",
+   "title": "Merchandise \u00b7 Geaux Auto Glass",
+   "description": "Geaux Auto Glass apparel. T-shirts, hoodies, crewnecks, a hat and air fresheners. Every item links to the store.",
+   "body_class": "page-sub",
+   "regions": [
+    {
+     "tag": "header",
+     "class": "bar"
+    },
+    {
+     "tag": "nav",
+     "class": "tabbar"
+    },
+    {
+     "tag": "section",
+     "class": "phead phead--plain",
+     "act": "flow"
+    },
+    {
+     "tag": "section",
+     "class": "sc-section paper",
+     "act": "flow"
+    },
+    {
+     "tag": "section",
+     "class": "cta",
+     "act": "flow"
+    },
+    {
+     "tag": "footer",
+     "class": "vanfoot paper",
+     "id": "footer"
+    }
+   ],
+   "images": [
+    "assets/illus/mark.svg",
+    "assets/logo-compact.png",
+    "assets/logo-light-ground.png",
+    "assets/logo.png"
+   ],
+   "screenshots": [
+    "screenshots/merchandise--desktop-full.png",
+    "screenshots/merchandise--phone-full.png"
+   ]
+  }
+ ]
+}

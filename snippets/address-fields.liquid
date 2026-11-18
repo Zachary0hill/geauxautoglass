@@ -1,0 +1,29 @@
+{%- comment -%} Params: form, prefix {%- endcomment -%}
+<div class="form-row form-row--2">
+  <div class="field"><label class="field__label" for="AddrFirst-{{ prefix }}">{{ 'customer.addresses.first_name' | t }}</label><input class="field__input" id="AddrFirst-{{ prefix }}" type="text" name="address[first_name]" value="{{ form.first_name }}" autocomplete="given-name"></div>
+  <div class="field"><label class="field__label" for="AddrLast-{{ prefix }}">{{ 'customer.addresses.last_name' | t }}</label><input class="field__input" id="AddrLast-{{ prefix }}" type="text" name="address[last_name]" value="{{ form.last_name }}" autocomplete="family-name"></div>
+</div>
+<div class="field"><label class="field__label" for="AddrCompany-{{ prefix }}">{{ 'customer.addresses.company' | t }}</label><input class="field__input" id="AddrCompany-{{ prefix }}" type="text" name="address[company]" value="{{ form.company }}" autocomplete="organization"></div>
+<div class="field"><label class="field__label" for="AddrAddress1-{{ prefix }}">{{ 'customer.addresses.address1' | t }}</label><input class="field__input" id="AddrAddress1-{{ prefix }}" type="text" name="address[address1]" value="{{ form.address1 }}" autocomplete="address-line1"></div>
+<div class="field"><label class="field__label" for="AddrAddress2-{{ prefix }}">{{ 'customer.addresses.address2' | t }}</label><input class="field__input" id="AddrAddress2-{{ prefix }}" type="text" name="address[address2]" value="{{ form.address2 }}" autocomplete="address-line2"></div>
+<div class="form-row form-row--2">
+  <div class="field"><label class="field__label" for="AddrCity-{{ prefix }}">{{ 'customer.addresses.city' | t }}</label><input class="field__input" id="AddrCity-{{ prefix }}" type="text" name="address[city]" value="{{ form.city }}" autocomplete="address-level2"></div>
+  <div class="field"><label class="field__label" for="AddrZip-{{ prefix }}">{{ 'customer.addresses.zip' | t }}</label><input class="field__input" id="AddrZip-{{ prefix }}" type="text" name="address[zip]" value="{{ form.zip }}" autocomplete="postal-code" autocapitalize="characters"></div>
+</div>
+<div class="form-row form-row--2">
+  <div class="field">
+    <label class="field__label" for="AddrCountry-{{ prefix }}">{{ 'customer.addresses.country' | t }}</label>
+    <div class="select">
+      <select class="select__select" id="AddrCountry-{{ prefix }}" name="address[country]" data-default="{{ form.country }}" data-country-select data-province-select="AddrProvince-{{ prefix }}" data-province-wrap="AddrProvinceWrap-{{ prefix }}" autocomplete="country">{{ all_country_option_tags }}</select>
+      {% render 'icon', icon: 'chevron' %}
+    </div>
+  </div>
+  <div class="field" id="AddrProvinceWrap-{{ prefix }}">
+    <label class="field__label" for="AddrProvince-{{ prefix }}">{{ 'customer.addresses.province' | t }}</label>
+    <div class="select">
+      <select class="select__select" id="AddrProvince-{{ prefix }}" name="address[province]" data-default="{{ form.province }}" autocomplete="address-level1"></select>
+      {% render 'icon', icon: 'chevron' %}
+    </div>
+  </div>
+</div>
+<div class="field"><label class="field__label" for="AddrPhone-{{ prefix }}">{{ 'customer.addresses.phone' | t }}</label><input class="field__input" id="AddrPhone-{{ prefix }}" type="tel" name="address[phone]" value="{{ form.phone }}" autocomplete="tel"></div>

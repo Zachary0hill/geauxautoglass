@@ -1,0 +1,85 @@
+{%- liquid
+  assign first = customer.first_name | default: customer.name
+-%}
+<div class="page-width account">
+  <header class="account__head">
+    <div class="u-stack">
+      <p class="br-rule">{{ 'customer.account.caption' | t }}</p>
+      <h1 class="br-display account__title">{{ 'customer.account.welcome' | t: name: first }}</h1>
+    </div>
+    <nav class="account__nav" aria-label="{{ 'customer.account.title' | t }}">
+      <a class="account__tab" href="{{ routes.account_url }}" aria-current="page">{{ 'customer.account.orders' | t }}</a>
+      <a class="account__tab" href="{{ routes.account_addresses_url }}">{{ 'customer.account.addresses' | t }}</a>
+      <a class="account__tab account__tab--quiet" href="{{ routes.account_logout_url }}">{{ 'customer.log_out' | t }}</a>
+    </nav>
+  </header>
+
+  <div class="account__stats">
+    <div class="account__stat">
+      <span class="br-caption">{{ 'customer.account.orders' | t }}</span>
+      <span class="account__stat-value">{{ customer.orders_count }}</span>
+    </div>
+    <div class="account__stat">
+      <span class="br-caption">{{ 'customer.account.addresses' | t }}</span>
+      <span class="account__stat-value">{{ customer.addresses_count }}</span>
+    </div>
+    <div class="account__stat account__stat--wide">
+      <span class="br-caption">{{ 'customer.account.details' | t }}</span>
+      <span class="account__stat-text">{{ customer.name }}<br>{{ customer.email }}</span>
+    </div>
+  </div>
+
+  <div class="account__grid">
+    <section class="account__section">
+      <div class="account__section-head">
+        <h2 class="br-display account__section-title">{{ 'customer.account.recent' | t }}</h2>
+      </div>
+      {%- paginate customer.orders by 10 -%}
+        {%- if customer.orders.size > 0 -%}
+          <div class="table-scroll">
+            <table class="orders">
+              <thead><tr><th scope="col">{{ 'customer.orders.order_number' | t }}</th><th scope="col">{{ 'customer.orders.date' | t }}</th><th scope="col">{{ 'customer.orders.payment_status' | t }}</th><th scope="col">{{ 'customer.orders.fulfillment_status' | t }}</th><th scope="col" class="u-right">{{ 'customer.orders.total' | t }}</th></tr></thead>
+              <tbody>
+                {%- for order in customer.orders -%}
+                  <tr>
+                    <td><a class="orders__link" href="{{ order.customer_url }}">{{ order.name }}</a></td>
+                    <td>{{ order.created_at | date: format: 'date' }}</td>
+                    <td><span class="status status--{{ order.financial_status }}">{{ order.financial_status_label }}</span></td>
+                    <td><span class="status status--{{ order.fulfillment_status }}">{{ order.fulfillment_status_label }}</span></td>
+                    <td class="u-right">{{ order.total_price | money_with_currency }}</td>
+                  </tr>
+                {%- endfor -%}
+              </tbody>
+            </table>
+          </div>
+          {% render 'pagination', paginate: paginate %}
+        {%- else -%}
+          <div class="account__empty">
+            <p class="br-body">{{ 'customer.orders.none' | t }}</p>
+            <a class="btn" href="{{ routes.all_products_collection_url }}">{{ 'cart.general.continue_shopping' | t }} {% render 'icon', icon: 'arrow' %}</a>
+          </div>
+        {%- endif -%}
+      {%- endpaginate -%}
+    </section>
+
+    <aside class="account__side">
+      <div class="account__card">
+        <h2 class="br-caption br-caption--ink">{{ 'customer.account.default_address' | t }}</h2>
+        {%- if customer.default_address -%}
+          <address>{{ customer.default_address | format_address }}</address>
+        {%- else -%}
+          <p class="br-body">{{ 'customer.account.no_address' | t }}</p>
+        {%- endif -%}
+        <a class="link link--caption" href="{{ routes.account_addresses_url }}">{{ 'customer.account.view_addresses' | t }} {% render 'icon', icon: 'arrow' %}</a>
+      </div>
+    </aside>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Account",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

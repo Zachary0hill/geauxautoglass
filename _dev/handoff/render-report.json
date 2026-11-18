@@ -1,0 +1,539 @@
+{
+ "generated": "2026-11-17",
+ "browser": "Chrome via Playwright",
+ "notes": [
+  "Full page captures use prefers-reduced-motion so scroll reveals sit at rest. Copy inside pinned acts (hero, signature, locations) is scroll-cued and does not appear in full page captures. Use the home-NN state captures for those acts.",
+  "Google map iframes and the Google Fonts request depend on network. Maps render blank in these captures.",
+  "Phone captures: 390x844, touch, mobile viewport."
+ ],
+ "captures": [
+  {
+   "file": "screenshots/index--desktop-full.png",
+   "page": "index.html",
+   "kind": "full page",
+   "viewport": "1440x900",
+   "height": 10712,
+   "reducedMotion": true,
+   "overflowX": 0,
+   "errors": []
+  },
+  {
+   "file": "screenshots/index--phone-full.png",
+   "page": "index.html",
+   "kind": "full page",
+   "viewport": "390x844",
+   "height": 12212,
+   "reducedMotion": true,
+   "overflowX": 0,
+   "errors": []
+  },
+  {
+   "file": "screenshots/services--desktop-full.png",
+   "page": "services.html",
+   "kind": "full page",
+   "viewport": "1440x900",
+   "height": 5342,
+   "reducedMotion": true,
+   "overflowX": 0,
+   "errors": []
+  },
+  {
+   "file": "screenshots/services--phone-full.png",
+   "page": "services.html",
+   "kind": "full page",
+   "viewport": "390x844",
+   "height": 6188,
+   "reducedMotion": true,
+   "overflowX": 0,
+   "errors": []
+  },
+  {
+   "file": "screenshots/insurance--desktop-full.png",
+   "page": "insurance.html",
+   "kind": "full page",
+   "viewport": "1440x900",
+   "height": 3464,
+   "reducedMotion": true,
+   "overflowX": 0,
+   "errors": []
+  },
+  {
+   "file": "screenshots/insurance--phone-full.png",
+   "page": "insurance.html",
+   "kind": "full page",
+   "viewport": "390x844",
+   "height": 4472,
+   "reducedMotion": true,
+   "overflowX": 0,
+   "errors": []
+  },
+  {
+   "file": "screenshots/enterprise--desktop-full.png",
+   "page": "enterprise.html",
+   "kind": "full page",
+   "viewport": "1440x900",
+   "height": 2477,
+   "reducedMotion": true,
+   "overflowX": 0,
+   "errors": []
+  },
+  {
+   "file": "screenshots/enterprise--phone-full.png",
+   "page": "enterprise.html",
+   "kind": "full page",
+   "viewport": "390x844",
+   "height": 3289,
+   "reducedMotion": true,
+   "overflowX": 0,
+   "errors": []
+  },
+  {
+   "file": "screenshots/student-discount--desktop-full.png",
+   "page": "student-discount.html",
+   "kind": "full page",
+   "viewport": "1440x900",
+   "height": 2459,
+   "reducedMotion": true,
+   "overflowX": 0,
+   "errors": []
+  },
+  {
+   "file": "screenshots/student-discount--phone-full.png",
+   "page": "student-discount.html",
+   "kind": "full page",
+   "viewport": "390x844",
+   "height": 3316,
+   "reducedMotion": true,
+   "overflowX": 0,
+   "errors": []
+  },
+  {
+   "file": "screenshots/reviews--desktop-full.png",
+   "page": "reviews.html",
+   "kind": "full page",
+   "viewport": "1440x900",
+   "height": 2931,
+   "reducedMotion": true,
+   "overflowX": 0,
+   "errors": []
+  },
+  {
+   "file": "screenshots/reviews--phone-full.png",
+   "page": "reviews.html",
+   "kind": "full page",
+   "viewport": "390x844",
+   "height": 3796,
+   "reducedMotion": true,
+   "overflowX": 0,
+   "errors": []
+  },
+  {
+   "file": "screenshots/new-orleans--desktop-full.png",
+   "page": "new-orleans.html",
+   "kind": "full page",
+   "viewport": "1440x900",
+   "height": 3293,
+   "reducedMotion": true,
+   "overflowX": 0,
+   "errors": []
+  },
+  {
+   "file": "screenshots/new-orleans--phone-full.png",
+   "page": "new-orleans.html",
+   "kind": "full page",
+   "viewport": "390x844",
+   "height": 4313,
+   "reducedMotion": true,
+   "overflowX": 0,
+   "errors": []
+  },
+  {
+   "file": "screenshots/merchandise--desktop-full.png",
+   "page": "merchandise.html",
+   "kind": "full page",
+   "viewport": "1440x900",
+   "height": 4821,
+   "reducedMotion": true,
+   "overflowX": 0,
+   "errors": []
+  },
+  {
+   "file": "screenshots/merchandise--phone-full.png",
+   "page": "merchandise.html",
+   "kind": "full page",
+   "viewport": "390x844",
+   "height": 8178,
+   "reducedMotion": true,
+   "overflowX": 0,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-01-hero--desktop.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "1440x900",
+   "selector": ".act-hero",
+   "pinProgress": 0,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-01-hero-scrolled--desktop.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "1440x900",
+   "selector": ".act-hero",
+   "pinProgress": 0.55,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-02-insurer-strip--desktop.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "1440x900",
+   "selector": ".strip",
+   "pinProgress": null,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-03-trust--desktop.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "1440x900",
+   "selector": ".split",
+   "pinProgress": null,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-03-stats--desktop.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "1440x900",
+   "selector": ".stats",
+   "pinProgress": null,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-04-services-head--desktop.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "1440x900",
+   "selector": "#services",
+   "pinProgress": null,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-04-services-grid--desktop.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "1440x900",
+   "selector": ".svc__grid",
+   "pinProgress": null,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-05-mobile-band--desktop.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "1440x900",
+   "selector": ".svc__band",
+   "pinProgress": null,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-06-insurance--desktop.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "1440x900",
+   "selector": "#insurance",
+   "pinProgress": null,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-06-insurance-steps--desktop.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "1440x900",
+   "selector": ".steps",
+   "pinProgress": null,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-07-programs--desktop.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "1440x900",
+   "selector": ".programs",
+   "pinProgress": null,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-08-signature-start--desktop.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "1440x900",
+   "selector": ".act-sig",
+   "pinProgress": 0.1,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-08-signature-mid--desktop.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "1440x900",
+   "selector": ".act-sig",
+   "pinProgress": 0.45,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-08-signature-end--desktop.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "1440x900",
+   "selector": ".act-sig",
+   "pinProgress": 0.9,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-09-reviews--desktop.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "1440x900",
+   "selector": "#reviews",
+   "pinProgress": null,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-10-story-social--desktop.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "1440x900",
+   "selector": ".split--story",
+   "pinProgress": null,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-11-locations--desktop.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "1440x900",
+   "selector": ".act-close",
+   "pinProgress": 0.6,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-12-footer--desktop.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "1440x900",
+   "selector": "#footer",
+   "pinProgress": null,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-01-hero--phone.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "390x844",
+   "selector": ".act-hero",
+   "pinProgress": 0,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-01-hero-scrolled--phone.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "390x844",
+   "selector": ".act-hero",
+   "pinProgress": 0.55,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-02-insurer-strip--phone.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "390x844",
+   "selector": ".strip",
+   "pinProgress": null,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-03-trust--phone.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "390x844",
+   "selector": ".split",
+   "pinProgress": null,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-03-stats--phone.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "390x844",
+   "selector": ".stats",
+   "pinProgress": null,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-04-services-head--phone.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "390x844",
+   "selector": "#services",
+   "pinProgress": null,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-04-services-grid--phone.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "390x844",
+   "selector": ".svc__grid",
+   "pinProgress": null,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-05-mobile-band--phone.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "390x844",
+   "selector": ".svc__band",
+   "pinProgress": null,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-06-insurance--phone.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "390x844",
+   "selector": "#insurance",
+   "pinProgress": null,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-06-insurance-steps--phone.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "390x844",
+   "selector": ".steps",
+   "pinProgress": null,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-07-programs--phone.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "390x844",
+   "selector": ".programs",
+   "pinProgress": null,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-08-signature-start--phone.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "390x844",
+   "selector": ".act-sig",
+   "pinProgress": 0.1,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-08-signature-mid--phone.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "390x844",
+   "selector": ".act-sig",
+   "pinProgress": 0.45,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-08-signature-end--phone.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "390x844",
+   "selector": ".act-sig",
+   "pinProgress": 0.9,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-09-reviews--phone.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "390x844",
+   "selector": "#reviews",
+   "pinProgress": null,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-10-story-social--phone.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "390x844",
+   "selector": ".split--story",
+   "pinProgress": null,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-11-locations--phone.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "390x844",
+   "selector": ".act-close",
+   "pinProgress": 0.6,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/home-12-footer--phone.png",
+   "page": "index.html",
+   "kind": "state",
+   "viewport": "390x844",
+   "selector": "#footer",
+   "pinProgress": null,
+   "reducedMotion": false,
+   "errors": []
+  },
+  {
+   "file": "screenshots/merchandise--filter-hoodies--desktop.png",
+   "page": "merchandise.html",
+   "kind": "state",
+   "viewport": "1440x900",
+   "note": "Hoodies chip pressed, 11 of 41 items shown",
+   "errors": []
+  }
+ ]
+}

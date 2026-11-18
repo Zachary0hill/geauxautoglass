@@ -1,0 +1,48 @@
+<div class="auth-layout">
+  <aside class="auth-layout__panel plate--pine">
+    <div class="auth-layout__panel-inner">
+      <p class="br-rule">{{ section.settings.panel_caption | escape }}</p>
+      <h2 class="br-display auth-layout__heading">{{ section.settings.panel_heading | escape }}</h2>
+      <p class="br-body">{{ section.settings.panel_text | escape }}</p>
+    </div>
+    {%- if settings.logo != blank -%}
+      {{ settings.logo | image_url: width: 600 | image_tag: class: 'auth-layout__mark', alt: '', loading: 'lazy' }}
+    {%- elsif settings.logo == blank -%}
+      <img class="auth-layout__mark" src="{{ 'gx-logo.png' | asset_url }}" width="300" height="223" alt="" loading="lazy">
+    {%- endif -%}
+  </aside>
+
+  <div class="auth-layout__main">
+    <div class="auth">
+      <div class="u-stack">
+        <p class="br-rule">{{ 'customer.account.caption' | t }}</p>
+        <h1 class="br-display auth__title">{{ 'customer.register.title' | t }}</h1>
+      </div>
+      {%- form 'create_customer', class: 'form-stack', novalidate: 'novalidate' -%}
+        {%- if form.errors -%}
+          <div class="form__message form__message--error form__errors" role="alert" tabindex="-1" autofocus>{% render 'icon', icon: 'error' %}<div>{{ 'contact.form.error_heading' | t }}<ul>{%- for field in form.errors -%}<li>{%- if field == 'form' -%}{{ form.errors.messages[field] }}{%- else -%}{{ form.errors.translated_fields[field] | capitalize }} {{ form.errors.messages[field] }}{%- endif -%}</li>{%- endfor -%}</ul></div></div>
+        {%- endif -%}
+        <div class="form-row form-row--2">
+          <div class="field"><label class="field__label" for="RegisterFirst">{{ 'customer.register.first_name' | t }}</label><input class="field__input" id="RegisterFirst" type="text" name="customer[first_name]" autocomplete="given-name"></div>
+          <div class="field"><label class="field__label" for="RegisterLast">{{ 'customer.register.last_name' | t }}</label><input class="field__input" id="RegisterLast" type="text" name="customer[last_name]" autocomplete="family-name"></div>
+        </div>
+        <div class="field"><label class="field__label" for="RegisterEmail">{{ 'customer.register.email' | t }}</label><input class="field__input" id="RegisterEmail" type="email" name="customer[email]" autocomplete="email" required></div>
+        <div class="field"><label class="field__label" for="RegisterPassword">{{ 'customer.register.password' | t }}</label><input class="field__input" id="RegisterPassword" type="password" name="customer[password]" autocomplete="new-password" required></div>
+        <div><button type="submit" class="btn btn--lg btn--full">{{ 'customer.register.submit' | t }}</button></div>
+      {%- endform -%}
+      <p class="auth__alt">{{ 'customer.register.have_account' | t }} <a href="{{ routes.account_login_url }}">{{ 'customer.log_in' | t }}</a></p>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Register",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "panel_caption", "label": "Panel caption", "default": "Members" },
+    { "type": "text", "id": "panel_heading", "label": "Panel heading", "default": "Built for the ones still building." },
+    { "type": "text", "id": "panel_text", "label": "Panel text", "default": "Create an account to keep your orders and addresses in one place." }
+  ]
+}
+{% endschema %}

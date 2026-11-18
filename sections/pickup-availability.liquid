@@ -1,0 +1,28 @@
+{%- liquid
+  assign variant = product.selected_variant | default: product.selected_or_first_available_variant
+  assign pickups = variant.store_availabilities | where: 'pick_up_enabled', true
+-%}
+{%- if pickups.size > 0 -%}
+  <div class="product__pickup">
+    <h3>{{ 'products.product.pickup_availability.title' | t }}</h3>
+    <ul>
+      {%- for availability in pickups -%}
+        <li class="product__pickup-loc">
+          <span>
+            <strong>{{ availability.location.name | escape }}</strong>
+            {%- if availability.available %}<br>{{ 'products.product.pickup_availability.pick_up_available' | t }}{%- if availability.pick_up_time != blank %}, {{ availability.pick_up_time | downcase }}{% endif -%}
+            {%- else %}<br>{{ 'products.product.pickup_availability.unavailable' | t }}{%- endif -%}
+          </span>
+          {%- if availability.location.address != blank -%}<span class="br-caption">{{ availability.location.address | format_address | strip_html | truncate: 40 }}</span>{%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Pickup availability",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,95 @@
+{%- comment -%} Google rating, review quotes, the story and the social bar. One white act. {%- endcomment -%}
+{%- liquid
+  assign ratings = section.blocks | where: 'type', 'rating'
+  assign reviews = section.blocks | where: 'type', 'review'
+-%}
+<section{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id | handle }}"{% endif %} class="sc-section paper" data-sc-act="flow" data-sc-drift="{{ settings.color_canvas }}">
+  <div class="sc-wrap">
+    <div class="proof__head" data-sc-in data-sc-stagger="70">
+      {%- if section.settings.tag != blank -%}<p class="tag tag--red">{{ section.settings.tag | escape }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="sc-display sc-display--md">{% render 'heading-hl', text: section.settings.heading, hl: section.settings.highlight %}</h2>{%- endif -%}
+    </div>
+    {%- if ratings.size > 0 -%}
+      <dl class="ratings" data-sc-in data-sc-stagger="80">
+        {%- for block in ratings -%}
+          <div {{ block.shopify_attributes }}><dt>{{ block.settings.value | escape }}</dt><dd>{{ block.settings.line_1 | escape }}{% if block.settings.line_2 != blank %}<br>{{ block.settings.line_2 | escape }}{% endif %}</dd></div>
+        {%- endfor -%}
+      </dl>
+    {%- endif -%}
+    {%- if reviews.size > 0 -%}
+      <div class="revs" data-sc-in data-sc-stagger="80">
+        {%- for block in reviews -%}
+          {%- render 'review-quote', block: block -%}
+        {%- endfor -%}
+      </div>
+      <div class="revs__dots" aria-hidden="true">{% for block in reviews %}<i{% if forloop.first %} class="on"{% endif %}></i>{% endfor %}</div>
+    {%- endif -%}
+    {%- capture more_1 -%}{%- render 'action-link', action: section.settings.more_1_action, label: section.settings.more_1_label, url: section.settings.more_1_link, class: 'link' -%}{%- endcapture -%}
+    {%- if more_1 != blank or section.settings.more_2_label != blank -%}
+      <p class="proof__more">{{ more_1 }}{% if section.settings.more_2_label != blank and section.settings.more_2_link != blank %} &nbsp; <a class="link" href="{{ section.settings.more_2_link }}">{{ section.settings.more_2_label | escape }}</a>{% endif %}</p>
+    {%- endif -%}
+  </div>
+  {%- if section.settings.show_story or section.settings.show_social -%}
+    <div class="sc-wrap split split--story">
+      {%- if section.settings.show_story -%}
+        <div class="split__copy" data-sc-in data-sc-stagger="70">
+          {%- if section.settings.story_tag != blank -%}<p class="tag tag--red">{{ section.settings.story_tag | escape }}</p>{%- endif -%}
+          {%- if section.settings.story_heading != blank -%}<h2 class="sc-display sc-display--md">{% render 'heading-hl', text: section.settings.story_heading, hl: section.settings.story_highlight, keep: true %}</h2>{%- endif -%}
+          {%- if section.settings.story_text != blank -%}<p class="sc-body">{{ section.settings.story_text | escape }}</p>{%- endif -%}
+        </div>
+        <figure class="shot shot--block shot--right slide" data-dir="up">
+          {%- render 'photo', image: section.settings.story_image, bundled: 'story', alt: section.settings.story_image_alt, sizes: '(max-width: 860px) 92vw, 44vw' -%}
+        </figure>
+      {%- endif -%}
+      {%- if section.settings.show_social -%}
+        {%- render 'social-bar', tag: section.settings.social_tag -%}
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Reviews and story",
+  "tag": "div",
+  "max_blocks": 10,
+  "settings": [
+    { "type": "text", "id": "tag", "label": "Tag", "default": "Google reviews" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "4.8 on Google. 174 reviews." },
+    { "type": "text", "id": "highlight", "label": "Words on the red bar", "info": "Must match words in the heading exactly.", "default": "4.8" },
+    { "type": "text", "id": "more_1_label", "label": "First link label", "default": "Read the reviews on Google" },
+    { "type": "select", "id": "more_1_action", "label": "First link goes to", "options": [{"value": "quote", "label": "Quote form"}, {"value": "call_lafayette", "label": "Call Lafayette"}, {"value": "call_new_orleans", "label": "Call New Orleans"}, {"value": "text_lafayette", "label": "Text Lafayette"}, {"value": "email", "label": "Email"}, {"value": "enterprise_email", "label": "Enterprise email"}, {"value": "enterprise_form", "label": "Enterprise claim form"}, {"value": "enterprise_photo", "label": "Enterprise photo upload"}, {"value": "shop", "label": "Merchandise (all products)"}, {"value": "google_lafayette", "label": "Google, Lafayette"}, {"value": "google_new_orleans", "label": "Google, New Orleans"}, {"value": "custom", "label": "Custom link (below)"}], "default": "google_lafayette" },
+    { "type": "text", "id": "more_1_link", "label": "First link custom link" },
+    { "type": "text", "id": "more_2_label", "label": "Second link label", "default": "All reviews" },
+    { "type": "text", "id": "more_2_link", "label": "Second link", "default": "/pages/reviews" },
+    { "type": "header", "content": "Story" },
+    { "type": "checkbox", "id": "show_story", "label": "Show the story", "default": true },
+    { "type": "text", "id": "story_tag", "label": "Tag", "default": "The story about us" },
+    { "type": "text", "id": "story_heading", "label": "Heading", "default": "Began in Lafayette with a single van." },
+    { "type": "text", "id": "story_highlight", "label": "Words on the red bar", "default": "a single van." },
+    { "type": "textarea", "id": "story_text", "label": "Text", "default": "Our mobile glass company began in Lafayette, Louisiana, with a single van and a dream to provide convenient, reliable service to the community. As demand soared, we expanded our fleet to fully equipped mobile vehicles, serving all of Acadiana with the same dedication that earned the community’s trust from the start." },
+    { "type": "image_picker", "id": "story_image", "label": "Photo", "info": "Wide landscape. Empty: the bundled fleet photo." },
+    { "type": "text", "id": "story_image_alt", "label": "Photo description", "info": "Empty: the photo's own description." },
+    { "type": "header", "content": "Social bar" },
+    { "type": "paragraph", "content": "Links and counts are in Theme settings > Social media." },
+    { "type": "checkbox", "id": "show_social", "label": "Show the social bar", "default": true },
+    { "type": "text", "id": "social_tag", "label": "Tag", "default": "Find us on" },
+    { "type": "text", "id": "anchor_id", "label": "Anchor id", "default": "reviews" }
+  ],
+  "blocks": [
+    { "type": "rating", "name": "Rating", "limit": 3, "settings": [
+      { "type": "text", "id": "value", "label": "Number", "default": "4.8" },
+      { "type": "text", "id": "line_1", "label": "Line 1", "default": "Google, Lafayette" },
+      { "type": "text", "id": "line_2", "label": "Line 2", "default": "174 reviews" }
+    ] },
+    { "type": "review", "name": "Review", "limit": 6, "settings": [
+      { "type": "textarea", "id": "quote", "label": "Quote", "info": "Without quotation marks.", "default": "Exceptional service, best all around." },
+      { "type": "text", "id": "name", "label": "Name", "default": "Name" },
+      { "type": "text", "id": "source", "label": "Source", "default": "Google, Lafayette" },
+      { "type": "text", "id": "date", "label": "Month and year" }
+    ] }
+  ],
+  "presets": [{ "name": "Reviews and story" }],
+  "disabled_on": { "groups": ["header", "footer"] }
+}
+{% endschema %}

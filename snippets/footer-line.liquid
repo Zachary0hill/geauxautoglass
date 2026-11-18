@@ -1,0 +1,9 @@
+{%- comment -%} The footer line: copyright year, business name, footer line from Theme settings > Business. {%- endcomment -%}
+{%- liquid
+  assign year = settings.founded_year
+  if year == blank
+    assign year = 'now' | date: '%Y'
+  endif
+  assign biz = settings.brand_name | default: shop.name
+-%}
+&copy; {{ year | escape }} {{ biz | escape }}{% if settings.footer_line != blank %} · {{ settings.footer_line | escape }}{% endif %}

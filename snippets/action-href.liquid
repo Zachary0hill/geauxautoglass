@@ -1,0 +1,36 @@
+{%- comment -%}
+  The destination for a picked action. Prints the href only; capture and strip it.
+  Params: action, url (used when action is 'custom')
+{%- endcomment -%}
+{%- liquid
+  case action
+    when 'quote'
+      echo settings.quote_url
+    when 'enterprise_form'
+      echo settings.enterprise_form_url
+    when 'enterprise_photo'
+      echo settings.enterprise_photo_url
+    when 'google_lafayette'
+      echo settings.google_lafayette_url
+    when 'google_new_orleans'
+      echo settings.google_new_orleans_url
+    when 'call_lafayette'
+      render 'phone', phone: settings.phone_lafayette
+    when 'call_new_orleans'
+      render 'phone', phone: settings.phone_new_orleans
+    when 'text_lafayette'
+      render 'phone', phone: settings.phone_lafayette, as: 'sms'
+    when 'email'
+      if settings.email != blank
+        echo 'mailto:' | append: settings.email
+      endif
+    when 'enterprise_email'
+      if settings.enterprise_email != blank
+        echo 'mailto:' | append: settings.enterprise_email
+      endif
+    when 'shop'
+      echo routes.all_products_collection_url
+    else
+      echo url
+  endcase
+-%}

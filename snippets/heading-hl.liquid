@@ -1,0 +1,24 @@
+{%- comment -%}
+  A heading with one phrase on the red bar (the design's .hl).
+  Params:
+    text    the whole heading
+    hl      the phrase inside it to highlight (must match the heading text exactly; blank for none)
+    keep    true keeps the highlighted phrase on one line
+    break_before  true starts the highlighted phrase on a new line
+{%- endcomment -%}
+{%- liquid
+  assign out = text | escape
+  if hl != blank
+    assign needle = hl | escape
+    assign cls = 'hl'
+    if keep
+      assign cls = 'hl hl--keep'
+    endif
+    assign wrapped = '<span class="' | append: cls | append: '">' | append: needle | append: '</span>'
+    if break_before
+      assign wrapped = '<br>' | append: wrapped
+    endif
+    assign out = out | replace_first: needle, wrapped
+  endif
+  echo out
+-%}

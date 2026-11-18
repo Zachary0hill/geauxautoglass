@@ -1,0 +1,26 @@
+<div class="page-width auth">
+  <div class="u-stack">
+    <p class="br-rule">{{ 'customer.account.caption' | t }}</p>
+    <h1 class="br-display auth__title">{{ 'customer.activate_account.title' | t }}</h1>
+    <p class="br-body">{{ 'customer.activate_account.subtext' | t }}</p>
+  </div>
+  {%- form 'activate_customer_password', class: 'form-stack' -%}
+    {%- if form.errors -%}
+      <div class="form__message form__message--error form__errors" role="alert" tabindex="-1" autofocus>{% render 'icon', icon: 'error' %}<div>{{ 'contact.form.error_heading' | t }}<ul>{%- for field in form.errors -%}<li>{{ form.errors.translated_fields[field] | capitalize }} {{ form.errors.messages[field] }}</li>{%- endfor -%}</ul></div></div>
+    {%- endif -%}
+    <div class="field"><label class="field__label" for="ActivatePassword">{{ 'customer.activate_account.password' | t }}</label><input class="field__input" id="ActivatePassword" type="password" name="customer[password]" autocomplete="new-password" required></div>
+    <div class="field"><label class="field__label" for="ActivatePasswordConfirm">{{ 'customer.activate_account.password_confirm' | t }}</label><input class="field__input" id="ActivatePasswordConfirm" type="password" name="customer[password_confirmation]" autocomplete="new-password" required></div>
+    <div class="u-flex" style="gap:var(--sc-3);flex-wrap:wrap">
+      <button type="submit" class="btn">{{ 'customer.activate_account.submit' | t }}</button>
+      <button type="submit" name="decline" class="btn btn--ghost">{{ 'customer.activate_account.cancel' | t }}</button>
+    </div>
+  {%- endform -%}
+</div>
+
+{% schema %}
+{
+  "name": "Activate account",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

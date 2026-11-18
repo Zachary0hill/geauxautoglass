@@ -1,0 +1,126 @@
+{%- comment -%}
+  Head of every inner page: breadcrumbs, tag, h1 with an optional highlighted phrase, lede,
+  up to two buttons, and an optional photo behind the slanted edge. Styles: photo, plain, varsity.
+{%- endcomment -%}
+{%- liquid
+  assign style = section.settings.style
+  assign has_photo = false
+  if style == 'default'
+    if section.settings.image != blank or section.settings.bundled != 'none'
+      assign has_photo = true
+    endif
+  endif
+
+  assign title = section.settings.heading
+  assign crumb = section.settings.crumb
+  assign fallback_title = page.title
+  if template.name == 'collection'
+    assign fallback_title = collection.title
+  elsif template.name == 'product'
+    assign fallback_title = product.title
+  elsif template.name == 'blog'
+    assign fallback_title = blog.title
+  elsif template.name == 'article'
+    assign fallback_title = article.title
+  elsif template.name == 'search'
+    assign fallback_title = 'general.search.title' | t
+  elsif template.name == '404'
+    assign fallback_title = 'general.404.title' | t
+  elsif template.name == 'cart'
+    assign fallback_title = 'cart.general.title' | t
+  endif
+  if fallback_title == blank
+    assign fallback_title = page_title
+  endif
+  if title == blank
+    assign title = fallback_title
+  endif
+  if crumb == blank
+    assign crumb = fallback_title
+  endif
+
+  assign lede = section.settings.lede
+  if template.name == 'collection'
+    assign lede = lede | replace: '[count]', collection.products_count
+  endif
+
+  assign pos = section.settings.focal
+  if pos == blank and section.settings.image != blank and section.settings.image.presentation.focal_point != blank
+    assign pos = section.settings.image.presentation.focal_point
+  endif
+  assign pos_style = ''
+  if pos != blank
+    assign pos_style = '--pos: ' | append: pos | remove: ';' | remove: '"'
+  endif
+  assign schools = section.settings.schools | split: ','
+-%}
+<section class="phead{% if style == 'varsity' %} phead--varsity phead--plain{% elsif has_photo == false %} phead--plain{% endif %}" data-sc-act="flow" data-sc-drift="{{ settings.color_canvas }}">
+  {%- if style == 'varsity' -%}
+    {%- render 'varsity-pennant' -%}
+  {%- elsif has_photo -%}
+    <div class="phead__photo"><div class="phead__clip">{% render 'photo', image: section.settings.image, bundled: section.settings.bundled, alt: section.settings.image_alt, sizes: '(max-width: 860px) 100vw, 48vw', loading: 'eager', priority: true, style: pos_style %}</div></div>
+  {%- endif -%}
+  <div class="sc-wrap phead__in">
+    {%- if style == 'varsity' and section.settings.offer_1 != blank -%}
+      <span class="offer" aria-hidden="true">{{ section.settings.offer_1 | escape }}{% if section.settings.offer_2 != blank %}<br>{{ section.settings.offer_2 | escape }}{% endif %}</span>
+    {%- endif -%}
+    <div class="phead__copy">
+      {%- if section.settings.show_crumbs -%}
+        <p class="crumbs"><a href="{{ routes.root_url }}">{{ 'general.home' | t }}</a><i aria-hidden="true"></i>
+          {%- if section.settings.parent_label != blank and section.settings.parent_link != blank -%}<a href="{{ section.settings.parent_link }}">{{ section.settings.parent_label | escape }}</a><i aria-hidden="true"></i>{%- endif -%}
+          <span aria-current="page">{{ crumb | escape }}</span></p>
+      {%- endif -%}
+      {%- if section.settings.tag != blank -%}<p class="tag{% unless style == 'varsity' %} tag--red{% endunless %}">{{ section.settings.tag | escape }}</p>{%- endif -%}
+      <h1 class="sc-display">{% render 'heading-hl', text: title, hl: section.settings.highlight %}</h1>
+      {%- if lede != blank -%}<p class="sc-lede">{{ lede | escape }}</p>{%- endif -%}
+      {%- if style == 'varsity' and schools.size > 0 -%}
+        <ul class="program__schools" aria-label="{{ 'sections.student.schools' | t }}">
+          {%- for school in schools -%}{%- assign name = school | strip -%}{%- if name != blank -%}<li>{{ name | escape }}</li>{%- endif -%}{%- endfor -%}
+        </ul>
+      {%- endif -%}
+      {%- capture actions -%}
+        {%- render 'action-link', action: section.settings.btn_1_action, label: section.settings.btn_1_label, url: section.settings.btn_1_link, class: 'btn btn--accent' -%}
+        {%- render 'action-link', action: section.settings.btn_2_action, label: section.settings.btn_2_label, url: section.settings.btn_2_link, class: 'btn btn--ghost' -%}
+      {%- endcapture -%}
+      {%- if actions != blank -%}<div class="phead__actions">{{ actions }}</div>{%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Page head",
+  "tag": "div",
+  "settings": [
+    { "type": "select", "id": "style", "label": "Style", "options": [{ "value": "default", "label": "Photo behind the slanted edge" }, { "value": "plain", "label": "Plain" }, { "value": "varsity", "label": "Varsity (student discount)" }], "default": "default" },
+    { "type": "image_picker", "id": "image", "label": "Photo", "info": "Empty: the bundled photo picked below." },
+    { "type": "select", "id": "bundled", "label": "Bundled photo", "options": [{"value": "none", "label": "None"}, {"value": "hero", "label": "Vans at the Lafayette shop"}, {"value": "trust", "label": "Technicians lifting a windshield"}, {"value": "svc-windshield", "label": "Windshield going on a Ford"}, {"value": "svc-chip", "label": "Star chip close up"}, {"value": "svc-back", "label": "Tesla, back glass out"}, {"value": "svc-adas", "label": "ADAS targets"}, {"value": "svc-door", "label": "Shattered door glass"}, {"value": "svc-fleet", "label": "Sprinter van in the shop"}, {"value": "svc-mobile", "label": "Black van outside the shop"}, {"value": "bleed-insurance", "label": "Windshield on a red SUV"}, {"value": "story", "label": "Fleet outside the storefront"}, {"value": "loc-lafayette", "label": "Lafayette shop front"}, {"value": "loc-kenner", "label": "Kenner shop entrance"}, {"value": "loc-nola-van", "label": "New Orleans van"}, {"value": "ba-before", "label": "Jeep, glass out"}, {"value": "ba-after", "label": "Jeep, glass in"}], "default": "none" },
+    { "type": "text", "id": "image_alt", "label": "Photo description", "info": "Empty: the photo's own description." },
+    { "type": "text", "id": "focal", "label": "Photo position", "info": "Which part of the photo stays in view, as two percentages: across and down. Example: 50% 34%. Empty: the focal point set on the image, or the centre." },
+    { "type": "header", "content": "Breadcrumbs" },
+    { "type": "checkbox", "id": "show_crumbs", "label": "Show breadcrumbs", "default": true },
+    { "type": "text", "id": "parent_label", "label": "Parent page label", "info": "Optional. Shown between Home and this page." },
+    { "type": "text", "id": "parent_link", "label": "Parent page link" },
+    { "type": "text", "id": "crumb", "label": "This page's label", "info": "Empty: the page title." },
+    { "type": "header", "content": "Copy" },
+    { "type": "text", "id": "tag", "label": "Tag" },
+    { "type": "text", "id": "heading", "label": "Heading", "info": "Empty: the page title." },
+    { "type": "text", "id": "highlight", "label": "Words on the red bar", "info": "Optional. Must match words in the heading exactly." },
+    { "type": "textarea", "id": "lede", "label": "Lede", "info": "On a collection, [count] becomes the number of products." },
+    { "type": "header", "content": "First button" },
+    { "type": "text", "id": "btn_1_label", "label": "Label", "info": "Empty: no button, unless it is a call, text or email button." },
+    { "type": "select", "id": "btn_1_action", "label": "Goes to", "options": [{"value": "quote", "label": "Quote form"}, {"value": "call_lafayette", "label": "Call Lafayette"}, {"value": "call_new_orleans", "label": "Call New Orleans"}, {"value": "text_lafayette", "label": "Text Lafayette"}, {"value": "email", "label": "Email"}, {"value": "enterprise_email", "label": "Enterprise email"}, {"value": "enterprise_form", "label": "Enterprise claim form"}, {"value": "enterprise_photo", "label": "Enterprise photo upload"}, {"value": "shop", "label": "Merchandise (all products)"}, {"value": "google_lafayette", "label": "Google, Lafayette"}, {"value": "google_new_orleans", "label": "Google, New Orleans"}, {"value": "custom", "label": "Custom link (below)"}], "default": "custom" },
+    { "type": "text", "id": "btn_1_link", "label": "Custom link" },
+    { "type": "header", "content": "Second button" },
+    { "type": "text", "id": "btn_2_label", "label": "Label" },
+    { "type": "select", "id": "btn_2_action", "label": "Goes to", "options": [{"value": "quote", "label": "Quote form"}, {"value": "call_lafayette", "label": "Call Lafayette"}, {"value": "call_new_orleans", "label": "Call New Orleans"}, {"value": "text_lafayette", "label": "Text Lafayette"}, {"value": "email", "label": "Email"}, {"value": "enterprise_email", "label": "Enterprise email"}, {"value": "enterprise_form", "label": "Enterprise claim form"}, {"value": "enterprise_photo", "label": "Enterprise photo upload"}, {"value": "shop", "label": "Merchandise (all products)"}, {"value": "google_lafayette", "label": "Google, Lafayette"}, {"value": "google_new_orleans", "label": "Google, New Orleans"}, {"value": "custom", "label": "Custom link (below)"}], "default": "custom" },
+    { "type": "text", "id": "btn_2_link", "label": "Custom link" },
+    { "type": "header", "content": "Varsity style" },
+    { "type": "text", "id": "schools", "label": "School chips", "info": "Separate with commas. Names only, no logos." },
+    { "type": "text", "id": "offer_1", "label": "Round patch, line 1" },
+    { "type": "text", "id": "offer_2", "label": "Round patch, line 2" }
+  ],
+  "presets": [{ "name": "Page head" }],
+  "disabled_on": { "groups": ["header", "footer"] }
+}
+{% endschema %}

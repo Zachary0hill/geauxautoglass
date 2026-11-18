@@ -1,0 +1,94 @@
+{%- comment -%}
+  A photo slot with a bundled default, picked by key. The merchant's image wins when set.
+  Params:
+    image    image_picker value (may be blank)
+    bundled  key of a bundled photo (see the list below), or blank / 'none'
+    alt      alt text setting. Blank: the image's own alt, or the bundled photo's alt.
+    class, sizes, loading, priority, style, attrs   passed to media-image
+{%- endcomment -%}
+{%- liquid
+  assign file = ''
+  assign w = 1200
+  assign h = 1200
+  assign default_alt = ''
+  case bundled
+    when 'hero'
+      assign file = 'hero.jpg'
+      assign w = 2000
+      assign h = 1333
+      assign default_alt = 'Two Geaux Auto Glass vans parked in front of the Lafayette shop'
+    when 'trust'
+      assign file = 'trust.jpg'
+      assign w = 1320
+      assign h = 1650
+      assign default_alt = 'Two Geaux Auto Glass technicians lifting a windshield off a Tesla in the shop'
+    when 'svc-windshield'
+      assign file = 'svc-windshield.jpg'
+      assign default_alt = 'Technician lowering a new windshield onto a Ford with suction cups'
+    when 'svc-chip'
+      assign file = 'svc-chip.jpg'
+      assign default_alt = 'Close view of a star chip in a windshield'
+    when 'svc-back'
+      assign file = 'svc-back.jpg'
+      assign default_alt = 'Tesla in the shop with its back glass removed'
+    when 'svc-adas'
+      assign file = 'svc-adas.jpg'
+      assign w = 1000
+      assign h = 1000
+      assign default_alt = 'ADAS calibration targets on a stand in front of a car'
+    when 'svc-door'
+      assign file = 'svc-door.jpg'
+      assign w = 900
+      assign h = 900
+      assign default_alt = 'Shattered door glass on a white car'
+    when 'svc-fleet'
+      assign file = 'svc-fleet.jpg'
+      assign h = 1600
+      assign default_alt = 'Sprinter van in the shop with its windshield out and the new windshield on a stand'
+    when 'svc-mobile'
+      assign file = 'svc-mobile.jpg'
+      assign w = 1420
+      assign h = 930
+      assign default_alt = 'Black Geaux Auto Glass van parked outside the shop'
+    when 'bleed-insurance'
+      assign file = 'bleed-insurance.jpg'
+      assign w = 1320
+      assign h = 2042
+      assign default_alt = 'Technician setting a windshield on a red SUV with suction cups in a parking lot'
+    when 'ba-before'
+      assign file = 'ba-before.jpg'
+      assign w = 1456
+      assign h = 800
+      assign default_alt = 'Blue Jeep hardtop with the back glass missing'
+    when 'ba-after'
+      assign file = 'ba-after.jpg'
+      assign w = 1456
+      assign h = 800
+      assign default_alt = 'The same blue Jeep with the new back glass installed'
+    when 'story'
+      assign file = 'story.jpg'
+      assign w = 1800
+      assign h = 835
+      assign default_alt = 'Geaux Auto Glass vans and a truck lined up outside a Geaux Auto Glass storefront'
+    when 'loc-lafayette'
+      assign file = 'loc-lafayette.jpg'
+      assign w = 1000
+      assign h = 781
+      assign default_alt = 'Geaux Auto Glass shop on Mecca Street in Lafayette with a windshield on a stand by the door'
+    when 'loc-kenner'
+      assign file = 'loc-kenner.jpg'
+      assign w = 1240
+      assign h = 840
+      assign default_alt = 'Entrance of the Geaux Auto Glass shop in Kenner with the services, hours and phone number on the glass'
+    when 'loc-nola-van'
+      assign file = 'loc-nola-van.jpg'
+      assign w = 1420
+      assign h = 930
+      assign default_alt = 'Black Geaux Auto Glass van with the New Orleans number 504.920.3065 on its side'
+  endcase
+  assign alt_text = alt
+  if alt_text == blank and image == blank
+    assign alt_text = default_alt
+  endif
+  render 'media-image', image: image, fallback: file, fallback_w: w, fallback_h: h, alt: alt_text, class: class, sizes: sizes, loading: loading, priority: priority, style: style, attrs: attrs
+-%}

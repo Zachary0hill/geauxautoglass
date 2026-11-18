@@ -1,0 +1,59 @@
+{%- comment -%}
+  One photo: the merchant's image when set, else the bundled default in assets/.
+  Params:
+    image     image_picker value (may be blank)
+    fallback  bundled asset file name, e.g. 'trust.jpg'
+    fallback_w, fallback_h  the bundled file's pixel size (keeps width/height honest)
+    alt       alt text (the image's own alt is used when this is blank)
+    sizes     sizes attribute, default '100vw'
+    class     class for the img
+    loading   'lazy' (default) or 'eager'
+    priority  true adds fetchpriority="high" (the hero only)
+    style     inline style, e.g. '--pos: 50% 34%'
+    attrs     extra attributes printed as is, e.g. 'data-sc-parallax="-0.08"'
+{%- endcomment -%}
+{%- liquid
+  assign loading = loading | default: 'lazy'
+  assign sizes = sizes | default: '100vw'
+  assign alt_text = alt
+  if alt_text == blank and image != blank
+    assign alt_text = image.alt
+  endif
+  assign widths = '400,800,1200,1600,2000,2400' | split: ','
+  assign css = style
+  if image != blank and image.presentation.focal_point != blank and style == blank
+    assign css = 'object-position: ' | append: image.presentation.focal_point
+  endif
+-%}
+{%- capture common -%}
+  {%- if class != blank %} class="{{ class }}"{% endif %} sizes="{{ sizes }}" alt="{{ alt_text | escape }}" loading="{{ loading }}"{% if priority %} fetchpriority="high"{% endif %}{% if css != blank %} style="{{ css }}"{% endif %}{% if attrs != blank %} {{ attrs }}{% endif -%}
+{%- endcapture -%}
+{%- if image != blank -%}
+  {%- capture srcset -%}
+    {%- for w in widths -%}
+      {%- assign px = w | plus: 0 -%}
+      {%- if px < image.width -%}{{ image | image_url: width: px }} {{ px }}w, {% endif -%}
+    {%- endfor -%}
+    {{- image | image_url }} {{ image.width }}w
+  {%- endcapture -%}
+  <img src="{{ image | image_url: width: 1200 }}" srcset="{{ srcset }}" width="{{ image.width }}" height="{{ image.height }}"{{ common }}>
+{%- elsif fallback != blank -%}
+  {%- liquid
+    assign fw = fallback_w | default: 1200
+    assign fh = fallback_h | default: 900
+  -%}
+  {%- if fallback contains '.svg' -%}
+    <img src="{{ fallback | asset_url }}" width="{{ fw }}" height="{{ fh }}"{{ common }}>
+  {%- else -%}
+    {%- comment -%} Shopify's CDN resizes theme assets, so the bundled photos get a srcset too. {%- endcomment -%}
+    {%- capture fsrcset -%}
+      {%- for w in widths -%}
+        {%- assign px = w | plus: 0 -%}
+        {%- assign size = w | append: 'x' -%}
+        {%- if px < fw -%}{{ fallback | asset_img_url: size }} {{ px }}w, {% endif -%}
+      {%- endfor -%}
+      {{- fallback | asset_url }} {{ fw }}w
+    {%- endcapture -%}
+    <img src="{{ fallback | asset_url }}" srcset="{{ fsrcset }}" width="{{ fw }}" height="{{ fh }}"{{ common }}>
+  {%- endif -%}
+{%- endif -%}

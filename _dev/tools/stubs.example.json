@@ -1,0 +1,11 @@
+{
+  "shop_name": "Sample Store",
+  "collection_title": "Shop",
+  "products": [
+    { "title": "Sample Product One", "handle": "sample-one", "price": 3000, "note": "Short card note", "description": "Longer description.",
+      "options": [{ "name": "Size", "values": ["Small", "Medium", "Large"] }],
+      "photo": null },
+    { "title": "Sample Product Two", "handle": "sample-two", "price": 1800, "note": "Short card note", "photo": null },
+    { "title": "Sample Product Three", "handle": "sample-three", "price": 1500, "compare_at_price": 1800, "note": "On sale", "photo": null }
+  ]
+}

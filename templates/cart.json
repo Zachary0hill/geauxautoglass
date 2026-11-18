@@ -1,0 +1,1 @@
+{ "sections": { "main": { "type": "main-cart", "settings": { "show_dynamic_checkout": true, "perk_1": "Secure checkout", "perk_2": "Veteran owned and operated", "perk_3": "" } } }, "order": ["main"] }

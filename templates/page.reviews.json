@@ -1,0 +1,141 @@
+{
+  "sections": {
+    "head": {
+      "type": "page-head",
+      "settings": {
+        "style": "default",
+        "bundled": "story",
+        "image_alt": "",
+        "focal": "22% 50%",
+        "show_crumbs": true,
+        "parent_label": "",
+        "parent_link": "",
+        "crumb": "Google reviews",
+        "tag": "Google reviews",
+        "heading": "4.8 on Google. 174 reviews.",
+        "highlight": "4.8",
+        "lede": "Locally owned and operated.",
+        "btn_1_label": "Read the reviews on Google",
+        "btn_1_action": "google_lafayette",
+        "btn_1_link": "",
+        "btn_2_label": "Get a quote",
+        "btn_2_action": "quote",
+        "btn_2_link": "",
+        "schools": "",
+        "offer_1": "",
+        "offer_2": ""
+      }
+    },
+    "reviews": {
+      "type": "reviews-grid",
+      "blocks": {
+        "rating1": {
+          "type": "rating",
+          "settings": {
+            "value": "4.8",
+            "line_1": "Google, Lafayette",
+            "line_2": "174 reviews"
+          }
+        },
+        "rating2": {
+          "type": "rating",
+          "settings": {
+            "value": "5.0",
+            "line_1": "Google, Kenner",
+            "line_2": "6 reviews"
+          }
+        },
+        "rating3": {
+          "type": "rating",
+          "settings": {
+            "value": "100%",
+            "line_1": "Recommend on Facebook",
+            "line_2": "6 reviews"
+          }
+        },
+        "review1": {
+          "type": "review",
+          "settings": {
+            "quote": "Nicest place and awesome owner and employees!",
+            "name": "Shannon",
+            "source": "Google, Lafayette",
+            "date": "November 2026"
+          }
+        },
+        "review2": {
+          "type": "review",
+          "settings": {
+            "quote": "Exceptional service, best all around.",
+            "name": "Arlissa",
+            "source": "Google, Lafayette",
+            "date": "October 2026"
+          }
+        },
+        "review3": {
+          "type": "review",
+          "settings": {
+            "quote": "Did a great job on my car and were super professional.",
+            "name": "Marissa",
+            "source": "Google, Lafayette",
+            "date": "August 2026"
+          }
+        },
+        "review4": {
+          "type": "review",
+          "settings": {
+            "quote": "They came to my house & replaced my windshield in 30 minutes!",
+            "name": "Jarriel",
+            "source": "Google, Kenner",
+            "date": "June 2026"
+          }
+        }
+      },
+      "block_order": [
+        "rating1",
+        "rating2",
+        "rating3",
+        "review1",
+        "review2",
+        "review3",
+        "review4"
+      ],
+      "settings": {
+        "btn_1_label": "Lafayette reviews on Google",
+        "btn_1_action": "google_lafayette",
+        "btn_1_link": "",
+        "btn_2_label": "New Orleans reviews on Google",
+        "btn_2_action": "google_new_orleans",
+        "btn_2_link": "",
+        "ground": "paper",
+        "anchor_id": ""
+      }
+    },
+    "social": {
+      "type": "social",
+      "settings": {
+        "tag": "Find us on",
+        "ground": "paper-2",
+        "anchor_id": ""
+      }
+    },
+    "cta": {
+      "type": "cta-band",
+      "settings": {
+        "heading": "Get your windshield replaced today.",
+        "btn_1_label": "Get a quote",
+        "btn_1_action": "quote",
+        "btn_1_link": "",
+        "btn_2_label": "",
+        "btn_2_action": "call_lafayette",
+        "btn_2_link": "",
+        "anchor_id": ""
+      }
+    }
+  },
+  "order": [
+    "head",
+    "reviews",
+    "social",
+    "cta"
+  ]
+}

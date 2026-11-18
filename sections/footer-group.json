@@ -1,0 +1,30 @@
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "p1": { "type": "phrase", "settings": { "text": "Insurance claims" } },
+        "p2": { "type": "phrase", "settings": { "text": "ADAS recalibration" } },
+        "p3": { "type": "phrase", "settings": { "text": "Free mobile service" } },
+        "p4": { "type": "phrase", "settings": { "text": "Fast and affordable" } },
+        "p5": { "type": "phrase", "settings": { "text": "Serving all of Louisiana" } },
+        "c1": { "type": "column", "settings": { "title": "Services", "menu": "", "preset": "services" } },
+        "c2": { "type": "column", "settings": { "title": "Customers", "menu": "", "preset": "customers" } },
+        "c3": { "type": "column", "settings": { "title": "Find us on", "menu": "", "preset": "social" } }
+      },
+      "block_order": ["p1", "p2", "p3", "p4", "p5", "c1", "c2", "c3"],
+      "settings": {
+        "phone_1_label": "Lafayette",
+        "phone_2_label": "New Orleans",
+        "cta_label": "Get a quote",
+        "cta_action": "quote",
+        "cta_link": "",
+        "show_mark": true,
+        "show_policies": true
+      }
+    }
+  },
+  "order": ["footer"]
+}

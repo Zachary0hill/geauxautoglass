@@ -1,0 +1,25 @@
+<div class="page-width not-found">
+  <p class="br-display not-found__code" aria-hidden="true">404</p>
+  <h1 class="br-display not-found__title">{{ 'general.404.title' | t }}</h1>
+  <p class="br-body">{{ 'general.404.subtext' | t }}</p>
+  <form action="{{ routes.search_url }}" method="get" role="search" class="not-found__search">
+    <input type="hidden" name="options[prefix]" value="last">
+    <div class="field">
+      <label class="visually-hidden" for="NotFoundSearch">{{ 'general.search.search' | t }}</label>
+      <input class="field__input" id="NotFoundSearch" type="search" name="q" placeholder="{{ 'general.search.placeholder' | t }}">
+    </div>
+    <button type="submit" class="btn">{{ 'general.search.search' | t }}</button>
+  </form>
+  <div class="not-found__actions">
+    <a class="btn" href="{{ routes.root_url }}">{{ 'general.404.home' | t }}</a>
+    <a class="btn btn--ghost" href="{{ routes.all_products_collection_url }}">{{ 'general.404.shop' | t }}</a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "404 page",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

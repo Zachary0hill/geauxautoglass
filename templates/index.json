@@ -1,0 +1,539 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "image_alt": "Two Geaux Auto Glass vans parked in front of the Lafayette shop",
+        "tag": "Serving all of Louisiana",
+        "kicker": "Mobile auto glass.",
+        "headline_1": "We come",
+        "headline_2": "to you.",
+        "lede": "Windshield replacements, chip repairs and ADAS recalibration. Same day or next day, in shop or mobile.",
+        "btn_1_label": "Get a quote",
+        "btn_1_action": "quote",
+        "btn_1_link": "",
+        "btn_2_label": "",
+        "btn_2_action": "call_lafayette",
+        "btn_2_link": "",
+        "show_stars": true,
+        "rating": "4.8",
+        "proof": "on Google · 174 reviews",
+        "proof_extra": "Locally owned and operated",
+        "anchor_id": ""
+      }
+    },
+    "strip": {
+      "type": "insurer-strip",
+      "blocks": {
+        "carrier1": {
+          "type": "carrier",
+          "settings": {
+            "name": "State Farm",
+            "bundled": "statefarm",
+            "size": "w"
+          }
+        },
+        "carrier2": {
+          "type": "carrier",
+          "settings": {
+            "name": "Progressive",
+            "bundled": "progressive",
+            "size": "w"
+          }
+        },
+        "carrier3": {
+          "type": "carrier",
+          "settings": {
+            "name": "GEICO",
+            "bundled": "geico",
+            "size": "m"
+          }
+        },
+        "carrier4": {
+          "type": "carrier",
+          "settings": {
+            "name": "Allstate",
+            "bundled": "allstate",
+            "size": "m"
+          }
+        },
+        "carrier5": {
+          "type": "carrier",
+          "settings": {
+            "name": "Liberty Mutual",
+            "bundled": "libertymutual",
+            "size": "t"
+          }
+        }
+      },
+      "block_order": [
+        "carrier1",
+        "carrier2",
+        "carrier3",
+        "carrier4",
+        "carrier5"
+      ],
+      "settings": {
+        "heading": "We work with all insurance providers",
+        "anchor_id": ""
+      }
+    },
+    "trust": {
+      "type": "trust",
+      "blocks": {
+        "tick1": {
+          "type": "tick",
+          "settings": {
+            "text": "Insurance policies accepted",
+            "link": ""
+          }
+        },
+        "tick2": {
+          "type": "tick",
+          "settings": {
+            "text": "Cars, SUVs and trucks",
+            "link": ""
+          }
+        },
+        "tick3": {
+          "type": "tick",
+          "settings": {
+            "text": "Minor chip repair",
+            "link": ""
+          }
+        },
+        "tick4": {
+          "type": "tick",
+          "settings": {
+            "text": "Mobile services available",
+            "link": ""
+          }
+        },
+        "tick5": {
+          "type": "tick",
+          "settings": {
+            "text": "Domestic and foreign",
+            "link": ""
+          }
+        },
+        "tick6": {
+          "type": "tick",
+          "settings": {
+            "text": "Appointment only",
+            "link": ""
+          }
+        },
+        "stat1": {
+          "type": "stat",
+          "settings": {
+            "value": "4.8",
+            "label": "Google rating, Lafayette",
+            "source": "manual"
+          }
+        },
+        "stat2": {
+          "type": "stat",
+          "settings": {
+            "value": "174",
+            "label": "Google reviews",
+            "source": "manual"
+          }
+        },
+        "stat3": {
+          "type": "stat",
+          "settings": {
+            "value": "2",
+            "label": "Locations: Lafayette and New Orleans",
+            "source": "manual"
+          }
+        },
+        "stat4": {
+          "type": "stat",
+          "settings": {
+            "value": "6,145",
+            "label": "Instagram followers",
+            "source": "instagram_followers"
+          }
+        }
+      },
+      "block_order": [
+        "tick1",
+        "tick2",
+        "tick3",
+        "tick4",
+        "tick5",
+        "tick6",
+        "stat1",
+        "stat2",
+        "stat3",
+        "stat4"
+      ],
+      "settings": {
+        "bundled": "trust",
+        "image_alt": "",
+        "tag": "Your trusted auto glass experts",
+        "heading": "We fix all types of auto glass.",
+        "highlight": "all types",
+        "text": "Our company specializes in providing professional auto glass services for a wide range of vehicle types, including both personal and commercial vehicles.",
+        "link_label": "",
+        "link": "",
+        "ground": "paper",
+        "anchor_id": ""
+      }
+    },
+    "services": {
+      "type": "services-grid",
+      "blocks": {
+        "service1": {
+          "type": "service",
+          "settings": {
+            "bundled": "svc-windshield",
+            "image_alt": "",
+            "title": "Windshield replacement",
+            "text": "Mobile service at home or work, or in-shop installation.",
+            "dir": "left"
+          }
+        },
+        "service2": {
+          "type": "service",
+          "settings": {
+            "bundled": "svc-chip",
+            "image_alt": "",
+            "title": "Chip repair",
+            "text": "Minor chip repair.",
+            "dir": "up"
+          }
+        },
+        "service3": {
+          "type": "service",
+          "settings": {
+            "bundled": "svc-back",
+            "image_alt": "",
+            "title": "Back glass",
+            "text": "All vehicle types.",
+            "dir": "right"
+          }
+        },
+        "service4": {
+          "type": "service",
+          "settings": {
+            "bundled": "svc-adas",
+            "image_alt": "",
+            "title": "ADAS recalibration",
+            "text": "ADAS calibration for cars, SUVs and trucks.",
+            "dir": "iris"
+          }
+        },
+        "service5": {
+          "type": "service",
+          "settings": {
+            "bundled": "svc-door",
+            "image_alt": "",
+            "title": "Door glass",
+            "text": "Door glass replacements. Domestic and foreign.",
+            "dir": "up"
+          }
+        },
+        "service6": {
+          "type": "service",
+          "settings": {
+            "bundled": "svc-fleet",
+            "image_alt": "",
+            "title": "Commercial vehicles",
+            "text": "Both personal and commercial vehicles.",
+            "dir": "left"
+          }
+        }
+      },
+      "block_order": [
+        "service1",
+        "service2",
+        "service3",
+        "service4",
+        "service5",
+        "service6"
+      ],
+      "settings": {
+        "tag": "Services",
+        "heading": "Repairs and replacements.",
+        "highlight": "",
+        "text": "Free mobile service. Fast and affordable. Same day or next day.",
+        "btn_label": "Get a quote",
+        "btn_action": "quote",
+        "btn_link": "",
+        "link_label": "All services",
+        "link": "/pages/services",
+        "show_band": true,
+        "band_image_alt": "",
+        "band_tag": "Free mobile service",
+        "band_heading": "We come to you.",
+        "band_highlight": "to you.",
+        "band_text": "Serving all of Louisiana. Same day or next day, in shop or mobile.",
+        "band_cities": "Lafayette, Baton Rouge, New Orleans, Alexandria",
+        "band_cities_label": "Cities our technicians work from",
+        "band_btn_1_label": "Get a quote",
+        "band_btn_1_action": "quote",
+        "band_btn_1_link": "",
+        "band_btn_2_label": "",
+        "band_btn_2_action": "call_lafayette",
+        "band_btn_2_link": "",
+        "anchor_id": "services"
+      }
+    },
+    "insurance": {
+      "type": "insurance",
+      "blocks": {
+        "step1": {
+          "type": "step",
+          "settings": {
+            "title": "First, contact your insurance",
+            "text": "Call your insurance and use the company name Geaux Auto Glass to begin the filing."
+          }
+        },
+        "step2": {
+          "type": "step",
+          "settings": {
+            "title": "Confirm coverage",
+            "text": "Comprehensive coverage covers glass damage."
+          }
+        },
+        "step3": {
+          "type": "step",
+          "settings": {
+            "title": "Policy details",
+            "text": "Send in basic info: VIN number, year, make and model, and which glass is needed."
+          }
+        },
+        "step4": {
+          "type": "step",
+          "settings": {
+            "title": "File the claim",
+            "text": "We handle the rest and set you up for scheduling."
+          }
+        }
+      },
+      "block_order": [
+        "step1",
+        "step2",
+        "step3",
+        "step4"
+      ],
+      "settings": {
+        "tag": "Insurance policy claims",
+        "heading": "File the claim. We handle the rest.",
+        "highlight": "We handle the rest.",
+        "text": "We work with all insurance providers. Call your insurance and use the company name Geaux Auto Glass to begin the filing.",
+        "image_alt": "",
+        "btn_1_label": "Get a quote",
+        "btn_1_action": "quote",
+        "btn_1_link": "",
+        "btn_2_label": "",
+        "btn_2_action": "call_lafayette",
+        "btn_2_link": "",
+        "show_enterprise": true,
+        "ent_tag": "Enterprise claim submission",
+        "ent_heading": "Approved vendor for Enterprise Rent-A-Car.",
+        "ent_text": "Submit your claim quickly and our team handles the rest. Fast, friendly service.",
+        "ent_form_label": "Fill out the claim form",
+        "ent_photo_label": "Upload a photo of the claim page",
+        "ent_page_label": "Enterprise claims page",
+        "ent_page_link": "/pages/enterprise-claims",
+        "show_student": true,
+        "student_tag": "Student discount",
+        "student_heading": "10% off all services for college students.",
+        "student_text": "For students at University of Louisiana at Lafayette or South Louisiana Community College. All car, SUV and truck glass.",
+        "student_schools": "UL Lafayette, SLCC",
+        "student_offer_1": "10%",
+        "student_offer_2": "OFF",
+        "student_btn_label": "Get a quote",
+        "student_btn_action": "quote",
+        "student_btn_link": "",
+        "student_page_label": "Student discount page",
+        "student_page_link": "/pages/student-discount",
+        "anchor_id": "insurance"
+      }
+    },
+    "signature": {
+      "type": "signature",
+      "settings": {
+        "tag": "Before and after",
+        "heading": "Glass out. Glass in.",
+        "text": "One Jeep hardtop, back glass. We fix all types of auto glass.",
+        "before_alt": "",
+        "before_label": "Before",
+        "after_alt": "",
+        "after_label": "After",
+        "figure_label": "Before and after of a back glass replacement on a blue Jeep",
+        "video_label": "Glass out, glass in. Muted video of a replacement.",
+        "anchor_id": ""
+      }
+    },
+    "proof": {
+      "type": "proof",
+      "blocks": {
+        "rating1": {
+          "type": "rating",
+          "settings": {
+            "value": "4.8",
+            "line_1": "Google, Lafayette",
+            "line_2": "174 reviews"
+          }
+        },
+        "rating2": {
+          "type": "rating",
+          "settings": {
+            "value": "5.0",
+            "line_1": "Google, Kenner",
+            "line_2": "6 reviews"
+          }
+        },
+        "rating3": {
+          "type": "rating",
+          "settings": {
+            "value": "100%",
+            "line_1": "Recommend on Facebook",
+            "line_2": "6 reviews"
+          }
+        },
+        "review1": {
+          "type": "review",
+          "settings": {
+            "quote": "Nicest place and awesome owner and employees!",
+            "name": "Shannon",
+            "source": "Google, Lafayette",
+            "date": "November 2026"
+          }
+        },
+        "review2": {
+          "type": "review",
+          "settings": {
+            "quote": "Exceptional service, best all around.",
+            "name": "Arlissa",
+            "source": "Google, Lafayette",
+            "date": "October 2026"
+          }
+        },
+        "review3": {
+          "type": "review",
+          "settings": {
+            "quote": "Did a great job on my car and were super professional.",
+            "name": "Marissa",
+            "source": "Google, Lafayette",
+            "date": "August 2026"
+          }
+        },
+        "review4": {
+          "type": "review",
+          "settings": {
+            "quote": "They came to my house & replaced my windshield in 30 minutes!",
+            "name": "Jarriel",
+            "source": "Google, Kenner",
+            "date": "June 2026"
+          }
+        }
+      },
+      "block_order": [
+        "rating1",
+        "rating2",
+        "rating3",
+        "review1",
+        "review2",
+        "review3",
+        "review4"
+      ],
+      "settings": {
+        "tag": "Google reviews",
+        "heading": "4.8 on Google. 174 reviews.",
+        "highlight": "4.8",
+        "more_1_label": "Read the reviews on Google",
+        "more_1_action": "google_lafayette",
+        "more_1_link": "",
+        "more_2_label": "All reviews",
+        "more_2_link": "/pages/reviews",
+        "show_story": true,
+        "story_tag": "The story about us",
+        "story_heading": "Began in Lafayette with a single van.",
+        "story_highlight": "a single van.",
+        "story_text": "Our mobile glass company began in Lafayette, Louisiana, with a single van and a dream to provide convenient, reliable service to the community. As demand soared, we expanded our fleet to fully equipped mobile vehicles, serving all of Acadiana with the same dedication that earned the community’s trust from the start.",
+        "story_image_alt": "",
+        "show_social": true,
+        "social_tag": "Find us on",
+        "anchor_id": "reviews"
+      }
+    },
+    "locations": {
+      "type": "locations",
+      "blocks": {
+        "location1": {
+          "type": "location",
+          "settings": {
+            "name": "Lafayette",
+            "bundled": "loc-lafayette",
+            "image_alt": "",
+            "address_1": "409A Mecca Street",
+            "address_2": "Lafayette, LA 70508",
+            "phone": "lafayette",
+            "phone_custom": "",
+            "hours": "Monday to Friday 8 AM to 4:30 PM\nSaturday and Sunday closed",
+            "directions": "google_lafayette",
+            "directions_link": "",
+            "map_url": "https://www.google.com/maps?q=Geaux+Auto+Glass+409A+Mecca+St+Lafayette+LA+70508&output=embed",
+            "page_label": "",
+            "page_link": ""
+          }
+        },
+        "location2": {
+          "type": "location",
+          "settings": {
+            "name": "New Orleans",
+            "bundled": "loc-kenner",
+            "image_alt": "",
+            "address_1": "2837 Tifton St Unit B",
+            "address_2": "Kenner, LA 70062",
+            "phone": "new_orleans",
+            "phone_custom": "",
+            "hours": "Monday to Friday 8 AM to 5 PM\nSaturday 8 AM to 2 PM\nSunday closed",
+            "directions": "google_new_orleans",
+            "directions_link": "",
+            "map_url": "https://www.google.com/maps?q=Geaux+Auto+Glass+2837+Tifton+St+Kenner+LA+70062&output=embed",
+            "page_label": "Location page",
+            "page_link": "/pages/new-orleans"
+          }
+        }
+      },
+      "block_order": [
+        "location1",
+        "location2"
+      ],
+      "settings": {
+        "heading": "Get your windshield replaced today.",
+        "btn_1_label": "Get a quote",
+        "btn_1_action": "quote",
+        "btn_1_link": "",
+        "btn_2_label": "",
+        "btn_2_action": "email",
+        "btn_2_link": "",
+        "anchor_id": "visit"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "strip",
+    "trust",
+    "services",
+    "insurance",
+    "signature",
+    "proof",
+    "locations"
+  ]
+}

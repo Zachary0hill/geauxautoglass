@@ -1,0 +1,126 @@
+{%- liquid
+  assign per_page = section.settings.per_page
+  assign sort_by = collection.sort_by | default: collection.default_sort_by
+  assign filtering = section.settings.enable_filtering
+  assign active_count = 0
+  for filter in collection.filters
+    assign active_count = active_count | plus: filter.active_values.size
+    if filter.type == 'price_range'
+      if filter.min_value.value != nil or filter.max_value.value != nil
+        assign active_count = active_count | plus: 1
+      endif
+    endif
+  endfor
+-%}
+<div class="collection" data-collection data-section-id="{{ section.id }}" data-default-cols="{{ section.settings.columns }}">
+  <div class="collection__bar-wrap{% if section.settings.sticky_toolbar %} collection__bar-wrap--sticky{% endif %}">
+    <div class="page-width collection__bar">
+      {%- if section.settings.show_index and collections.size > 1 -%}
+        <nav class="collection__index" aria-label="{{ 'sections.collection_list.title' | t }}">
+          <ul class="collection-index__list" role="list">
+            <li><a class="collection-index__chip{% if collection.handle == 'all' %} is-current{% endif %}" href="{{ routes.all_products_collection_url }}">{{ 'sections.collection.all' | t }}</a></li>
+            {%- for c in collections limit: section.settings.index_limit -%}
+              {%- if c.handle == 'frontpage' or c.handle == 'all' %}{% continue %}{% endif -%}
+              <li><a class="collection-index__chip{% if c.handle == collection.handle %} is-current{% endif %}" href="{{ c.url }}"{% if c.handle == collection.handle %} aria-current="page"{% endif %}>{{ c.title | escape }}</a></li>
+            {%- endfor -%}
+          </ul>
+        </nav>
+      {%- else -%}
+        <p class="collection__count" data-results-count>{{ 'sections.collection.product_count' | t: count: collection.products_count }}</p>
+      {%- endif -%}
+
+      <div class="collection__tools">
+        {%- if filtering -%}
+          <button type="button" class="collection__tool collection__filter-toggle" data-filter-toggle aria-expanded="false" aria-controls="CollectionFilters-{{ section.id }}">
+            {% render 'icon', icon: 'menu' %}
+            <span>{{ 'sections.collection.filter' | t }}</span>
+            <span class="collection__tool-count" data-active-count{% if active_count == 0 %} hidden{% endif %}>{{ active_count }}</span>
+          </button>
+        {%- endif -%}
+        <div class="collection__density" role="group" aria-label="{{ 'sections.collection.density' | t }}">
+          <button type="button" class="collection__tool collection__tool--icon" data-density="3" aria-label="{{ 'sections.collection.density_large' | t }}"{% if section.settings.columns == '3' %} aria-pressed="true"{% endif %}><span class="density-glyph density-glyph--3"></span></button>
+          <button type="button" class="collection__tool collection__tool--icon" data-density="4" aria-label="{{ 'sections.collection.density_small' | t }}"{% if section.settings.columns == '4' %} aria-pressed="true"{% endif %}><span class="density-glyph density-glyph--4"></span></button>
+        </div>
+        {%- if section.settings.enable_sorting -%}
+          <form action="{{ collection.url }}" method="get" class="collection__sort" data-sort-form>
+            {%- if collection.current_type or collection.current_vendor -%}<input type="hidden" name="q" value="{{ collection.current_vendor }}{{ collection.current_type }}">{%- endif -%}
+            {%- for filter in collection.filters -%}
+              {%- for value in filter.active_values -%}<input type="hidden" name="{{ value.param_name }}" value="{{ value.value | escape }}">{%- endfor -%}
+              {%- if filter.type == 'price_range' -%}
+                {%- if filter.min_value.value -%}<input type="hidden" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value | money_without_currency | replace: ',', '' }}">{%- endif -%}
+                {%- if filter.max_value.value -%}<input type="hidden" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value | money_without_currency | replace: ',', '' }}">{%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
+            <label class="visually-hidden" for="SortBy-{{ section.id }}">{{ 'sections.collection.sort_by' | t }}</label>
+            <div class="select">
+              <select class="select__select" id="SortBy-{{ section.id }}" name="sort_by" data-sort-select aria-label="{{ 'sections.collection.sort_by' | t }}">
+                {%- for option in collection.sort_options -%}
+                  <option value="{{ option.value }}"{% if option.value == sort_by %} selected{% endif %}>{{ option.name }}</option>
+                {%- endfor -%}
+              </select>
+              {% render 'icon', icon: 'chevron' %}
+            </div>
+            <noscript><button type="submit" class="btn btn--sm btn--ghost">{{ 'sections.collection.sort_apply' | t }}</button></noscript>
+          </form>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- if filtering -%}
+      <div class="collection__filters" id="CollectionFilters-{{ section.id }}" data-filters hidden>
+        <div class="page-width">
+          {% render 'facets', results: collection, enable_sorting: section.settings.enable_sorting, section_id: section.id, sort_by: sort_by %}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="page-width collection__body">
+    <div class="collection__results" id="CollectionResults-{{ section.id }}" data-results>
+      {%- paginate collection.products by per_page -%}
+        {%- if collection.products.size > 0 -%}
+          <div class="product-grid product-grid--{{ section.settings.columns }}" data-grid data-sc-in data-sc-stagger="40">
+            {%- for product in collection.products -%}
+              {% render 'product-card', product: product %}
+            {%- endfor -%}
+          </div>
+          <div class="collection__foot">
+            {%- liquid
+              assign showing_from = paginate.current_offset | plus: 1
+              assign showing_to = paginate.current_offset | plus: collection.products.size
+            -%}
+            <p class="br-caption" data-results-count>{{ 'sections.collection.showing' | t: from: showing_from, to: showing_to, total: collection.products_count }}</p>
+            {% render 'pagination', paginate: paginate %}
+          </div>
+        {%- else -%}
+          <div class="empty-state">
+            <h2 class="br-display empty-state__title">{{ 'sections.collection.empty' | t }}</h2>
+            <p class="br-body">{{ 'sections.collection.empty_text' | t }}</p>
+            <a class="btn" href="{{ collection.url }}">{{ 'sections.collection.clear_filters' | t }} {% render 'icon', icon: 'arrow' %}</a>
+          </div>
+        {%- endif -%}
+      {%- endpaginate -%}
+    </div>
+  </div>
+</div>
+<script src="{{ 'gx-facets.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Product grid",
+  "tag": "section",
+  "settings": [
+    { "type": "range", "id": "per_page", "min": 8, "max": 48, "step": 4, "label": "Products per page", "default": 24 },
+    {
+      "type": "select", "id": "columns", "label": "Default columns on large screens",
+      "options": [ { "value": "3", "label": "3" }, { "value": "4", "label": "4" } ],
+      "default": "4"
+    },
+    { "type": "checkbox", "id": "sticky_toolbar", "label": "Keep the bar visible while scrolling", "default": true },
+    { "type": "checkbox", "id": "show_index", "label": "Show links to other collections in the bar", "default": true },
+    { "type": "range", "id": "index_limit", "min": 4, "max": 20, "step": 1, "label": "Collections in the bar", "default": 10 },
+    { "type": "checkbox", "id": "enable_filtering", "label": "Enable filtering", "info": "Customize filters in Search & Discovery.", "default": true },
+    { "type": "checkbox", "id": "enable_sorting", "label": "Enable sorting", "default": true }
+  ]
+}
+{% endschema %}

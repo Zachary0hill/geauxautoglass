@@ -1,0 +1,54 @@
+{%- comment -%}
+  Product card, the same anatomy as the home page "From the store" row:
+  photo, name in the display face, a short note, price in the accent.
+  Params: product (required), lazy (bool, default true), show_note (bool, default true)
+  The note is the product metafield custom.card_note, else the first line of the description.
+{%- endcomment -%}
+{%- liquid
+  assign loading = 'lazy'
+  if lazy == false
+    assign loading = 'eager'
+  endif
+  assign img = product.featured_media.preview_image
+  assign hover_img = nil
+  if product.media.size > 1
+    assign hover_img = product.media[1].preview_image
+  endif
+  assign ratio = '1'
+  case settings.card_ratio
+    when 'portrait'
+      assign ratio = '4 / 5'
+    when 'landscape'
+      assign ratio = '4 / 3'
+  endcase
+  assign note = ''
+  unless show_note == false
+    assign note = product.metafields.custom.card_note.value
+    if note == blank
+      assign note = product.description | split: '</p>' | first | strip_html | strip | truncate: 70
+    endif
+  endunless
+-%}
+<article class="shop-card">
+  <a class="shop-card__link" href="{{ product.url }}">
+    <span class="shop-card__ph" style="aspect-ratio: {{ ratio }};">
+      {%- if img -%}
+        {{ img | image_url: width: 900 | image_tag: loading: loading, widths: '200, 300, 400, 500, 600, 750, 900', sizes: '(min-width: 861px) min(29vw, 380px), 44vw', alt: img.alt | default: product.title, class: 'shop-card__img' }}
+        {%- if hover_img -%}
+          {{ hover_img | image_url: width: 900 | image_tag: loading: 'lazy', fetchpriority: 'low', widths: '200, 300, 400, 500, 600, 750, 900', sizes: '(min-width: 861px) min(29vw, 380px), 44vw', alt: '', class: 'shop-card__img shop-card__img--hover' }}
+        {%- endif -%}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'shop-card__placeholder' }}
+      {%- endif -%}
+      {%- if product.available == false -%}
+        <span class="shop-card__badge badge badge--soldout">{{ 'products.product.sold_out' | t }}</span>
+      {%- elsif product.compare_at_price > product.price -%}
+        <span class="shop-card__badge badge badge--sale">{{ 'products.product.on_sale' | t }}</span>
+      {%- endif -%}
+    </span>
+    {%- if settings.card_show_vendor and product.vendor != blank -%}<span class="shop-card__vendor">{{ product.vendor | escape }}</span>{%- endif -%}
+    <span class="shop-card__name">{{ product.title | escape }}</span>
+    {%- if note != blank -%}<span class="shop-card__note">{{ note | escape }}</span>{%- endif -%}
+    {% render 'price', product: product %}
+  </a>
+</article>

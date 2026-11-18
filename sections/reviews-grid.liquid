@@ -1,0 +1,61 @@
+{%- comment -%} Reviews page: ratings row, quotes in two columns, two Google buttons. {%- endcomment -%}
+{%- liquid
+  assign ratings = section.blocks | where: 'type', 'rating'
+  assign reviews = section.blocks | where: 'type', 'review'
+-%}
+<section class="sc-section paper{% if section.settings.ground == 'paper-2' %} paper--2{% endif %}"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id | handle }}"{% endif %} data-sc-act="flow" data-sc-drift="{{ settings.color_canvas }}">
+  <div class="sc-wrap">
+    {%- if ratings.size > 0 -%}
+      <dl class="ratings ratings--top" data-sc-in data-sc-stagger="80">
+        {%- for block in ratings -%}
+          <div {{ block.shopify_attributes }}><dt>{{ block.settings.value | escape }}</dt><dd>{{ block.settings.line_1 | escape }}{% if block.settings.line_2 != blank %}<br>{{ block.settings.line_2 | escape }}{% endif %}</dd></div>
+        {%- endfor -%}
+      </dl>
+    {%- endif -%}
+    {%- if reviews.size > 0 -%}
+      <div class="revs revs--2" data-sc-in data-sc-stagger="80">
+        {%- for block in reviews -%}
+          {%- render 'review-quote', block: block -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+    {%- capture links -%}
+      {%- render 'action-link', action: section.settings.btn_1_action, label: section.settings.btn_1_label, url: section.settings.btn_1_link, class: 'btn btn--accent' -%}
+      {%- render 'action-link', action: section.settings.btn_2_action, label: section.settings.btn_2_label, url: section.settings.btn_2_link, class: 'btn btn--line' -%}
+    {%- endcapture -%}
+    {%- if links != blank -%}<div class="proof__links" data-sc-in>{{ links }}</div>{%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Reviews grid",
+  "tag": "div",
+  "max_blocks": 20,
+  "settings": [
+    { "type": "text", "id": "btn_1_label", "label": "First button label", "default": "Lafayette reviews on Google" },
+    { "type": "select", "id": "btn_1_action", "label": "First button goes to", "options": [{"value": "quote", "label": "Quote form"}, {"value": "call_lafayette", "label": "Call Lafayette"}, {"value": "call_new_orleans", "label": "Call New Orleans"}, {"value": "text_lafayette", "label": "Text Lafayette"}, {"value": "email", "label": "Email"}, {"value": "enterprise_email", "label": "Enterprise email"}, {"value": "enterprise_form", "label": "Enterprise claim form"}, {"value": "enterprise_photo", "label": "Enterprise photo upload"}, {"value": "shop", "label": "Merchandise (all products)"}, {"value": "google_lafayette", "label": "Google, Lafayette"}, {"value": "google_new_orleans", "label": "Google, New Orleans"}, {"value": "custom", "label": "Custom link (below)"}], "default": "google_lafayette" },
+    { "type": "text", "id": "btn_1_link", "label": "First button custom link" },
+    { "type": "text", "id": "btn_2_label", "label": "Second button label", "default": "New Orleans reviews on Google" },
+    { "type": "select", "id": "btn_2_action", "label": "Second button goes to", "options": [{"value": "quote", "label": "Quote form"}, {"value": "call_lafayette", "label": "Call Lafayette"}, {"value": "call_new_orleans", "label": "Call New Orleans"}, {"value": "text_lafayette", "label": "Text Lafayette"}, {"value": "email", "label": "Email"}, {"value": "enterprise_email", "label": "Enterprise email"}, {"value": "enterprise_form", "label": "Enterprise claim form"}, {"value": "enterprise_photo", "label": "Enterprise photo upload"}, {"value": "shop", "label": "Merchandise (all products)"}, {"value": "google_lafayette", "label": "Google, Lafayette"}, {"value": "google_new_orleans", "label": "Google, New Orleans"}, {"value": "custom", "label": "Custom link (below)"}], "default": "google_new_orleans" },
+    { "type": "text", "id": "btn_2_link", "label": "Second button custom link" },
+    { "type": "select", "id": "ground", "label": "Ground", "options": [{ "value": "paper", "label": "White" }, { "value": "paper-2", "label": "Off-white" }], "default": "paper" },
+    { "type": "text", "id": "anchor_id", "label": "Anchor id" }
+  ],
+  "blocks": [
+    { "type": "rating", "name": "Rating", "limit": 3, "settings": [
+      { "type": "text", "id": "value", "label": "Number", "default": "4.8" },
+      { "type": "text", "id": "line_1", "label": "Line 1", "default": "Google, Lafayette" },
+      { "type": "text", "id": "line_2", "label": "Line 2", "default": "174 reviews" }
+    ] },
+    { "type": "review", "name": "Review", "settings": [
+      { "type": "textarea", "id": "quote", "label": "Quote", "info": "Without quotation marks.", "default": "Exceptional service, best all around." },
+      { "type": "text", "id": "name", "label": "Name", "default": "Name" },
+      { "type": "text", "id": "source", "label": "Source", "default": "Google, Lafayette" },
+      { "type": "text", "id": "date", "label": "Month and year" }
+    ] }
+  ],
+  "presets": [{ "name": "Reviews grid" }],
+  "disabled_on": { "groups": ["header", "footer"] }
+}
+{% endschema %}

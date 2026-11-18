@@ -1,0 +1,76 @@
+<article class="page-width article">
+  <header class="article__head">
+    <p class="article__meta"><a href="{{ blog.url }}" class="link">{{ blog.title | escape }}</a> · <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'date' }}</time>{% if section.settings.show_author %} · {{ article.author }}{% endif %}</p>
+    <h1 class="br-display article__title">{{ article.title | escape }}</h1>
+  </header>
+  {%- if article.image and section.settings.show_image -%}
+    <div class="article__img">{{ article.image | image_url: width: 1800 | image_tag: loading: 'eager', widths: '800, 1200, 1800', sizes: 'min(90vw, 1181px)', alt: article.image.alt | default: article.title }}</div>
+  {%- endif -%}
+  <div class="article__body rte">{{ article.content }}</div>
+  <footer class="article__foot">
+    <a class="link link--caption" href="{{ blog.url }}">{{ 'blogs.article.back' | t }}</a>
+    {%- if section.settings.show_share -%}
+      <button type="button" class="link link--caption" style="background:none;border:0;cursor:pointer" data-share-copy="#ArticleShareUrl" data-copied="{{ 'general.share.copied' | t | escape }}">{{ 'general.share.copy' | t }}</button>
+      <input type="hidden" id="ArticleShareUrl" value="{{ shop.url }}{{ article.url }}">
+    {%- endif -%}
+  </footer>
+
+  {%- if blog.comments_enabled? -%}
+    <section class="comments" id="Comments">
+      <h2 class="br-display comments__title">{{ 'blogs.article.comments' | t: count: article.comments_count }}</h2>
+      {%- paginate article.comments by 10 -%}
+        {%- for comment in article.comments -%}
+          <div class="comment" id="{{ comment.id }}">
+            <p class="comment__meta">{{ comment.author }} · {{ comment.created_at | date: format: 'date' }}</p>
+            <div class="rte">{{ comment.content }}</div>
+          </div>
+        {%- endfor -%}
+        {% render 'pagination', paginate: paginate %}
+      {%- endpaginate -%}
+
+      {%- form 'new_comment', article, class: 'form-stack', id: 'CommentForm' -%}
+        {%- if form.posted_successfully? -%}
+          <p class="form__message form__message--success" role="status" tabindex="-1" autofocus>{% render 'icon', icon: 'check' %} {%- if blog.moderated? -%}{{ 'blogs.article.comment_moderated' | t }}{%- else -%}{{ 'blogs.article.comment_success' | t }}{%- endif -%}</p>
+        {%- elsif form.errors -%}
+          <div class="form__message form__message--error form__errors" role="alert" tabindex="-1" autofocus>{% render 'icon', icon: 'error' %}<div>{{ 'contact.form.error_heading' | t }}<ul>{%- for field in form.errors -%}<li>{{ form.errors.translated_fields[field] | capitalize }} {{ form.errors.messages[field] }}</li>{%- endfor -%}</ul></div></div>
+        {%- endif -%}
+        <h3 class="br-display" style="font-size:var(--sc-t-lg)">{{ 'blogs.article.leave_comment' | t }}</h3>
+        <div class="form-row form-row--2">
+          <div class="field"><label class="field__label" for="CommentAuthor">{{ 'blogs.article.name' | t }}</label><input class="field__input" id="CommentAuthor" type="text" name="comment[author]" value="{{ form.author }}" required autocomplete="name"></div>
+          <div class="field"><label class="field__label" for="CommentEmail">{{ 'blogs.article.email' | t }}</label><input class="field__input" id="CommentEmail" type="email" name="comment[email]" value="{{ form.email }}" required autocomplete="email"></div>
+        </div>
+        <div class="field"><label class="field__label" for="CommentBody">{{ 'blogs.article.message' | t }}</label><textarea class="text-area" id="CommentBody" name="comment[body]" required>{{ form.body }}</textarea></div>
+        {%- if blog.moderated? -%}<p class="br-caption">{{ 'blogs.article.moderated' | t }}</p>{%- endif -%}
+        <div><button type="submit" class="btn">{{ 'blogs.article.post' | t }}</button></div>
+      {%- endform -%}
+    </section>
+  {%- endif -%}
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "articleBody": {{ article.content | strip_html | json }},
+  "mainEntityOfPage": { "@type": "WebPage", "@id": {{ request.origin | append: article.url | json }} },
+  "headline": {{ article.title | json }},
+  {%- if article.excerpt != blank -%}"description": {{ article.excerpt | strip_html | json }},{%- endif -%}
+  {%- if article.image -%}"image": [{{ article.image | image_url: width: 1200 | prepend: 'https:' | json }}],{%- endif -%}
+  "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+  "dateCreated": {{ article.created_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+  "author": { "@type": "Person", "name": {{ article.author | json }} },
+  "publisher": { "@type": "Organization", "name": {{ shop.name | json }} }
+}
+</script>
+
+{% schema %}
+{
+  "name": "Blog post",
+  "tag": "section",
+  "settings": [
+    { "type": "checkbox", "id": "show_image", "label": "Show featured image", "default": true },
+    { "type": "checkbox", "id": "show_author", "label": "Show author", "default": false },
+    { "type": "checkbox", "id": "show_share", "label": "Show share link", "default": true }
+  ]
+}
+{% endschema %}

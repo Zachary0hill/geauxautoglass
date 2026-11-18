@@ -1,0 +1,44 @@
+{%- comment -%}
+  Price. Params: product OR variant, large (bool), id (string for JS targeting)
+{%- endcomment -%}
+{%- liquid
+  assign target = variant | default: product.selected_or_first_available_variant
+  if product and variant == nil and product.price_varies
+    assign varies = true
+  endif
+  assign price = target.price | default: 0
+  assign compare = target.compare_at_price
+  assign money_price = price | money
+  if settings.currency_code_enabled
+    assign money_price = price | money_with_currency
+  endif
+  assign available = target.available
+  if product and variant == nil
+    assign available = product.available
+  endif
+  assign on_sale = false
+  if compare > price
+    assign on_sale = true
+  endif
+-%}
+<div class="price{% if large %} price--large{% endif %}{% if on_sale %} price--on-sale{% endif %}{% unless available %} price--sold-out{% endunless %}"{% if id %} id="{{ id }}"{% endif %}>
+  {%- if varies -%}
+    <span class="price__regular">{%- assign price_min = product.price_min | money -%}{{ 'products.product.price.from' | t: price: price_min }}</span>
+  {%- elsif on_sale -%}
+    <span class="visually-hidden">{{ 'products.product.price.sale_price' | t }}</span>
+    <span class="price__sale">{{ money_price }}</span>
+    <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+    <s class="price__compare">{{ compare | money }}</s>
+  {%- else -%}
+    <span class="price__regular">{{ money_price }}</span>
+  {%- endif -%}
+  {%- if target.unit_price_measurement -%}
+    <span class="price__unit">
+      <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
+      {{ target.unit_price | money }}
+      /
+      {%- if target.unit_price_measurement.reference_value != 1 -%}{{ target.unit_price_measurement.reference_value }}{%- endif -%}
+      {{ target.unit_price_measurement.reference_unit }}
+    </span>
+  {%- endif -%}
+</div>

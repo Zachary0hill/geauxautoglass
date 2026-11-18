@@ -1,0 +1,17 @@
+<div class="page-width page{% if section.settings.narrow %} page--narrow{% endif %}">
+  <div class="u-stack">
+    <p class="br-rule">{{ 'general.page.caption' | t }}</p>
+    <h1 class="br-display page__title">{{ page.title | escape }}</h1>
+  </div>
+  <div class="rte">{{ page.content }}</div>
+</div>
+
+{% schema %}
+{
+  "name": "Page",
+  "tag": "section",
+  "settings": [
+    { "type": "checkbox", "id": "narrow", "label": "Narrow reading column", "default": true }
+  ]
+}
+{% endschema %}

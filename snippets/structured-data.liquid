@@ -1,0 +1,109 @@
+{%- comment -%}
+  Structured data for search: the business on every page and the site name on
+  the home page. The New Orleans shop prints its own AutoRepair block from the
+  Location detail section. Product and article data stay in their own sections.
+
+  Accepts:
+  - seo_site: business name
+  - seo_description: this page's description
+{%- endcomment -%}
+{%- liquid
+  assign site_url = shop.url | default: request.origin
+  assign biz_id = site_url | append: '/#business'
+  capture tel
+    render 'phone', phone: settings.phone_lafayette, as: 'e164'
+  endcapture
+  assign tel = tel | strip
+
+  if settings.logo != blank
+    assign biz_image = settings.logo | image_url: width: 600 | prepend: 'https:'
+  else
+    assign biz_image = 'logo.png' | asset_url | prepend: 'https:'
+  endif
+
+  assign areas = ''
+  assign area_lines = settings.seo_areas_served | newline_to_br | strip_newlines | split: '<br />'
+  for line in area_lines
+    assign area = line | strip
+    if area != blank
+      if areas != blank
+        assign areas = areas | append: '|'
+      endif
+      assign areas = areas | append: area
+    endif
+  endfor
+  assign areas = areas | split: '|'
+
+  assign same_as = ''
+  assign social_keys = 'facebook,instagram,tiktok' | split: ','
+  for key in social_keys
+    assign setting_id = key | append: '_url'
+    assign link = settings[setting_id]
+    if link != blank
+      if same_as != blank
+        assign same_as = same_as | append: '|'
+      endif
+      assign same_as = same_as | append: link
+    endif
+  endfor
+  assign same_as = same_as | split: '|'
+-%}
+{%- capture areas_json -%}
+  [{%- for area in areas -%}{ "@type": "AdministrativeArea", "name": {{ area | json }} }{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
+{%- endcapture -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AutoRepair",
+      "@id": {{ biz_id | json }},
+      "name": {{ seo_site | json }},
+      {%- if settings.seo_home_description != blank %}
+      "description": {{ settings.seo_home_description | json }},
+      {%- endif -%}
+      {%- if tel != blank %}
+      "telephone": {{ tel | json }},
+      {%- endif -%}
+      {%- if settings.email != blank %}
+      "email": {{ settings.email | json }},
+      {%- endif -%}
+      {%- if settings.business_city != blank %}
+      "address": {
+        "@type": "PostalAddress",
+        {%- if settings.business_street != blank %}
+        "streetAddress": {{ settings.business_street | json }},
+        {%- endif -%}
+        {%- if settings.business_region != blank %}
+        "addressRegion": {{ settings.business_region | json }},
+        {%- endif -%}
+        {%- if settings.business_postal != blank %}
+        "postalCode": {{ settings.business_postal | json }},
+        {%- endif %}
+        "addressLocality": {{ settings.business_city | json }},
+        "addressCountry": "US"
+      },
+      {%- endif -%}
+      {%- if areas.size > 0 %}
+      "areaServed": {{ areas_json | strip }},
+      {%- endif -%}
+      {%- if same_as.size > 0 %}
+      "sameAs": {{ same_as | json }},
+      {%- endif %}
+      "image": {{ biz_image | json }},
+      "logo": {{ biz_image | json }},
+      "url": {{ site_url | json }}
+    }
+    {%- if template.name == 'index' -%}
+    ,
+    {
+      "@type": "WebSite",
+      "@id": {{ site_url | append: '/#website' | json }},
+      "name": {{ seo_site | json }},
+      "url": {{ site_url | json }},
+      "publisher": { "@id": {{ biz_id | json }} }
+    }
+    {%- endif %}
+  ]
+}
+</script>

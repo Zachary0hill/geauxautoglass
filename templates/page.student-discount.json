@@ -1,0 +1,123 @@
+{
+  "sections": {
+    "head": {
+      "type": "page-head",
+      "settings": {
+        "style": "varsity",
+        "bundled": "none",
+        "image_alt": "",
+        "focal": "",
+        "show_crumbs": true,
+        "parent_label": "",
+        "parent_link": "",
+        "crumb": "Student discount",
+        "tag": "Student discount",
+        "heading": "10% off all services for college students.",
+        "highlight": "",
+        "lede": "For students at University of Louisiana at Lafayette or South Louisiana Community College. All car, SUV and truck glass.",
+        "btn_1_label": "Get a quote",
+        "btn_1_action": "quote",
+        "btn_1_link": "",
+        "btn_2_label": "",
+        "btn_2_action": "call_lafayette",
+        "btn_2_link": "",
+        "schools": "UL Lafayette, SLCC",
+        "offer_1": "10%",
+        "offer_2": "Off"
+      }
+    },
+    "covers": {
+      "type": "mini-services",
+      "blocks": {
+        "item1": {
+          "type": "item",
+          "settings": {
+            "title": "Windshield replacement",
+            "link": "/pages/services#windshield",
+            "bundled": "svc-windshield",
+            "image_alt": ""
+          }
+        },
+        "item2": {
+          "type": "item",
+          "settings": {
+            "title": "Chip repair",
+            "link": "/pages/services#chip",
+            "bundled": "svc-chip",
+            "image_alt": ""
+          }
+        },
+        "item3": {
+          "type": "item",
+          "settings": {
+            "title": "Back glass",
+            "link": "/pages/services#back-glass",
+            "bundled": "svc-back",
+            "image_alt": ""
+          }
+        },
+        "item4": {
+          "type": "item",
+          "settings": {
+            "title": "ADAS recalibration",
+            "link": "/pages/services#adas",
+            "bundled": "svc-adas",
+            "image_alt": ""
+          }
+        },
+        "item5": {
+          "type": "item",
+          "settings": {
+            "title": "Door glass",
+            "link": "/pages/services#door-glass",
+            "bundled": "svc-door",
+            "image_alt": ""
+          }
+        },
+        "item6": {
+          "type": "item",
+          "settings": {
+            "title": "Commercial vehicles",
+            "link": "/pages/services#commercial",
+            "bundled": "svc-fleet",
+            "image_alt": ""
+          }
+        }
+      },
+      "block_order": [
+        "item1",
+        "item2",
+        "item3",
+        "item4",
+        "item5",
+        "item6"
+      ],
+      "settings": {
+        "tag": "What the discount covers",
+        "heading": "All car, SUV and truck glass.",
+        "highlight": "truck glass.",
+        "text": "",
+        "ground": "paper",
+        "anchor_id": ""
+      }
+    },
+    "cta": {
+      "type": "cta-band",
+      "settings": {
+        "heading": "Get your windshield replaced today.",
+        "btn_1_label": "Get a quote",
+        "btn_1_action": "quote",
+        "btn_1_link": "",
+        "btn_2_label": "",
+        "btn_2_action": "call_lafayette",
+        "btn_2_link": "",
+        "anchor_id": ""
+      }
+    }
+  },
+  "order": [
+    "head",
+    "covers",
+    "cta"
+  ]
+}

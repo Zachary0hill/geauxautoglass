@@ -1,0 +1,37 @@
+{%- comment -%} Params: product, form, section {%- endcomment -%}
+<details class="br-accordion" id="Recipient-{{ section.id }}">
+  <summary>
+    <span class="field--checkbox"><input type="checkbox" id="RecipientCheckbox-{{ section.id }}" name="properties[__shopify_send_gift_card_to_recipient]" data-recipient-toggle> <label for="RecipientCheckbox-{{ section.id }}">{{ 'recipient.form.checkbox' | t }}</label></span>
+    {% render 'icon', icon: 'chevron' %}
+  </summary>
+  <div class="br-accordion__content form-stack">
+    <div class="field">
+      <label class="field__label" for="RecipientEmail-{{ section.id }}">{{ 'recipient.form.email_label' | t }}</label>
+      <input class="field__input" id="RecipientEmail-{{ section.id }}" type="email" name="properties[Recipient email]" value="{{ form.email }}" autocomplete="email">
+    </div>
+    <div class="field">
+      <label class="field__label" for="RecipientName-{{ section.id }}">{{ 'recipient.form.name_label' | t }}</label>
+      <input class="field__input" id="RecipientName-{{ section.id }}" type="text" name="properties[Recipient name]" value="{{ form.name }}" autocomplete="name">
+    </div>
+    <div class="field">
+      <label class="field__label" for="RecipientMessage-{{ section.id }}">{{ 'recipient.form.message_label' | t }}</label>
+      <textarea class="text-area" id="RecipientMessage-{{ section.id }}" name="properties[Message]" maxlength="200">{{ form.message }}</textarea>
+      <span class="br-caption">{{ 'recipient.form.max_characters' | t: max_chars: 200 }}</span>
+    </div>
+    <div class="field">
+      <label class="field__label" for="RecipientSendOn-{{ section.id }}">{{ 'recipient.form.send_on_label' | t }}</label>
+      <input class="field__input" id="RecipientSendOn-{{ section.id }}" type="date" name="properties[Send on]" value="{{ form.send_on }}" pattern="\d{4}-\d{2}-\d{2}">
+    </div>
+    <input type="hidden" name="properties[__shopify_offset]" value="" data-recipient-offset>
+    {%- if form.errors -%}
+      <div class="form__message form__message--error" role="alert">
+        {% render 'icon', icon: 'error' %}
+        <ul>
+          {%- for field in form.errors -%}
+            <li>{{ form.errors.translated_fields[field] | capitalize }} {{ form.errors.messages[field] }}</li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    {%- endif -%}
+  </div>
+</details>

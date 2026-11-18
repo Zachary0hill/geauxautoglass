@@ -1,0 +1,90 @@
+{%- comment -%}
+  Products from one collection, in the design's own system (works on the home
+  page, which loads only scrollcraft.css and theme.css). Same card as the shop
+  pages: photo, display-face name, short note, accent price.
+{%- endcomment -%}
+{%- liquid
+  assign collection = section.settings.collection
+  assign limit = section.settings.limit
+  assign cols = section.settings.columns | plus: 0
+  assign has_products = false
+  if collection != blank and collection.products_count > 0
+    assign has_products = true
+  endif
+  assign all_url = routes.all_products_collection_url
+  if collection != blank
+    assign all_url = collection.url
+  endif
+-%}
+<section{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id | handle }}"{% endif %} class="sc-section act-shop act-shop--{{ section.settings.color_scheme }}" data-sc-act="flow" data-sc-drift="{{ section.settings.drift }}">
+  <div class="sc-wrap">
+    <header class="shop-head" data-sc-in data-sc-stagger="70">
+      <div class="shop-head__text">
+        {%- if section.settings.caption != blank -%}<p class="sc-label wood-label">{{ section.settings.caption | escape }}</p>{%- endif -%}
+        {%- if section.settings.heading != blank -%}<h2 class="sc-display sc-display--md">{{ section.settings.heading | escape }}</h2>{%- endif -%}
+        {%- if section.settings.text != blank -%}<p class="sc-body">{{ section.settings.text | escape }}</p>{%- endif -%}
+      </div>
+      {%- if section.settings.show_view_all -%}
+        <a class="shop-head__link" href="{{ all_url }}">{{ 'sections.featured_collection.view_all' | t }} {% render 'icon', icon: 'arrow' %}</a>
+      {%- endif -%}
+    </header>
+
+    <div class="product-grid" style="--br-cols: {{ cols }};" data-sc-in data-sc-stagger="60">
+      {%- if has_products -%}
+        {%- for product in collection.products limit: limit -%}
+          {% render 'product-card', product: product %}
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..cols) -%}
+          <article class="shop-card">
+            <span class="shop-card__link">
+              <span class="shop-card__ph" style="aspect-ratio: 1;">{{ 'product-' | append: forloop.index | placeholder_svg_tag: 'shop-card__placeholder' }}</span>
+              <span class="shop-card__name">{{ 'sections.featured_collection.placeholder_title' | t }}</span>
+              <div class="price"><span class="price__regular">{{ 2400 | money }}</span></div>
+            </span>
+          </article>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.show_view_all and has_products and collection.products_count > limit -%}
+      <div class="shop-foot" data-sc-in>
+        <a class="btn btn--ghost" href="{{ all_url }}">{{ 'sections.featured_collection.view_all_count' | t: count: collection.products_count }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured collection",
+  "tag": "div",
+  "class": "section-featured",
+  "settings": [
+    { "type": "collection", "id": "collection", "label": "Collection", "info": "Placeholders show until a collection with products is picked. 'View all' goes to this collection, or to all products when none is picked." },
+    { "type": "text", "id": "caption", "label": "Label", "default": "From the store" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Wood shop" },
+    { "type": "textarea", "id": "text", "label": "Text" },
+    { "type": "range", "id": "limit", "min": 2, "max": 12, "step": 1, "label": "Maximum products", "default": 6 },
+    {
+      "type": "select", "id": "columns", "label": "Columns on large screens",
+      "info": "Phones always show 2.",
+      "options": [ { "value": "2", "label": "2" }, { "value": "3", "label": "3" }, { "value": "4", "label": "4" } ],
+      "default": "3"
+    },
+    { "type": "checkbox", "id": "show_view_all", "label": "Show 'View all' links", "default": true },
+    {
+      "type": "select", "id": "color_scheme", "label": "Background",
+      "options": [
+        { "value": "default", "label": "Page ground" },
+        { "value": "surface", "label": "Raised panel" }
+      ],
+      "default": "default"
+    },
+    { "type": "header", "content": "Section" },
+    { "type": "text", "id": "anchor_id", "label": "Anchor ID", "info": "Links to /#this-id scroll here.", "default": "shop" },
+    { "type": "color", "id": "drift", "label": "Page ground while on screen", "default": "#181c15" }
+  ],
+  "presets": [{ "name": "Featured collection" }]
+}
+{% endschema %}

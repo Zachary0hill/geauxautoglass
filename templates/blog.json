@@ -1,0 +1,1 @@
+{ "sections": { "main": { "type": "main-blog", "settings": { "per_page": 12, "show_author": false, "show_excerpt": true } } }, "order": ["main"] }

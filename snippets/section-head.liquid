@@ -1,0 +1,8 @@
+{%- comment -%} The small head above a block of content: tag, h2 with an optional highlight, optional text. Params: tag, heading, highlight, text {%- endcomment -%}
+{%- if tag != blank or heading != blank or text != blank -%}
+  <div class="shead" data-sc-in data-sc-stagger="70">
+    {%- if tag != blank -%}<p class="tag tag--red">{{ tag | escape }}</p>{%- endif -%}
+    {%- if heading != blank -%}<h2 class="sc-display sc-display--md">{% render 'heading-hl', text: heading, hl: highlight %}</h2>{%- endif -%}
+    {%- if text != blank -%}<p class="sc-body">{{ text | escape }}</p>{%- endif -%}
+  </div>
+{%- endif -%}

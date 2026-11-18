@@ -1,0 +1,194 @@
+{
+  "sections": {
+    "head": {
+      "type": "page-head",
+      "settings": {
+        "style": "default",
+        "bundled": "trust",
+        "image_alt": "",
+        "focal": "50% 34%",
+        "show_crumbs": true,
+        "parent_label": "",
+        "parent_link": "",
+        "crumb": "Services",
+        "tag": "Services",
+        "heading": "Repairs and replacements.",
+        "highlight": "replacements.",
+        "lede": "Free mobile service. Fast and affordable. Same day or next day.",
+        "btn_1_label": "Get a quote",
+        "btn_1_action": "quote",
+        "btn_1_link": "",
+        "btn_2_label": "",
+        "btn_2_action": "call_lafayette",
+        "btn_2_link": "",
+        "schools": "",
+        "offer_1": "",
+        "offer_2": ""
+      }
+    },
+    "rows": {
+      "type": "service-rows",
+      "blocks": {
+        "row1": {
+          "type": "row",
+          "settings": {
+            "title": "Windshield replacement",
+            "text": "Mobile service at home or work, or in-shop installation.",
+            "bundled": "svc-windshield",
+            "image_alt": "",
+            "anchor_id": "windshield"
+          }
+        },
+        "row2": {
+          "type": "row",
+          "settings": {
+            "title": "Chip repair",
+            "text": "Minor chip repair.",
+            "bundled": "svc-chip",
+            "image_alt": "",
+            "anchor_id": "chip"
+          }
+        },
+        "row3": {
+          "type": "row",
+          "settings": {
+            "title": "Back glass",
+            "text": "All vehicle types.",
+            "bundled": "svc-back",
+            "image_alt": "",
+            "anchor_id": "back-glass"
+          }
+        },
+        "row4": {
+          "type": "row",
+          "settings": {
+            "title": "ADAS recalibration",
+            "text": "ADAS calibration for cars, SUVs and trucks.",
+            "bundled": "svc-adas",
+            "image_alt": "",
+            "anchor_id": "adas"
+          }
+        },
+        "row5": {
+          "type": "row",
+          "settings": {
+            "title": "Door glass",
+            "text": "Door glass replacements. Domestic and foreign.",
+            "bundled": "svc-door",
+            "image_alt": "",
+            "anchor_id": "door-glass"
+          }
+        },
+        "row6": {
+          "type": "row",
+          "settings": {
+            "title": "Commercial vehicles",
+            "text": "Both personal and commercial vehicles.",
+            "bundled": "svc-fleet",
+            "image_alt": "",
+            "anchor_id": "commercial"
+          }
+        }
+      },
+      "block_order": [
+        "row1",
+        "row2",
+        "row3",
+        "row4",
+        "row5",
+        "row6"
+      ],
+      "settings": {
+        "btn_1_label": "Get a quote",
+        "btn_1_action": "quote",
+        "btn_1_link": "",
+        "btn_2_label": "",
+        "btn_2_action": "call_lafayette",
+        "btn_2_link": "",
+        "ground": "paper"
+      }
+    },
+    "checklist": {
+      "type": "checklist",
+      "blocks": {
+        "tick1": {
+          "type": "tick",
+          "settings": {
+            "text": "Insurance policies accepted",
+            "link": ""
+          }
+        },
+        "tick2": {
+          "type": "tick",
+          "settings": {
+            "text": "Cars, SUVs and trucks",
+            "link": ""
+          }
+        },
+        "tick3": {
+          "type": "tick",
+          "settings": {
+            "text": "Minor chip repair",
+            "link": ""
+          }
+        },
+        "tick4": {
+          "type": "tick",
+          "settings": {
+            "text": "Mobile services available",
+            "link": ""
+          }
+        },
+        "tick5": {
+          "type": "tick",
+          "settings": {
+            "text": "Domestic and foreign",
+            "link": ""
+          }
+        },
+        "tick6": {
+          "type": "tick",
+          "settings": {
+            "text": "Appointment only",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "tick1",
+        "tick2",
+        "tick3",
+        "tick4",
+        "tick5",
+        "tick6"
+      ],
+      "settings": {
+        "tag": "Your trusted auto glass experts",
+        "heading": "We fix all types of auto glass.",
+        "highlight": "all types",
+        "text": "Our company specializes in providing professional auto glass services for a wide range of vehicle types, including both personal and commercial vehicles.",
+        "ground": "paper-2",
+        "anchor_id": ""
+      }
+    },
+    "cta": {
+      "type": "cta-band",
+      "settings": {
+        "heading": "Get your windshield replaced today.",
+        "btn_1_label": "Get a quote",
+        "btn_1_action": "quote",
+        "btn_1_link": "",
+        "btn_2_label": "",
+        "btn_2_action": "call_lafayette",
+        "btn_2_link": "",
+        "anchor_id": ""
+      }
+    }
+  },
+  "order": [
+    "head",
+    "rows",
+    "checklist",
+    "cta"
+  ]
+}

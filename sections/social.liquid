@@ -1,0 +1,21 @@
+{%- comment -%} The social bar on its own: three linked counts. Links and counts are in Theme settings > Social media. {%- endcomment -%}
+<section class="sc-section paper{% if section.settings.ground == 'paper-2' %} paper--2{% endif %}"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id | handle }}"{% endif %} data-sc-act="flow" data-sc-drift="{{ settings.color_canvas }}">
+  <div class="sc-wrap">
+    {%- render 'social-bar', tag: section.settings.tag -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Social bar",
+  "tag": "div",
+  "settings": [
+    { "type": "paragraph", "content": "Links and counts are in Theme settings > Social media." },
+    { "type": "text", "id": "tag", "label": "Tag", "default": "Find us on" },
+    { "type": "select", "id": "ground", "label": "Ground", "options": [{ "value": "paper", "label": "White" }, { "value": "paper-2", "label": "Off-white" }], "default": "paper-2" },
+    { "type": "text", "id": "anchor_id", "label": "Anchor id" }
+  ],
+  "presets": [{ "name": "Social bar" }],
+  "disabled_on": { "groups": ["header", "footer"] }
+}
+{% endschema %}

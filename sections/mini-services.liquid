@@ -1,0 +1,40 @@
+{%- comment -%} Square thumbnails with titles, linking to the service rows. {%- endcomment -%}
+<section class="sc-section paper{% if section.settings.ground == 'paper-2' %} paper--2{% endif %}"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id | handle }}"{% endif %} data-sc-act="flow" data-sc-drift="{{ settings.color_canvas }}">
+  <div class="sc-wrap">
+    {%- render 'section-head', tag: section.settings.tag, heading: section.settings.heading, highlight: section.settings.highlight, text: section.settings.text -%}
+    {%- if section.blocks.size > 0 -%}
+      <div class="mini" data-sc-in data-sc-stagger="60">
+        {%- for block in section.blocks -%}
+          <a href="{{ block.settings.link | default: '#' }}" {{ block.shopify_attributes }}>{% render 'photo', image: block.settings.image, bundled: block.settings.bundled, alt: block.settings.image_alt, sizes: '(max-width: 860px) 46vw, (max-width: 1180px) 30vw, 14vw' %}<b>{{ block.settings.title | escape }}</b></a>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Service thumbnails",
+  "tag": "div",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "text", "id": "tag", "label": "Tag", "default": "What the discount covers" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "All car, SUV and truck glass." },
+    { "type": "text", "id": "highlight", "label": "Words on the red bar", "info": "Optional. Must match words in the heading exactly.", "default": "truck glass." },
+    { "type": "textarea", "id": "text", "label": "Text" },
+    { "type": "select", "id": "ground", "label": "Ground", "options": [{ "value": "paper", "label": "White" }, { "value": "paper-2", "label": "Off-white" }], "default": "paper" },
+    { "type": "text", "id": "anchor_id", "label": "Anchor id" }
+  ],
+  "blocks": [
+    { "type": "item", "name": "Service", "settings": [
+      { "type": "text", "id": "title", "label": "Title", "default": "Service" },
+      { "type": "text", "id": "link", "label": "Link", "info": "For example /pages/services#windshield" },
+      { "type": "image_picker", "id": "image", "label": "Photo", "info": "Square. Empty: the bundled photo picked below." },
+      { "type": "select", "id": "bundled", "label": "Bundled photo", "options": [{"value": "none", "label": "None"}, {"value": "hero", "label": "Vans at the Lafayette shop"}, {"value": "trust", "label": "Technicians lifting a windshield"}, {"value": "svc-windshield", "label": "Windshield going on a Ford"}, {"value": "svc-chip", "label": "Star chip close up"}, {"value": "svc-back", "label": "Tesla, back glass out"}, {"value": "svc-adas", "label": "ADAS targets"}, {"value": "svc-door", "label": "Shattered door glass"}, {"value": "svc-fleet", "label": "Sprinter van in the shop"}, {"value": "svc-mobile", "label": "Black van outside the shop"}, {"value": "bleed-insurance", "label": "Windshield on a red SUV"}, {"value": "story", "label": "Fleet outside the storefront"}, {"value": "loc-lafayette", "label": "Lafayette shop front"}, {"value": "loc-kenner", "label": "Kenner shop entrance"}, {"value": "loc-nola-van", "label": "New Orleans van"}, {"value": "ba-before", "label": "Jeep, glass out"}, {"value": "ba-after", "label": "Jeep, glass in"}], "default": "none" },
+      { "type": "text", "id": "image_alt", "label": "Photo description", "info": "Empty: the photo's own description." }
+    ] }
+  ],
+  "presets": [{ "name": "Service thumbnails" }],
+  "disabled_on": { "groups": ["header", "footer"] }
+}
+{% endschema %}

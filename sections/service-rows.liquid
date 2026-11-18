@@ -1,0 +1,52 @@
+{%- comment -%} One row per service. Photo and copy alternate sides. Each row has its own id so links can land on it. {%- endcomment -%}
+<section class="sc-section paper{% if section.settings.ground == 'paper-2' %} paper--2{% endif %}" data-sc-act="flow" data-sc-drift="{{ settings.color_canvas }}">
+  <div class="sc-wrap">
+    <div class="srows">
+      {%- for block in section.blocks -%}
+        {%- assign odd = forloop.index | modulo: 2 -%}
+        <article class="srow"{% if block.settings.anchor_id != blank %} id="{{ block.settings.anchor_id | handle }}"{% endif %} {{ block.shopify_attributes }}>
+          <figure class="shot shot--block{% if odd == 0 %} shot--right{% endif %} srow__fig slide" data-dir="{% if odd == 0 %}right{% else %}left{% endif %}">{% render 'photo', image: block.settings.image, bundled: block.settings.bundled, alt: block.settings.image_alt, sizes: '(max-width: 860px) 92vw, 40vw' %}</figure>
+          <div data-sc-in data-sc-stagger="70">
+            <p class="srow__n">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</p>
+            <h2 class="sc-display sc-display--md">{{ block.settings.title | escape }}</h2>
+            {%- if block.settings.text != blank -%}<p class="sc-body">{{ block.settings.text | escape }}</p>{%- endif -%}
+            <div class="srow__actions">
+              {%- render 'action-link', action: section.settings.btn_1_action, label: section.settings.btn_1_label, url: section.settings.btn_1_link, class: 'btn btn--accent' -%}
+              {%- render 'action-link', action: section.settings.btn_2_action, label: section.settings.btn_2_label, url: section.settings.btn_2_link, class: 'btn btn--line' -%}
+            </div>
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Service rows",
+  "tag": "div",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "paragraph", "content": "Every row shows the same two buttons." },
+    { "type": "text", "id": "btn_1_label", "label": "First button label", "default": "Get a quote" },
+    { "type": "select", "id": "btn_1_action", "label": "First button goes to", "options": [{"value": "quote", "label": "Quote form"}, {"value": "call_lafayette", "label": "Call Lafayette"}, {"value": "call_new_orleans", "label": "Call New Orleans"}, {"value": "text_lafayette", "label": "Text Lafayette"}, {"value": "email", "label": "Email"}, {"value": "enterprise_email", "label": "Enterprise email"}, {"value": "enterprise_form", "label": "Enterprise claim form"}, {"value": "enterprise_photo", "label": "Enterprise photo upload"}, {"value": "shop", "label": "Merchandise (all products)"}, {"value": "google_lafayette", "label": "Google, Lafayette"}, {"value": "google_new_orleans", "label": "Google, New Orleans"}, {"value": "custom", "label": "Custom link (below)"}], "default": "quote" },
+    { "type": "text", "id": "btn_1_link", "label": "First button custom link" },
+    { "type": "text", "id": "btn_2_label", "label": "Second button label", "info": "Empty on a call button: Call and the number." },
+    { "type": "select", "id": "btn_2_action", "label": "Second button goes to", "options": [{"value": "quote", "label": "Quote form"}, {"value": "call_lafayette", "label": "Call Lafayette"}, {"value": "call_new_orleans", "label": "Call New Orleans"}, {"value": "text_lafayette", "label": "Text Lafayette"}, {"value": "email", "label": "Email"}, {"value": "enterprise_email", "label": "Enterprise email"}, {"value": "enterprise_form", "label": "Enterprise claim form"}, {"value": "enterprise_photo", "label": "Enterprise photo upload"}, {"value": "shop", "label": "Merchandise (all products)"}, {"value": "google_lafayette", "label": "Google, Lafayette"}, {"value": "google_new_orleans", "label": "Google, New Orleans"}, {"value": "custom", "label": "Custom link (below)"}], "default": "call_lafayette" },
+    { "type": "text", "id": "btn_2_link", "label": "Second button custom link" },
+    { "type": "select", "id": "ground", "label": "Ground", "options": [{ "value": "paper", "label": "White" }, { "value": "paper-2", "label": "Off-white" }], "default": "paper" }
+  ],
+  "blocks": [
+    { "type": "row", "name": "Service", "settings": [
+      { "type": "text", "id": "title", "label": "Title", "default": "Service" },
+      { "type": "textarea", "id": "text", "label": "Text" },
+      { "type": "image_picker", "id": "image", "label": "Photo", "info": "Shown 4:3. Empty: the bundled photo picked below." },
+      { "type": "select", "id": "bundled", "label": "Bundled photo", "options": [{"value": "none", "label": "None"}, {"value": "hero", "label": "Vans at the Lafayette shop"}, {"value": "trust", "label": "Technicians lifting a windshield"}, {"value": "svc-windshield", "label": "Windshield going on a Ford"}, {"value": "svc-chip", "label": "Star chip close up"}, {"value": "svc-back", "label": "Tesla, back glass out"}, {"value": "svc-adas", "label": "ADAS targets"}, {"value": "svc-door", "label": "Shattered door glass"}, {"value": "svc-fleet", "label": "Sprinter van in the shop"}, {"value": "svc-mobile", "label": "Black van outside the shop"}, {"value": "bleed-insurance", "label": "Windshield on a red SUV"}, {"value": "story", "label": "Fleet outside the storefront"}, {"value": "loc-lafayette", "label": "Lafayette shop front"}, {"value": "loc-kenner", "label": "Kenner shop entrance"}, {"value": "loc-nola-van", "label": "New Orleans van"}, {"value": "ba-before", "label": "Jeep, glass out"}, {"value": "ba-after", "label": "Jeep, glass in"}], "default": "none" },
+      { "type": "text", "id": "image_alt", "label": "Photo description", "info": "Empty: the photo's own description." },
+      { "type": "text", "id": "anchor_id", "label": "Anchor id", "info": "Footer and other links land on this row with #id. The six built-in ids are windshield, chip, back-glass, adas, door-glass and commercial." }
+    ] }
+  ],
+  "presets": [{ "name": "Service rows", "blocks": [{ "type": "row" }, { "type": "row" }] }],
+  "disabled_on": { "groups": ["header", "footer"] }
+}
+{% endschema %}

@@ -1,0 +1,193 @@
+{
+  "sections": {
+    "head": {
+      "type": "page-head",
+      "settings": {
+        "style": "default",
+        "bundled": "bleed-insurance",
+        "image_alt": "",
+        "focal": "50% 62%",
+        "show_crumbs": true,
+        "parent_label": "",
+        "parent_link": "",
+        "crumb": "Insurance",
+        "tag": "Insurance policy claims",
+        "heading": "File the claim. We handle the rest.",
+        "highlight": "We handle the rest.",
+        "lede": "We work with all insurance providers. Call your insurance and use the company name Geaux Auto Glass to begin the filing.",
+        "btn_1_label": "Get a quote",
+        "btn_1_action": "quote",
+        "btn_1_link": "",
+        "btn_2_label": "",
+        "btn_2_action": "call_lafayette",
+        "btn_2_link": "",
+        "schools": "",
+        "offer_1": "",
+        "offer_2": ""
+      }
+    },
+    "steps": {
+      "type": "steps",
+      "blocks": {
+        "step1": {
+          "type": "step",
+          "settings": {
+            "title": "First, contact your insurance",
+            "text": "Call your insurance and use the company name Geaux Auto Glass to begin the filing."
+          }
+        },
+        "step2": {
+          "type": "step",
+          "settings": {
+            "title": "Confirm coverage",
+            "text": "Comprehensive coverage covers glass damage."
+          }
+        },
+        "step3": {
+          "type": "step",
+          "settings": {
+            "title": "Policy details",
+            "text": "Send in basic info: VIN number, year, make and model, and which glass is needed."
+          }
+        },
+        "step4": {
+          "type": "step",
+          "settings": {
+            "title": "File the claim",
+            "text": "We handle the rest and set you up for scheduling."
+          }
+        }
+      },
+      "block_order": [
+        "step1",
+        "step2",
+        "step3",
+        "step4"
+      ],
+      "settings": {
+        "tag": "How to file",
+        "heading": "Four steps to a covered repair.",
+        "highlight": "covered",
+        "text": "",
+        "ground": "paper",
+        "anchor_id": ""
+      }
+    },
+    "strip": {
+      "type": "insurer-strip",
+      "blocks": {
+        "carrier1": {
+          "type": "carrier",
+          "settings": {
+            "name": "State Farm",
+            "bundled": "statefarm",
+            "size": "w"
+          }
+        },
+        "carrier2": {
+          "type": "carrier",
+          "settings": {
+            "name": "Progressive",
+            "bundled": "progressive",
+            "size": "w"
+          }
+        },
+        "carrier3": {
+          "type": "carrier",
+          "settings": {
+            "name": "GEICO",
+            "bundled": "geico",
+            "size": "m"
+          }
+        },
+        "carrier4": {
+          "type": "carrier",
+          "settings": {
+            "name": "Allstate",
+            "bundled": "allstate",
+            "size": "m"
+          }
+        },
+        "carrier5": {
+          "type": "carrier",
+          "settings": {
+            "name": "Liberty Mutual",
+            "bundled": "libertymutual",
+            "size": "t"
+          }
+        }
+      },
+      "block_order": [
+        "carrier1",
+        "carrier2",
+        "carrier3",
+        "carrier4",
+        "carrier5"
+      ],
+      "settings": {
+        "heading": "We work with all insurance providers",
+        "anchor_id": ""
+      }
+    },
+    "programs": {
+      "type": "tiles",
+      "blocks": {
+        "tile1": {
+          "type": "tile",
+          "settings": {
+            "label": "Enterprise claim submission",
+            "title": "Approved vendor for Enterprise Rent-A-Car.",
+            "keep": "Rent-A-Car.",
+            "text": "Submit your claim quickly and our team handles the rest.",
+            "action": "custom",
+            "link": "/pages/enterprise-claims"
+          }
+        },
+        "tile2": {
+          "type": "tile",
+          "settings": {
+            "label": "Student discount",
+            "title": "10% off all services for college students.",
+            "keep": "",
+            "text": "University of Louisiana at Lafayette or South Louisiana Community College.",
+            "action": "custom",
+            "link": "/pages/student-discount"
+          }
+        }
+      },
+      "block_order": [
+        "tile1",
+        "tile2"
+      ],
+      "settings": {
+        "tag": "Programs",
+        "heading": "Enterprise claims and student pricing.",
+        "highlight": "",
+        "text": "",
+        "columns": "2",
+        "ground": "paper-2",
+        "anchor_id": ""
+      }
+    },
+    "cta": {
+      "type": "cta-band",
+      "settings": {
+        "heading": "Get your windshield replaced today.",
+        "btn_1_label": "Get a quote",
+        "btn_1_action": "quote",
+        "btn_1_link": "",
+        "btn_2_label": "",
+        "btn_2_action": "call_lafayette",
+        "btn_2_link": "",
+        "anchor_id": ""
+      }
+    }
+  },
+  "order": [
+    "head",
+    "steps",
+    "strip",
+    "programs",
+    "cta"
+  ]
+}

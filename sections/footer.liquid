@@ -1,0 +1,152 @@
+{%- comment -%}
+  The "van side" footer: red ticker of van lettering, white body with the wordmark,
+  both phone numbers in van format, a quote button and the link columns, the diamond
+  mark driving in from the right, then the dark bumper.
+{%- endcomment -%}
+{%- liquid
+  assign phrases = section.blocks | where: 'type', 'phrase'
+  assign columns = section.blocks | where: 'type', 'column'
+  assign biz = settings.brand_name | default: shop.name
+  assign top_href = '#top'
+  capture tel_laf
+    render 'phone', phone: settings.phone_lafayette
+  endcapture
+  capture van_laf
+    render 'phone', phone: settings.phone_lafayette, as: 'van'
+  endcapture
+  capture tel_no
+    render 'phone', phone: settings.phone_new_orleans
+  endcapture
+  capture van_no
+    render 'phone', phone: settings.phone_new_orleans, as: 'van'
+  endcapture
+-%}
+<footer class="vanfoot paper" id="footer">
+  {%- if phrases.size > 0 -%}
+    <div class="ticker" aria-hidden="true"><div class="ticker__row">
+      {%- for i in (1..4) -%}
+        {%- for block in phrases -%}
+          {%- if block.settings.text != blank -%}<span{% if i == 1 %} {{ block.shopify_attributes }}{% endif %}>{{ block.settings.text | escape }}</span><i></i>{%- endif -%}
+        {%- endfor -%}
+      {%- endfor -%}
+    </div></div>
+  {%- endif -%}
+  <div class="vanfoot__body">
+    <div class="vanfoot__id" data-sc-in data-sc-stagger="70">
+      {%- if settings.logo_light != blank -%}
+        <img class="vanfoot__logo" src="{{ settings.logo_light | image_url: width: 832 }}" srcset="{{ settings.logo_light | image_url: width: 416 }} 416w, {{ settings.logo_light | image_url: width: 832 }} 832w" sizes="(max-width: 860px) 84vw, 416px" width="{{ settings.logo_light.width }}" height="{{ settings.logo_light.height }}" alt="{{ settings.logo_light.alt | default: biz | escape }}" loading="lazy">
+      {%- else -%}
+        <img class="vanfoot__logo" src="{{ 'logo-light-ground.png' | asset_img_url: '832x' }}" srcset="{{ 'logo-light-ground.png' | asset_img_url: '416x' }} 416w, {{ 'logo-light-ground.png' | asset_img_url: '832x' }} 832w" sizes="(max-width: 860px) 84vw, 416px" width="1200" height="202" alt="{{ 'sections.header.logo_alt' | t | escape }}" loading="lazy">
+      {%- endif -%}
+      <ul class="vanfoot__phones">
+        {%- if settings.phone_lafayette != blank -%}
+          <li><span class="tag tag--red">{{ section.settings.phone_1_label | escape }}</span><a href="{{ tel_laf | strip }}">{{ van_laf | strip }}</a></li>
+        {%- endif -%}
+        {%- if settings.phone_new_orleans != blank -%}
+          <li><span class="tag tag--red">{{ section.settings.phone_2_label | escape }}</span><a href="{{ tel_no | strip }}">{{ van_no | strip }}</a></li>
+        {%- endif -%}
+      </ul>
+      {%- render 'action-link', action: section.settings.cta_action, label: section.settings.cta_label, url: section.settings.cta_link, class: 'btn btn--accent' -%}
+    </div>
+    {%- if columns.size > 0 -%}
+      <nav class="vanfoot__nav" aria-label="{{ 'sections.footer.nav_label' | t }}" data-sc-in data-sc-stagger="70">
+        {%- for block in columns -%}
+          <div {{ block.shopify_attributes }}>
+            {%- if block.settings.title != blank -%}<p class="tag">{{ block.settings.title | escape }}</p>{%- endif -%}
+            <ul>
+              {%- if block.settings.menu != blank and block.settings.menu.links.size > 0 -%}
+                {%- for link in block.settings.menu.links -%}
+                  {%- assign scheme = link.url | slice: 0, 4 -%}
+                  <li><a href="{{ link.url }}"{% if scheme == 'http' %} target="_blank" rel="noopener"{% endif %}>{{ link.title | escape }}</a></li>
+                {%- endfor -%}
+              {%- else -%}
+                {%- case block.settings.preset -%}
+                  {%- when 'services' -%}
+                    {%- assign anchors = 'windshield,chip,back-glass,adas,door-glass,commercial' | split: ',' -%}
+                    {%- for anchor in anchors -%}
+                      {%- assign key = 'sections.footer.services.' | append: anchor -%}
+                      <li><a href="{{ routes.root_url }}pages/services#{{ anchor }}">{{ key | t }}</a></li>
+                    {%- endfor -%}
+                  {%- when 'customers' -%}
+                    <li><a href="{{ routes.root_url }}pages/insurance">{{ 'sections.footer.customers.insurance' | t }}</a></li>
+                    <li><a href="{{ routes.root_url }}pages/enterprise-claims">{{ 'sections.footer.customers.enterprise' | t }}</a></li>
+                    {%- if settings.enterprise_form_url != blank -%}
+                      <li><a href="{{ settings.enterprise_form_url }}" target="_blank" rel="noopener">{{ 'sections.footer.customers.enterprise_form' | t }}</a></li>
+                    {%- endif -%}
+                    <li><a href="{{ routes.root_url }}pages/student-discount">{{ 'sections.footer.customers.student' | t }}</a></li>
+                    <li><a href="{{ routes.root_url }}pages/reviews">{{ 'sections.footer.customers.reviews' | t }}</a></li>
+                    <li><a href="{{ routes.root_url }}pages/new-orleans">{{ 'sections.footer.customers.new_orleans' | t }}</a></li>
+                  {%- when 'social' -%}
+                    {%- if settings.facebook_url != blank -%}<li><a href="{{ settings.facebook_url }}" target="_blank" rel="noopener">{{ 'sections.footer.social.facebook' | t }}</a></li>{%- endif -%}
+                    {%- if settings.instagram_url != blank -%}<li><a href="{{ settings.instagram_url }}" target="_blank" rel="noopener">{{ 'sections.footer.social.instagram' | t }}</a></li>{%- endif -%}
+                    {%- if settings.tiktok_url != blank -%}<li><a href="{{ settings.tiktok_url }}" target="_blank" rel="noopener">{{ 'sections.footer.social.tiktok' | t }}</a></li>{%- endif -%}
+                    {%- if settings.google_lafayette_url != blank -%}<li><a href="{{ settings.google_lafayette_url }}" target="_blank" rel="noopener">{{ 'sections.footer.social.google_lafayette' | t }}</a></li>{%- endif -%}
+                    {%- if settings.google_new_orleans_url != blank -%}<li><a href="{{ settings.google_new_orleans_url }}" target="_blank" rel="noopener">{{ 'sections.footer.social.google_new_orleans' | t }}</a></li>{%- endif -%}
+                    <li><a href="{{ routes.all_products_collection_url }}">{{ 'sections.footer.social.shop' | t }}</a></li>
+                {%- endcase -%}
+              {%- endif -%}
+            </ul>
+          </div>
+        {%- endfor -%}
+      </nav>
+    {%- endif -%}
+    {%- if section.settings.show_mark -%}
+      <img class="vanfoot__mark" src="{{ 'mark.svg' | asset_url }}" width="400" height="400" alt="" aria-hidden="true" loading="lazy">
+    {%- endif -%}
+  </div>
+  <div class="vanfoot__bumper">
+    <p>{% render 'footer-line' %}
+      {%- if section.settings.show_policies -%}
+        {%- for policy in shop.policies -%}
+          {%- if policy != blank %} · <a class="vanfoot__policy" href="{{ policy.url }}">{{ policy.title | escape }}</a>{%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+    </p>
+    <a href="{{ top_href }}">{{ 'sections.footer.back_to_top' | t }}</a>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "max_blocks": 16,
+  "settings": [
+    { "type": "paragraph", "content": "Phone numbers, the quote form link, social links and the footer line are in Theme settings > Business and Social media. The logo is in Branding." },
+    { "type": "text", "id": "phone_1_label", "label": "First phone label", "default": "Lafayette" },
+    { "type": "text", "id": "phone_2_label", "label": "Second phone label", "default": "New Orleans" },
+    { "type": "header", "content": "Button" },
+    { "type": "text", "id": "cta_label", "label": "Label", "default": "Get a quote" },
+    { "type": "select", "id": "cta_action", "label": "Goes to", "options": [{"value": "quote", "label": "Quote form"}, {"value": "call_lafayette", "label": "Call Lafayette"}, {"value": "call_new_orleans", "label": "Call New Orleans"}, {"value": "text_lafayette", "label": "Text Lafayette"}, {"value": "email", "label": "Email"}, {"value": "enterprise_email", "label": "Enterprise email"}, {"value": "enterprise_form", "label": "Enterprise claim form"}, {"value": "enterprise_photo", "label": "Enterprise photo upload"}, {"value": "shop", "label": "Merchandise (all products)"}, {"value": "google_lafayette", "label": "Google, Lafayette"}, {"value": "google_new_orleans", "label": "Google, New Orleans"}, {"value": "custom", "label": "Custom link (below)"}], "default": "quote" },
+    { "type": "text", "id": "cta_link", "label": "Custom link" },
+    { "type": "header", "content": "Details" },
+    { "type": "checkbox", "id": "show_mark", "label": "Show the diamond mark", "default": true },
+    { "type": "checkbox", "id": "show_policies", "label": "Show store policy links", "info": "Refund, privacy and terms links from Settings > Policies, after the footer line.", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "phrase",
+      "name": "Ticker phrase",
+      "limit": 8,
+      "settings": [
+        { "type": "text", "id": "text", "label": "Phrase", "default": "Free mobile service" }
+      ]
+    },
+    {
+      "type": "column",
+      "name": "Link column",
+      "limit": 3,
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Links" },
+        { "type": "link_list", "id": "menu", "label": "Menu", "info": "Optional. When empty, the column shows the built-in list picked below." },
+        { "type": "select", "id": "preset", "label": "Built-in list", "options": [
+          { "value": "services", "label": "Services (six service rows)" },
+          { "value": "customers", "label": "Customers (claims, discount, reviews, location)" },
+          { "value": "social", "label": "Find us on (social, Google, shop)" },
+          { "value": "none", "label": "None" }
+        ], "default": "none" }
+      ]
+    }
+  ],
+  "enabled_on": { "groups": ["footer"] }
+}
+{% endschema %}

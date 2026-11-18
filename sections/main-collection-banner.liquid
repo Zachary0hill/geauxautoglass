@@ -1,0 +1,30 @@
+{%- liquid
+  assign count_label = 'sections.collection.product_count' | t: count: collection.products_count
+-%}
+{%- if section.settings.show_image and collection.image -%}
+  <div class="collection-banner collection-banner--image">
+    {{ collection.image | image_url: width: 2400 | image_tag: loading: 'eager', widths: '800, 1200, 1600, 2400', sizes: '100vw', alt: collection.image.alt | default: collection.title }}
+    <div class="page-width collection-banner__inner">
+      <h1 class="br-display collection-banner__title">{{ collection.title | escape }}</h1>
+      <p class="br-caption collection-banner__caption">{{ count_label }}</p>
+    </div>
+  </div>
+{%- else -%}
+  <div class="page-width collection-banner">
+    <h1 class="sc-display collection-banner__title">{{ collection.title | escape }}</h1>
+    {%- if section.settings.show_description and collection.description != blank -%}
+      <div class="collection-banner__desc rte br-body">{{ collection.description }}</div>
+    {%- endif -%}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Collection title",
+  "tag": "section",
+  "settings": [
+    { "type": "checkbox", "id": "show_image", "label": "Show collection image as a banner", "default": false },
+    { "type": "checkbox", "id": "show_description", "label": "Show collection description", "default": false }
+  ]
+}
+{% endschema %}

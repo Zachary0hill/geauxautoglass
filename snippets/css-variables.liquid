@@ -1,0 +1,69 @@
+{%- comment -%}
+  Brand tokens from theme settings, printed over the scrollcraft defaults.
+  Variable names are the design's own (site/styles.css :root). The --br-*
+  aliases feed the shop templates.
+  Fonts are self-hosted: display-400.woff2 (Archivo Black) and text-var.woff2
+  (Inter, variable, 500 to 700). Both are OFL.
+{%- endcomment -%}
+<style>
+  {%- if settings.use_brand_fonts -%}
+    @font-face { font-family: "Brand Display"; src: url("{{ 'display-400.woff2' | asset_url }}") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Brand Display Fallback"; src: local("Arial Black"), local("Arial-Black"); font-weight: 400; font-style: normal; size-adjust: 100%; ascent-override: 88%; descent-override: 21%; line-gap-override: 0%; }
+    @font-face { font-family: "Brand Text"; src: url("{{ 'text-var.woff2' | asset_url }}") format("woff2"); font-weight: 500 700; font-style: normal; font-display: swap; }
+  {%- else -%}
+    {%- liquid
+      assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
+    -%}
+    {{ settings.type_heading_font | font_face: font_display: 'swap' }}
+    {{ settings.type_body_font | font_face: font_display: 'swap' }}
+    {{ body_font_bold | font_face: font_display: 'swap' }}
+  {%- endif -%}
+
+  :root {
+    --sc-canvas: {{ settings.color_canvas }};
+    --sc-surface: {{ settings.color_surface }};
+    --sc-ink: {{ settings.color_ink }};
+    --sc-ink-soft: {{ settings.color_ink_soft }};
+    --sc-accent: {{ settings.color_accent }};
+    --sc-accent-ink: {{ settings.color_accent_ink }};
+    --sc-accent-text: {{ settings.color_accent_text }};
+    --gx-red-deep: {{ settings.color_red_deep }};
+    --gx-paper: {{ settings.color_paper }};
+    --gx-paper-2: {{ settings.color_paper_2 }};
+    --gx-ink-dark: {{ settings.color_ink_dark }};
+    --gx-ink-mid: {{ settings.color_ink_mid }};
+    --gx-glass: {{ settings.color_glass }};
+    --gx-red-lift: {{ settings.color_accent_text }};
+    --gx-soft-on-dark: {{ settings.color_ink_soft }};
+
+    {%- if settings.use_brand_fonts -%}
+    --sc-font-display: "Brand Display", "Brand Display Fallback", "Arial Black", "Helvetica Neue", system-ui, sans-serif;
+    --sc-font-text: "Brand Text", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --br-display-weight: 400;
+    --br-body-weight: 500;
+    {%- else -%}
+    --sc-font-display: {{ settings.type_heading_font.family }}, {{ settings.type_heading_font.fallback_families }};
+    --sc-font-text: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+    --br-display-weight: {{ settings.type_heading_font.weight }};
+    --br-body-weight: {{ settings.type_body_font.weight }};
+    {%- endif -%}
+    --sc-font-mono: var(--sc-font-text);
+
+    --sc-maxw: {{ settings.page_width | divided_by: 16.0 }}rem;
+    --sc-r-sm: {{ settings.corner_radius }}px;
+    --sc-r-md: {{ settings.corner_radius | times: 2 }}px;
+    --sc-r-lg: {{ settings.corner_radius | times: 3.5 }}px;
+    --br-heading-case: uppercase;
+
+    --br-wood: var(--sc-accent);
+    --br-wood-text: var(--sc-accent-text);
+    --br-pine: var(--sc-surface);
+    --br-stone: var(--sc-surface);
+    --br-sale: {{ settings.color_sale }};
+    --br-radius: {{ settings.corner_radius }}px;
+    --br-page-width: {{ settings.page_width }}px;
+    --br-display-style: normal;
+    --br-logo-h: 38px;
+    color-scheme: dark;
+  }
+</style>

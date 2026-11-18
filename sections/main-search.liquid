@@ -1,0 +1,124 @@
+{%- liquid
+  assign per_page = section.settings.per_page
+  assign sort_by = search.sort_by | default: search.default_sort_by
+-%}
+<div class="page-width search-page">
+  <div class="u-stack">
+    <p class="br-rule">{{ 'general.search.search' | t }}</p>
+    <h1 class="br-display search-page__title">
+      {%- if search.performed -%}{{ 'general.search.results_title' | t: terms: search.terms }}{%- else -%}{{ 'general.search.search' | t }}{%- endif -%}
+    </h1>
+    <form action="{{ routes.search_url }}" method="get" role="search" class="search-page__form">
+      <input type="hidden" name="options[prefix]" value="last">
+      <div class="field">
+        <label class="visually-hidden" for="SearchPageInput">{{ 'general.search.search' | t }}</label>
+        <input class="field__input" id="SearchPageInput" type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}">
+      </div>
+      <button type="submit" class="btn">{{ 'general.search.search' | t }}</button>
+    </form>
+  </div>
+
+  {%- if search.performed -%}
+    {%- if search.results_count == 0 -%}
+      <div class="empty-state">
+        <h2 class="br-display empty-state__title">{{ 'general.search.no_results' | t: terms: search.terms }}</h2>
+        <a class="btn" href="{{ routes.all_products_collection_url }}">{{ 'general.search.browse_all' | t }} {% render 'icon', icon: 'arrow' %}</a>
+      </div>
+    {%- else -%}
+      <div class="collection" data-collection data-section-id="{{ section.id }}" data-default-cols="4">
+        <div class="collection__bar-wrap">
+          <div class="collection__bar">
+            <p class="collection__count search-page__count" data-results-count>{{ 'general.search.results_count' | t: count: search.results_count }}</p>
+            <div class="collection__tools">
+              {%- if section.settings.enable_filtering -%}
+                <button type="button" class="collection__tool collection__filter-toggle" data-filter-toggle aria-expanded="false" aria-controls="SearchFilters-{{ section.id }}">{% render 'icon', icon: 'menu' %}<span>{{ 'sections.collection.filter' | t }}</span></button>
+              {%- endif -%}
+              {%- if section.settings.enable_sorting -%}
+                <form action="{{ routes.search_url }}" method="get" class="collection__sort" data-sort-form>
+                  <input type="hidden" name="q" value="{{ search.terms | escape }}">
+                  <input type="hidden" name="options[prefix]" value="last">
+                  <label class="visually-hidden" for="SortBy-{{ section.id }}">{{ 'sections.collection.sort_by' | t }}</label>
+                  <div class="select">
+                    <select class="select__select" id="SortBy-{{ section.id }}" name="sort_by" data-sort-select>
+                      {%- for option in search.sort_options -%}
+                        <option value="{{ option.value }}"{% if option.value == sort_by %} selected{% endif %}>{{ option.name }}</option>
+                      {%- endfor -%}
+                    </select>
+                    {% render 'icon', icon: 'chevron' %}
+                  </div>
+                </form>
+              {%- endif -%}
+            </div>
+          </div>
+          {%- if section.settings.enable_filtering -%}
+            <div class="collection__filters" id="SearchFilters-{{ section.id }}" data-filters hidden>
+              {% render 'facets', results: search, enable_sorting: section.settings.enable_sorting, section_id: section.id, sort_by: sort_by %}
+            </div>
+          {%- endif -%}
+        </div>
+        <div class="collection__body" style="padding-inline:0">
+          <div class="collection__results" data-results>
+            {%- paginate search.results by per_page -%}
+              {%- liquid
+                assign products = search.results | where: 'object_type', 'product'
+                assign others = search.results | where: 'object_type', 'article'
+                assign pages = search.results | where: 'object_type', 'page'
+              -%}
+              <div class="search-results">
+                {%- if products.size > 0 -%}
+                  <div class="search-results__group">
+                    <p class="br-rule">{{ 'general.search.products' | t }}</p>
+                    <div class="product-grid product-grid--4">
+                      {%- for product in products -%}
+                        {% render 'product-card', product: product %}
+                      {%- endfor -%}
+                    </div>
+                  </div>
+                {%- endif -%}
+                {%- if others.size > 0 or pages.size > 0 -%}
+                  <div class="search-results__group">
+                    <p class="br-rule">{{ 'general.search.pages_and_articles' | t }}</p>
+                    <ul class="result-list" role="list">
+                      {%- for item in search.results -%}
+                        {%- if item.object_type == 'article' -%}
+                          <li>
+                            <a class="result{% unless item.image %} result--noimg{% endunless %}" href="{{ item.url }}">
+                              {%- if item.image -%}<span class="result__img">{{ item.image | image_url: width: 200 | image_tag: loading: 'lazy', alt: '' }}</span>{%- endif -%}
+                              <span><span class="result__title">{{ item.title | escape }}</span><p class="result__text">{{ item.excerpt_or_content | strip_html | truncate: 120 }}</p></span>
+                              <span class="result__meta">{{ 'general.search.article' | t }}</span>
+                            </a>
+                          </li>
+                        {%- elsif item.object_type == 'page' -%}
+                          <li>
+                            <a class="result result--noimg" href="{{ item.url }}">
+                              <span><span class="result__title">{{ item.title | escape }}</span><p class="result__text">{{ item.content | strip_html | truncate: 120 }}</p></span>
+                              <span class="result__meta">{{ 'general.search.page' | t }}</span>
+                            </a>
+                          </li>
+                        {%- endif -%}
+                      {%- endfor -%}
+                    </ul>
+                  </div>
+                {%- endif -%}
+              </div>
+              {% render 'pagination', paginate: paginate %}
+            {%- endpaginate -%}
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+  {%- endif -%}
+</div>
+<script src="{{ 'gx-facets.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Search results",
+  "tag": "section",
+  "settings": [
+    { "type": "range", "id": "per_page", "min": 8, "max": 48, "step": 4, "label": "Results per page", "default": 24 },
+    { "type": "checkbox", "id": "enable_filtering", "label": "Enable filtering", "default": true },
+    { "type": "checkbox", "id": "enable_sorting", "label": "Enable sorting", "default": true }
+  ]
+}
+{% endschema %}

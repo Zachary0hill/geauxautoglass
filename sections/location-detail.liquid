@@ -1,0 +1,140 @@
+{%- comment -%}
+  One shop: address, phone and hours beside a live Google map, plus AutoRepair structured
+  data for local search.
+{%- endcomment -%}
+{%- liquid
+  assign phone_number = section.settings.phone_custom
+  if section.settings.phone == 'lafayette'
+    assign phone_number = settings.phone_lafayette
+  elsif section.settings.phone == 'new_orleans'
+    assign phone_number = settings.phone_new_orleans
+  endif
+  capture tel
+    render 'phone', phone: phone_number
+  endcapture
+  capture e164
+    render 'phone', phone: phone_number, as: 'e164'
+  endcapture
+  assign e164 = e164 | strip
+  assign directions = section.settings.directions_link
+  if section.settings.directions == 'google_lafayette'
+    assign directions = settings.google_lafayette_url
+  elsif section.settings.directions == 'google_new_orleans'
+    assign directions = settings.google_new_orleans_url
+  endif
+  assign hours = section.settings.hours | newline_to_br | strip_newlines | split: '<br />'
+  assign map_title = 'sections.locations.map_title' | t: name: section.settings.map_name
+  assign areas = section.settings.areas | split: ','
+  if section.settings.image != blank
+    assign ld_image = section.settings.image | image_url: width: 1200 | prepend: 'https:'
+  else
+    assign ld_image = 'loc-kenner.jpg' | asset_url | prepend: 'https:'
+  endif
+  assign site_url = shop.url | default: request.origin
+-%}
+<section class="sc-section paper{% if section.settings.ground == 'paper-2' %} paper--2{% endif %}"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id | handle }}"{% endif %} data-sc-act="flow" data-sc-drift="{{ settings.color_canvas }}">
+  <div class="sc-wrap locd">
+    <div data-sc-in data-sc-stagger="70">
+      {%- if section.settings.tag != blank -%}<p class="tag tag--red">{{ section.settings.tag | escape }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="sc-display sc-display--md">{% render 'heading-hl', text: section.settings.heading, hl: section.settings.highlight %}</h2>{%- endif -%}
+      <dl class="locd__list">
+        {%- if section.settings.street != blank -%}
+          <div><dt>{{ 'sections.locations.address' | t }}</dt><dd><span class="ln">{{ section.settings.street | escape }}</span><span class="ln">{{ section.settings.city | escape }}, {{ section.settings.region | escape }} {{ section.settings.postal | escape }}</span></dd></div>
+        {%- endif -%}
+        {%- if phone_number != blank -%}
+          <div><dt>{{ 'sections.locations.phone' | t }}</dt><dd><a href="{{ tel | strip }}">{{ phone_number | escape }}</a></dd></div>
+        {%- endif -%}
+        {%- if hours.size > 0 -%}
+          <div><dt>{{ 'sections.locations.hours' | t }}</dt><dd>{% for line in hours %}{% assign row = line | strip %}{% if row != blank %}<span class="ln">{{ row | escape }}</span>{% endif %}{% endfor %}</dd></div>
+        {%- endif -%}
+      </dl>
+      <div class="locd__actions">
+        {%- if directions != blank -%}<a class="btn btn--accent" href="{{ directions }}" target="_blank" rel="noopener">{{ 'sections.locations.directions' | t }}</a>{%- endif -%}
+        {%- render 'action-link', action: section.settings.btn_action, label: section.settings.btn_label, url: section.settings.btn_link, class: 'btn btn--line' -%}
+      </div>
+    </div>
+    {%- if section.settings.map_url != blank -%}
+      <div class="locd__map"><iframe src="{{ section.settings.map_url | escape }}" title="{{ map_title | escape }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+    {%- endif -%}
+  </div>
+</section>
+
+{%- if section.settings.schema_name != blank -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  "name": {{ section.settings.schema_name | json }},
+  "image": {{ ld_image | json }},
+  {%- if e164 != blank %}
+  "telephone": {{ e164 | json }},
+  {%- endif -%}
+  {%- if settings.email != blank %}
+  "email": {{ settings.email | json }},
+  {%- endif %}
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": {{ section.settings.street | json }},
+    "addressLocality": {{ section.settings.city | json }},
+    "addressRegion": {{ section.settings.region | json }},
+    "postalCode": {{ section.settings.postal | json }},
+    "addressCountry": "US"
+  },
+  {%- if areas.size > 0 %}
+  "areaServed": [{% for area in areas %}{{ area | strip | json }}{% unless forloop.last %}, {% endunless %}{% endfor %}],
+  {%- endif %}
+  "openingHoursSpecification": [
+    {%- if section.settings.weekday_opens != blank and section.settings.weekday_closes != blank %}
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": {{ section.settings.weekday_opens | json }}, "closes": {{ section.settings.weekday_closes | json }} }
+    {%- endif -%}
+    {%- if section.settings.saturday_opens != blank and section.settings.saturday_closes != blank -%}
+    {%- if section.settings.weekday_opens != blank and section.settings.weekday_closes != blank -%},{%- endif %}
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": {{ section.settings.saturday_opens | json }}, "closes": {{ section.settings.saturday_closes | json }} }
+    {%- endif %}
+  ],
+  "parentOrganization": { "@type": "Organization", "name": {{ settings.brand_name | default: shop.name | json }}, "url": {{ site_url | json }} },
+  "url": {{ canonical_url | json }}
+}
+</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Location detail",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "tag", "label": "Tag", "default": "Visit the shop" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Geaux Auto Glass, Kenner." },
+    { "type": "text", "id": "highlight", "label": "Words on the red bar", "info": "Optional. Must match words in the heading exactly.", "default": "Kenner." },
+    { "type": "header", "content": "Address" },
+    { "type": "text", "id": "street", "label": "Street", "default": "2837 Tifton St Unit B" },
+    { "type": "text", "id": "city", "label": "City", "default": "Kenner" },
+    { "type": "text", "id": "region", "label": "State", "default": "LA" },
+    { "type": "text", "id": "postal", "label": "ZIP", "default": "70062" },
+    { "type": "select", "id": "phone", "label": "Phone", "options": [{ "value": "lafayette", "label": "Lafayette (Theme settings)" }, { "value": "new_orleans", "label": "New Orleans (Theme settings)" }, { "value": "custom", "label": "Other (below)" }], "default": "new_orleans" },
+    { "type": "text", "id": "phone_custom", "label": "Other phone" },
+    { "type": "textarea", "id": "hours", "label": "Hours", "info": "One line per row.", "default": "Monday to Friday 8 AM to 5 PM\nSaturday 8 AM to 2 PM\nSunday closed" },
+    { "type": "header", "content": "Buttons" },
+    { "type": "select", "id": "directions", "label": "Directions button", "options": [{ "value": "google_lafayette", "label": "Google, Lafayette (Theme settings)" }, { "value": "google_new_orleans", "label": "Google, New Orleans (Theme settings)" }, { "value": "custom", "label": "Other (below)" }], "default": "google_new_orleans" },
+    { "type": "text", "id": "directions_link", "label": "Other directions link" },
+    { "type": "text", "id": "btn_label", "label": "Second button label", "default": "Get a quote" },
+    { "type": "select", "id": "btn_action", "label": "Second button goes to", "options": [{"value": "quote", "label": "Quote form"}, {"value": "call_lafayette", "label": "Call Lafayette"}, {"value": "call_new_orleans", "label": "Call New Orleans"}, {"value": "text_lafayette", "label": "Text Lafayette"}, {"value": "email", "label": "Email"}, {"value": "enterprise_email", "label": "Enterprise email"}, {"value": "enterprise_form", "label": "Enterprise claim form"}, {"value": "enterprise_photo", "label": "Enterprise photo upload"}, {"value": "shop", "label": "Merchandise (all products)"}, {"value": "google_lafayette", "label": "Google, Lafayette"}, {"value": "google_new_orleans", "label": "Google, New Orleans"}, {"value": "custom", "label": "Custom link (below)"}], "default": "quote" },
+    { "type": "text", "id": "btn_link", "label": "Second button custom link" },
+    { "type": "header", "content": "Map" },
+    { "type": "text", "id": "map_url", "label": "Map embed link", "info": "The src of a Google Maps embed. Swap in the Business Profile's own embed link when you have it.", "default": "https://www.google.com/maps?q=Geaux+Auto+Glass+2837+Tifton+St+Kenner+LA+70062&output=embed" },
+    { "type": "text", "id": "map_name", "label": "Shop name for the map description", "default": "New Orleans" },
+    { "type": "header", "content": "For search engines" },
+    { "type": "text", "id": "schema_name", "label": "Business name", "info": "Empty: no structured data from this section.", "default": "Geaux Auto Glass New Orleans" },
+    { "type": "image_picker", "id": "image", "label": "Shop photo", "info": "Empty: the bundled Kenner shop photo." },
+    { "type": "text", "id": "areas", "label": "Areas served", "info": "Separate with commas.", "default": "New Orleans, Kenner, Louisiana" },
+    { "type": "text", "id": "weekday_opens", "label": "Monday to Friday opens", "info": "24 hour time, like 08:00", "default": "08:00" },
+    { "type": "text", "id": "weekday_closes", "label": "Monday to Friday closes", "default": "17:00" },
+    { "type": "text", "id": "saturday_opens", "label": "Saturday opens", "info": "Empty: closed.", "default": "08:00" },
+    { "type": "text", "id": "saturday_closes", "label": "Saturday closes", "default": "14:00" },
+    { "type": "select", "id": "ground", "label": "Ground", "options": [{ "value": "paper", "label": "White" }, { "value": "paper-2", "label": "Off-white" }], "default": "paper" },
+    { "type": "text", "id": "anchor_id", "label": "Anchor id" }
+  ],
+  "presets": [{ "name": "Location detail" }],
+  "disabled_on": { "groups": ["header", "footer"] }
+}
+{% endschema %}

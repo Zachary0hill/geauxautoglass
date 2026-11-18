@@ -1,0 +1,46 @@
+{%- if section.settings.text != blank -%}
+  <div class="br-announce plate--{{ section.settings.color_scheme }}" role="region" aria-label="{{ 'sections.announcement.label' | t }}">
+    <div class="page-width br-announce__inner">
+      {%- if section.settings.link != blank -%}
+        <a href="{{ section.settings.link }}">{{ section.settings.text | escape }}</a>
+      {%- else -%}
+        <span>{{ section.settings.text | escape }}</span>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": ""
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "options": [
+        { "value": "accent", "label": "Accent" },
+        { "value": "pine", "label": "Pine" },
+        { "value": "default", "label": "Default" },
+        { "value": "surface", "label": "Surface" }
+      ],
+      "default": "accent"
+    }
+  ],
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "presets": [{ "name": "Announcement bar" }]
+}
+{% endschema %}

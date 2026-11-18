@@ -1,0 +1,42 @@
+{%- liquid
+  assign page_title = section.settings.title
+  if page_title == blank
+    assign page_title = 'sections.collection_list.title' | t
+  endif
+-%}
+<div class="page-width blog">
+  <div class="u-stack">
+    <p class="br-rule">{{ 'sections.collection_list.caption' | t }}</p>
+    <h1 class="br-display blog__title">{{ page_title | escape }}</h1>
+  </div>
+  {%- paginate collections by section.settings.per_page -%}
+    <div class="collection-list">
+      {%- for collection in collections -%}
+        <a class="tile" href="{{ collection.url }}" style="--tile-ratio: 4 / 5;">
+          {%- if collection.featured_image -%}
+            {{ collection.featured_image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '400, 600, 900', sizes: '(min-width: 900px) min(30vw, 380px), 46vw', alt: '' }}
+          {%- else -%}
+            {{ 'collection-' | append: forloop.index | placeholder_svg_tag: 'placeholder' }}
+          {%- endif -%}
+          <span class="tile__scrim" aria-hidden="true"></span>
+          <span class="tile__text">
+            <span class="br-display tile__title">{{ collection.title | escape }}</span>
+            <span class="tile__meta">{{ 'sections.gallery_rail.pieces' | t: count: collection.all_products_count }} {% render 'icon', icon: 'arrow' %}</span>
+          </span>
+        </a>
+      {%- endfor -%}
+    </div>
+    {% render 'pagination', paginate: paginate %}
+  {%- endpaginate -%}
+</div>
+
+{% schema %}
+{
+  "name": "Collections list page",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Collections" },
+    { "type": "range", "id": "per_page", "min": 6, "max": 30, "step": 3, "label": "Collections per page", "default": 12 }
+  ]
+}
+{% endschema %}

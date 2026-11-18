@@ -1,0 +1,102 @@
+<div class="auth-layout">
+  <aside class="auth-layout__panel plate--pine">
+    <div class="auth-layout__panel-inner">
+      <p class="br-rule">{{ section.settings.panel_caption | escape }}</p>
+      <h2 class="br-display auth-layout__heading">{{ section.settings.panel_heading | escape }}</h2>
+      <p class="br-body">{{ section.settings.panel_text | escape }}</p>
+    </div>
+    {%- if settings.logo != blank -%}
+      {{ settings.logo | image_url: width: 600 | image_tag: class: 'auth-layout__mark', alt: '', loading: 'lazy' }}
+    {%- elsif settings.logo == blank -%}
+      <img class="auth-layout__mark" src="{{ 'gx-logo.png' | asset_url }}" width="300" height="223" alt="" loading="lazy">
+    {%- endif -%}
+  </aside>
+
+  <div class="auth-layout__main">
+    <div class="auth">
+      <div id="RecoverForm" class="form-stack" hidden>
+        {%- form 'recover_customer_password', class: 'form-stack' -%}
+          {%- assign recover_success = form.posted_successfully? -%}
+          <div class="u-stack">
+            <p class="br-rule">{{ 'customer.account.caption' | t }}</p>
+            <h1 class="br-display auth__title">{{ 'customer.recover_password.title' | t }}</h1>
+            <p class="br-body">{{ 'customer.recover_password.subtext' | t }}</p>
+          </div>
+          {%- if form.errors -%}<p class="form__message form__message--error" role="alert">{% render 'icon', icon: 'error' %} {{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>{%- endif -%}
+          <div class="field">
+            <label class="field__label" for="RecoverEmail">{{ 'customer.login_page.email' | t }}</label>
+            <input class="field__input" id="RecoverEmail" type="email" name="email" value="" autocomplete="email" required>
+          </div>
+          <div class="auth__actions">
+            <button type="submit" class="btn btn--lg">{{ 'customer.recover_password.submit' | t }}</button>
+            <a class="btn btn--lg btn--ghost" href="#LoginForm" data-recover-toggle>{{ 'customer.recover_password.cancel' | t }}</a>
+          </div>
+        {%- endform -%}
+      </div>
+
+      <div id="LoginForm" class="form-stack">
+        <div class="u-stack">
+          <p class="br-rule">{{ 'customer.account.caption' | t }}</p>
+          <h1 class="br-display auth__title" id="LoginHeading">{{ 'customer.login_page.title' | t }}</h1>
+        </div>
+        {%- if recover_success -%}
+          <p class="form__message form__message--success" role="status" tabindex="-1" autofocus>{% render 'icon', icon: 'check' %} {{ 'customer.recover_password.success' | t }}</p>
+        {%- endif -%}
+        {%- form 'customer_login', class: 'form-stack', novalidate: 'novalidate' -%}
+          {%- if form.errors -%}
+            <div class="form__message form__message--error form__errors" role="alert" tabindex="-1" autofocus>{% render 'icon', icon: 'error' %}<div>{{ 'customer.login_page.error' | t }}<ul>{%- for field in form.errors -%}<li>{%- if field == 'form' -%}{{ form.errors.messages[field] }}{%- else -%}{{ form.errors.translated_fields[field] | capitalize }} {{ form.errors.messages[field] }}{%- endif -%}</li>{%- endfor -%}</ul></div></div>
+          {%- endif -%}
+          <div class="field">
+            <label class="field__label" for="CustomerEmail">{{ 'customer.login_page.email' | t }}</label>
+            <input class="field__input" id="CustomerEmail" type="email" name="customer[email]" autocomplete="email" autocorrect="off" autocapitalize="off" required>
+          </div>
+          {%- if form.password_needed -%}
+            <div class="field">
+              <div class="field__row">
+                <label class="field__label" for="CustomerPassword">{{ 'customer.login_page.password' | t }}</label>
+                <a class="link auth__forgot" href="#RecoverForm" data-recover-toggle>{{ 'customer.login_page.forgot_password' | t }}</a>
+              </div>
+              <input class="field__input" id="CustomerPassword" type="password" name="customer[password]" autocomplete="current-password" required>
+            </div>
+          {%- endif -%}
+          <div><button type="submit" class="btn btn--lg btn--full">{{ 'customer.login_page.sign_in' | t }}</button></div>
+        {%- endform -%}
+        <p class="auth__alt">{{ 'customer.login_page.new_customer' | t }} <a href="{{ routes.account_register_url }}">{{ 'customer.login_page.create_account' | t }}</a></p>
+
+        {%- if shop.checkout.guest_login -%}
+          <div class="auth__guest">
+            <p class="br-caption">{{ 'customer.login_page.guest_title' | t }}</p>
+            {%- form 'guest_login' -%}<button type="submit" class="btn btn--ghost">{{ 'customer.login_page.guest_continue' | t }}</button>{%- endform -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    function toggle(showRecover) {
+      var r = document.getElementById('RecoverForm'), l = document.getElementById('LoginForm');
+      if (!r || !l) return;
+      r.hidden = !showRecover; l.hidden = showRecover;
+      var f = (showRecover ? r : l).querySelector('input'); if (f) f.focus();
+    }
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('[data-recover-toggle]'); if (!a) return;
+      e.preventDefault(); toggle(a.getAttribute('href') === '#RecoverForm');
+    });
+    if (location.hash === '#recover') toggle(true);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Login",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "panel_caption", "label": "Panel caption", "default": "Members" },
+    { "type": "text", "id": "panel_heading", "label": "Panel heading", "default": "Your orders and addresses." },
+    { "type": "text", "id": "panel_text", "label": "Panel text", "default": "Sign in to track orders, save addresses, and check out faster next time." }
+  ]
+}
+{% endschema %}

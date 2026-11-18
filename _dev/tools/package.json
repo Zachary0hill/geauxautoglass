@@ -1,0 +1,12 @@
+{
+  "name": "theme-dev-tools",
+  "private": true,
+  "type": "module",
+  "description": "Theme Check, local Liquid preview and QA probes. Not part of the theme: Shopify ignores _dev/.",
+  "devDependencies": {
+    "@shopify/theme-check-node": "^3.29.0",
+    "liquidjs": "10.16.1",
+    "puppeteer-core": "22.15.0",
+    "lighthouse": "12.2.1"
+  }
+}

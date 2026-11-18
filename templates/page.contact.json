@@ -1,0 +1,1 @@
+{ "sections": { "main": { "type": "contact-form", "settings": { "caption": "Contact", "heading": "Talk to us", "text": "<p>Questions about a project or an order? Send it here, or give us a call.</p>", "show_phone": true, "note": "" } } }, "order": ["main"] }

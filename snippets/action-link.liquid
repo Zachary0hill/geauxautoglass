@@ -1,0 +1,45 @@
+{%- comment -%}
+  One link whose destination is picked from a list, so phone numbers, emails and
+  form links live once in Theme settings > Business.
+  Params:
+    action  quote · call_lafayette · call_new_orleans · text_lafayette · email · enterprise_email ·
+            enterprise_form · enterprise_photo · shop · google_lafayette · google_new_orleans · custom
+    label   link text. Blank on a call, text or email action: the number or address is used.
+    url     destination when action is 'custom'
+    class   class attribute
+    attrs   extra attributes, printed as is (for block.shopify_attributes)
+    current true adds aria-current="page"
+{%- endcomment -%}
+{%- liquid
+  capture href
+    render 'action-href', action: action, url: url
+  endcapture
+  assign href = href | strip
+  assign text = label
+  if text == blank
+    case action
+      when 'call_lafayette'
+        assign text = 'general.call_number' | t: phone: settings.phone_lafayette
+      when 'call_new_orleans'
+        assign text = 'general.call_number' | t: phone: settings.phone_new_orleans
+      when 'text_lafayette'
+        capture van
+          render 'phone', phone: settings.phone_lafayette, as: 'van'
+        endcapture
+        assign van = van | strip
+        assign text = 'general.text_number' | t: phone: van
+      when 'email'
+        assign text = settings.email
+      when 'enterprise_email'
+        assign text = 'general.email_address' | t: email: settings.enterprise_email
+    endcase
+  endif
+  assign scheme = href | slice: 0, 4
+  assign new_tab = false
+  if scheme == 'http'
+    assign new_tab = true
+  endif
+-%}
+{%- if href != blank and text != blank -%}
+  <a{% if class != blank %} class="{{ class }}"{% endif %} href="{{ href }}"{% if new_tab %} target="_blank" rel="noopener"{% endif %}{% if current %} aria-current="page"{% endif %}{% if attrs != blank %} {{ attrs }}{% endif %}>{{ text | escape }}</a>
+{%- endif -%}

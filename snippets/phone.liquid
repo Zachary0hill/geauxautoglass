@@ -1,0 +1,30 @@
+{%- comment -%}
+  One phone number from theme settings, in the form a link or label needs.
+  Params:
+    phone  the number as typed in Theme settings > Business, e.g. "(337) 295-2874"
+    as     'tel' (default) tel:+13372952874 · 'sms' sms:+13372952874 · 'e164' +13372952874 · 'van' 337.295.2874
+  Capture the output and strip it.
+{%- endcomment -%}
+{%- liquid
+  assign d = phone | remove: '(' | remove: ')' | remove: ' ' | remove: '-' | remove: '.' | remove: '+'
+  if d.size == 10
+    assign e164 = '+1' | append: d
+    assign local = d
+  else
+    assign e164 = '+' | append: d
+    assign local = d | slice: 1, 10
+  endif
+  case as
+    when 'sms'
+      echo 'sms:' | append: e164
+    when 'e164'
+      echo e164
+    when 'van'
+      assign a = local | slice: 0, 3
+      assign b = local | slice: 3, 3
+      assign c = local | slice: 6, 4
+      echo a | append: '.' | append: b | append: '.' | append: c
+    else
+      echo 'tel:' | append: e164
+  endcase
+-%}

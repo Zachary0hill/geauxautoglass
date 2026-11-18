@@ -740,6 +740,9 @@ button.link { background: none; border: 0; padding: 0; font: inherit; font-weigh
 .svc.paper { background: var(--gx-paper); }
 .svc.paper--2 { background: var(--gx-paper-2); }
 .svc__grid:first-child { margin-top: 0; }
+/* The band is always dark. On a white grid it takes the dark-ground ink back, or its copy disappears. */
+.svc.paper .svc__band { --sc-ink: var(--gx-ink-on-dark); --sc-ink-soft: var(--gx-soft-on-dark); --sc-accent-text: var(--gx-red-lift);
+  --sc-hairline: color-mix(in oklab, var(--sc-ink) 12%, transparent); --sc-hairline-strong: color-mix(in oklab, var(--sc-ink) 22%, transparent); color: var(--sc-ink); }
 /* Anchored rows and sections stop below the bar. */
 [id] { scroll-margin-top: calc(var(--bar-h) + 1rem); }
 #top, .act-hero, [data-sc-act="pin"][id] { scroll-margin-top: 0; }

@@ -6,7 +6,8 @@
 Checks:
   - range settings: default and every stored value on min + n*step, at most 101 steps
   - url settings: default only /collections or /collections/all
-  - select settings: default is one of the options
+  - select settings: default is one of the options, option labels at most 50 characters
+  - no setting has a blank default ("default": "")
   - settings_data.json "current" holds every theme setting that has a default
   - every section type used in templates/*.json and sections/*-group.json exists
   - JSON in section {% schema %} blocks parses
@@ -39,6 +40,11 @@ def check_settings(settings, where):
                 problems.append(f"{where}: range '{sid}' default {d} is off the {lo}+n*{step} grid")
         if t == "url" and "default" in s and s["default"] not in ("/collections", "/collections/all"):
             problems.append(f"{where}: url '{sid}' default {s['default']!r} is not allowed (use type text)")
+        if s.get("default") == "":
+            problems.append(f"{where}: '{sid}' default can't be blank (drop the default key)")
+        for o in s.get("options", []) if isinstance(s.get("options"), list) else []:
+            if len(o.get("label", "")) > 50:
+                problems.append(f"{where}: '{sid}' option label over 50 characters: {o['label']!r}")
         if t == "select" and "default" in s and s["default"] not in [o["value"] for o in s.get("options", [])]:
             problems.append(f"{where}: select '{sid}' default {s['default']!r} is not an option")
 

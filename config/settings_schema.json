@@ -101,7 +101,6 @@
         "type": "text",
         "id": "founded_year",
         "label": "Copyright year",
-        "default": "",
         "info": "Leave empty for the current year."
       }
     ]

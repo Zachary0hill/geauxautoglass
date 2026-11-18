@@ -18,10 +18,10 @@
       "in_area": "in {{ area }}"
     },
     "404": {
-      "title": "Nothing here yet.",
+      "title": "Page not found",
       "subtext": "The page you were looking for has moved or never existed. Try a search, or start from the front.",
       "home": "Back to the front",
-      "shop": "Shop the wood store"
+      "shop": "Shop the store"
     },
     "page": {
       "caption": "Page"
@@ -41,7 +41,7 @@
     },
     "search": {
       "search": "Search",
-      "placeholder": "Search the wood store",
+      "placeholder": "Search the store",
       "results_title": "Results for \"{{ terms }}\"",
       "results_count": {
         "one": "{{ count }} result",
@@ -59,7 +59,7 @@
       "pages_and_articles": "Pages and articles",
       "suggestions": "Search suggestions",
       "view_all": "View all results",
-      "hint": "Try a car, a brand, or a collection. Press Esc to close."
+      "hint": "Try a product name or a type. Press Esc to close."
     },
     "share": {
       "url": "Link",
@@ -264,7 +264,7 @@
       "total": "Total"
     },
     "drawer": {
-      "empty_text": "Your cart is empty. Have a look at the wood store."
+      "empty_text": "Your cart is empty."
     }
   },
   "contact": {

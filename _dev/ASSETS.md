@@ -92,7 +92,7 @@ Upload originals (Content → Files) so Shopify serves them resized.
 | Home · Locations | Lafayette | `loc-lafayette.jpg` | Landscape | 1240 px wide | |
 | Home · Locations | New Orleans | `loc-kenner.jpg` | Landscape | 1240 px wide | 504 van photo after edits due. Update the description too. |
 | Inner page heads | Photo | per page | Any | 1400 px wide | "Photo position" keeps the subject in view. |
-| Services · Service rows | One per row | the six `svc-*.jpg` | Shown 4:3 | 1200 px | |
+| Services · Services grid | One per card | the six `svc-*.jpg` | Shown square | 1200 px | |
 | New Orleans · Location detail | Shop photo (search engines) | `loc-kenner.jpg` | Landscape | 1200 px wide | |
 
 Carrier logos: Home and Insurance → Insurer strip. Bundled SVGs for State Farm, Progressive, GEICO, Allstate, Liberty Mutual.

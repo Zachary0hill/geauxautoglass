@@ -734,6 +734,12 @@ button.link { background: none; border: 0; padding: 0; font: inherit; font-weigh
 }
 @keyframes gx-cta-in { from { opacity: 0; translate: 0 -6px; } }
 @media (prefers-reduced-motion: reduce) { body.tab-hidden .bar__cta { animation: none; } }
+/* Services grid without the band (services page): the section closes on its own padding,
+   and with the heading block off the cards start at the top. */
+.svc--plain { padding-bottom: var(--sc-section); }
+.svc.paper { background: var(--gx-paper); }
+.svc.paper--2 { background: var(--gx-paper-2); }
+.svc__grid:first-child { margin-top: 0; }
 /* Anchored rows and sections stop below the bar. */
 [id] { scroll-margin-top: calc(var(--bar-h) + 1rem); }
 #top, .act-hero, [data-sc-act="pin"][id] { scroll-margin-top: 0; }

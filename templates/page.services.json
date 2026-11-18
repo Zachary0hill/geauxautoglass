@@ -26,86 +26,111 @@
         "offer_2": ""
       }
     },
-    "rows": {
-      "type": "service-rows",
+    "services": {
+      "type": "services-grid",
       "blocks": {
-        "row1": {
-          "type": "row",
+        "service1": {
+          "type": "service",
           "settings": {
-            "title": "Windshield replacement",
-            "text": "Mobile service at home or work, or in-shop installation.",
             "bundled": "svc-windshield",
             "image_alt": "",
+            "title": "Windshield replacement",
+            "text": "Mobile service at home or work, or in-shop installation.",
+            "dir": "left",
             "anchor_id": "windshield"
           }
         },
-        "row2": {
-          "type": "row",
+        "service2": {
+          "type": "service",
           "settings": {
-            "title": "Chip repair",
-            "text": "Minor chip repair.",
             "bundled": "svc-chip",
             "image_alt": "",
+            "title": "Chip repair",
+            "text": "Minor chip repair.",
+            "dir": "up",
             "anchor_id": "chip"
           }
         },
-        "row3": {
-          "type": "row",
+        "service3": {
+          "type": "service",
           "settings": {
-            "title": "Back glass",
-            "text": "All vehicle types.",
             "bundled": "svc-back",
             "image_alt": "",
+            "title": "Back glass",
+            "text": "All vehicle types.",
+            "dir": "right",
             "anchor_id": "back-glass"
           }
         },
-        "row4": {
-          "type": "row",
+        "service4": {
+          "type": "service",
           "settings": {
-            "title": "ADAS recalibration",
-            "text": "ADAS calibration for cars, SUVs and trucks.",
             "bundled": "svc-adas",
             "image_alt": "",
+            "title": "ADAS recalibration",
+            "text": "ADAS calibration for cars, SUVs and trucks.",
+            "dir": "iris",
             "anchor_id": "adas"
           }
         },
-        "row5": {
-          "type": "row",
+        "service5": {
+          "type": "service",
           "settings": {
-            "title": "Door glass",
-            "text": "Door glass replacements. Domestic and foreign.",
             "bundled": "svc-door",
             "image_alt": "",
+            "title": "Door glass",
+            "text": "Door glass replacements. Domestic and foreign.",
+            "dir": "up",
             "anchor_id": "door-glass"
           }
         },
-        "row6": {
-          "type": "row",
+        "service6": {
+          "type": "service",
           "settings": {
-            "title": "Commercial vehicles",
-            "text": "Both personal and commercial vehicles.",
             "bundled": "svc-fleet",
             "image_alt": "",
+            "title": "Commercial vehicles",
+            "text": "Both personal and commercial vehicles.",
+            "dir": "left",
             "anchor_id": "commercial"
           }
         }
       },
       "block_order": [
-        "row1",
-        "row2",
-        "row3",
-        "row4",
-        "row5",
-        "row6"
+        "service1",
+        "service2",
+        "service3",
+        "service4",
+        "service5",
+        "service6"
       ],
       "settings": {
-        "btn_1_label": "Get a quote",
-        "btn_1_action": "quote",
-        "btn_1_link": "",
-        "btn_2_label": "",
-        "btn_2_action": "call_lafayette",
-        "btn_2_link": "",
-        "ground": "paper"
+        "ground": "paper",
+        "show_head": false,
+        "tag": "Services",
+        "heading": "Repairs and replacements.",
+        "highlight": "",
+        "text": "Free mobile service. Fast and affordable. Same day or next day.",
+        "btn_label": "Get a quote",
+        "btn_action": "quote",
+        "btn_link": "",
+        "link_label": "All services",
+        "link": "/pages/services",
+        "show_band": false,
+        "band_image_alt": "",
+        "band_tag": "Free mobile service",
+        "band_heading": "We come to you.",
+        "band_highlight": "to you.",
+        "band_text": "Serving all of Louisiana. Same day or next day, in shop or mobile.",
+        "band_cities": "Lafayette, Baton Rouge, New Orleans, Alexandria",
+        "band_cities_label": "Cities our technicians work from",
+        "band_btn_1_label": "Get a quote",
+        "band_btn_1_action": "quote",
+        "band_btn_1_link": "",
+        "band_btn_2_label": "",
+        "band_btn_2_action": "call_lafayette",
+        "band_btn_2_link": "",
+        "anchor_id": ""
       }
     },
     "checklist": {
@@ -187,7 +212,7 @@
   },
   "order": [
     "head",
-    "rows",
+    "services",
     "checklist",
     "cta"
   ]

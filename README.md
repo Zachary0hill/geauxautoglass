@@ -11,9 +11,10 @@ Then follow `_dev/ASSETS.md`: create the six pages, check the settings, swap pho
 
 ## Layout
 
-- `assets/scrollcraft.*`, `phone.js`: the scroll engine from the handoff, unchanged (phone.js minus the social counts read).
+- `assets/scrollcraft.*`: the scroll engine from the handoff, unchanged.
+- `assets/phone.js`: the handoff's per-breakpoint rewrite, minus the social counts read, made reversible (`GXPhone.apply`) so it re-runs when the screen crosses 860px.
 - `assets/theme.css`: engine floor, then the design's `styles.css` unchanged, then what Shopify adds.
-- `assets/theme.js`: the design's `main.js`, with editor re-mount and delegated clicks.
+- `assets/theme.js`: the design's `main.js`, with editor re-mount and delegated clicks, plus the scroll polish: eased scroll-linked values, settled entry reveals, anchor jumps in the history.
 - `snippets/css-variables.liquid`: brand tokens from theme settings.
 - `assets/gx-*`: the shop layer (product, cart, drawer, search, accounts), loaded on shop templates only.
 

@@ -8,7 +8,7 @@
   {%- assign gift_value = gift_card.initial_value | money_with_currency -%}
   <title>{{ 'gift_cards.issued.title' | t: value: gift_value, shop: shop.name }}</title>
   <link rel="canonical" href="{{ canonical_url }}">
-  {%- if settings.favicon != blank -%}<link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 96, height: 96 }}">{%- else -%}<link rel="icon" type="image/png" href="{{ 'gx-favicon.png' | asset_url }}">{%- endif -%}
+  {%- if settings.favicon != blank -%}<link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 96, height: 96 }}">{%- else -%}<link rel="icon" type="image/png" href="{{ 'favicon.png' | asset_url }}">{%- endif -%}
   {{ content_for_header }}
   {{ 'scrollcraft.css' | asset_url | stylesheet_tag }}
   {{ 'gx-base.css' | asset_url | stylesheet_tag }}
@@ -20,7 +20,7 @@
   <div class="giftcard">
     <header class="giftcard__head">
       <a href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}">
-        {%- if settings.logo != blank -%}{{ settings.logo | image_url: width: 360 | image_tag: alt: shop.name, width: 180, height: nil }}{%- else -%}<img src="{{ 'gx-logo.png' | asset_url }}" width="108" height="80" alt="{{ shop.name | escape }}">{%- endif -%}
+        {%- if settings.logo != blank -%}{{ settings.logo | image_url: width: 360 | image_tag: alt: shop.name, width: 180, height: nil }}{%- else -%}<img src="{{ 'logo.png' | asset_img_url: '480x' }}" width="238" height="40" alt="{{ shop.name | escape }}">{%- endif -%}
       </a>
       <span class="br-caption">{{ 'gift_cards.issued.subtext' | t }}</span>
     </header>

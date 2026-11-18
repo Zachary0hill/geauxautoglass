@@ -9,28 +9,113 @@
  */
 {
   "sections": {
-    "banner": {
-      "type": "main-collection-banner",
+    "head": {
+      "type": "page-head",
       "settings": {
-        "show_image": false,
-        "show_description": false
+        "style": "plain",
+        "bundled": "none",
+        "image_alt": "",
+        "focal": "",
+        "show_crumbs": true,
+        "parent_label": "",
+        "parent_link": "",
+        "crumb": "Merchandise",
+        "tag": "Merchandise",
+        "heading": "Shop apparel.",
+        "highlight": "apparel.",
+        "lede": "[count] items in the Geaux Auto Glass store. T-shirts, hoodies, crewnecks, a hat and air fresheners.",
+        "btn_1_label": "Shop the full store",
+        "btn_1_action": "shop",
+        "btn_1_link": "",
+        "btn_2_label": "",
+        "btn_2_action": "custom",
+        "btn_2_link": "",
+        "schools": "",
+        "offer_1": "",
+        "offer_2": ""
       }
     },
     "grid": {
       "type": "main-collection",
+      "blocks": {
+        "group1": {
+          "type": "group",
+          "settings": {
+            "product_type": "T-Shirt",
+            "label": "T-shirt",
+            "chip": "T-shirts",
+            "strip_word": ""
+          }
+        },
+        "group2": {
+          "type": "group",
+          "settings": {
+            "product_type": "Hoodie",
+            "label": "Hoodie",
+            "chip": "Hoodies",
+            "strip_word": "Hoodie"
+          }
+        },
+        "group3": {
+          "type": "group",
+          "settings": {
+            "product_type": "Sweatshirt",
+            "label": "Crewneck",
+            "chip": "Crewnecks",
+            "strip_word": "Crewneck"
+          }
+        },
+        "group4": {
+          "type": "group",
+          "settings": {
+            "product_type": "Hats",
+            "label": "Hat",
+            "chip": "Hats",
+            "strip_word": ""
+          }
+        },
+        "group5": {
+          "type": "group",
+          "settings": {
+            "product_type": "Accessories",
+            "label": "Air freshener",
+            "chip": "Air fresheners",
+            "strip_word": ""
+          }
+        }
+      },
+      "block_order": [
+        "group1",
+        "group2",
+        "group3",
+        "group4",
+        "group5"
+      ],
       "settings": {
-        "per_page": 48,
-        "columns": "4",
-        "sticky_toolbar": true,
-        "show_index": true,
-        "index_limit": 10,
-        "enable_filtering": true,
-        "enable_sorting": true
+        "per_page": 50,
+        "show_filter": true,
+        "strip_prefix": "Geaux Auto Glass",
+        "other_label": "Other",
+        "note": "Every item opens in the Geaux Auto Glass store."
+      }
+    },
+    "cta": {
+      "type": "cta-band",
+      "settings": {
+        "heading": "Wear the brand.",
+        "btn_1_label": "Shop the full store",
+        "btn_1_action": "shop",
+        "btn_1_link": "",
+        "btn_2_label": "Get a quote",
+        "btn_2_action": "quote",
+        "btn_2_link": "",
+        "anchor_id": ""
       }
     }
   },
   "order": [
-    "banner",
-    "grid"
+    "head",
+    "grid",
+    "cta"
   ]
 }

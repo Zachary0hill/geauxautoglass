@@ -741,3 +741,46 @@ button.link { background: none; border: 0; padding: 0; font: inherit; font-weigh
 /* Inner pages: spacing the static build wrote inline. */
 .ratings--top { margin-top: 0; }
 .locd .sc-display { margin-top: var(--sc-3); }
+
+/* ---- shop pages (product, cart, search, accounts...): built from the same parts on the white ground ---- */
+/* The shop layer reads the engine tokens. On a white section wrapper they take the paper values. */
+.shopify-section.paper { --sc-surface: var(--gx-paper-2); --sc-canvas: var(--gx-paper); --br-stone: var(--gx-paper-2); --br-pine: var(--gx-paper-2); --br-wood-text: var(--gx-red-deep); --tint: var(--sc-accent); --sc-shadow-color: 220 12% 40%; color-scheme: light; }
+/* The design's buttons win over the shop layer's on every page. */
+.btn { border: 0; line-height: inherit; white-space: normal; gap: 0; font-family: inherit; }
+.btn--accent, .btn--accent:hover { color: var(--sc-accent-ink); }
+.shopify-section.paper .btn--ghost { color: var(--sc-ink); box-shadow: inset 0 0 0 2px var(--sc-ink); background: none; }
+.shopify-section.paper .btn:disabled, .shopify-section.paper .btn[aria-disabled="true"] { opacity: .45; }
+/* Variant picker: the design's chips. */
+.variant__chip { display: inline-flex; align-items: center; min-height: 44px; padding: 0 1.1em; border: 0; border-radius: 999px; background: none; color: var(--sc-ink);
+  font-weight: 700; font-size: var(--sc-t-sm); letter-spacing: .06em; text-transform: uppercase; box-shadow: inset 0 0 0 2px var(--sc-hairline-strong); cursor: pointer; }
+.variant__chip:hover { box-shadow: inset 0 0 0 2px var(--sc-ink); }
+.variant__values input:checked + .variant__chip { background: var(--sc-ink); color: var(--gx-paper); border: 0; box-shadow: none; }
+.variant__values input.is-unavailable + .variant__chip { color: var(--sc-ink-soft); text-decoration: line-through; box-shadow: inset 0 0 0 2px var(--sc-hairline); }
+.variant__chip--swatch { padding: 0; }
+/* Shop headings and prices in the design's type. */
+.shopify-section.paper .br-display { font-family: var(--sc-font-display); font-weight: 400; text-transform: uppercase; letter-spacing: -0.01em; }
+.cart__title { font-size: var(--sc-t-xl); }
+.shopify-section.paper .price { color: var(--sc-ink); }
+.shopify-section.paper .product .price { color: var(--sc-accent-text); }
+
+/* ---- header fit ----
+   Measured: with the phone number showing, the bar needs about 1320px (the static build
+   clips "Get a quote" between 1181px and 1300px). The number steps out earlier so the
+   button always stays on screen. With the cart link (shop pages) it needs ~85px more. */
+@media (min-width: 1181px) and (max-width: 1320px) {
+  .bar__call { display: none; }
+}
+@media (min-width: 1181px) and (max-width: 1410px) {
+  .bar:has(.bar__cart) .bar__call { display: none; }
+}
+@media (min-width: 861px) and (max-width: 1070px) {
+  .bar:has(.bar__cart) .bar__nav { gap: .75rem; }
+  .bar:has(.bar__cart) .bar__nav a { font-size: .7rem; letter-spacing: .04em; }
+  .bar:has(.bar__cart) .bar__mark img { height: 28px; }
+  .bar:has(.bar__cart) .bar__cta { padding: .8em 1em; }
+}
+@media (min-width: 861px) and (max-width: 920px) {
+  .bar:has(.bar__cart) { gap: var(--sc-3); }
+  .bar:has(.bar__cart) .bar__nav { gap: .6rem; }
+  .bar:has(.bar__cart) .bar__mark img { height: 24px; }
+}

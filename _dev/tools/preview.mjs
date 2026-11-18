@@ -79,7 +79,8 @@ async function renderSection(id, data) {
   const settings = Object.fromEntries(Object.entries(data.settings || {}).map(([k, v]) => [k, typeof v === 'string' && v !== '' && /collection/.test(k) && ctx.globals.collections ? ctx.globals.collections[v] : v]));
   const section = { id, settings, blocks };
   const html = await engine.parseAndRender(src, { section }, { globals: ctx.globals });
-  return `<div id="shopify-section-${id}" class="shopify-section">${html}</div>`;
+  const cls = schemaOf(fs.readFileSync(file, 'utf8')).class;
+  return `<div id="shopify-section-${id}" class="shopify-section${cls ? ' ' + cls : ''}">${html}</div>`;
 }
 engine.registerTag('sections', class extends Tag {
   constructor(t, r, l) { super(t, r, l); this.group = t.args.replace(/['"]/g, '').trim(); }
@@ -148,7 +149,7 @@ const products = S.products.map((d, n) => {
   const opts = d.options || [];
   const variants = opts.length ? opts[0].values.map((v, k) => ({ id: 100 * (n + 1) + k, title: v, price: d.price, compare_at_price: d.compare_at_price || null, available: true, options: [v], url: `/products/${d.handle}?variant=${100 * (n + 1) + k}` }))
     : [{ id: 100 * (n + 1), title: 'Default Title', price: d.price, compare_at_price: d.compare_at_price || null, available: true, options: ['Default Title'], url: `/products/${d.handle}` }];
-  return { id: n + 1, title: d.title, handle: d.handle, url: `/products/${d.handle}`, price: d.price, price_min: d.price, compare_at_price: d.compare_at_price || null, available: true, vendor: S.shop_name,
+  return { id: n + 1, title: d.title, handle: d.handle, url: `/products/${d.handle}`, type: d.type || '', price: d.price, price_min: d.price, price_max: d.price_max || d.price, price_varies: (d.price_max || d.price) > d.price, compare_at_price: d.compare_at_price || null, available: true, vendor: S.shop_name,
     description: `<p>${d.note || ''}</p><p>${d.description || ''}</p>`, featured_image: img, featured_media: img ? media(img, n + 1) : null, media: img ? [media(img, n + 1)] : [],
     has_only_default_variant: !opts.length, options_with_values: opts, variants, selected_or_first_available_variant: variants[0], metafields: { custom: { card_note: { value: d.note || '' } } } };
 });

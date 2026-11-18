@@ -164,5 +164,37 @@
    "page_label": "Location page",
    "page_link": "/pages/new-orleans"
   }
+ ],
+ "GROUPS": [
+  [
+   "T-Shirt",
+   "T-shirt",
+   "T-shirts",
+   ""
+  ],
+  [
+   "Hoodie",
+   "Hoodie",
+   "Hoodies",
+   "Hoodie"
+  ],
+  [
+   "Sweatshirt",
+   "Crewneck",
+   "Crewnecks",
+   "Crewneck"
+  ],
+  [
+   "Hats",
+   "Hat",
+   "Hats",
+   ""
+  ],
+  [
+   "Accessories",
+   "Air freshener",
+   "Air fresheners",
+   ""
+  ]
  ]
 }

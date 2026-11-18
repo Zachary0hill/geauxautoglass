@@ -1,7 +1,6 @@
 <div class="page-width blog">
   <div class="u-stack">
     <p class="br-rule">{{ 'blogs.general.caption' | t }}</p>
-    <h1 class="br-display blog__title">{{ blog.title | escape }}</h1>
   </div>
   {%- paginate blog.articles by section.settings.per_page -%}
     {%- if blog.articles.size > 0 -%}
@@ -26,6 +25,7 @@
 
 {% schema %}
 {
+  "class": "paper",
   "name": "Blog posts",
   "tag": "section",
   "settings": [

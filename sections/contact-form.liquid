@@ -2,7 +2,7 @@
   <div class="contact__inner">
     <div class="u-stack">
       <p class="br-rule">{{ section.settings.caption | escape }}</p>
-      <h1 class="br-display contact__title">{{ section.settings.heading | default: page.title | escape }}</h1>
+      <h2 class="br-display contact__title">{{ section.settings.heading | default: page.title | escape }}</h2>
       {%- if section.settings.text != blank -%}<div class="br-body rte">{{ section.settings.text }}</div>{%- elsif page.content != blank -%}<div class="br-body rte">{{ page.content }}</div>{%- endif -%}
     </div>
 
@@ -54,6 +54,7 @@
 
 {% schema %}
 {
+  "class": "paper",
   "name": "Contact form",
   "tag": "section",
   "settings": [

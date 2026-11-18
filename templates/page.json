@@ -1,1 +1,54 @@
-{ "sections": { "main": { "type": "main-page", "settings": { "narrow": true } } }, "order": ["main"] }
+{
+  "sections": {
+    "head": {
+      "type": "page-head",
+      "settings": {
+        "style": "plain",
+        "bundled": "none",
+        "image_alt": "",
+        "focal": "",
+        "show_crumbs": true,
+        "parent_label": "",
+        "parent_link": "",
+        "crumb": "",
+        "tag": "",
+        "heading": "",
+        "highlight": "",
+        "lede": "",
+        "btn_1_label": "",
+        "btn_1_action": "custom",
+        "btn_1_link": "",
+        "btn_2_label": "",
+        "btn_2_action": "custom",
+        "btn_2_link": "",
+        "schools": "",
+        "offer_1": "",
+        "offer_2": ""
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "narrow": true
+      }
+    },
+    "cta": {
+      "type": "cta-band",
+      "settings": {
+        "heading": "Get your windshield replaced today.",
+        "btn_1_label": "Get a quote",
+        "btn_1_action": "quote",
+        "btn_1_link": "",
+        "btn_2_label": "",
+        "btn_2_action": "call_lafayette",
+        "btn_2_link": "",
+        "anchor_id": ""
+      }
+    }
+  },
+  "order": [
+    "head",
+    "main",
+    "cta"
+  ]
+}

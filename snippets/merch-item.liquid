@@ -1,0 +1,40 @@
+{%- comment -%}
+  One merch card. Params: product, type_key (product type, or 'other'), type_label,
+  strip_prefix, strip_word.
+  Name rule: drop a leading prefix, then a leading word, then turn " - " into a space.
+{%- endcomment -%}
+{%- liquid
+  assign name = product.title
+  if strip_prefix != blank
+    assign head = name | slice: 0, strip_prefix.size
+    if head == strip_prefix
+      assign name = name | remove_first: strip_prefix
+    endif
+  endif
+  if strip_word != blank
+    assign trimmed = name | lstrip
+    assign head = trimmed | slice: 0, strip_word.size
+    if head == strip_word
+      assign name = trimmed | remove_first: strip_word
+    endif
+  endif
+  assign name = name | replace: ' - ', ' ' | strip
+  assign lead = name | slice: 0, 2
+  if lead == '- '
+    assign name = name | remove_first: '- ' | strip
+  endif
+  if name == blank
+    assign name = product.title
+  endif
+  assign image = product.featured_image
+-%}
+<a class="mitem" data-type="{{ type_key | handle }}" href="{{ product.url }}">
+  <span class="mitem__fig">
+    {%- if image != blank -%}
+      <img src="{{ image | image_url: width: 560 }}" srcset="{{ image | image_url: width: 280 }} 280w, {{ image | image_url: width: 560 }} 560w, {{ image | image_url: width: 840 }} 840w" sizes="(max-width: 860px) 46vw, (max-width: 1180px) 22vw, 18vw" width="560" height="560" alt="{{ type_label | escape }}: {{ name | escape }}" loading="lazy">
+    {%- endif -%}
+  </span>
+  {%- if type_label != blank -%}<span class="mitem__type">{{ type_label | escape }}</span>{%- endif -%}
+  <span class="mitem__name">{{ name | escape }}</span>
+  <span class="mitem__price">{% if product.price_varies %}{% assign from = product.price_min | money %}{{ 'sections.merch.from_price' | t: price: from }}{% else %}{{ product.price | money }}{% endif %}</span>
+</a>

@@ -7,7 +7,6 @@
 <div class="page-width blog">
   <div class="u-stack">
     <p class="br-rule">{{ 'sections.collection_list.caption' | t }}</p>
-    <h1 class="br-display blog__title">{{ page_title | escape }}</h1>
   </div>
   {%- paginate collections by section.settings.per_page -%}
     <div class="collection-list">
@@ -32,6 +31,7 @@
 
 {% schema %}
 {
+  "class": "paper",
   "name": "Collections list page",
   "tag": "section",
   "settings": [

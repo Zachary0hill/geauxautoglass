@@ -1,7 +1,6 @@
 <article class="page-width article">
   <header class="article__head">
     <p class="article__meta"><a href="{{ blog.url }}" class="link">{{ blog.title | escape }}</a> · <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'date' }}</time>{% if section.settings.show_author %} · {{ article.author }}{% endif %}</p>
-    <h1 class="br-display article__title">{{ article.title | escape }}</h1>
   </header>
   {%- if article.image and section.settings.show_image -%}
     <div class="article__img">{{ article.image | image_url: width: 1800 | image_tag: loading: 'eager', widths: '800, 1200, 1800', sizes: 'min(90vw, 1181px)', alt: article.image.alt | default: article.title }}</div>
@@ -65,6 +64,7 @@
 
 {% schema %}
 {
+  "class": "paper",
   "name": "Blog post",
   "tag": "section",
   "settings": [

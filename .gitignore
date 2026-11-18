@@ -3,3 +3,4 @@ _dev/preview/
 _dev/*.zip
 .DS_Store
 .claude/
+_dev/shots/

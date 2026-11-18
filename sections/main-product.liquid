@@ -70,7 +70,7 @@
           {%- if product.vendor != blank -%}<p class="product__vendor" {{ block.shopify_attributes }}>{{ product.vendor | escape }}</p>{%- endif -%}
 
         {%- when 'title' -%}
-          <h1 class="br-display product__title" {{ block.shopify_attributes }}>{{ product.title | escape }}</h1>
+          <h2 class="br-display product__title" {{ block.shopify_attributes }}>{{ product.title | escape }}</h2>
 
         {%- when 'price' -%}
           <div {{ block.shopify_attributes }}>
@@ -277,6 +277,7 @@
 
 {% schema %}
 {
+  "class": "paper",
   "name": "Product information",
   "tag": "div",
   "settings": [

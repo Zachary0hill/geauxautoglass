@@ -91,7 +91,7 @@
       </nav>
     {%- endif -%}
     {%- if section.settings.show_mark -%}
-      <img class="vanfoot__mark" src="{{ 'mark.svg' | asset_url }}" width="400" height="400" alt="" aria-hidden="true" loading="lazy">
+      <img class="vanfoot__mark" src="{{ 'mark.svg' | asset_url }}" width="400" height="400" alt="" aria-hidden="true" fetchpriority="low">
     {%- endif -%}
   </div>
   <div class="vanfoot__bumper">

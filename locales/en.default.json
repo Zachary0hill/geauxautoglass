@@ -122,8 +122,8 @@
       "placeholder_title": "Collection",
       "collection": "Collection",
       "pieces": {
-        "one": "{{ count }} product",
-        "other": "{{ count }} products"
+        "one": "{{ count }} item",
+        "other": "{{ count }} items"
       }
     },
     "collection_tiles": {

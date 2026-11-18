@@ -5,9 +5,9 @@
 <div class="page-width search-page">
   <div class="u-stack">
     <p class="br-rule">{{ 'general.search.search' | t }}</p>
-    <h1 class="br-display search-page__title">
+    <h2 class="br-display search-page__title">
       {%- if search.performed -%}{{ 'general.search.results_title' | t: terms: search.terms }}{%- else -%}{{ 'general.search.search' | t }}{%- endif -%}
-    </h1>
+    </h2>
     <form action="{{ routes.search_url }}" method="get" role="search" class="search-page__form">
       <input type="hidden" name="options[prefix]" value="last">
       <div class="field">
@@ -113,6 +113,7 @@
 
 {% schema %}
 {
+  "class": "paper",
   "name": "Search results",
   "tag": "section",
   "settings": [

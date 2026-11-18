@@ -23,7 +23,7 @@
   elsif template.name == 'article'
     assign fallback_title = article.title
   elsif template.name == 'search'
-    assign fallback_title = 'general.search.title' | t
+    assign fallback_title = 'general.search.search' | t
   elsif template.name == '404'
     assign fallback_title = 'general.404.title' | t
   elsif template.name == 'cart'

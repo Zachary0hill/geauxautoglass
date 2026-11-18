@@ -1,0 +1,1102 @@
+{
+ "shop_name": "Geaux Auto Glass",
+ "collection_title": "Products",
+ "products": [
+  {
+   "title": "Stay Fresh - Block",
+   "handle": "stay-fresh-block",
+   "type": "Accessories",
+   "price": 1200,
+   "price_max": 1200,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "stay-fresh-block.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Stay Fresh - Block"
+   }
+  },
+  {
+   "title": "Cracked",
+   "handle": "cracked",
+   "type": "Accessories",
+   "price": 1200,
+   "price_max": 1200,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "cracked.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Cracked"
+   }
+  },
+  {
+   "title": "Stay Fresh - Sport",
+   "handle": "stay-fresh-sport",
+   "type": "Accessories",
+   "price": 1200,
+   "price_max": 1200,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "stay-fresh-sport.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Stay Fresh - Sport"
+   }
+  },
+  {
+   "title": "Stay Fresh - Vintage",
+   "handle": "stay-fresh-vintage",
+   "type": "Accessories",
+   "price": 1200,
+   "price_max": 1200,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "stay-fresh-vintage.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Stay Fresh - Vintage"
+   }
+  },
+  {
+   "title": "Stay Fresh - Geometric",
+   "handle": "stay-fresh-geometric",
+   "type": "Accessories",
+   "price": 1200,
+   "price_max": 1200,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "stay-fresh-geometric.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Stay Fresh - Geometric"
+   }
+  },
+  {
+   "title": "Stay Fresh",
+   "handle": "stay-fresh",
+   "type": "Accessories",
+   "price": 1200,
+   "price_max": 1200,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "stay-fresh.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Stay Fresh"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass Hoodie - Web Edition",
+   "handle": "geaux-auto-glass-hoodie-web-edition",
+   "type": "Hoodie",
+   "price": 4500,
+   "price_max": 5240,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-hoodie-web-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass Hoodie - Web Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass Crewneck - Web Edition",
+   "handle": "geaux-auto-glass-crewneck-web-edition",
+   "type": "Sweatshirt",
+   "price": 4500,
+   "price_max": 4500,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-crewneck-web-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass Crewneck - Web Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass - Rope Hat",
+   "handle": "geaux-auto-glass-rope-hat",
+   "type": "Hats",
+   "price": 4000,
+   "price_max": 4000,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [],
+   "photo": {
+    "file": "geaux-auto-glass-rope-hat.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass - Rope Hat"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass Crewneck - Geometry Edition",
+   "handle": "geaux-auto-glass-crewneck-geometry-edition",
+   "type": "Sweatshirt",
+   "price": 4500,
+   "price_max": 4500,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-crewneck-geometry-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass Crewneck - Geometry Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass Crewneck - Collegiate Edition",
+   "handle": "geaux-auto-glass-crewneck-collegiate-edition",
+   "type": "Sweatshirt",
+   "price": 4500,
+   "price_max": 5199,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-crewneck-collegiate-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass Crewneck - Collegiate Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass Crewneck - Block Edition",
+   "handle": "geaux-auto-glass-crewneck-block-edition",
+   "type": "Sweatshirt",
+   "price": 4500,
+   "price_max": 4500,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-crewneck-block-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass Crewneck - Block Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass Crewneck - Vintage Edition",
+   "handle": "geaux-auto-glass-crewneck-vintage-edition",
+   "type": "Sweatshirt",
+   "price": 4500,
+   "price_max": 4500,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-crewneck-vintage-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass Crewneck - Vintage Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass Crewneck - Sports Car Edition",
+   "handle": "geaux-auto-glass-crewneck-sports-car-edition",
+   "type": "Sweatshirt",
+   "price": 4500,
+   "price_max": 4500,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-crewneck-sports-car-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass Crewneck - Sports Car Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass Crewneck - Cracked Edition",
+   "handle": "geaux-auto-glass-crewneck-cracked-edition",
+   "type": "Sweatshirt",
+   "price": 4500,
+   "price_max": 4500,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-crewneck-cracked-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass Crewneck - Cracked Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass Crewneck - Shop Edition",
+   "handle": "geaux-auto-glass-crewneck-shop-edition",
+   "type": "Sweatshirt",
+   "price": 4500,
+   "price_max": 4500,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-crewneck-shop-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass Crewneck - Shop Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass Hoodie - Checkered Edition",
+   "handle": "geaux-auto-glass-hoodie-checkered-edition",
+   "type": "Hoodie",
+   "price": 4500,
+   "price_max": 5240,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-hoodie-checkered-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass Hoodie - Checkered Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass Hoodie - Geometry Edition",
+   "handle": "geaux-auto-glass-hoodie-geometry-edition",
+   "type": "Hoodie",
+   "price": 4500,
+   "price_max": 5017,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-hoodie-geometry-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass Hoodie - Geometry Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass Hoodie - Collegiate Edition",
+   "handle": "geaux-auto-glass-hoodie-collegiate-edition",
+   "type": "Hoodie",
+   "price": 4500,
+   "price_max": 5240,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-hoodie-collegiate-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass Hoodie - Collegiate Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass Hoodie - Drawing Edition",
+   "handle": "geaux-auto-glass-hoodie-drawing-edition",
+   "type": "Hoodie",
+   "price": 4500,
+   "price_max": 5017,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-hoodie-drawing-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass Hoodie - Drawing Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass Hoodie - Block Edition",
+   "handle": "geaux-auto-glass-hoodie-block-edition",
+   "type": "Hoodie",
+   "price": 4500,
+   "price_max": 5240,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-hoodie-block-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass Hoodie - Block Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass Hoodie - Script Edition",
+   "handle": "geaux-auto-glass-hoodie-script-edition",
+   "type": "Hoodie",
+   "price": 4500,
+   "price_max": 5017,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-hoodie-script-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass Hoodie - Script Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass Hoodie - Vintage Edition",
+   "handle": "geaux-auto-glass-hoodie-vintage-edition",
+   "type": "Hoodie",
+   "price": 4500,
+   "price_max": 5240,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-hoodie-vintage-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass Hoodie - Vintage Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass Hoodie - Shop Edition",
+   "handle": "geaux-auto-glass-hoodie-shop-edition",
+   "type": "Hoodie",
+   "price": 4500,
+   "price_max": 5240,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-hoodie-shop-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass Hoodie - Shop Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass Hoodie - Cracked Edition",
+   "handle": "geaux-auto-glass-hoodie-cracked-edition",
+   "type": "Hoodie",
+   "price": 4500,
+   "price_max": 4500,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-hoodie-cracked-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass Hoodie - Cracked Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass Hoodie - Sports Car Edition",
+   "handle": "geaux-auto-glass-hoodie-sports-car-edition",
+   "type": "Hoodie",
+   "price": 4500,
+   "price_max": 4500,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-hoodie-sports-car-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass Hoodie - Sports Car Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass - Checkered Edition",
+   "handle": "geaux-auto-glass-checkered-edition",
+   "type": "T-Shirt",
+   "price": 3000,
+   "price_max": 4618,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-checkered-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass - Checkered Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass - Collegiate Pink",
+   "handle": "geaux-auto-glass-collegiate-pink",
+   "type": "T-Shirt",
+   "price": 3000,
+   "price_max": 3000,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-collegiate-pink.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass - Collegiate Pink"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass - Grim Reaper Edition",
+   "handle": "geaux-auto-glass-grim-reaper-edition",
+   "type": "T-Shirt",
+   "price": 3000,
+   "price_max": 4618,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-grim-reaper-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass - Grim Reaper Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass - Geometry Edition",
+   "handle": "geaux-auto-glass-geometry-edition",
+   "type": "T-Shirt",
+   "price": 3000,
+   "price_max": 4618,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-geometry-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass - Geometry Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass - Palm Tree Edition v2",
+   "handle": "geaux-auto-glass-palm-tree-edition-v2",
+   "type": "T-Shirt",
+   "price": 3033,
+   "price_max": 4502,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-palm-tree-edition-v2.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass - Palm Tree Edition v2"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass - Palm Tree Edition",
+   "handle": "geaux-auto-glass-palm-tree-edition",
+   "type": "T-Shirt",
+   "price": 3033,
+   "price_max": 4618,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-palm-tree-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass - Palm Tree Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass - Collegiate Edition",
+   "handle": "geaux-auto-glass-collegiate-edition",
+   "type": "T-Shirt",
+   "price": 3000,
+   "price_max": 4618,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-collegiate-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass - Collegiate Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass - Web Edition",
+   "handle": "geaux-auto-glass-web-edition",
+   "type": "T-Shirt",
+   "price": 3000,
+   "price_max": 4618,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-web-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass - Web Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass - Drawing Edition",
+   "handle": "geaux-auto-glass-drawing-edition",
+   "type": "T-Shirt",
+   "price": 3000,
+   "price_max": 4618,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-drawing-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass - Drawing Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass - Block Edition",
+   "handle": "geaux-auto-glass-block-edition",
+   "type": "T-Shirt",
+   "price": 3000,
+   "price_max": 3000,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-block-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass - Block Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass - Vintage Edition",
+   "handle": "geaux-auto-glass-vintage-edition",
+   "type": "T-Shirt",
+   "price": 3000,
+   "price_max": 3000,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-vintage-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass - Vintage Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass - Script Edition",
+   "handle": "geaux-auto-glass-script-edition",
+   "type": "T-Shirt",
+   "price": 3000,
+   "price_max": 3000,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-script-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass - Script Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass - Sports Car Edition",
+   "handle": "geaux-auto-glass-sports-car-edition",
+   "type": "T-Shirt",
+   "price": 3000,
+   "price_max": 3000,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-sports-car-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass - Sports Car Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass - Cracked Edition",
+   "handle": "geaux-auto-glass-cracked-edition",
+   "type": "T-Shirt",
+   "price": 3000,
+   "price_max": 4502,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-cracked-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass - Cracked Edition"
+   }
+  },
+  {
+   "title": "Geaux Auto Glass - Shop Edition",
+   "handle": "geaux-auto-glass-shop-edition",
+   "type": "T-Shirt",
+   "price": 3000,
+   "price_max": 3000,
+   "note": "",
+   "description": "Sample description for the local preview.",
+   "options": [
+    {
+     "name": "Size",
+     "values": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+     ]
+    }
+   ],
+   "photo": {
+    "file": "geaux-auto-glass-shop-edition.jpg",
+    "width": 560,
+    "height": 560,
+    "alt": "Geaux Auto Glass - Shop Edition"
+   }
+  }
+ ]
+}

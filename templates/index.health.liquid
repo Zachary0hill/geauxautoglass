@@ -1,0 +1,8 @@
+{%- layout none -%}
+{%- comment -%}
+  Health check for the monitoring dashboard: /?view=health
+  Liquid can't read theme_info, so keep "version" equal to theme_version in
+  config/settings_schema.json (_dev/tools/validate.py checks they match).
+  Shopify serves alternate views as text/html, not application/json.
+{%- endcomment -%}
+{"status":"ok","theme":"Geaux Auto Glass","version":"1.0.0"}

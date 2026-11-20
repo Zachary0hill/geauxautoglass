@@ -11,6 +11,7 @@ Checks:
   - settings_data.json "current" holds every theme setting that has a default
   - every section type used in templates/*.json and sections/*-group.json exists
   - JSON in section {% schema %} blocks parses
+  - templates/index.health.liquid version matches theme_version
 """
 import json
 import re
@@ -100,6 +101,14 @@ for f in sorted(list((root / "templates").rglob("*.json")) + list((root / "secti
             continue
         if typ not in types:
             problems.append(f"{f.relative_to(root)}: section '{key}' uses missing type '{typ}'")
+
+# health view reports the same version as theme_info
+health = root / "templates/index.health.liquid"
+if health.exists():
+    want = next((g.get("theme_version") for g in schema if g.get("name") == "theme_info"), None)
+    m = re.search(r'"version"\s*:\s*"([^"]*)"', health.read_text())
+    if not m or m.group(1) != want:
+        problems.append(f"templates/index.health.liquid: version {m.group(1) if m else None!r} != theme_version {want!r}")
 
 if problems:
     print("\n".join(problems))

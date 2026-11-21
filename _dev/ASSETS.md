@@ -18,7 +18,7 @@ Rebuild the zip from the repo root:
 zip -r _dev/geaux-auto-glass-theme.zip assets config layout locales sections snippets templates -x "*.DS_Store"
 ```
 
-## 2. Create the six pages
+## 2. Create the seven pages
 
 Online Store → Pages → Add page. The handle (URL) must match, because the footer, the home page and the
 page heads link to these addresses. Leave the content empty; the template carries the page.
@@ -31,6 +31,7 @@ page heads link to these addresses. Leave the content empty; the template carrie
 | Student discount | `student-discount` | `page.student-discount` | Student discount · Geaux Auto Glass | 10% off all services for college students at University of Louisiana at Lafayette or South Louisiana Community College. All car, SUV and truck glass. |
 | Google reviews | `reviews` | `page.reviews` | Google reviews · Geaux Auto Glass | Geaux Auto Glass holds a 4.8 Google rating in Lafayette across 174 reviews and a 5.0 rating in Kenner. Read what customers say. |
 | New Orleans | `new-orleans` | `page.location` | Auto glass in New Orleans and Kenner · Geaux Auto Glass | Geaux Auto Glass New Orleans. 2837 Tifton St Unit B, Kenner, LA 70062. Windshield replacements, chip repairs, door glass and ADAS recalibration. Call (504) 920-3065. |
+| Lafayette | `lafayette` | `page.location-lafayette` | Auto glass in Lafayette · Geaux Auto Glass | Geaux Auto Glass Lafayette. 409A Mecca Street, Lafayette, LA 70508. Windshield replacements, chip repairs, door glass and ADAS recalibration. Call (337) 295-2874. |
 
 Until a page exists its links return "page not found". The home page, the merchandise grid and the cart work without them.
 
@@ -122,7 +123,7 @@ and the chips only filter the page in view.
 
 ## 9. Before launch: check on the live store
 
-- [ ] The six pages exist with the right handles and templates; every footer and header link resolves.
+- [ ] The seven pages exist with the right handles and templates; every footer and header link resolves.
 - [ ] `/collections/all` shows all 41 products, with the right labels, names and "From" prices.
 - [ ] Buy a product on a phone and on desktop through to the order confirmation (Printify order appears).
 - [ ] Edit the hero photo, a service card, a review and a location's hours in Customize; scroll the preview: pinned sections still pin.

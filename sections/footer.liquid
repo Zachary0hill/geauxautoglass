@@ -75,7 +75,14 @@
                     {%- endif -%}
                     <li><a href="{{ routes.root_url }}pages/student-discount">{{ 'sections.footer.customers.student' | t }}</a></li>
                     <li><a href="{{ routes.root_url }}pages/reviews">{{ 'sections.footer.customers.reviews' | t }}</a></li>
+                    {%- comment -%} Listed once the page exists in the admin, so the link never leads nowhere. {%- endcomment -%}
+                    {%- if pages['lafayette'].title != blank -%}
+                      <li><a href="{{ routes.root_url }}pages/lafayette">{{ 'sections.footer.customers.lafayette' | t }}</a></li>
+                    {%- endif -%}
                     <li><a href="{{ routes.root_url }}pages/new-orleans">{{ 'sections.footer.customers.new_orleans' | t }}</a></li>
+                    {%- if pages['contact'].title != blank -%}
+                      <li><a href="{{ routes.root_url }}pages/contact">{{ 'sections.footer.customers.contact' | t }}</a></li>
+                    {%- endif -%}
                   {%- when 'social' -%}
                     {%- if settings.facebook_url != blank -%}<li><a href="{{ settings.facebook_url }}" target="_blank" rel="noopener">{{ 'sections.footer.social.facebook' | t }}</a></li>{%- endif -%}
                     {%- if settings.instagram_url != blank -%}<li><a href="{{ settings.instagram_url }}" target="_blank" rel="noopener">{{ 'sections.footer.social.instagram' | t }}</a></li>{%- endif -%}
@@ -140,7 +147,7 @@
         { "type": "link_list", "id": "menu", "label": "Menu", "info": "Optional. When empty, the column shows the built-in list picked below." },
         { "type": "select", "id": "preset", "label": "Built-in list", "options": [
           { "value": "services", "label": "Services (six service rows)" },
-          { "value": "customers", "label": "Customers (claims, discount, reviews, location)" },
+          { "value": "customers", "label": "Customers (claims, discount, reviews, locations)" },
           { "value": "social", "label": "Find us on (social, Google, shop)" },
           { "value": "none", "label": "None" }
         ], "default": "none" }

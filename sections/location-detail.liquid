@@ -31,7 +31,26 @@
     assign ld_image = 'loc-kenner.jpg' | asset_url | prepend: 'https:'
   endif
   assign site_url = shop.url | default: request.origin
+  assign has_weekday = false
+  if section.settings.weekday_opens != blank and section.settings.weekday_closes != blank
+    assign has_weekday = true
+  endif
+  assign has_saturday = false
+  if section.settings.saturday_opens != blank and section.settings.saturday_closes != blank
+    assign has_saturday = true
+  endif
 -%}
+{%- capture ld_hours -%}
+  "openingHoursSpecification": [
+    {%- if has_weekday %}
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": {{ section.settings.weekday_opens | json }}, "closes": {{ section.settings.weekday_closes | json }} }
+    {%- endif -%}
+    {%- if has_saturday -%}
+    {%- if has_weekday -%},{%- endif %}
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": {{ section.settings.saturday_opens | json }}, "closes": {{ section.settings.saturday_closes | json }} }
+    {%- endif %}
+  ],
+{%- endcapture -%}
 <section class="sc-section paper{% if section.settings.ground == 'paper-2' %} paper--2{% endif %}"{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id | handle }}"{% endif %} data-sc-act="flow" data-sc-drift="{{ settings.color_canvas }}">
   <div class="sc-wrap locd">
     <div data-sc-in data-sc-stagger="70">
@@ -60,6 +79,26 @@
 </section>
 
 {%- if section.settings.schema_name != blank -%}
+{%- if section.settings.schema_main -%}
+{%- comment -%}
+  The main shop is already the business entry printed on every page (snippets/structured-data).
+  Sharing its @id adds this page's hours and map to that entry instead of declaring a second business.
+{%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  "@id": {{ site_url | append: '/#business' | json }},
+  {%- if has_weekday or has_saturday %}
+  {{ ld_hours }}
+  {%- endif -%}
+  {%- if directions != blank %}
+  "hasMap": {{ directions | json }},
+  {%- endif %}
+  "mainEntityOfPage": {{ canonical_url | json }}
+}
+</script>
+{%- else -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -82,20 +121,15 @@
   },
   {%- if areas.size > 0 %}
   "areaServed": [{% for area in areas %}{{ area | strip | json }}{% unless forloop.last %}, {% endunless %}{% endfor %}],
+  {%- endif -%}
+  {%- if has_weekday or has_saturday %}
+  {{ ld_hours }}
   {%- endif %}
-  "openingHoursSpecification": [
-    {%- if section.settings.weekday_opens != blank and section.settings.weekday_closes != blank %}
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": {{ section.settings.weekday_opens | json }}, "closes": {{ section.settings.weekday_closes | json }} }
-    {%- endif -%}
-    {%- if section.settings.saturday_opens != blank and section.settings.saturday_closes != blank -%}
-    {%- if section.settings.weekday_opens != blank and section.settings.weekday_closes != blank -%},{%- endif %}
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": {{ section.settings.saturday_opens | json }}, "closes": {{ section.settings.saturday_closes | json }} }
-    {%- endif %}
-  ],
   "parentOrganization": { "@type": "Organization", "name": {{ settings.brand_name | default: shop.name | json }}, "url": {{ site_url | json }} },
   "url": {{ canonical_url | json }}
 }
 </script>
+{%- endif -%}
 {%- endif -%}
 
 {% schema %}
@@ -125,6 +159,7 @@
     { "type": "text", "id": "map_name", "label": "Shop name for the map description", "default": "New Orleans" },
     { "type": "header", "content": "For search engines" },
     { "type": "text", "id": "schema_name", "label": "Business name", "info": "Empty: no structured data from this section.", "default": "Geaux Auto Glass New Orleans" },
+    { "type": "checkbox", "id": "schema_main", "label": "This is the main shop", "info": "The main shop's address is already sent from Theme settings > Search and local SEO. Tick this on its page so the hours here are added to that entry instead of listing the shop twice.", "default": false },
     { "type": "image_picker", "id": "image", "label": "Shop photo", "info": "Empty: the bundled Kenner shop photo." },
     { "type": "text", "id": "areas", "label": "Areas served", "info": "Separate with commas.", "default": "New Orleans, Kenner, Louisiana" },
     { "type": "text", "id": "weekday_opens", "label": "Monday to Friday opens", "info": "24 hour time, like 08:00", "default": "08:00" },

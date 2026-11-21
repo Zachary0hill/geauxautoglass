@@ -487,8 +487,8 @@
             "directions": "google_lafayette",
             "directions_link": "",
             "map_url": "https://www.google.com/maps?q=Geaux+Auto+Glass+409A+Mecca+St+Lafayette+LA+70508&output=embed",
-            "page_label": "",
-            "page_link": ""
+            "page_label": "Location page",
+            "page_link": "/pages/lafayette"
           }
         },
         "location2": {

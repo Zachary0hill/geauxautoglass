@@ -196,6 +196,87 @@
         "anchor_id": ""
       }
     },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Do you come to me?",
+            "answer": "<p>Yes. Mobile service is free: we come to your home or work, or you can bring the vehicle to our shop in Lafayette or Kenner.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "How soon can you replace my windshield?",
+            "answer": "<p>Same day or next day. We work by appointment, so call or request a quote to get on the schedule.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Do you work with my insurance?",
+            "answer": "<p>Yes. We work with all insurance providers, and comprehensive coverage covers glass damage. Call your insurance, use the company name Geaux Auto Glass to begin the filing, and we handle the rest. <a href=\"/pages/insurance\">See the four steps to file a claim</a>.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "Can you repair a chip instead of replacing the windshield?",
+            "answer": "<p>Yes, we repair minor chips. Request a quote and we will tell you whether yours can be repaired or needs a replacement.</p>"
+          }
+        },
+        "q5": {
+          "type": "question",
+          "settings": {
+            "question": "Do you recalibrate ADAS?",
+            "answer": "<p>Yes. We recalibrate ADAS on cars, SUVs and trucks.</p>"
+          }
+        },
+        "q6": {
+          "type": "question",
+          "settings": {
+            "question": "What vehicles and glass do you work on?",
+            "answer": "<p>Cars, SUVs and trucks, domestic and foreign, personal and commercial. We replace windshields, back glass and door glass.</p>"
+          }
+        },
+        "q7": {
+          "type": "question",
+          "settings": {
+            "question": "Where are you located?",
+            "answer": "<p>We have shops at 409A Mecca Street in Lafayette and 2837 Tifton St Unit B in Kenner, and we offer mobile service across Louisiana.</p>"
+          }
+        },
+        "q8": {
+          "type": "question",
+          "settings": {
+            "question": "Do you offer a student discount?",
+            "answer": "<p>Yes. Students at the University of Louisiana at Lafayette or South Louisiana Community College get 10% off all services. <a href=\"/pages/student-discount\">Student discount details</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6",
+        "q7",
+        "q8"
+      ],
+      "settings": {
+        "tag": "Questions",
+        "heading": "Good to know before you book.",
+        "highlight": "before you book.",
+        "text": "",
+        "open_first": true,
+        "structured_data": true,
+        "ground": "paper",
+        "anchor_id": "faq"
+      }
+    },
     "cta": {
       "type": "cta-band",
       "settings": {
@@ -214,6 +295,7 @@
     "head",
     "services",
     "checklist",
+    "faq",
     "cta"
   ]
 }

@@ -1,0 +1,156 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "head": {
+      "type": "page-head",
+      "settings": {
+        "style": "default",
+        "bundled": "hero",
+        "image_alt": "",
+        "focal": "",
+        "show_crumbs": true,
+        "parent_label": "Locations",
+        "parent_link": "/#visit",
+        "crumb": "Lafayette",
+        "tag": "Lafayette location",
+        "heading": "Mobile auto glass in Lafayette.",
+        "highlight": "Lafayette.",
+        "lede": "Windshield replacements, chip repairs and ADAS recalibration. Same day or next day, in shop or mobile.",
+        "btn_1_label": "Get a quote",
+        "btn_1_action": "quote",
+        "btn_1_link": "",
+        "btn_2_label": "",
+        "btn_2_action": "call_lafayette",
+        "btn_2_link": "",
+        "schools": "",
+        "offer_1": "",
+        "offer_2": ""
+      }
+    },
+    "detail": {
+      "type": "location-detail",
+      "settings": {
+        "tag": "Visit the shop",
+        "heading": "Geaux Auto Glass, Lafayette.",
+        "highlight": "Lafayette.",
+        "street": "409A Mecca Street",
+        "city": "Lafayette",
+        "region": "LA",
+        "postal": "70508",
+        "phone": "lafayette",
+        "phone_custom": "",
+        "hours": "Monday to Friday 8 AM to 4:30 PM\nSaturday and Sunday closed",
+        "directions": "google_lafayette",
+        "directions_link": "",
+        "btn_label": "Get a quote",
+        "btn_action": "quote",
+        "btn_link": "",
+        "map_url": "https://www.google.com/maps?q=Geaux+Auto+Glass+409A+Mecca+St+Lafayette+LA+70508&output=embed",
+        "map_name": "Lafayette",
+        "schema_name": "Geaux Auto Glass Lafayette",
+        "areas": "Lafayette, Louisiana",
+        "weekday_opens": "08:00",
+        "weekday_closes": "16:30",
+        "saturday_opens": "",
+        "saturday_closes": "",
+        "ground": "paper",
+        "anchor_id": "",
+        "schema_main": true
+      }
+    },
+    "services": {
+      "type": "trust",
+      "blocks": {
+        "tick1": {
+          "type": "tick",
+          "settings": {
+            "text": "Windshield replacement",
+            "link": "/pages/services#windshield"
+          }
+        },
+        "tick2": {
+          "type": "tick",
+          "settings": {
+            "text": "Chip repair",
+            "link": "/pages/services#chip"
+          }
+        },
+        "tick3": {
+          "type": "tick",
+          "settings": {
+            "text": "Back glass",
+            "link": "/pages/services#back-glass"
+          }
+        },
+        "tick4": {
+          "type": "tick",
+          "settings": {
+            "text": "ADAS recalibration",
+            "link": "/pages/services#adas"
+          }
+        },
+        "tick5": {
+          "type": "tick",
+          "settings": {
+            "text": "Door glass",
+            "link": "/pages/services#door-glass"
+          }
+        },
+        "tick6": {
+          "type": "tick",
+          "settings": {
+            "text": "Commercial vehicles",
+            "link": "/pages/services#commercial"
+          }
+        }
+      },
+      "block_order": [
+        "tick1",
+        "tick2",
+        "tick3",
+        "tick4",
+        "tick5",
+        "tick6"
+      ],
+      "settings": {
+        "bundled": "loc-lafayette",
+        "image_alt": "",
+        "tag": "Services",
+        "heading": "Repairs and replacements.",
+        "highlight": "replacements.",
+        "text": "Free mobile service. Fast and affordable. Same day or next day.",
+        "link_label": "All services",
+        "link": "/pages/services",
+        "ground": "paper-2",
+        "anchor_id": ""
+      }
+    },
+    "cta": {
+      "type": "cta-band",
+      "settings": {
+        "heading": "Get your windshield replaced today.",
+        "btn_1_label": "Get a quote",
+        "btn_1_action": "quote",
+        "btn_1_link": "",
+        "btn_2_label": "",
+        "btn_2_action": "call_lafayette",
+        "btn_2_link": "",
+        "anchor_id": ""
+      }
+    }
+  },
+  "order": [
+    "head",
+    "detail",
+    "services",
+    "cta"
+  ]
+}

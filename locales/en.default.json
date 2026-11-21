@@ -102,7 +102,9 @@
         "enterprise_form": "Enterprise claim form",
         "student": "Student discount",
         "reviews": "Google reviews",
-        "new_orleans": "New Orleans location"
+        "new_orleans": "New Orleans location",
+        "lafayette": "Lafayette location",
+        "contact": "Contact"
       },
       "social": {
         "facebook": "Facebook",

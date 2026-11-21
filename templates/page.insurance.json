@@ -169,6 +169,63 @@
         "anchor_id": ""
       }
     },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Does insurance cover windshield replacement?",
+            "answer": "<p>Comprehensive coverage covers glass damage. Confirm your coverage with your insurance when you call to start the claim.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Which insurance companies do you work with?",
+            "answer": "<p>All of them. We work with all insurance providers, including State Farm, Progressive, GEICO, Allstate and Liberty Mutual.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "How do I file a glass claim?",
+            "answer": "<p>Call your insurance and use the company name Geaux Auto Glass to begin the filing. Confirm your coverage, send us the policy details, and we handle the rest and set you up for scheduling.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "What information do you need from me?",
+            "answer": "<p>The VIN number, the year, make and model of the vehicle, and which glass is needed.</p>"
+          }
+        },
+        "q5": {
+          "type": "question",
+          "settings": {
+            "question": "Do you handle Enterprise Rent-A-Car claims?",
+            "answer": "<p>Yes. Geaux Auto Glass is an approved vendor for Enterprise Rent-A-Car. <a href=\"/pages/enterprise-claims\">Submit an Enterprise claim</a> by form, photo, text or email and our team handles the rest.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5"
+      ],
+      "settings": {
+        "tag": "Questions",
+        "heading": "Insurance claims, answered.",
+        "highlight": "answered.",
+        "text": "",
+        "open_first": true,
+        "structured_data": true,
+        "ground": "paper",
+        "anchor_id": "faq"
+      }
+    },
     "cta": {
       "type": "cta-band",
       "settings": {
@@ -188,6 +245,7 @@
     "steps",
     "strip",
     "programs",
+    "faq",
     "cta"
   ]
 }

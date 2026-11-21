@@ -1,6 +1,6 @@
 # SEO + GEO Report: geauxautoglass.net
 
-2026-11-20 · Stack: Shopify theme (Online Store 2.0) · Pages crawled: 55 (55 indexable)
+2026-11-20 · Stack: Shopify theme (Online Store 2.0) · Pages crawled: 55 at baseline, 56 now (the Lafayette page is new)
 
 ## Result
 
@@ -15,8 +15,8 @@
 The site launched in good technical shape: one canonical origin, valid sitemap and
 robots.txt, self-referencing canonicals, server-rendered content, business schema on
 every page, every image with alt text, no broken links, all 17 search and AI crawlers
-allowed. The theme fixes are live and verified by a second crawl: 104 findings
-closed, 10 still open, none introduced. The one serious gap left is that **no Google
+allowed. The theme fixes are live and verified by a second crawl: 105 findings
+closed, 9 still open, none introduced that need action. The one serious gap left is that **no Google
 Analytics or Tag Manager is installed at all**, which needs a GA4 property from you.
 The score moves little because it weighs each kind of problem once, not each page.
 
@@ -33,14 +33,16 @@ The score moves little because it weighs each kind of problem once, not each pag
 | Open Graph image | fixed and verified | 55 of 55 have an https image that loads (14 had none) |
 | Structured data | fixed and verified | 0 invalid blocks; BreadcrumbList on 53 inner pages |
 | Cart, search, account, 404 kept out of search | fixed and verified | `/cart` now serves `noindex, follow`; the other templates share the rule but were not crawled |
-| Internal links | already fine | 0 broken, 0 redirecting, 0 placeholders |
+| Internal links | already fine | 0 broken, 0 redirecting, 0 placeholders; the Contact page is now linked from the footer |
+| Question-and-answer content | fixed and verified | FAQ with FAQPage schema on Services (8) and Insurance (5); no page had a question heading before |
+| Lafayette location page | fixed and verified | `/pages/lafayette` live, with its hours added to the business entry |
 | GA4 / GTM | **needs owner** | Verified in a browser: no request to any Google domain; the store's pixel list holds only Shopify's two built-in pixels |
 | Conversion events | needs owner | nothing to fire them until a tag exists |
 | AI search crawlers allowed | already fine | all allowed; `/llms.txt` present (Shopify serves it) |
 | Content present in raw HTML | already fine | home: 806 words raw vs 785 rendered |
 | Core Web Vitals | not verified | PageSpeed Insights was not run in this pass |
 
-## What was changed (commits `1c083b3`, `a1e31c7`, `1c9f346` on `main`, live)
+## What was changed (commits `1c083b3`, `a1e31c7`, `1c9f346`, `3c3f239` on `main`, live)
 
 - **Head template** `snippets/meta-tags.liquid`: every page now has `og:image` and
   `twitter:image`, from the page's own image, else a new **Share image** theme
@@ -58,6 +60,15 @@ The score moves little because it weighs each kind of problem once, not each pag
   Glass" (the service and cities come first, where the old title spent them on the
   brand name); description cut from 211 to 157 characters.
 
+- **FAQ** `sections/faq.liquid`: an accordion of native `<details>` rows with FAQPage
+  schema, on the Services and Insurance pages. Every answer restates what the site
+  already says.
+- **Lafayette page** `templates/page.location-lafayette.json`, plus the page itself
+  created in Shopify (handle `lafayette`, with its SEO title and description). The
+  home Lafayette card links to it.
+- **Footer** `sections/footer.liquid`: Lafayette location and Contact in the
+  Customers list.
+
 Checks run: Theme Check 0 errors; local preview render of index, contact, cart,
 product, collection and blog with valid JSON-LD on each. Full list per URL in
 `metadata-map.md`.
@@ -67,21 +78,23 @@ product, collection and blog with valid JSON-LD on each. Full list per URL in
 | Check | Pages | Why it is open | Next step |
 |---|---|---|---|
 | `tag-none` | site | No GA4 property ID is known | To-do 1 |
-| `orphan-page` | `/pages/contact`, `/blogs/news`, `/collections/frontpage` | Nothing links to them | Proposals 1 and 6 |
-| `redirect-chain` | `http://www` | Shopify-managed | none |
+| `orphan-page` | `/blogs/news`, `/collections/frontpage` | Nothing links to them; the blog has no articles | Proposal 6; link the blog once it has posts |
+| `sitemap-missing-page` | `/pages/lafayette` | Created minutes before the crawl; Shopify regenerates its sitemap on its own schedule | Should clear by itself; check in a day |
 | `sitemap-missing-page` | `/collections/all`, privacy policy | Shopify's sitemap omits them by design | none |
+| `redirect-chain` | `http://www` | Shopify-managed | none |
+| `noindex` | `/cart` | Intended | none |
 
-## Proposed content changes (not applied)
+## Proposed content changes
 
-Visible copy is yours to approve. Answers below use only facts already on the site;
+Proposals 1, 2 and 4 are built and live. 3, 5 and 6 are still yours to decide.
 `[you]` marks what only the business can supply.
 
 | # | Page | Change | Suggested text | Why |
 |---|---|---|---|---|
-| 1 | Footer | Add a **Contact** link | "Contact" to `/pages/contact` | The contact page is unreachable from any page |
-| 2 | New page | Add a **Lafayette** location page from the existing location template | H1 "Mobile auto glass in Lafayette." with 409A Mecca Street, (337) 295-2874 and hours `[you]` | New Orleans has a location page with its own schema and hours; the main shop has none, so it has nothing to rank locally with |
+| 1 (done) | Footer | Add a **Contact** link | "Contact" to `/pages/contact` | The contact page is unreachable from any page |
+| 2 (done) | New page | Add a **Lafayette** location page from the existing location template | H1 "Mobile auto glass in Lafayette." with 409A Mecca Street, (337) 295-2874 and the hours from the home card | New Orleans has a location page with its own schema and hours; the main shop has none, so it has nothing to rank locally with |
 | 3 | `/pages/services` | H1 | "Auto glass repair and replacement in Lafayette and New Orleans." | Current H1 "Repairs and replacements." names neither the service nor the place |
-| 4 | `/pages/services`, `/pages/insurance` | Add an FAQ block (with FAQPage schema) | **Do you come to me?** Yes. Mobile service at your home or work is free, or we install in shop in Lafayette or Kenner. **How soon can you replace my windshield?** Same day or next day, by appointment. **Does insurance cover it?** Comprehensive coverage covers glass damage. We work with all insurance providers: call yours and give the name Geaux Auto Glass. **Do you recalibrate ADAS after a windshield replacement?** Yes, for cars, SUVs and trucks. **How much does a replacement cost?** `[you]` **How long until I can drive?** `[you]` | No page has a single question-shaped heading, and each service is described in about five words. This is the content AI answers and "people also ask" pull from |
+| 4 (done, bar two answers) | `/pages/services`, `/pages/insurance` | Add an FAQ block (with FAQPage schema) | **Do you come to me?** Yes. Mobile service at your home or work is free, or we install in shop in Lafayette or Kenner. **How soon can you replace my windshield?** Same day or next day, by appointment. **Does insurance cover it?** Comprehensive coverage covers glass damage. We work with all insurance providers: call yours and give the name Geaux Auto Glass. **Do you recalibrate ADAS after a windshield replacement?** Yes, for cars, SUVs and trucks. **How much does a replacement cost?** `[you]` **How long until I can drive?** `[you]` | No page has a single question-shaped heading, and each service is described in about five words. This is the content AI answers and "people also ask" pull from |
 | 5 | 14 tee products | Move the size chart below the product copy | n/a | The theme now skips the chart for search descriptions, but shoppers still meet a size table before any copy |
 | 6 | Shopify admin | Rename the collection titled "Home page" (or delete it), and title `/collections/all` "Merchandise" | n/a | Search results show "Home page · Geaux Auto Glass" and "Products · Geaux Auto Glass" |
 

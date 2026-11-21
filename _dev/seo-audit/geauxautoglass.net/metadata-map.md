@@ -1,6 +1,6 @@
 # Metadata map: geauxautoglass.net
 
-What each page's head serves now, read from the live site by the verification crawl (2026-11-20 20:10:00).
+What each page's head serves now, read from the live site by the verification crawl (2026-11-21 11:41:25).
 Canonical is self-referencing on every page. Share image: the page's own image, else the theme's Share image setting, else the bundled hero photo.
 
 | URL | Title | Description | Changed | Schema |
@@ -13,10 +13,11 @@ Canonical is self-referencing on every page. Share image: the page's own image, 
 | /pages/contact | Contact · Geaux Auto Glass | Contact Geaux Auto Glass. Call (337) 295-2874 in Lafayette or (504) 920-3065 in New Orleans, or request a free quote online. Mobile service across Louisiana. | description, share image, breadcrumbs | AutoRepair, BreadcrumbList |
 | /pages/data-sharing-opt-out | Your Privacy Choices · Geaux Auto Glass | As described in our Privacy Policy, we collect personal information from your interactions with us and our website, including through cookies and similar tec... | description, share image, breadcrumbs | AutoRepair, BreadcrumbList |
 | /pages/enterprise-claims | Enterprise claims · Geaux Auto Glass | Geaux Auto Glass is an approved vendor for Enterprise Rent-A-Car. Submit your claim by form, photo, text or email and our team handles the rest. | share image, breadcrumbs | AutoRepair, BreadcrumbList |
-| /pages/insurance | Insurance policy claims · Geaux Auto Glass | File a glass claim with Geaux Auto Glass. We work with all insurance providers. Four steps, then we handle the rest and set you up for scheduling. | share image, breadcrumbs | AutoRepair, BreadcrumbList |
+| /pages/insurance | Insurance policy claims · Geaux Auto Glass | File a glass claim with Geaux Auto Glass. We work with all insurance providers. Four steps, then we handle the rest and set you up for scheduling. | share image, breadcrumbs, FAQ | AutoRepair, BreadcrumbList, FAQPage |
+| /pages/lafayette | Auto glass in Lafayette · Geaux Auto Glass | Geaux Auto Glass Lafayette. 409A Mecca Street, Lafayette, LA 70508. Windshield replacements, chip repairs, door glass and ADAS recalibration. Call (337) 295-... | new page | AutoRepair, BreadcrumbList |
 | /pages/new-orleans | Auto glass in New Orleans and Kenner · Geaux Auto Glass | Geaux Auto Glass New Orleans. 2837 Tifton St Unit B, Kenner, LA 70062. Windshield replacements, chip repairs, door glass and ADAS recalibration. Call (504) 9... | description, share image, breadcrumbs | AutoRepair, BreadcrumbList, Organization |
 | /pages/reviews | Google reviews · Geaux Auto Glass | Geaux Auto Glass holds a 4.8 Google rating in Lafayette across 174 reviews and a 5.0 rating in Kenner. Read what customers say. | share image, breadcrumbs | AutoRepair, BreadcrumbList |
-| /pages/services | Auto glass services · Geaux Auto Glass | Windshield replacement, chip repair, back glass, ADAS recalibration, door glass and commercial vehicles. Shops in Lafayette and New Orleans, serving all of L... | description, share image, breadcrumbs | AutoRepair, BreadcrumbList |
+| /pages/services | Auto glass services · Geaux Auto Glass | Windshield replacement, chip repair, back glass, ADAS recalibration, door glass and commercial vehicles. Shops in Lafayette and New Orleans, serving all of L... | description, share image, breadcrumbs, FAQ | AutoRepair, BreadcrumbList, FAQPage |
 | /pages/student-discount | Student discount · Geaux Auto Glass | 10% off all services for college students at University of Louisiana at Lafayette or South Louisiana Community College. All car, SUV and truck glass. | share image, breadcrumbs | AutoRepair, BreadcrumbList |
 | /policies/privacy-policy | Privacy policy · Geaux Auto Glass | Privacy policy for Geaux Auto Glass. The terms that apply when you use this site, book a service or place an order. | description, share image, breadcrumbs | AutoRepair, BreadcrumbList |
 | /products/cracked | Cracked · Geaux Auto Glass | Cracked · Accessories from Geaux Auto Glass, $12.00. Bring a little vintage racing spirit into the daily drive with this illustrated car air freshener. The s... | description, breadcrumbs | AutoRepair, BreadcrumbList, Product |

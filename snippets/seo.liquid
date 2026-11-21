@@ -22,7 +22,8 @@
   comment
     Products with no SEO description of their own get Shopify's cut of the product copy, which is
     shared word for word by every design of the same garment. Lead with what makes this one
-    different (its name, type and price) so each product reads as its own result.
+    different (its name, type and price) so each product reads as its own result. Copy is
+    read from after any size-chart table, which some products carry at the top.
   endcomment
   if request.page_type == 'product' and product.metafields.global.description_tag == blank
     capture seo_description
@@ -36,7 +37,7 @@
       echo ', '
       echo product.price | money | strip_html
       echo '. '
-      echo product.description | strip_html | strip_newlines | strip
+      echo product.description | split: '</table>' | last | strip_html | strip_newlines
     endcapture
   endif
 
@@ -77,7 +78,7 @@
   if seo_description == blank
     assign seo_description = settings.seo_home_description
   endif
-  assign seo_description = seo_description | truncate: 160
+  assign seo_description = seo_description | split: ' ' | join: ' ' | truncate: 160
 
   comment
     Cart, search results, account pages and the 404 are for visitors, not search results.

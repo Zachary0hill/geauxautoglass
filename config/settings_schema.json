@@ -112,14 +112,21 @@
         "type": "text",
         "id": "seo_home_title",
         "label": "Home page title",
-        "default": "Geaux Auto Glass · Mobile windshield replacements in Lafayette and New Orleans",
-        "info": "Used unless Online Store > Preferences sets a home page title."
+        "default": "Mobile windshield replacement in Lafayette & New Orleans",
+        "info": "The business name is added after it. Used unless Online Store > Preferences sets a home page title."
       },
       {
         "type": "textarea",
         "id": "seo_home_description",
         "label": "Home page description",
-        "default": "Geaux Auto Glass. Mobile windshield replacements, chip repairs, door glass and ADAS recalibration. Shops in Lafayette and New Orleans, serving all of Louisiana. Same day or next day. Insurance policies accepted."
+        "default": "Mobile windshield replacement, chip repair, door glass and ADAS recalibration in Lafayette and New Orleans. Same-day or next-day service. Insurance accepted.",
+        "info": "Keep it under 160 characters. Also describes the business to search engines."
+      },
+      {
+        "type": "image_picker",
+        "id": "social_image",
+        "label": "Share image",
+        "info": "Shown when a link to the site is shared (iMessage, Facebook, LinkedIn). 1200 x 630 px works everywhere. Pages with their own image use that instead."
       },
       {
         "type": "header",

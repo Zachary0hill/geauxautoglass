@@ -19,10 +19,77 @@
     endif
   endif
 
+  comment
+    Products with no SEO description of their own get Shopify's cut of the product copy, which is
+    shared word for word by every design of the same garment. Lead with what makes this one
+    different (its name, type and price) so each product reads as its own result.
+  endcomment
+  if request.page_type == 'product' and product.metafields.global.description_tag == blank
+    capture seo_description
+      echo product.title
+      if product.type != blank
+        echo ' · ' | append: product.type
+      endif
+      unless product.title contains seo_site
+        echo ' from ' | append: seo_site
+      endunless
+      echo ', '
+      echo product.price | money | strip_html
+      echo '. '
+      echo product.description | strip_html | strip_newlines | strip
+    endcapture
+  endif
+
+  comment
+    No description set in the admin: build one from what the page is, so no page ships without.
+  endcomment
+  if seo_description == blank
+    case request.page_type
+      when 'page'
+        if template.suffix == 'contact'
+          capture seo_description
+            echo 'Contact ' | append: seo_site | append: '. Call ' | append: settings.phone_lafayette | append: ' in Lafayette or ' | append: settings.phone_new_orleans | append: ' in New Orleans, or request a free quote online. Mobile service across Louisiana.'
+          endcapture
+        else
+          assign seo_description = page.content | strip_html | strip_newlines | strip
+        endif
+      when 'article'
+        assign seo_description = article.excerpt_or_content | strip_html | strip_newlines | strip
+      when 'blog'
+        assign seo_description = blog.title | append: ' from ' | append: seo_site | append: ': auto glass tips, shop updates and what to know about windshield replacement and repair in Louisiana.'
+      when 'collection'
+        assign seo_description = collection.description | strip_html | strip_newlines | strip
+        if seo_description == blank
+          assign collection_types = collection.all_types | join: ', '
+          assign seo_description = 'Official ' | append: seo_site | append: ' merchandise'
+          if collection_types != blank
+            assign seo_description = seo_description | append: ': ' | append: collection_types
+          endif
+          assign seo_description = seo_description | append: '. ' | append: collection.products_count | append: ' designs to shop online.'
+        endif
+      when 'policy'
+        assign seo_description = policy.body | strip_html | strip_newlines | strip
+    endcase
+  endif
   if seo_description == blank
     assign seo_description = shop.description
   endif
+  if seo_description == blank
+    assign seo_description = settings.seo_home_description
+  endif
+  assign seo_description = seo_description | truncate: 160
+
+  comment
+    Cart, search results, account pages and the 404 are for visitors, not search results.
+  endcomment
+  assign seo_noindex = false
+  if template.name == 'cart' or template.name == 'search' or template.name == '404' or template.directory == 'customers'
+    assign seo_noindex = true
+  endif
 -%}
+{%- if seo_noindex %}
+<meta name="robots" content="noindex, follow">
+{%- endif %}
 <title>
   {{- seo_title | escape -}}
   {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' | escape }}"{% endif -%}

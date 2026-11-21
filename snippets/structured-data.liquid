@@ -128,7 +128,7 @@
           assign crumb_parent_name = blog.title
           assign crumb_parent_url = blog.url
         when 'policy'
-          assign crumb_name = policy.title
+          assign crumb_name = page_title
       endcase
       assign crumb_pos = 2
     -%}

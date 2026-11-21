@@ -68,7 +68,7 @@
           assign seo_description = seo_description | append: '. ' | append: collection.products_count | append: ' designs to shop online.'
         endif
       when 'policy'
-        assign seo_description = policy.body | strip_html | strip_newlines | strip
+        assign seo_description = page_title | append: ' for ' | append: seo_site | append: '. The terms that apply when you use this site, book a service or place an order.'
     endcase
   endif
   if seo_description == blank

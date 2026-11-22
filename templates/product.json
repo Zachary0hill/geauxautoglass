@@ -9,35 +9,13 @@
  */
 {
   "sections": {
-    "head": {
-      "type": "page-head",
-      "settings": {
-        "style": "plain",
-        "bundled": "none",
-        "image_alt": "",
-        "focal": "",
-        "show_crumbs": true,
-        "parent_label": "Merchandise",
-        "parent_link": "/collections/all",
-        "crumb": "",
-        "tag": "Merchandise",
-        "heading": "",
-        "highlight": "",
-        "lede": "",
-        "btn_1_label": "",
-        "btn_1_action": "custom",
-        "btn_1_link": "",
-        "btn_2_label": "",
-        "btn_2_action": "custom",
-        "btn_2_link": "",
-        "schools": "",
-        "offer_1": "",
-        "offer_2": ""
-      }
-    },
     "main": {
       "type": "main-product",
       "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
         "price": {
           "type": "price",
           "settings": {}
@@ -103,6 +81,7 @@
         }
       },
       "block_order": [
+        "title",
         "price",
         "variant_picker",
         "quantity",
@@ -143,7 +122,6 @@
     }
   },
   "order": [
-    "head",
     "main",
     "recommendations",
     "cta"

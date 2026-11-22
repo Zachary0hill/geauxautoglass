@@ -70,6 +70,8 @@
         cartError: {{ 'cart.general.error' | t | json }},
         cartEmpty: {{ 'cart.general.empty' | t | json }}
       },
+      quoteUrl: {{ settings.quote_url | json }},
+      phones: { lafayette: {{ settings.phone_lafayette | json }}, new_orleans: {{ settings.phone_new_orleans | json }} },
       cartType: {{ settings.cart_type | json }},
       motion: {{ settings.scroll_motion | json }},
       designMode: {% if request.design_mode %}true{% else %}false{% endif %}

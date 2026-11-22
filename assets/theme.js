@@ -101,6 +101,38 @@
   if (phone.addEventListener) phone.addEventListener('change', menuReset); else if (phone.addListener) phone.addListener(menuReset);
   addEventListener('pageshow', function (e) { if (e.persisted) menuClose(); });
 
+  /* ---- lead clicks: quote form and phone calls ---- */
+  // Published as Shopify custom events (geaux:quote_click, geaux:call_click) so a pixel in
+  // Settings > Customer events can pass them to GA4. Nothing leaves the page until a pixel
+  // subscribes. The pixel to paste is in _dev/analytics/ga4-lead-pixel.js.
+  function lastTen(s) { return String(s || '').replace(/\D/g, '').slice(-10); }
+  function leadPlacement(a) {
+    if (a.closest('.tabbar')) return 'tab_bar';
+    if (a.closest('.mmenu')) return 'phone_menu';
+    if (a.closest('.bar')) return 'header';
+    if (a.closest('.vanfoot')) return 'footer';
+    return 'page';
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    var name = '';
+    var data = { placement: leadPlacement(a), page_path: location.pathname, link_text: (a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 60) };
+    if (href.indexOf('tel:') === 0) {
+      name = 'call_click';
+      var phones = GX.phones || {};
+      var dialed = lastTen(href);
+      data.shop = dialed && dialed === lastTen(phones.lafayette) ? 'lafayette' : dialed && dialed === lastTen(phones.new_orleans) ? 'new_orleans' : 'other';
+    } else if (GX.quoteUrl && href.indexOf(GX.quoteUrl) === 0) {
+      name = 'quote_click';
+    }
+    if (!name) return;
+    try {
+      if (window.Shopify && Shopify.analytics && typeof Shopify.analytics.publish === 'function') Shopify.analytics.publish('geaux:' + name, data);
+    } catch (err) {}
+  }, true);
+
   /* ---- smooth anchor scroll (same page only) ---- */
   // The jump goes in the history, so Back returns to where the reader was and
   // the address can be shared. Focus follows the jump for keyboards and readers.

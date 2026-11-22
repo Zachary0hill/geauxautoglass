@@ -18,7 +18,7 @@
         "focal": "46% 58%",
         "show_crumbs": true,
         "parent_label": "Locations",
-        "parent_link": "/#visit",
+        "parent_link": "/pages/locations",
         "crumb": "New Orleans",
         "tag": "New Orleans location",
         "heading": "Mobile auto glass in New Orleans.",
@@ -153,4 +153,3 @@
     "cta"
   ]
 }
-

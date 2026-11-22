@@ -5,11 +5,11 @@
     "header": {
       "type": "header",
       "blocks": {
-        "enterprise": { "type": "link", "settings": { "label": "Enterprise", "action": "enterprise_form", "link": "", "current_on": "none" } },
+        "enterprise": { "type": "link", "settings": { "label": "Enterprise", "action": "custom", "link": "/pages/enterprise-claims", "current_on": "page.enterprise" } },
         "services": { "type": "link", "settings": { "label": "Services", "action": "custom", "link": "/pages/services", "current_on": "page.services" } },
-        "insurance": { "type": "link", "settings": { "label": "Insurance", "action": "custom", "link": "/#insurance", "current_on": "page.insurance" } },
+        "insurance": { "type": "link", "settings": { "label": "Insurance", "action": "custom", "link": "/pages/insurance", "current_on": "page.insurance" } },
         "merch": { "type": "link", "settings": { "label": "Merchandise", "action": "shop", "link": "", "current_on": "shop" } },
-        "locations": { "type": "link", "settings": { "label": "Locations", "action": "custom", "link": "/#visit", "current_on": "page.location" } }
+        "locations": { "type": "link", "settings": { "label": "Locations", "action": "custom", "link": "/pages/locations", "current_on": "locations" } }
       },
       "block_order": ["enterprise", "services", "insurance", "merch", "locations"],
       "settings": {
@@ -24,7 +24,7 @@
         "tab_call_label": "Call",
         "tab_cta_label": "Get a quote",
         "tab_visit_label": "Visit",
-        "tab_visit_link": "/#visit"
+        "tab_visit_link": "/pages/locations"
       }
     }
   },

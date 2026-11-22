@@ -3,6 +3,10 @@
   if template.name == 'collection' or template.name == 'product' or template.name == 'cart'
     assign on_shop = true
   endif
+  assign on_locations = false
+  if template.name == 'page' and template.suffix contains 'location'
+    assign on_locations = true
+  endif
   assign cart_open = false
   if settings.cart_type == 'drawer' and template.name != 'cart'
     assign cart_open = true
@@ -55,6 +59,8 @@
             if block.settings.current_on == here
               assign is_current = true
             elsif block.settings.current_on == 'shop' and on_shop
+              assign is_current = true
+            elsif block.settings.current_on == 'locations' and on_locations
               assign is_current = true
             endif
           endif
@@ -128,7 +134,7 @@
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9l2.5-4.5h11L20 9"/><path d="M4 9h16l-1.5 9h-13z"/><path d="M9 13h6"/></svg>
       <span>{{ section.settings.tab_cta_label | default: section.settings.cta_label | escape }}</span>
     </a>
-    <a href="{{ section.settings.tab_visit_link | default: '/#visit' }}">
+    <a href="{{ section.settings.tab_visit_link | default: '/pages/locations' }}">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
       <span>{{ section.settings.tab_visit_label | escape }}</span>
     </a>
@@ -155,7 +161,7 @@
     { "type": "text", "id": "tab_call_label", "label": "Call label", "default": "Call" },
     { "type": "text", "id": "tab_cta_label", "label": "Middle label", "info": "Empty: the button label above.", "default": "Get a quote" },
     { "type": "text", "id": "tab_visit_label", "label": "Third label", "default": "Visit" },
-    { "type": "text", "id": "tab_visit_link", "label": "Third link", "default": "/#visit" }
+    { "type": "text", "id": "tab_visit_link", "label": "Third link", "default": "/pages/locations" }
   ],
   "blocks": [
     {
@@ -169,7 +175,9 @@
           { "value": "none", "label": "Never" },
           { "value": "page.services", "label": "Services page" },
           { "value": "page.insurance", "label": "Insurance page" },
+          { "value": "page.enterprise", "label": "Enterprise page" },
           { "value": "page.location", "label": "Location page" },
+          { "value": "locations", "label": "Locations page and each location page" },
           { "value": "shop", "label": "Merchandise, product and cart pages" }
         ], "default": "none" }
       ]

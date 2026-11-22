@@ -4,7 +4,7 @@
 {%- endcomment -%}
 {%- liquid
   assign pin = true
-  if section.blocks.size > 2
+  if section.blocks.size > 2 or section.settings.layout == 'flow'
     assign pin = false
   endif
 -%}
@@ -42,7 +42,7 @@
           <div class="loc" {{ block.shopify_attributes }}>
             <div class="loc__fig">{% render 'photo', image: block.settings.image, bundled: block.settings.bundled, alt: block.settings.image_alt, sizes: '(max-width: 860px) 92vw, 20vw' %}</div>
             <div class="loc__body">
-              <h3>{{ block.settings.name | escape }}</h3>
+              <h3>{% if block.settings.page_link != blank %}<a href="{{ block.settings.page_link }}">{{ block.settings.name | escape }}</a>{% else %}{{ block.settings.name | escape }}{% endif %}</h3>
               {%- if block.settings.address_1 != blank -%}<p class="loc__addr">{{ block.settings.address_1 | escape }}{% if block.settings.address_2 != blank %}<br>{{ block.settings.address_2 | escape }}{% endif %}</p>{%- endif -%}
               {%- if phone_number != blank -%}<a class="loc__tel" href="{{ tel | strip }}">{{ phone_number | escape }}</a>{%- endif -%}
               {%- if hours.size > 0 -%}
@@ -75,7 +75,7 @@
     { "type": "text", "id": "btn_2_label", "label": "Second button label", "info": "Empty on an email button: the address." },
     { "type": "select", "id": "btn_2_action", "label": "Second button goes to", "options": [{"value": "quote", "label": "Quote form"}, {"value": "call_lafayette", "label": "Call Lafayette"}, {"value": "call_new_orleans", "label": "Call New Orleans"}, {"value": "text_lafayette", "label": "Text Lafayette"}, {"value": "email", "label": "Email"}, {"value": "enterprise_email", "label": "Enterprise email"}, {"value": "enterprise_form", "label": "Enterprise claim form"}, {"value": "enterprise_photo", "label": "Enterprise photo upload"}, {"value": "shop", "label": "Merchandise (all products)"}, {"value": "google_lafayette", "label": "Google, Lafayette"}, {"value": "google_new_orleans", "label": "Google, New Orleans"}, {"value": "custom", "label": "Custom link (below)"}], "default": "email" },
     { "type": "text", "id": "btn_2_link", "label": "Second button custom link" },
-    { "type": "paragraph", "content": "Two cards hold on screen while the page scrolls (desktop). With three or more, the section scrolls normally." },
+    { "type": "select", "id": "layout", "label": "Scroll behavior", "options": [{ "value": "pin", "label": "Hold on screen while the page scrolls" }, { "value": "flow", "label": "Scroll normally" }], "default": "pin", "info": "Holding needs a desktop screen and two cards. With three or more, the section scrolls normally." },
     { "type": "text", "id": "anchor_id", "label": "Anchor id", "default": "visit" }
   ],
   "blocks": [

@@ -76,6 +76,9 @@
                     <li><a href="{{ routes.root_url }}pages/student-discount">{{ 'sections.footer.customers.student' | t }}</a></li>
                     <li><a href="{{ routes.root_url }}pages/reviews">{{ 'sections.footer.customers.reviews' | t }}</a></li>
                     {%- comment -%} Listed once the page exists in the admin, so the link never leads nowhere. {%- endcomment -%}
+                    {%- if pages['locations'].title != blank -%}
+                      <li><a href="{{ routes.root_url }}pages/locations">{{ 'sections.footer.customers.locations' | t }}</a></li>
+                    {%- endif -%}
                     {%- if pages['lafayette'].title != blank -%}
                       <li><a href="{{ routes.root_url }}pages/lafayette">{{ 'sections.footer.customers.lafayette' | t }}</a></li>
                     {%- endif -%}

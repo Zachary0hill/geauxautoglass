@@ -162,6 +162,16 @@
         "label": "Areas served",
         "default": "Lafayette, Louisiana\nNew Orleans, Louisiana\nLouisiana",
         "info": "One per line."
+      },
+      {
+        "type": "header",
+        "content": "Google Search Console"
+      },
+      {
+        "type": "text",
+        "id": "google_site_verification",
+        "label": "Verification code",
+        "info": "Search Console > Add property > URL prefix > HTML tag. Paste only the code inside content=\"...\". Leave empty if the domain is verified by DNS."
       }
     ]
   },

@@ -1,0 +1,113 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "head": {
+      "type": "page-head",
+      "settings": {
+        "style": "default",
+        "bundled": "hero",
+        "image_alt": "",
+        "focal": "",
+        "show_crumbs": true,
+        "parent_label": "",
+        "parent_link": "",
+        "crumb": "Locations",
+        "tag": "Locations",
+        "heading": "Two shops. All of Louisiana.",
+        "highlight": "All of Louisiana.",
+        "lede": "Shops in Lafayette and Kenner, plus free mobile service that comes to you. Pick a location for its hours, directions and map.",
+        "btn_1_label": "Get a quote",
+        "btn_1_action": "quote",
+        "btn_1_link": "",
+        "btn_2_label": "",
+        "btn_2_action": "call_lafayette",
+        "btn_2_link": "",
+        "schools": "",
+        "offer_1": "",
+        "offer_2": ""
+      }
+    },
+    "locations": {
+      "type": "locations",
+      "blocks": {
+        "location1": {
+          "type": "location",
+          "settings": {
+            "name": "Lafayette",
+            "bundled": "loc-lafayette",
+            "image_alt": "",
+            "address_1": "409A Mecca Street",
+            "address_2": "Lafayette, LA 70508",
+            "phone": "lafayette",
+            "phone_custom": "",
+            "hours": "Monday to Friday 8 AM to 4:30 PM\nSaturday and Sunday closed",
+            "directions": "google_lafayette",
+            "directions_link": "",
+            "map_url": "https://www.google.com/maps?q=Geaux+Auto+Glass+409A+Mecca+St+Lafayette+LA+70508&output=embed",
+            "page_label": "View Lafayette shop",
+            "page_link": "/pages/lafayette"
+          }
+        },
+        "location2": {
+          "type": "location",
+          "settings": {
+            "name": "New Orleans",
+            "bundled": "loc-kenner",
+            "image_alt": "",
+            "address_1": "2837 Tifton St Unit B",
+            "address_2": "Kenner, LA 70062",
+            "phone": "new_orleans",
+            "phone_custom": "",
+            "hours": "Monday to Friday 8 AM to 5 PM\nSaturday 8 AM to 2 PM\nSunday closed",
+            "directions": "google_new_orleans",
+            "directions_link": "",
+            "map_url": "https://www.google.com/maps?q=Geaux+Auto+Glass+2837+Tifton+St+Kenner+LA+70062&output=embed",
+            "page_label": "View New Orleans shop",
+            "page_link": "/pages/new-orleans"
+          }
+        }
+      },
+      "block_order": [
+        "location1",
+        "location2"
+      ],
+      "settings": {
+        "heading": "Pick your shop.",
+        "btn_1_label": "",
+        "btn_1_action": "custom",
+        "btn_1_link": "",
+        "btn_2_label": "",
+        "btn_2_action": "custom",
+        "btn_2_link": "",
+        "anchor_id": "shops",
+        "layout": "flow"
+      }
+    },
+    "cta": {
+      "type": "cta-band",
+      "settings": {
+        "heading": "Get your windshield replaced today.",
+        "btn_1_label": "Get a quote",
+        "btn_1_action": "quote",
+        "btn_1_link": "",
+        "btn_2_label": "",
+        "btn_2_action": "call_lafayette",
+        "btn_2_link": "",
+        "anchor_id": ""
+      }
+    }
+  },
+  "order": [
+    "head",
+    "locations",
+    "cta"
+  ]
+}

@@ -487,7 +487,7 @@
             "directions": "google_lafayette",
             "directions_link": "",
             "map_url": "https://www.google.com/maps?q=Geaux+Auto+Glass+409A+Mecca+St+Lafayette+LA+70508&output=embed",
-            "page_label": "Location page",
+            "page_label": "Lafayette location",
             "page_link": "/pages/lafayette"
           }
         },
@@ -505,7 +505,7 @@
             "directions": "google_new_orleans",
             "directions_link": "",
             "map_url": "https://www.google.com/maps?q=Geaux+Auto+Glass+2837+Tifton+St+Kenner+LA+70062&output=embed",
-            "page_label": "Location page",
+            "page_label": "New Orleans location",
             "page_link": "/pages/new-orleans"
           }
         }

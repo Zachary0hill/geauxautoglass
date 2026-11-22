@@ -115,6 +115,10 @@
       case request.page_type
         when 'page'
           assign crumb_name = page.title
+          if template.suffix contains 'location' and template.suffix != 'locations' and pages['locations'].title != blank
+            assign crumb_parent_name = pages['locations'].title
+            assign crumb_parent_url = routes.root_url | append: 'pages/locations'
+          endif
         when 'product'
           assign crumb_name = product.title
           assign crumb_parent_name = collections.all.title | default: 'Merchandise'

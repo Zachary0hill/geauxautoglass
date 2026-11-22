@@ -88,6 +88,9 @@
     assign seo_noindex = true
   endif
 -%}
+{%- if settings.google_site_verification != blank %}
+<meta name="google-site-verification" content="{{ settings.google_site_verification | strip | escape }}">
+{%- endif %}
 {%- if seo_noindex %}
 <meta name="robots" content="noindex, follow">
 {%- endif %}

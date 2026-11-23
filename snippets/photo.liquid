@@ -55,6 +55,15 @@
       assign w = 1320
       assign h = 2042
       assign default_alt = 'Technician setting a windshield on a red SUV with suction cups in a parking lot'
+    when 'windshield-before', 'windshield-after'
+      assign file = bundled | append: '.jpg'
+      assign w = 720
+      assign h = 1080
+      if bundled == 'windshield-before'
+        assign default_alt = 'Purple car with the windshield removed and the dashboard exposed'
+      else
+        assign default_alt = 'The same purple car with the replacement windshield installed'
+      endif
     when 'ba-before'
       assign file = 'ba-before.jpg'
       assign w = 1456

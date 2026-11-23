@@ -1,5 +1,5 @@
 {%- comment -%}
-  The signature move: one back glass, wiped from "before" to "after" by the scroll.
+  The signature move: one windshield, wiped from "before" to "after" by the scroll.
   With a video set, a muted loop replaces the wipe and the pin shortens (phone.js, theme.js).
 {%- endcomment -%}
 {%- liquid
@@ -19,10 +19,10 @@
       {%- if section.settings.heading != blank -%}<h2 class="sc-display sc-display--md">{{ section.settings.heading | escape }}</h2>{%- endif -%}
       {%- if section.settings.text != blank -%}<p class="sc-body">{{ section.settings.text | escape }}</p>{%- endif -%}
     </div>
-    <div class="sig__frame">
+    <div class="sig__frame{% if video_src == blank and section.settings.before_image == blank and section.settings.after_image == blank %} sig__frame--windshield{% endif %}">
       <figure class="ba" data-video="{{ video_src }}" data-video-label="{{ section.settings.video_label | escape }}" aria-label="{{ section.settings.figure_label | escape }}">
-        {%- render 'photo', image: section.settings.before_image, bundled: 'ba-before', alt: section.settings.before_alt, class: 'ba__before', sizes: '(max-width: 860px) 92vw, 60vw' -%}
-        {%- render 'photo', image: section.settings.after_image, bundled: 'ba-after', alt: section.settings.after_alt, class: 'ba__after', sizes: '(max-width: 860px) 92vw, 60vw' -%}
+        {%- render 'photo', image: section.settings.before_image, bundled: 'windshield-before', alt: section.settings.before_alt, class: 'ba__before', sizes: '(max-width: 860px) 92vw, 60vw' -%}
+        {%- render 'photo', image: section.settings.after_image, bundled: 'windshield-after', alt: section.settings.after_alt, class: 'ba__after', sizes: '(max-width: 860px) 92vw, 60vw' -%}
         <span class="ba__chip ba__chip--b">{{ section.settings.before_label | escape }}</span>
         <span class="ba__chip ba__chip--a">{{ section.settings.after_label | escape }}</span>
         <span class="ba__line" aria-hidden="true"></span>
@@ -40,15 +40,15 @@
   "settings": [
     { "type": "text", "id": "tag", "label": "Tag", "default": "Before and after" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Glass out. Glass in." },
-    { "type": "textarea", "id": "text", "label": "Text", "default": "One Jeep hardtop, back glass. We fix all types of auto glass." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "A new windshield for this purple car. We fix all types of auto glass." },
     { "type": "header", "content": "Wipe" },
-    { "type": "image_picker", "id": "before_image", "label": "Before photo", "info": "Both photos: same framing, 16:9, 1456px wide or more. Empty: the bundled Jeep photos." },
+    { "type": "image_picker", "id": "before_image", "label": "Before photo", "info": "Leave both photos empty for the bundled windshield comparison. For custom photos, use a matching pair framed for a landscape crop on desktop." },
     { "type": "text", "id": "before_alt", "label": "Before photo description", "info": "Empty: the photo's own description." },
     { "type": "text", "id": "before_label", "label": "Before chip", "default": "Before" },
     { "type": "image_picker", "id": "after_image", "label": "After photo" },
     { "type": "text", "id": "after_alt", "label": "After photo description", "info": "Empty: the photo's own description." },
     { "type": "text", "id": "after_label", "label": "After chip", "default": "After" },
-    { "type": "text", "id": "figure_label", "label": "Figure description (screen readers)", "default": "Before and after of a back glass replacement on a blue Jeep" },
+    { "type": "text", "id": "figure_label", "label": "Figure description (screen readers)", "default": "Windshield replacement on a purple car, before and after" },
     { "type": "header", "content": "Video" },
     { "type": "video", "id": "video", "label": "Video", "info": "Optional. A muted loop replaces the wipe and plays only while on screen. Update the text above to match the car." },
     { "type": "text", "id": "video_label", "label": "Video description (screen readers)", "default": "Glass out, glass in. Muted video of a replacement." },

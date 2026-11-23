@@ -262,6 +262,14 @@ ul, ol { padding: 0; list-style: none; }
 .ba { position: relative; width: 100%; aspect-ratio: 16 / 9; max-height: 72vh; overflow: hidden; border-radius: var(--sc-r-lg); background: var(--sc-surface); box-shadow: var(--sc-e3);
   --w: .5; --x: calc(var(--w) * 100%); }
 .ba > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.sig__frame--windshield { width: 100%; aspect-ratio: 2 / 3; justify-self: center; }
+@media (min-width: 861px) {
+  .sig:has(> .sig__frame--windshield) {
+    grid-template-columns: minmax(0, 26rem) minmax(0, min(48vh, 32rem));
+    justify-content: center;
+  }
+}
+.sig__frame--windshield .ba { position: absolute; inset: 0; width: 100%; height: 100%; max-height: none; }
 .ba__after { clip-path: inset(0 calc(100% - var(--x)) 0 0); }
 .ba__line { position: absolute; top: 0; bottom: 0; left: var(--x); width: 4px; translate: -50% 0; background: var(--gx-paper); }
 .ba__knob { position: absolute; top: 50%; left: clamp(36px, var(--x), calc(100% - 36px)); translate: -50% -50%; width: 68px; height: 68px; border-radius: 50%;
@@ -481,6 +489,7 @@ button.link { background: none; border: 0; padding: 0; font: inherit; font-weigh
   .sig__copy .sc-body { font-size: .98rem; }
   .sig__frame { position: relative; width: 100%; aspect-ratio: 4 / 5; max-height: 60vh; }
   .ba { position: absolute; inset: 0; width: auto; height: auto; max-height: none; aspect-ratio: auto; justify-self: stretch; }
+  .sig__frame--windshield { width: min(100%, 40vh); aspect-ratio: 2 / 3; }
   .ba > img { object-position: 42% 50%; }
   .ba__knob { width: 60px; height: 60px; }
   .ba__knob img { width: 40px; height: 40px; }

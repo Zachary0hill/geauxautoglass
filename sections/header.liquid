@@ -20,8 +20,12 @@
     assign here = template.name | append: '.' | append: template.suffix
   endif
   assign biz = settings.brand_name | default: shop.name
+  assign header_phone = settings.phone_lafayette
+  if template.name == 'page' and template.suffix == 'location'
+    assign header_phone = settings.phone_new_orleans
+  endif
   capture tel
-    render 'phone', phone: settings.phone_lafayette
+    render 'phone', phone: header_phone
   endcapture
   assign tel = tel | strip
   assign phone_menu = false
@@ -69,8 +73,8 @@
       {%- endfor -%}
     {%- endif -%}
   </nav>
-  {%- if section.settings.show_phone and settings.phone_lafayette != blank -%}
-    <a class="bar__call" href="{{ tel }}">{{ settings.phone_lafayette | escape }}</a>
+  {%- if section.settings.show_phone and header_phone != blank -%}
+    <a class="bar__call" href="{{ tel }}">{{ header_phone | escape }}</a>
   {%- endif -%}
   {%- if section.settings.show_cart and on_shop -%}
     <a class="bar__cart" href="{{ routes.cart_url }}"{% if cart_open %} data-cart-open{% endif %}>{{ 'sections.header.cart' | t }} (<span data-cart-count>{{ cart.item_count }}</span>)</a>

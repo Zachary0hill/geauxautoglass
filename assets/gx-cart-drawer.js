@@ -16,21 +16,35 @@
   drawer.__brBoot = true;
   var lastFocus = null;
   var busy = false;
+  var closeTimer = null;
 
-  function open() {
-    if (!drawer.hidden) return;
-    lastFocus = document.activeElement;
+  function open(opener) {
+    if (drawer.open && closeTimer === null) return;
+    clearTimeout(closeTimer);
+    closeTimer = null;
+    if (!drawer.open) lastFocus = opener || document.activeElement;
     drawer.hidden = false;
+    if (!drawer.open) drawer.showModal();
     document.body.classList.add('br-drawer-open');
-    requestAnimationFrame(function () { drawer.classList.add('is-open'); });
+    requestAnimationFrame(function () { if (drawer.open && closeTimer === null) drawer.classList.add('is-open'); });
     var c = $('.cart-drawer__close', drawer); if (c) c.focus();
   }
   function close() {
-    if (drawer.hidden) return;
+    if (!drawer.open || closeTimer !== null) return;
     drawer.classList.remove('is-open');
-    document.body.classList.remove('br-drawer-open');
-    setTimeout(function () { drawer.hidden = true; }, 280);
-    if (lastFocus && lastFocus.focus) lastFocus.focus();
+    closeTimer = setTimeout(function () {
+      closeTimer = null;
+      drawer.close();
+      drawer.hidden = true;
+      document.body.classList.remove('br-drawer-open');
+      if (lastFocus && lastFocus.isConnected) lastFocus.focus({ preventScroll: true });
+    }, 280);
+  }
+
+  function controls(root) {
+    return $$('a[href], button:enabled, input:enabled', root).filter(function (el) {
+      return el.tabIndex >= 0 && el.getClientRects().length > 0;
+    });
   }
 
   function swap(html) {
@@ -39,7 +53,18 @@
     if (!fresh) return;
     var panel = $('.cart-drawer__panel', drawer);
     var freshPanel = fresh.querySelector('.cart-drawer__panel');
-    if (panel && freshPanel) panel.innerHTML = freshPanel.innerHTML;
+    if (!panel || !freshPanel) return;
+    var active = document.activeElement;
+    var restore = drawer.open && panel.contains(active);
+    var item = active.closest('[data-item-key]');
+    var index = restore ? controls(item || panel).indexOf(active) : -1;
+    panel.innerHTML = freshPanel.innerHTML;
+    if (restore) {
+      var scope = item ? $('[data-item-key="' + CSS.escape(item.dataset.itemKey) + '"]', panel) : panel;
+      var target = scope && controls(scope)[index];
+      if (!target || target.className !== active.className) target = $('.cart-drawer__close', panel);
+      target.focus({ preventScroll: true });
+    }
   }
 
   function refresh(cb) {
@@ -69,7 +94,7 @@
 
   document.addEventListener('click', function (e) {
     var opener = e.target.closest('[data-cart-open]');
-    if (opener) { e.preventDefault(); refresh(); open(); return; }
+    if (opener) { e.preventDefault(); open(opener); refresh(); return; }
     if (!drawer.contains(e.target)) return;
     if (e.target.closest('[data-cart-close]')) { e.preventDefault(); close(); return; }
     var qb = e.target.closest('[data-drawer-qty]');
@@ -87,7 +112,14 @@
     var input = e.target.closest('[data-drawer-input]'); if (!input) return;
     change(parseInt(input.dataset.drawerInput, 10), Math.max(0, parseInt(input.value, 10) || 0));
   });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !drawer.hidden) close(); });
+  drawer.addEventListener('cancel', function (e) { e.preventDefault(); close(); });
+  drawer.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab') return;
+    var items = controls(drawer);
+    var first = items[0], last = items[items.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
 
   // After an add to cart anywhere on the page, open the drawer instead of a toast.
   document.addEventListener('gx:cart:added', function () { refresh(open); });

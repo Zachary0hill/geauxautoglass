@@ -507,7 +507,8 @@
 .predictive__empty { display: grid; gap: var(--sc-3); justify-items: start; }
 
 /* ========================================================== CART DRAWER */
-.cart-drawer { position: fixed; inset: 0; z-index: 140; }
+.cart-drawer { position: fixed; inset: 0; z-index: 140; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: transparent; color: inherit; }
+.cart-drawer::backdrop { background: transparent; }
 .cart-drawer[hidden] { display: none; }
 .cart-drawer__scrim { position: absolute; inset: 0; background: color-mix(in oklab, #0E0E0E 50%, transparent); opacity: 0; transition: opacity 260ms var(--sc-ease-out); }
 .cart-drawer__panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(100vw, 28rem); background: var(--sc-canvas); color: var(--sc-ink); display: flex; flex-direction: column; box-shadow: var(--sc-e3); transform: translateX(100%); transition: transform 300ms var(--sc-ease-drawer); }

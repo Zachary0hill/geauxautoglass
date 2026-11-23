@@ -3,7 +3,7 @@
   Section Rendering API after every cart change, so it is always Shopify's
   own truth. Everything inside [data-cart-drawer-body] is replaced.
 {%- endcomment -%}
-<div class="cart-drawer" id="CartDrawer" role="dialog" aria-modal="true" aria-labelledby="CartDrawerTitle" hidden>
+<dialog class="cart-drawer" id="CartDrawer" aria-modal="true" aria-labelledby="CartDrawerTitle" hidden>
   <div class="cart-drawer__scrim" data-cart-close></div>
   <aside class="cart-drawer__panel">
     <div class="cart-drawer__head">
@@ -17,12 +17,12 @@
           <p class="br-rule">{{ 'cart.general.title' | t }}</p>
           <p class="cart-drawer__empty-title br-display">{{ 'cart.general.empty' | t }}</p>
           <p class="br-body">{{ 'cart.drawer.empty_text' | t }}</p>
-          <a class="btn" href="{{ routes.all_products_collection_url }}" data-cart-close>{{ 'cart.general.continue_shopping' | t }} {% render 'icon', icon: 'arrow' %}</a>
+          <a class="btn" href="{{ routes.all_products_collection_url }}">{{ 'cart.general.continue_shopping' | t }} {% render 'icon', icon: 'arrow' %}</a>
         </div>
       {%- else -%}
         <ul class="cart-drawer__items" role="list">
           {%- for item in cart.items -%}
-            <li class="cart-drawer__item" data-line="{{ forloop.index }}">
+            <li class="cart-drawer__item" data-line="{{ forloop.index }}" data-item-key="{{ item.key | escape }}">
               <a class="cart-drawer__img" href="{{ item.url }}" tabindex="-1" aria-hidden="true">
                 {%- if item.image -%}{{ item.image | image_url: width: 240 | image_tag: loading: 'lazy', alt: '' }}{%- endif -%}
               </a>
@@ -82,7 +82,7 @@
       </div>
     {%- endif -%}
   </aside>
-</div>
+</dialog>
 
 {% schema %}
 {

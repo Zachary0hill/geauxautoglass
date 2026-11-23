@@ -44,7 +44,7 @@
       }) || null;
     }
 
-    function showMedia(id) {
+    function showMedia(id, instant) {
       if (!id || !mediaList) return;
       var item = $('[data-media-id="' + id + '"]', mediaList);
       if (!item) return;
@@ -57,7 +57,8 @@
         var top = item.getBoundingClientRect().top + window.scrollY - 90;
         if (Math.abs(window.scrollY - top) > 40) window.scrollTo({ top: top, behavior: 'smooth' });
       } else {
-        mediaList.scrollTo({ left: item.offsetLeft - mediaList.offsetLeft, behavior: 'smooth' });
+        var left = mediaList.scrollLeft + item.getBoundingClientRect().left - mediaList.getBoundingClientRect().left;
+        mediaList.scrollTo({ left: left - (mediaList.clientWidth - item.offsetWidth) / 2, behavior: instant ? 'instant' : 'smooth' });
       }
       thumbs.forEach(function (t) { t.setAttribute('aria-current', t.dataset.thumbFor === String(id) ? 'true' : 'false'); });
     }
@@ -323,6 +324,10 @@
     if (picker) picker.addEventListener('change', update);
     thumbs.forEach(function (t) { t.addEventListener('click', function () { showMedia(t.dataset.thumbFor); }); });
     if (mediaList) {
+      var initialMedia = $('[data-current]', mediaList);
+      if (initialMedia && !window.matchMedia('(min-width: 900px)').matches) {
+        showMedia(initialMedia.dataset.mediaId, true);
+      }
       // Keep thumbs in sync while swiping on phones.
       var scrollT;
       mediaList.addEventListener('scroll', function () {

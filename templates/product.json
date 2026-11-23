@@ -52,19 +52,11 @@
           "type": "description",
           "settings": {}
         },
-        "sizing": {
-          "type": "collapsible",
-          "settings": {
-            "heading": "Details",
-            "content": "<p>Add product details here.</p>",
-            "open": false
-          }
-        },
         "shipping": {
           "type": "collapsible",
           "settings": {
             "heading": "Shipping and returns",
-            "content": "<p>Add shipping and return details here.</p>",
+            "content": "<p>Have a question about delivery or a return? <a href=\"/pages/contact\">Contact Geaux Auto Glass</a> for help with your merchandise order.</p>",
             "open": false
           }
         },
@@ -89,7 +81,6 @@
         "inventory",
         "pickup",
         "description",
-        "sizing",
         "shipping",
         "share",
         "complementary"

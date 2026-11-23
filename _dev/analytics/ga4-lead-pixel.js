@@ -1,5 +1,7 @@
 // GA4 lead clicks for Geaux Auto Glass.
 //
+// Alternative for stores using a Shopify app for GA4 instead of the theme's Google tag.
+// Leave this pixel disconnected while snippets/google-analytics.liquid is active.
 // Where it goes: Shopify admin > Settings > Customer events > Add custom pixel.
 // Name it "GA4 lead clicks", paste this whole file, set GA4_ID below, Save, then Connect.
 //

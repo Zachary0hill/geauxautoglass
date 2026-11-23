@@ -1,0 +1,44 @@
+<script>
+  (function () {
+    // Google lists this tag ID for the Geaux Auto Glass web stream G-JEP7GETPE7.
+    var tagId = 'GTM-K9DMCLC8';
+    var measurementId = 'G-JEP7GETPE7';
+    var started = false;
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    gtag('consent', 'default', {
+      analytics_storage: 'denied', ad_storage: 'denied',
+      ad_user_data: 'denied', ad_personalization: 'denied'
+    });
+
+    function syncConsent() {
+      var privacy = window.Shopify && Shopify.customerPrivacy;
+      if (!privacy) return;
+      var allowed = privacy.analyticsProcessingAllowed();
+      window['ga-disable-' + measurementId] = !allowed;
+      gtag('consent', 'update', { analytics_storage: allowed ? 'granted' : 'denied' });
+      if (!allowed || started) return;
+      started = true;
+      gtag('js', new Date());
+      gtag('config', tagId, { allow_google_signals: false, allow_ad_personalization_signals: false });
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=' + tagId;
+      document.head.appendChild(script);
+    }
+
+    document.addEventListener('visitorConsentCollected', syncConsent);
+    if (window.Shopify && Shopify.customerPrivacy) {
+      syncConsent();
+    } else if (window.Shopify && Shopify.loadFeatures) {
+      Shopify.loadFeatures([{ name: 'consent-tracking-api', version: '1.0' }], function (error) {
+        if (!error) syncConsent();
+      });
+    }
+    window.gxTrackLead = function (name, data) {
+      if (started && Shopify.customerPrivacy.analyticsProcessingAllowed()) {
+        gtag('event', name, Object.assign({ send_to: measurementId }, data));
+      }
+    };
+  })();
+</script>

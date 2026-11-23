@@ -102,9 +102,7 @@
   addEventListener('pageshow', function (e) { if (e.persisted) menuClose(); });
 
   /* ---- lead clicks: quote form and phone calls ---- */
-  // Published as Shopify custom events (geaux:quote_click, geaux:call_click) so a pixel in
-  // Settings > Customer events can pass them to GA4. Nothing leaves the page until a pixel
-  // subscribes. The pixel to paste is in _dev/analytics/ga4-lead-pixel.js.
+  // Keep the Shopify events available to subscribers alongside the storefront Google tag.
   function lastTen(s) { return String(s || '').replace(/\D/g, '').slice(-10); }
   function leadPlacement(a) {
     if (a.closest('.tabbar')) return 'tab_bar';
@@ -128,6 +126,7 @@
       name = 'quote_click';
     }
     if (!name) return;
+    if (window.gxTrackLead) window.gxTrackLead(name, data);
     try {
       if (window.Shopify && Shopify.analytics && typeof Shopify.analytics.publish === 'function') Shopify.analytics.publish('geaux:' + name, data);
     } catch (err) {}

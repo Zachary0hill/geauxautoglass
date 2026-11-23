@@ -21,13 +21,13 @@
     "footer_line": "Website by ZZMEDIA Studio",
     "founded_year": "",
     "seo_home_title": "Mobile windshield replacement in Lafayette & New Orleans",
-    "google_site_verification": "f7-dV-BmWDXMq-ag8sov1i4l9VxBaX_04mwelGOgraw",
     "seo_home_description": "Mobile windshield replacement, chip repair, door glass and ADAS recalibration in Lafayette and New Orleans. Same-day or next-day service. Insurance accepted.",
     "business_street": "409A Mecca Street",
     "business_city": "Lafayette",
     "business_region": "LA",
     "business_postal": "70508",
     "seo_areas_served": "Lafayette, Louisiana\nNew Orleans, Louisiana\nLouisiana",
+    "google_site_verification": "f7-dV-BmWDXMq-ag8sov1i4l9VxBaX_04mwelGOgraw",
     "brand_name": "Geaux Auto Glass",
     "color_canvas": "#0a0a0b",
     "color_surface": "#17171a",
@@ -67,7 +67,14 @@
         "settings": {}
       }
     },
-    "content_for_index": []
+    "content_for_index": [],
+    "blocks": {
+      "14421132865913305101": {
+        "type": "shopify://apps/ab-google-analytics/blocks/analytics/2fc433fa-79f5-4d1d-bab2-983d42099561",
+        "disabled": false,
+        "settings": {}
+      }
+    }
   },
   "presets": {
     "Geaux Auto Glass": {

@@ -31,7 +31,7 @@
 <a class="mitem" data-type="{{ type_key | handle }}" href="{{ product.url }}">
   <span class="mitem__fig">
     {%- if image != blank -%}
-      <img src="{{ image | image_url: width: 560 }}" srcset="{{ image | image_url: width: 280 }} 280w, {{ image | image_url: width: 560 }} 560w, {{ image | image_url: width: 840 }} 840w" sizes="(max-width: 860px) 46vw, (max-width: 1180px) 22vw, 18vw" width="560" height="560" alt="{{ type_label | escape }}: {{ name | escape }}" loading="lazy">
+      <img src="{{ image | image_url: width: 560 }}" srcset="{{ image | image_url: width: 280 }} 280w, {{ image | image_url: width: 560 }} 560w, {{ image | image_url: width: 840 }} 840w, {{ image | image_url: width: 1100 }} 1100w" sizes="(max-width: 860px) 46vw, (max-width: 1100px) 30vw, (max-width: 1536px) 23vw, 360px" width="560" height="560" alt="{{ type_label | escape }}: {{ name | escape }}" loading="lazy">
     {%- endif -%}
   </span>
   {%- if type_label != blank -%}<span class="mitem__type">{{ type_label | escape }}</span>{%- endif -%}

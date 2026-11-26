@@ -12,7 +12,7 @@
     assign known = known | append: block.settings.product_type | append: '|'
   endfor
 -%}
-<section class="sc-section paper" data-sc-act="flow" data-sc-drift="{{ settings.color_canvas }}">
+<section class="merch paper" data-sc-act="flow" data-sc-drift="{{ settings.color_canvas }}">
   <div class="sc-wrap">
     {%- paginate collection.products by section.settings.per_page -%}
       {%- if collection.products.size > 0 -%}

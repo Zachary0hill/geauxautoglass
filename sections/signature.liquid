@@ -26,7 +26,7 @@
         <span class="ba__chip ba__chip--b">{{ section.settings.before_label | escape }}</span>
         <span class="ba__chip ba__chip--a">{{ section.settings.after_label | escape }}</span>
         <span class="ba__line" aria-hidden="true"></span>
-        <span class="ba__knob" aria-hidden="true"><img src="{{ 'mark.svg' | asset_url }}" width="400" height="400" alt="" fetchpriority="low"></span>
+        <span class="ba__knob" role="slider" tabindex="0" aria-label="{{ section.settings.slider_label | default: 'Drag to compare before and after' | escape }}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% after"><img src="{{ 'mark.svg' | asset_url }}" width="400" height="400" alt="" fetchpriority="low"></span>
       </figure>
     </div>
   </div>
@@ -49,6 +49,7 @@
     { "type": "text", "id": "after_alt", "label": "After photo description", "info": "Empty: the photo's own description." },
     { "type": "text", "id": "after_label", "label": "After chip", "default": "After" },
     { "type": "text", "id": "figure_label", "label": "Figure description (screen readers)", "default": "Windshield replacement on a purple car, before and after" },
+    { "type": "text", "id": "slider_label", "label": "Slider name (screen readers)", "default": "Drag to compare before and after" },
     { "type": "header", "content": "Video" },
     { "type": "video", "id": "video", "label": "Video", "info": "Optional. A muted loop replaces the wipe and plays only while on screen. Update the text above to match the car." },
     { "type": "text", "id": "video_label", "label": "Video description (screen readers)", "default": "Glass out, glass in. Muted video of a replacement." },

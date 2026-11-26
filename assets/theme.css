@@ -274,7 +274,16 @@ ul, ol { padding: 0; list-style: none; }
 .ba__line { position: absolute; top: 0; bottom: 0; left: var(--x); width: 4px; translate: -50% 0; background: var(--gx-paper); }
 .ba__knob { position: absolute; top: 50%; left: clamp(36px, var(--x), calc(100% - 36px)); translate: -50% -50%; width: 68px; height: 68px; border-radius: 50%;
   background: var(--gx-paper); display: grid; place-items: center; box-shadow: var(--sc-e2); }
-.ba__knob img { width: 46px; height: 46px; }
+.ba__knob img { width: 46px; height: 46px; pointer-events: none; }
+/* Draggable: horizontal drags move the wipe, vertical swipes still scroll the page. */
+.ba:not(.ba--video) { cursor: ew-resize; touch-action: pan-y; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+.ba > img { -webkit-user-drag: none; pointer-events: none; }
+.ba__knob { cursor: grab; transition: scale .18s ease, box-shadow .18s ease; }
+.ba:hover .ba__knob { scale: 1.06; }
+.ba--dragging, .ba--dragging .ba__knob { cursor: grabbing; }
+.ba--dragging .ba__knob { scale: 1.12; }
+.ba__knob:focus-visible { outline: 3px solid var(--sc-accent); outline-offset: 4px; }
+.ba__chip { pointer-events: none; }
 .ba__chip { position: absolute; bottom: 1rem; font-weight: 700; font-size: var(--sc-t-xs); letter-spacing: .1em; text-transform: uppercase; padding: .5em .8em; border-radius: var(--sc-r-sm); }
 .ba__chip--b { right: 1rem; background: var(--gx-ink-dark); color: var(--gx-paper-2); opacity: clamp(0, calc((.84 - var(--w)) * 10), 1); }
 .ba__chip--a { left: 1rem; background: var(--sc-accent); color: var(--sc-accent-ink); opacity: clamp(0, calc((var(--w) - .16) * 10), 1); }
@@ -658,24 +667,37 @@ button.link { background: none; border: 0; padding: 0; font: inherit; font-weigh
   .shop-card__link:hover .shop-card__img--hover { opacity: 1; }
 }
 
-/* merchandise grid: every item on one page */
-.merch__top { display: flex; align-items: end; justify-content: space-between; gap: var(--sc-5); flex-wrap: wrap; }
+/* merchandise grid: every item on one page. The shop runs wider than the
+   other pages and starts right under the hero, so the products lead. */
+.template-collection .main-content { --sc-maxw: 96rem; }
+.template-collection .phead__copy { padding-bottom: clamp(2.5rem, 4.5vw, 4rem); }
+.merch { padding-block: clamp(1.25rem, 2.4vw, 2.25rem) var(--sc-section); }
+.merch__top { position: sticky; top: var(--bar-h); z-index: 5; display: flex; align-items: center; justify-content: space-between; gap: var(--sc-5); flex-wrap: wrap;
+  margin-inline: calc(var(--sc-gutter) * -1); padding: .85rem var(--sc-gutter); background: color-mix(in oklab, var(--gx-paper) 92%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--sc-hairline); }
 .merch__bar { display: flex; flex-wrap: wrap; gap: .5rem; }
 .chip { display: inline-flex; align-items: center; gap: .55em; min-height: 44px; padding: 0 1.1em; border: 0; border-radius: 999px; cursor: pointer; background: none; color: var(--sc-ink);
-  font-weight: 700; font-size: var(--sc-t-sm); letter-spacing: .06em; text-transform: uppercase; box-shadow: inset 0 0 0 2px var(--sc-hairline-strong); }
+  font-weight: 700; font-size: var(--sc-t-sm); letter-spacing: .06em; text-transform: uppercase; box-shadow: inset 0 0 0 2px var(--sc-hairline-strong);
+  transition: background-color .18s ease, box-shadow .18s ease, color .18s ease; }
+.chip:hover { box-shadow: inset 0 0 0 2px var(--sc-ink); }
 .chip b { font-weight: 700; color: var(--sc-ink-soft); }
 .chip[aria-pressed="true"] { background: var(--sc-ink); color: var(--gx-paper); box-shadow: none; }
 .chip[aria-pressed="true"] b { color: var(--gx-paper); }
-.merch__grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(1.5rem, 2.4vw, 2.25rem) clamp(.9rem, 1.5vw, 1.4rem); margin-top: var(--sc-6); }
-.mitem { display: grid; align-content: start; gap: .2rem; text-decoration: none; color: inherit; min-width: 0; }
+.merch__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(2rem, 3vw, 3rem) clamp(1rem, 1.8vw, 1.75rem); margin-top: clamp(1.25rem, 2vw, 2rem); }
+.mitem { display: grid; align-content: start; gap: .3rem; text-decoration: none; color: inherit; min-width: 0; }
 .mitem[hidden] { display: none; }
-.mitem__fig { aspect-ratio: 1 / 1; border-radius: var(--sc-r-md); overflow: hidden; background: var(--gx-paper-2); box-shadow: inset 0 0 0 2px var(--sc-hairline); margin-bottom: .55rem; }
-.mitem__fig img { width: 100%; height: 100%; object-fit: cover; transition: scale 320ms var(--sc-ease-out); }
-.mitem:hover .mitem__fig img { scale: 1.05; }
-.mitem__type { font-weight: 700; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--sc-accent-text); }
-.mitem__name { font-family: var(--sc-font-display); font-weight: 400; text-transform: uppercase; font-size: clamp(.92rem, .85rem + .3vw, 1.08rem); line-height: 1.12; color: var(--sc-ink); }
-.mitem__price { font-weight: 700; font-size: var(--sc-t-sm); color: var(--sc-ink-soft); }
-.merch__note { margin-top: var(--sc-6); font-size: var(--sc-t-sm); font-weight: 700; color: var(--sc-ink-soft); }
+.mitem__fig { position: relative; aspect-ratio: 1 / 1; border-radius: var(--sc-r-lg); overflow: hidden; background: var(--gx-paper-2); box-shadow: inset 0 0 0 1px var(--sc-hairline); margin-bottom: .7rem;
+  transition: translate 260ms var(--sc-ease-out), box-shadow 260ms var(--sc-ease-out); }
+.mitem__fig img { width: 100%; height: 100%; object-fit: cover; transition: scale 420ms var(--sc-ease-out); }
+.mitem__fig::after { content: ""; position: absolute; inset: auto 0 0 0; height: 4px; background: var(--sc-accent); scale: 0 1; transform-origin: left; transition: scale 320ms var(--sc-ease-out); }
+.mitem:hover .mitem__fig, .mitem:focus-visible .mitem__fig { translate: 0 -4px; box-shadow: inset 0 0 0 1px var(--sc-hairline), 0 18px 36px -18px rgb(0 0 0 / .35); }
+.mitem:hover .mitem__fig img, .mitem:focus-visible .mitem__fig img { scale: 1.05; }
+.mitem:hover .mitem__fig::after, .mitem:focus-visible .mitem__fig::after { scale: 1 1; }
+.mitem:hover .mitem__name { color: var(--sc-accent-text); }
+.mitem__type { font-weight: 700; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--sc-accent-text); }
+.mitem__name { font-family: var(--sc-font-display); font-weight: 400; text-transform: uppercase; font-size: clamp(1rem, .88rem + .45vw, 1.3rem); line-height: 1.1; color: var(--sc-ink); transition: color .18s ease; }
+.mitem__price { font-weight: 700; font-size: var(--sc-t-base, 1rem); color: var(--sc-ink); }
+.merch__note { margin-top: var(--sc-7); font-size: var(--sc-t-sm); font-weight: 700; color: var(--sc-ink-soft); }
 
 /* footer mark: the third link column is wider now, so the diamond steps back before it reaches the links */
 @media (min-width: 861px) and (max-width: 1340px) {
@@ -688,8 +710,10 @@ button.link { background: none; border: 0; padding: 0; font: inherit; font-weigh
   .vanfoot__phones a { font-size: 1.6rem; }
 }
 
+@media (max-width: 1100px) {
+  .merch__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
 @media (max-width: 1180px) {
-  .merch__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .mini { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
@@ -729,8 +753,12 @@ button.link { background: none; border: 0; padding: 0; font: inherit; font-weigh
   .locd__actions .btn { flex: 1 1 100%; }
   .locd__map { min-height: 0; aspect-ratio: 4 / 5; }
   .mini { grid-template-columns: 1fr 1fr; gap: 1.25rem .9rem; }
-  .merch__grid { grid-template-columns: 1fr 1fr; gap: 1.6rem .9rem; margin-top: 1.5rem; }
-  .chip { font-size: .78rem; padding: 0 .95em; }
+  .merch__grid { grid-template-columns: 1fr 1fr; gap: 1.6rem .9rem; margin-top: 1rem; }
+  .merch__top { top: 56px; padding-block: .6rem; } /* the phone bar is compact (56px) once scrolled */
+  .merch__bar { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: calc(var(--sc-gutter) * -1); padding-inline: var(--sc-gutter); }
+  .merch__bar::-webkit-scrollbar { display: none; }
+  .chip { font-size: .78rem; padding: 0 .95em; flex: none; }
+  .mitem__fig { border-radius: var(--sc-r-md); }
 }
 
 /* ===== THEME: what Shopify adds around the design ===== */

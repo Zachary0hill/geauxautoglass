@@ -239,8 +239,8 @@
   // SIGNATURE MOVE: the back glass goes in as the reader scrolls. --w 0..1 is
   // the share of the frame showing the finished job. The knob carries the mark.
   function wipe() {
-    if (!ba || !sigAct || ba.classList.contains('ba--video')) return;
-    if (still) { ba.style.setProperty('--w', '0.5'); return; }
+    if (!ba || !sigAct || ba.classList.contains('ba--video') || ba.__gxHand) return;
+    if (still) { ba.style.setProperty('--w', '0.5'); knobValue(ba, 0.5); return; }
     var r = sigAct.getBoundingClientRect();
     var travel = Math.max(r.height - innerHeight, 1);
     var p = (-r.top) / travel;
@@ -248,7 +248,70 @@
     t = t < 0 ? 0 : t > 1 ? 1 : t; t = t * t * (3 - 2 * t);
     var w = 0.06 + t * 0.94;
     aim(ba, '--w', w, 4);
+    knobValue(ba, w);
   }
+
+  // The wipe by hand: drag anywhere on the photo, or focus the knob and use
+  // the arrow keys. Once the reader takes it, the scroll stops driving it.
+  // On touch, a vertical swipe still scrolls the page (touch-action: pan-y).
+  function knobValue(fig, w) {
+    var knob = fig.querySelector('.ba__knob'), n = Math.round(w * 100);
+    if (!knob || knob.__gxN === n) return;
+    knob.__gxN = n;
+    knob.setAttribute('aria-valuenow', n);
+    knob.setAttribute('aria-valuetext', n + '% after');
+  }
+  function byHand(fig, w) {
+    w = w < 0 ? 0 : w > 1 ? 1 : w;
+    fig.__gxHand = true;
+    var rec = fig.__gxAim && fig.__gxAim['--w'];
+    if (rec) { rec.cur = rec.target = w; }
+    fig.style.setProperty('--w', w.toFixed(4));
+    knobValue(fig, w);
+  }
+  function wAt(fig, x) {
+    var r = fig.getBoundingClientRect();
+    return (x - r.left) / Math.max(r.width, 1);
+  }
+  var drag = null;
+  document.addEventListener('pointerdown', function (e) {
+    var fig = e.target.closest && e.target.closest('.ba');
+    if (!fig || fig.classList.contains('ba--video') || (e.pointerType === 'mouse' && e.button !== 0)) return;
+    drag = { fig: fig, id: e.pointerId, x: e.clientX, live: e.pointerType === 'mouse' };
+    // A mouse press jumps the wipe to the pointer. A touch waits to see a
+    // sideways move, so starting a scroll on the photo does not jump it.
+    if (drag.live) { e.preventDefault(); fig.classList.add('ba--dragging'); byHand(fig, wAt(fig, e.clientX)); }
+    try { fig.setPointerCapture(e.pointerId); } catch (err) {}
+  });
+  document.addEventListener('pointermove', function (e) {
+    if (!drag || e.pointerId !== drag.id) return;
+    if (!drag.live) {
+      if (Math.abs(e.clientX - drag.x) < 4) return;
+      drag.live = true; drag.fig.classList.add('ba--dragging');
+    }
+    byHand(drag.fig, wAt(drag.fig, e.clientX));
+  });
+  function letGo(e) {
+    if (!drag || e.pointerId !== drag.id) return;
+    if (e.type === 'pointerup' && !drag.live) byHand(drag.fig, wAt(drag.fig, e.clientX)); // a tap jumps there
+    drag.fig.classList.remove('ba--dragging');
+    try { drag.fig.releasePointerCapture(e.pointerId); } catch (err) {}
+    drag = null;
+  }
+  document.addEventListener('pointerup', letGo);
+  document.addEventListener('pointercancel', letGo);
+  document.addEventListener('keydown', function (e) {
+    var knob = e.target.closest && e.target.closest('.ba__knob');
+    if (!knob) return;
+    var fig = knob.closest('.ba');
+    var cur = parseFloat(getComputedStyle(fig).getPropertyValue('--w')) || 0.5;
+    var step = { ArrowLeft: -0.05, ArrowDown: -0.05, ArrowRight: 0.05, ArrowUp: 0.05, PageDown: -0.2, PageUp: 0.2 }[e.key];
+    if (e.key === 'Home') cur = 0, step = 0;
+    else if (e.key === 'End') cur = 1, step = 0;
+    else if (step === undefined) return;
+    e.preventDefault();
+    byHand(fig, cur + step);
+  });
 
   function chrome() {
     var y = scrollY, d = y - lastY; lastY = y;

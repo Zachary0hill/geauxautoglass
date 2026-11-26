@@ -24,7 +24,7 @@
         "heading": "Shop apparel.",
         "highlight": "apparel.",
         "lede": "[count] items in the Geaux Auto Glass store. T-shirts, hoodies, crewnecks, a hat and air fresheners.",
-        "btn_1_label": "Shop the full store",
+        "btn_1_label": "",
         "btn_1_action": "shop",
         "btn_1_link": "",
         "btn_2_label": "",
@@ -103,10 +103,10 @@
       "type": "cta-band",
       "settings": {
         "heading": "Wear the brand.",
-        "btn_1_label": "Shop the full store",
-        "btn_1_action": "shop",
+        "btn_1_label": "Get a quote",
+        "btn_1_action": "quote",
         "btn_1_link": "",
-        "btn_2_label": "Get a quote",
+        "btn_2_label": "",
         "btn_2_action": "quote",
         "btn_2_link": "",
         "anchor_id": ""

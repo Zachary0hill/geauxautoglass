@@ -27,6 +27,7 @@
     "business_region": "LA",
     "business_postal": "70508",
     "seo_areas_served": "Lafayette, Louisiana\nNew Orleans, Louisiana\nLouisiana",
+    "seo_services": "Windshield replacement\nChip repair\nBack glass replacement\nDoor glass replacement\nADAS recalibration\nCommercial vehicle glass",
     "google_site_verification": "f7-dV-BmWDXMq-ag8sov1i4l9VxBaX_04mwelGOgraw",
     "brand_name": "Geaux Auto Glass",
     "color_canvas": "#0a0a0b",
@@ -71,11 +72,10 @@
     "blocks": {
       "14421132865913305101": {
         "type": "shopify://apps/ab-google-analytics/blocks/analytics/2fc433fa-79f5-4d1d-bab2-983d42099561",
-        "disabled": false,
+        "disabled": true,
         "settings": {}
       }
-    },
-    "seo_services": "Windshield replacement\nChip repair\nBack glass replacement\nDoor glass replacement\nADAS recalibration\nCommercial vehicle glass"
+    }
   },
   "presets": {
     "Geaux Auto Glass": {

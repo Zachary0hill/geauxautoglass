@@ -72,14 +72,14 @@
           "type": "tick",
           "settings": {
             "text": "Windshield replacement",
-            "link": "/pages/services#windshield"
+            "link": "/pages/windshield-replacement"
           }
         },
         "tick2": {
           "type": "tick",
           "settings": {
             "text": "Chip repair",
-            "link": "/pages/services#chip"
+            "link": "/pages/chip-repair"
           }
         },
         "tick3": {
@@ -93,7 +93,7 @@
           "type": "tick",
           "settings": {
             "text": "ADAS recalibration",
-            "link": "/pages/services#adas"
+            "link": "/pages/adas-recalibration"
           }
         },
         "tick5": {

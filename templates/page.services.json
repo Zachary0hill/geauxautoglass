@@ -46,7 +46,8 @@
             "title": "Windshield replacement",
             "text": "Mobile service at home or work, or in-shop installation.",
             "dir": "left",
-            "anchor_id": "windshield"
+            "anchor_id": "windshield",
+            "link": "/pages/windshield-replacement"
           }
         },
         "service2": {
@@ -57,7 +58,8 @@
             "title": "Chip repair",
             "text": "Minor chip repair.",
             "dir": "up",
-            "anchor_id": "chip"
+            "anchor_id": "chip",
+            "link": "/pages/chip-repair"
           }
         },
         "service3": {
@@ -79,7 +81,8 @@
             "title": "ADAS recalibration",
             "text": "ADAS calibration for cars, SUVs and trucks.",
             "dir": "iris",
-            "anchor_id": "adas"
+            "anchor_id": "adas",
+            "link": "/pages/adas-recalibration"
           }
         },
         "service5": {

@@ -93,7 +93,7 @@ location template with valid JSON-LD.
 |---|---|---|---|
 | 1 (done) | New pages | Windshield replacement, chip repair, ADAS recalibration, back glass and door glass pages (above) | Nothing could rank for a single service beyond the homepage |
 | 2 | `/pages/services` | H1 "Auto glass repair and replacement in Lafayette and New Orleans." (now "Repairs and replacements.") | Names the service and place (carried over) |
-| 3 | Lafayette, New Orleans, Locations | 3-4 local FAQs each (areas covered by mobile service, parking/drop-off, hours, same-day availability) | These pages have no question headings; AI answers about "auto glass near Kenner" pull from exactly this |
+| 3 (done) | Lafayette, New Orleans, Locations | Local FAQs with FAQPage schema: 7 on Lafayette (address, hours, mobile service, timing, services, student discount, insurance), 6 on New Orleans, 4 on Locations (which shop, weekend hours, areas outside the two cities, appointments). Phone numbers are tap-to-call and tracked as `call_click` | These pages had no question headings |
 | 4 | FAQ | Answer the two open questions: typical replacement cost range, and how long before the car can be driven | The most-asked questions in this category; AI answers quote numbers |
 | 5 | Shopify admin | Unpublish the "Home page" collection from the Online Store, or rename it | Removes a thin orphan page from the sitemap |
 

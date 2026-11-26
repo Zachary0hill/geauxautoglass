@@ -145,12 +145,86 @@
         "btn_2_link": "",
         "anchor_id": ""
       }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "question1": {
+          "type": "question",
+          "settings": {
+            "question": "Where is your Lafayette shop?",
+            "answer": "<p>409A Mecca Street, Lafayette, LA 70508. Call <a href=\"tel:+13372952874\">(337) 295-2874</a> before you come in: we work by appointment.</p>"
+          }
+        },
+        "question2": {
+          "type": "question",
+          "settings": {
+            "question": "What are the Lafayette shop's hours?",
+            "answer": "<p>Monday to Friday, 8 AM to 4:30 PM. Closed Saturday and Sunday.</p>"
+          }
+        },
+        "question3": {
+          "type": "question",
+          "settings": {
+            "question": "Do I have to bring my car to the shop?",
+            "answer": "<p>No. Mobile service is free: we come to your home or work in Lafayette, and we serve all of Louisiana. Or bring the vehicle to the shop on Mecca Street.</p>"
+          }
+        },
+        "question4": {
+          "type": "question",
+          "settings": {
+            "question": "How soon can you replace my windshield in Lafayette?",
+            "answer": "<p>Same day or next day, by appointment. Call <a href=\"tel:+13372952874\">(337) 295-2874</a> or request a quote to get on the schedule.</p>"
+          }
+        },
+        "question5": {
+          "type": "question",
+          "settings": {
+            "question": "What do you fix in Lafayette?",
+            "answer": "<p><a href=\"/pages/windshield-replacement\">windshield replacement</a>, <a href=\"/pages/chip-repair\">chip repair</a>, <a href=\"/pages/back-glass-replacement\">back glass</a>, <a href=\"/pages/door-glass-replacement\">door glass</a> and <a href=\"/pages/adas-recalibration\">ADAS recalibration</a> on cars, SUVs and trucks, domestic and foreign, personal and commercial.</p>"
+          }
+        },
+        "question6": {
+          "type": "question",
+          "settings": {
+            "question": "Do you offer a student discount in Lafayette?",
+            "answer": "<p>Yes. Students at the University of Louisiana at Lafayette or South Louisiana Community College get 10% off all services. <a href=\"/pages/student-discount\">Student discount details</a>.</p>"
+          }
+        },
+        "question7": {
+          "type": "question",
+          "settings": {
+            "question": "Do you work with my insurance?",
+            "answer": "<p>Yes. We work with all insurance providers, and comprehensive coverage covers glass damage. Call your insurance, use the company name Geaux Auto Glass to begin the filing, and we handle the rest. <a href=\"/pages/insurance\">See the four steps to file a claim</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question1",
+        "question2",
+        "question3",
+        "question4",
+        "question5",
+        "question6",
+        "question7"
+      ],
+      "settings": {
+        "tag": "Questions",
+        "heading": "Lafayette, answered.",
+        "highlight": "answered.",
+        "text": "",
+        "open_first": true,
+        "structured_data": true,
+        "ground": "paper",
+        "anchor_id": "faq"
+      }
     }
   },
   "order": [
     "head",
     "detail",
     "services",
+    "faq",
     "cta"
   ]
 }

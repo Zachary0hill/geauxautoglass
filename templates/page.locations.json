@@ -103,11 +103,61 @@
         "btn_2_link": "",
         "anchor_id": ""
       }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "question1": {
+          "type": "question",
+          "settings": {
+            "question": "Which shop should I use?",
+            "answer": "<p>Whichever is closer: Lafayette at 409A Mecca Street (<a href=\"tel:+13372952874\">(337) 295-2874</a>), or Kenner at 2837 Tifton St Unit B for New Orleans (<a href=\"tel:+15049203065\">(504) 920-3065</a>). Or skip the shop: mobile service is free, and we come to your home or work.</p>"
+          }
+        },
+        "question2": {
+          "type": "question",
+          "settings": {
+            "question": "Are the shops open on weekends?",
+            "answer": "<p>The Kenner shop is open Saturday, 8 AM to 2 PM. The Lafayette shop is closed on weekends. Both are closed Sunday.</p>"
+          }
+        },
+        "question3": {
+          "type": "question",
+          "settings": {
+            "question": "Do you serve places outside Lafayette and New Orleans?",
+            "answer": "<p>Yes. We serve all of Louisiana, including Baton Rouge and Alexandria, with free mobile service.</p>"
+          }
+        },
+        "question4": {
+          "type": "question",
+          "settings": {
+            "question": "Do I need an appointment?",
+            "answer": "<p>Yes. We work by appointment only, the same day or the next day. Call or request a quote to get on the schedule.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question1",
+        "question2",
+        "question3",
+        "question4"
+      ],
+      "settings": {
+        "tag": "Questions",
+        "heading": "Locations, answered.",
+        "highlight": "answered.",
+        "text": "",
+        "open_first": true,
+        "structured_data": true,
+        "ground": "paper",
+        "anchor_id": "faq"
+      }
     }
   },
   "order": [
     "head",
     "locations",
+    "faq",
     "cta"
   ]
 }

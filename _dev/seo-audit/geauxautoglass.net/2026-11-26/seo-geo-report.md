@@ -26,10 +26,10 @@ Search Console verification went live.
 | Phone-tap conversions | verified | Tapping the header number sent `call_click` (placement header, shop lafayette) to GA4 |
 | Quote-click conversions | not tested | Same code path as `call_click` |
 | Search Console verification tag | fixed (since last pass) | `gsc-verification-missing` closed |
-| Home title length | fixed, pending deploy | 75 → 68 characters: "Windshield replacement in Lafayette & New Orleans · Geaux Auto Glass" |
-| Business schema: services | fixed, pending deploy | `hasOfferCatalog` with the six services from the Services page |
-| Business schema: map, photo | fixed, pending deploy | `hasMap` to the Lafayette Google link; `image` is now a photo, the logo stays as `logo` |
-| Kenner shop linked to the business | fixed, pending deploy | Kenner `AutoRepair` gets `@id …/pages/new-orleans#location` and `parentOrganization` by `@id` |
+| Home title length | fixed and verified | 75 → 68 characters: "Windshield replacement in Lafayette & New Orleans · Geaux Auto Glass" |
+| Business schema: services | fixed and verified | `hasOfferCatalog` with the six services from the Services page |
+| Business schema: map, photo | fixed and verified | `hasMap` to the Lafayette Google link; `image` is now a photo, the logo stays as `logo` |
+| Kenner shop linked to the business | fixed and verified | Kenner `AutoRepair` gets `@id …/pages/new-orleans#location` and `parentOrganization` by `@id` |
 | Core Web Vitals, Rich Results Test | not verified | Not run this pass |
 
 ## Findings that need no code
@@ -50,7 +50,7 @@ Search Console verification went live.
   Shopify's sitemap by design; `http://www` takes two hops (Shopify-managed); `/cart`
   is `noindex` on purpose.
 
-## Changes (branch `seo-geo-pass-2026-11-26`, commit `5decd29`, not deployed)
+## Changes (commit `5decd29`, merged to `main` and live)
 
 - `config/settings_schema.json`, `config/settings_data.json`: home title setting
   shortened; new **Services offered** setting under Search and local SEO.
@@ -87,3 +87,4 @@ location template with valid JSON-LD.
 ## Files
 
 - `crawl.json`, `summary.md`: this crawl (baseline: `../after/crawl.json`)
+- `after/crawl.json`, `after/summary.md`: verification crawl after deploy: 0 new issues; schema checked live on `/` and `/pages/new-orleans`. The 68-character title still trips the crawler's 60-character guideline (low); Google's cut-off is by width and this title fits

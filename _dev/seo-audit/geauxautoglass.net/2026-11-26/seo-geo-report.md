@@ -116,3 +116,22 @@ location template with valid JSON-LD.
 
 - `crawl.json`, `summary.md`: this crawl (baseline: `../after/crawl.json`)
 - `after/crawl.json`, `after/summary.md`: verification crawl after deploy: 0 new issues; schema checked live on `/` and `/pages/new-orleans`. The 68-character title still trips the crawler's 60-character guideline (low); Google's cut-off is by width and this title fits
+- `rerun/crawl.json`, `rerun/summary.md`: re-crawl after the location FAQs and homepage scroll change (baseline `glass-pages/crawl.json`)
+
+## Re-crawl, 2026-11-26 12:04
+
+Score 92, 62 HTML pages, 0 critical, 0 high, 0 broken links. Fixed 0, still open 78, new 0.
+
+| Check | Result |
+|---|---|
+| Location FAQs live | FAQPage schema parses in the browser: Lafayette 7, New Orleans 6, Locations 4 questions |
+| Google tag loaders | One: the theme's gtag (`GTM-K9DMCLC8` → `G-JEP7GETPE7`). The "AB : Google Analytics" app embed no longer loads |
+| GA4 page views | Exactly one `page_view` to `G-JEP7GETPE7` on `/pages/new-orleans`; consent default then update ahead of config |
+| Sitemap | Still lists 10 pages; the five service pages are live (200, indexable, self-canonical) but not in `sitemap_pages_1.xml` yet |
+
+Open items are the same as before: five service pages missing from Shopify's sitemap
+(Shopify regenerates it; if they are still missing tomorrow, check each page is visible
+to the Online Store channel and has no "hide from search engines" metafield, and request
+indexing in Search Console meanwhile), `tag-gtm-noscript` x62 (false positive), four
+68-character service titles (fit by width), the two orphan pages, `http://www` two hops,
+`/cart` noindex on purpose.

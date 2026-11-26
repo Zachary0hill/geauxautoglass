@@ -68,6 +68,8 @@ location template with valid JSON-LD.
 | `/pages/windshield-replacement` | Windshield replacement in Lafayette & New Orleans · Geaux Auto Glass | 668 | 6 | AutoRepair, Service, BreadcrumbList, FAQPage |
 | `/pages/chip-repair` | Windshield chip repair in Lafayette & New Orleans · Geaux Auto Glass | 637 | 5 | same |
 | `/pages/adas-recalibration` | ADAS recalibration in Lafayette & New Orleans · Geaux Auto Glass | 574 | 5 | same |
+| `/pages/back-glass-replacement` | Back glass replacement in Lafayette & New Orleans · Geaux Auto Glass | 641 | 5 | same |
+| `/pages/door-glass-replacement` | Door glass replacement in Lafayette & New Orleans · Geaux Auto Glass | 631 | 5 | same |
 
 - Templates `templates/page.service-{windshield,chip,adas}.json`: answer-first intro,
   how it works, insurers, FAQ, links to the other services, quote and call buttons.
@@ -78,6 +80,9 @@ location template with valid JSON-LD.
 - Home title moved to "Auto glass repair in Lafayette & New Orleans · Geaux Auto Glass"
   (63 characters) so it no longer competes with the windshield replacement page.
 - Pages created in Shopify admin with their own SEO title, description and template.
+- Back glass and door glass pages added later the same day (`page.service-back-glass.json`,
+  `page.service-door-glass.json`), linked the same way; verification crawl `glass-pages/`
+  shows the same expected open items and nothing new.
 - Verification crawl `service-pages/`: 0 broken links, 0 redirects. Expected open
   items: the three pages are not in Shopify's sitemap yet (it regenerates on its own,
   as it did for Lafayette); two titles are 68 characters.
@@ -86,7 +91,7 @@ location template with valid JSON-LD.
 
 | # | Page | Change | Why |
 |---|---|---|---|
-| 1 (done) | New pages | Windshield replacement, chip repair, ADAS recalibration pages (above). Back glass and door glass next, once there is more to say about them | Nothing could rank for a single service beyond the homepage |
+| 1 (done) | New pages | Windshield replacement, chip repair, ADAS recalibration, back glass and door glass pages (above) | Nothing could rank for a single service beyond the homepage |
 | 2 | `/pages/services` | H1 "Auto glass repair and replacement in Lafayette and New Orleans." (now "Repairs and replacements.") | Names the service and place (carried over) |
 | 3 | Lafayette, New Orleans, Locations | 3-4 local FAQs each (areas covered by mobile service, parking/drop-off, hours, same-day availability) | These pages have no question headings; AI answers about "auto glass near Kenner" pull from exactly this |
 | 4 | FAQ | Answer the two open questions: typical replacement cost range, and how long before the car can be driven | The most-asked questions in this category; AI answers quote numbers |
@@ -95,10 +100,11 @@ location template with valid JSON-LD.
 ## Your to-do list
 
 1. ~~**App embed**: turn off "AB : Google Analytics".~~ Done in the theme editor on 2026-11-26.
-2. **GA4**: Admin > Events > mark `call_click` and `quote_click` as key events.
+2. **GA4**: Admin > Events > star `call_click` and `quote_click` as key events.
 3. **Search Console**: submit `https://geauxautoglass.net/sitemap.xml` if not done, then
    URL inspection > Request indexing for `/`, `/pages/windshield-replacement`,
-   `/pages/chip-repair` and `/pages/adas-recalibration`.
+   `/pages/chip-repair`, `/pages/adas-recalibration`, `/pages/back-glass-replacement`
+   and `/pages/door-glass-replacement`.
 4. **Bing Webmaster Tools**: import from Search Console. Bing feeds Copilot and ChatGPT search.
 5. **Google Business Profile**: put the real profile URL (the `g.page` or
    `maps.app.goo.gl` share link) in Theme settings > Google link, Lafayette, so

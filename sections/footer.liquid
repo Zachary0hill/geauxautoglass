@@ -80,6 +80,14 @@
                             if pages['adas-recalibration'].url != blank
                               assign service_url = pages['adas-recalibration'].url
                             endif
+                          when 'back-glass'
+                            if pages['back-glass-replacement'].url != blank
+                              assign service_url = pages['back-glass-replacement'].url
+                            endif
+                          when 'door-glass'
+                            if pages['door-glass-replacement'].url != blank
+                              assign service_url = pages['door-glass-replacement'].url
+                            endif
                         endcase
                       -%}
                       <li><a href="{{ service_url }}">{{ key | t }}</a></li>

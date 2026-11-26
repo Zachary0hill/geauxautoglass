@@ -527,7 +527,8 @@
         "btn_2_label": "",
         "btn_2_action": "email",
         "btn_2_link": "",
-        "anchor_id": "visit"
+        "anchor_id": "visit",
+        "layout": "flow"
       }
     }
   },

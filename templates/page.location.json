@@ -86,7 +86,7 @@
           "type": "tick",
           "settings": {
             "text": "Back glass",
-            "link": "/pages/services#back-glass"
+            "link": "/pages/back-glass-replacement"
           }
         },
         "tick4": {
@@ -100,7 +100,7 @@
           "type": "tick",
           "settings": {
             "text": "Door glass",
-            "link": "/pages/services#door-glass"
+            "link": "/pages/door-glass-replacement"
           }
         },
         "tick6": {

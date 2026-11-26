@@ -70,7 +70,8 @@
             "title": "Back glass",
             "text": "All vehicle types.",
             "dir": "right",
-            "anchor_id": "back-glass"
+            "anchor_id": "back-glass",
+            "link": "/pages/back-glass-replacement"
           }
         },
         "service4": {
@@ -93,7 +94,8 @@
             "title": "Door glass",
             "text": "Door glass replacements. Domestic and foreign.",
             "dir": "up",
-            "anchor_id": "door-glass"
+            "anchor_id": "door-glass",
+            "link": "/pages/door-glass-replacement"
           }
         },
         "service6": {

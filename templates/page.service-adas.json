@@ -278,7 +278,7 @@
           "type": "item",
           "settings": {
             "title": "Back glass",
-            "link": "/pages/services#back-glass",
+            "link": "/pages/back-glass-replacement",
             "bundled": "svc-back",
             "image_alt": ""
           }
@@ -287,7 +287,7 @@
           "type": "item",
           "settings": {
             "title": "Door glass",
-            "link": "/pages/services#door-glass",
+            "link": "/pages/door-glass-replacement",
             "bundled": "svc-door",
             "image_alt": ""
           }

@@ -222,7 +222,8 @@
             "image_alt": "",
             "title": "Back glass",
             "text": "All vehicle types.",
-            "dir": "right"
+            "dir": "right",
+            "link": "/pages/back-glass-replacement"
           }
         },
         "service4": {
@@ -243,7 +244,8 @@
             "image_alt": "",
             "title": "Door glass",
             "text": "Door glass replacements. Domestic and foreign.",
-            "dir": "up"
+            "dir": "up",
+            "link": "/pages/door-glass-replacement"
           }
         },
         "service6": {

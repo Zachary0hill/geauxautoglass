@@ -103,6 +103,7 @@
 {
   "@context": "https://schema.org",
   "@type": "AutoRepair",
+  "@id": {{ canonical_url | append: '#location' | json }},
   "name": {{ section.settings.schema_name | json }},
   "image": {{ ld_image | json }},
   {%- if e164 != blank %}
@@ -124,8 +125,11 @@
   {%- endif -%}
   {%- if has_weekday or has_saturday %}
   {{ ld_hours }}
+  {%- endif -%}
+  {%- if directions != blank %}
+  "hasMap": {{ directions | json }},
   {%- endif %}
-  "parentOrganization": { "@type": "Organization", "name": {{ settings.brand_name | default: shop.name | json }}, "url": {{ site_url | json }} },
+  "parentOrganization": { "@type": "AutoRepair", "@id": {{ site_url | append: '/#business' | json }}, "name": {{ settings.brand_name | default: shop.name | json }}, "url": {{ site_url | json }} },
   "url": {{ canonical_url | json }}
 }
 </script>

@@ -20,7 +20,7 @@
     "google_new_orleans_url": "https://www.google.com/maps/search/?api=1&query=Geaux+Auto+Glass+2837+Tifton+St+Kenner+LA+70062",
     "footer_line": "Website by ZZMEDIA Studio",
     "founded_year": "",
-    "seo_home_title": "Mobile windshield replacement in Lafayette & New Orleans",
+    "seo_home_title": "Windshield replacement in Lafayette & New Orleans",
     "seo_home_description": "Mobile windshield replacement, chip repair, door glass and ADAS recalibration in Lafayette and New Orleans. Same-day or next-day service. Insurance accepted.",
     "business_street": "409A Mecca Street",
     "business_city": "Lafayette",
@@ -74,7 +74,8 @@
         "disabled": false,
         "settings": {}
       }
-    }
+    },
+    "seo_services": "Windshield replacement\nChip repair\nBack glass replacement\nDoor glass replacement\nADAS recalibration\nCommercial vehicle glass"
   },
   "presets": {
     "Geaux Auto Glass": {
@@ -89,7 +90,7 @@
       "google_new_orleans_url": "https://www.google.com/maps/search/?api=1&query=Geaux+Auto+Glass+2837+Tifton+St+Kenner+LA+70062",
       "footer_line": "Website by ZZMEDIA Studio",
       "founded_year": "",
-      "seo_home_title": "Mobile windshield replacement in Lafayette & New Orleans",
+      "seo_home_title": "Windshield replacement in Lafayette & New Orleans",
       "seo_home_description": "Mobile windshield replacement, chip repair, door glass and ADAS recalibration in Lafayette and New Orleans. Same-day or next-day service. Insurance accepted.",
       "business_street": "409A Mecca Street",
       "business_city": "Lafayette",
@@ -128,7 +129,8 @@
       "facebook_followers": "575",
       "cart_type": "drawer",
       "cart_show_note": true,
-      "cart_show_vendor": false
+      "cart_show_vendor": false,
+      "seo_services": "Windshield replacement\nChip repair\nBack glass replacement\nDoor glass replacement\nADAS recalibration\nCommercial vehicle glass"
     }
   }
 }

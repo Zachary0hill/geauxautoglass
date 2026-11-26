@@ -21,6 +21,26 @@
     assign biz_image = 'logo.png' | asset_url | prepend: 'https:'
   endif
 
+  # The business photo is a real picture of the shop or van, not the logo.
+  if settings.social_image != blank
+    assign biz_photo = settings.social_image | image_url: width: 1200 | prepend: 'https:'
+  else
+    assign biz_photo = 'hero.jpg' | asset_img_url: '1200x' | prepend: 'https:'
+  endif
+
+  assign services = ''
+  assign service_lines = settings.seo_services | newline_to_br | strip_newlines | split: '<br />'
+  for line in service_lines
+    assign service = line | strip
+    if service != blank
+      if services != blank
+        assign services = services | append: '|'
+      endif
+      assign services = services | append: service
+    endif
+  endfor
+  assign services = services | split: '|'
+
   assign areas = ''
   assign area_lines = settings.seo_areas_served | newline_to_br | strip_newlines | split: '<br />'
   for line in area_lines
@@ -89,8 +109,22 @@
       {%- endif -%}
       {%- if same_as.size > 0 %}
       "sameAs": {{ same_as | json }},
+      {%- endif -%}
+      {%- if settings.google_lafayette_url != blank %}
+      "hasMap": {{ settings.google_lafayette_url | json }},
+      {%- endif -%}
+      {%- if services.size > 0 %}
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Auto glass services",
+        "itemListElement": [
+          {%- for service in services -%}
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": {{ service | json }}, "provider": { "@id": {{ biz_id | json }} } } }{%- unless forloop.last -%},{%- endunless -%}
+          {%- endfor -%}
+        ]
+      },
       {%- endif %}
-      "image": {{ biz_image | json }},
+      "image": {{ biz_photo | json }},
       "logo": {{ biz_image | json }},
       "url": {{ site_url | json }}
     }

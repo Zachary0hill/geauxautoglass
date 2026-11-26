@@ -112,8 +112,8 @@
         "type": "text",
         "id": "seo_home_title",
         "label": "Home page title",
-        "default": "Mobile windshield replacement in Lafayette & New Orleans",
-        "info": "The business name is added after it. Used unless Online Store > Preferences sets a home page title."
+        "default": "Windshield replacement in Lafayette & New Orleans",
+        "info": "The business name is added after it. Keep the two together under about 65 characters so Google shows it whole. Used unless Online Store > Preferences sets a home page title."
       },
       {
         "type": "textarea",
@@ -162,6 +162,13 @@
         "label": "Areas served",
         "default": "Lafayette, Louisiana\nNew Orleans, Louisiana\nLouisiana",
         "info": "One per line."
+      },
+      {
+        "type": "textarea",
+        "id": "seo_services",
+        "label": "Services offered",
+        "default": "Windshield replacement\nChip repair\nBack glass replacement\nDoor glass replacement\nADAS recalibration\nCommercial vehicle glass",
+        "info": "One per line. Listed in the business details search engines and AI assistants read. Name only services the site describes."
       },
       {
         "type": "header",

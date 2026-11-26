@@ -22,7 +22,7 @@
           <article class="card"{% if block.settings.anchor_id != blank %} id="{{ block.settings.anchor_id | handle }}"{% endif %} data-sc-in {{ block.shopify_attributes }}>
             <div class="card__fig slide" data-dir="{{ block.settings.dir }}" data-sc-tilt="4">{% render 'photo', image: block.settings.image, bundled: block.settings.bundled, alt: block.settings.image_alt, sizes: '(max-width: 860px) 46vw, 28vw' %}</div>
             <p class="card__n">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</p>
-            <h3>{{ block.settings.title | escape }}</h3>
+            <h3>{%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}">{{ block.settings.title | escape }}</a>{%- else -%}{{ block.settings.title | escape }}{%- endif -%}</h3>
             {%- if block.settings.text != blank -%}<p>{{ block.settings.text | escape }}</p>{%- endif -%}
           </article>
         {%- endfor -%}
@@ -98,6 +98,7 @@
       { "type": "text", "id": "image_alt", "label": "Photo description", "info": "Empty: the photo's own description." },
       { "type": "text", "id": "title", "label": "Title", "default": "Service" },
       { "type": "text", "id": "text", "label": "Text" },
+      { "type": "text", "id": "link", "label": "Link", "info": "Optional. The service's own page, for example /pages/windshield-replacement." },
       { "type": "select", "id": "dir", "label": "Photo reveal", "options": [{ "value": "left", "label": "From the left" }, { "value": "up", "label": "From below" }, { "value": "right", "label": "From the right" }, { "value": "iris", "label": "Iris" }], "default": "left" },
       { "type": "text", "id": "anchor_id", "label": "Anchor id", "info": "Footer and other links land on this card with #id. The six built-in ids are windshield, chip, back-glass, adas, door-glass and commercial." }
     ] }

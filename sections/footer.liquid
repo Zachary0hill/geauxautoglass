@@ -65,7 +65,24 @@
                     {%- assign anchors = 'windshield,chip,back-glass,adas,door-glass,commercial' | split: ',' -%}
                     {%- for anchor in anchors -%}
                       {%- assign key = 'sections.footer.services.' | append: anchor -%}
-                      <li><a href="{{ routes.root_url }}pages/services#{{ anchor }}">{{ key | t }}</a></li>
+                      {%- liquid
+                        assign service_url = routes.root_url | append: 'pages/services#' | append: anchor
+                        case anchor
+                          when 'windshield'
+                            if pages['windshield-replacement'].url != blank
+                              assign service_url = pages['windshield-replacement'].url
+                            endif
+                          when 'chip'
+                            if pages['chip-repair'].url != blank
+                              assign service_url = pages['chip-repair'].url
+                            endif
+                          when 'adas'
+                            if pages['adas-recalibration'].url != blank
+                              assign service_url = pages['adas-recalibration'].url
+                            endif
+                        endcase
+                      -%}
+                      <li><a href="{{ service_url }}">{{ key | t }}</a></li>
                     {%- endfor -%}
                   {%- when 'customers' -%}
                     <li><a href="{{ routes.root_url }}pages/insurance">{{ 'sections.footer.customers.insurance' | t }}</a></li>

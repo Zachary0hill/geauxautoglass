@@ -1,0 +1,342 @@
+{
+  "sections": {
+    "head": {
+      "type": "page-head",
+      "settings": {
+        "style": "default",
+        "bundled": "svc-windshield",
+        "image_alt": "",
+        "focal": "",
+        "show_crumbs": true,
+        "parent_label": "Services",
+        "parent_link": "/pages/services",
+        "crumb": "Windshield replacement",
+        "tag": "Windshield replacement",
+        "heading": "Windshield replacement in Lafayette and New Orleans.",
+        "highlight": "Windshield replacement",
+        "lede": "Mobile windshield replacement at your home or work, or in our Lafayette and Kenner shops. Same day or next day, by appointment. All insurance providers accepted.",
+        "btn_1_label": "Get a quote",
+        "btn_1_action": "quote",
+        "btn_1_link": "",
+        "btn_2_label": "",
+        "btn_2_action": "call_lafayette",
+        "btn_2_link": "",
+        "schools": "",
+        "offer_1": "",
+        "offer_2": ""
+      }
+    },
+    "answer": {
+      "type": "trust",
+      "blocks": {
+        "tick1": {
+          "type": "tick",
+          "settings": {
+            "text": "Free mobile service",
+            "link": ""
+          }
+        },
+        "tick2": {
+          "type": "tick",
+          "settings": {
+            "text": "Same day or next day",
+            "link": ""
+          }
+        },
+        "tick3": {
+          "type": "tick",
+          "settings": {
+            "text": "All insurance providers accepted",
+            "link": "/pages/insurance"
+          }
+        },
+        "tick4": {
+          "type": "tick",
+          "settings": {
+            "text": "Cars, SUVs and trucks",
+            "link": ""
+          }
+        },
+        "tick5": {
+          "type": "tick",
+          "settings": {
+            "text": "Domestic and foreign",
+            "link": ""
+          }
+        },
+        "tick6": {
+          "type": "tick",
+          "settings": {
+            "text": "ADAS recalibration",
+            "link": "/pages/adas-recalibration"
+          }
+        }
+      },
+      "block_order": [
+        "tick1",
+        "tick2",
+        "tick3",
+        "tick4",
+        "tick5",
+        "tick6"
+      ],
+      "settings": {
+        "bundled": "trust",
+        "image_alt": "",
+        "tag": "What to expect",
+        "heading": "We come to you, or you come to us.",
+        "highlight": "We come to you,",
+        "text": "Geaux Auto Glass replaces windshields on cars, SUVs and trucks, domestic and foreign, personal and commercial. Mobile service is free: we come to your home or work, or you can bring the vehicle to our shop in Lafayette or Kenner. We schedule replacements the same day or the next day, by appointment, and work with all insurance providers. If your vehicle has driver-assist cameras mounted on the windshield, ask about ADAS recalibration when you book.",
+        "link_label": "",
+        "link": "",
+        "ground": "paper",
+        "anchor_id": ""
+      }
+    },
+    "steps": {
+      "type": "steps",
+      "blocks": {
+        "step1": {
+          "type": "step",
+          "settings": {
+            "title": "Request a quote",
+            "text": "Call or request a quote online with the year, make and model of the vehicle."
+          }
+        },
+        "step2": {
+          "type": "step",
+          "settings": {
+            "title": "Use your insurance",
+            "text": "Call your insurance and use the company name Geaux Auto Glass to begin the filing. Comprehensive coverage covers glass damage."
+          }
+        },
+        "step3": {
+          "type": "step",
+          "settings": {
+            "title": "Pick the place",
+            "text": "Free mobile service at your home or work, or bring the vehicle to our shop in Lafayette or Kenner."
+          }
+        },
+        "step4": {
+          "type": "step",
+          "settings": {
+            "title": "New glass in",
+            "text": "We replace the windshield by appointment, the same day or the next day."
+          }
+        }
+      },
+      "block_order": [
+        "step1",
+        "step2",
+        "step3",
+        "step4"
+      ],
+      "settings": {
+        "tag": "How it works",
+        "heading": "Four steps to a new windshield.",
+        "highlight": "new windshield.",
+        "text": "",
+        "ground": "paper-2",
+        "anchor_id": ""
+      }
+    },
+    "strip": {
+      "type": "insurer-strip",
+      "settings": {
+        "heading": "We work with all insurance providers",
+        "anchor_id": ""
+      },
+      "blocks": {
+        "carrier1": {
+          "type": "carrier",
+          "settings": {
+            "name": "State Farm",
+            "bundled": "statefarm",
+            "size": "w"
+          }
+        },
+        "carrier2": {
+          "type": "carrier",
+          "settings": {
+            "name": "Progressive",
+            "bundled": "progressive",
+            "size": "w"
+          }
+        },
+        "carrier3": {
+          "type": "carrier",
+          "settings": {
+            "name": "GEICO",
+            "bundled": "geico",
+            "size": "m"
+          }
+        },
+        "carrier4": {
+          "type": "carrier",
+          "settings": {
+            "name": "Allstate",
+            "bundled": "allstate",
+            "size": "m"
+          }
+        },
+        "carrier5": {
+          "type": "carrier",
+          "settings": {
+            "name": "Liberty Mutual",
+            "bundled": "libertymutual",
+            "size": "t"
+          }
+        }
+      },
+      "block_order": [
+        "carrier1",
+        "carrier2",
+        "carrier3",
+        "carrier4",
+        "carrier5"
+      ]
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "question1": {
+          "type": "question",
+          "settings": {
+            "question": "Can you replace my windshield at my home or work?",
+            "answer": "<p>Yes. Mobile service is free: we come to your home or work, or you can bring the vehicle to our shop at 409A Mecca Street in Lafayette or 2837 Tifton St Unit B in Kenner.</p>"
+          }
+        },
+        "question2": {
+          "type": "question",
+          "settings": {
+            "question": "How soon can you replace my windshield?",
+            "answer": "<p>Same day or next day. We work by appointment, so call or request a quote to get on the schedule.</p>"
+          }
+        },
+        "question3": {
+          "type": "question",
+          "settings": {
+            "question": "Will my insurance pay for a new windshield?",
+            "answer": "<p>Comprehensive coverage covers glass damage. Call your insurance, use the company name Geaux Auto Glass to begin the filing, and we handle the rest. <a href=\"/pages/insurance\">See the four steps to file a claim</a>.</p>"
+          }
+        },
+        "question4": {
+          "type": "question",
+          "settings": {
+            "question": "Should I repair the chip or replace the windshield?",
+            "answer": "<p>Minor chips can often be repaired. Larger damage, or a crack that has spread, usually needs a new windshield. Request a quote and we will tell you which yours needs. <a href=\"/pages/chip-repair\">About chip repair</a>.</p>"
+          }
+        },
+        "question5": {
+          "type": "question",
+          "settings": {
+            "question": "Do I need ADAS recalibration after a windshield replacement?",
+            "answer": "<p>If your vehicle has driver-assist features that use a camera mounted on the windshield, such as lane keeping or automatic emergency braking, the camera usually needs recalibrating after the glass is replaced. We recalibrate ADAS on cars, SUVs and trucks. <a href=\"/pages/adas-recalibration\">About ADAS recalibration</a>.</p>"
+          }
+        },
+        "question6": {
+          "type": "question",
+          "settings": {
+            "question": "Which vehicles do you work on?",
+            "answer": "<p>Cars, SUVs and trucks, domestic and foreign, personal and commercial.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question1",
+        "question2",
+        "question3",
+        "question4",
+        "question5",
+        "question6"
+      ],
+      "settings": {
+        "tag": "Questions",
+        "heading": "Windshield replacement, answered.",
+        "highlight": "answered.",
+        "text": "",
+        "open_first": true,
+        "structured_data": true,
+        "ground": "paper",
+        "anchor_id": "faq"
+      }
+    },
+    "more": {
+      "type": "mini-services",
+      "blocks": {
+        "item1": {
+          "type": "item",
+          "settings": {
+            "title": "Chip repair",
+            "link": "/pages/chip-repair",
+            "bundled": "svc-chip",
+            "image_alt": ""
+          }
+        },
+        "item2": {
+          "type": "item",
+          "settings": {
+            "title": "ADAS recalibration",
+            "link": "/pages/adas-recalibration",
+            "bundled": "svc-adas",
+            "image_alt": ""
+          }
+        },
+        "item3": {
+          "type": "item",
+          "settings": {
+            "title": "Back glass",
+            "link": "/pages/services#back-glass",
+            "bundled": "svc-back",
+            "image_alt": ""
+          }
+        },
+        "item4": {
+          "type": "item",
+          "settings": {
+            "title": "Door glass",
+            "link": "/pages/services#door-glass",
+            "bundled": "svc-door",
+            "image_alt": ""
+          }
+        }
+      },
+      "block_order": [
+        "item1",
+        "item2",
+        "item3",
+        "item4"
+      ],
+      "settings": {
+        "tag": "More services",
+        "heading": "All car, SUV and truck glass.",
+        "highlight": "truck glass.",
+        "text": "",
+        "ground": "paper-2",
+        "anchor_id": ""
+      }
+    },
+    "cta": {
+      "type": "cta-band",
+      "settings": {
+        "heading": "Get your windshield replaced today.",
+        "btn_1_label": "Get a quote",
+        "btn_1_action": "quote",
+        "btn_1_link": "",
+        "btn_2_label": "",
+        "btn_2_action": "call_lafayette",
+        "btn_2_link": "",
+        "anchor_id": ""
+      }
+    }
+  },
+  "order": [
+    "head",
+    "answer",
+    "steps",
+    "strip",
+    "faq",
+    "more",
+    "cta"
+  ]
+}

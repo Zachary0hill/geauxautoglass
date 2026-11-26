@@ -1,0 +1,334 @@
+{
+  "sections": {
+    "head": {
+      "type": "page-head",
+      "settings": {
+        "style": "default",
+        "bundled": "svc-chip",
+        "image_alt": "",
+        "focal": "",
+        "show_crumbs": true,
+        "parent_label": "Services",
+        "parent_link": "/pages/services",
+        "crumb": "Chip repair",
+        "tag": "Chip repair",
+        "heading": "Windshield chip repair in Lafayette and New Orleans.",
+        "highlight": "chip repair",
+        "lede": "We repair minor chips at your home or work, or in our Lafayette and Kenner shops. Same day or next day, by appointment. All insurance providers accepted.",
+        "btn_1_label": "Get a quote",
+        "btn_1_action": "quote",
+        "btn_1_link": "",
+        "btn_2_label": "",
+        "btn_2_action": "call_lafayette",
+        "btn_2_link": "",
+        "schools": "",
+        "offer_1": "",
+        "offer_2": ""
+      }
+    },
+    "answer": {
+      "type": "trust",
+      "blocks": {
+        "tick1": {
+          "type": "tick",
+          "settings": {
+            "text": "Minor chip repair",
+            "link": ""
+          }
+        },
+        "tick2": {
+          "type": "tick",
+          "settings": {
+            "text": "Free mobile service",
+            "link": ""
+          }
+        },
+        "tick3": {
+          "type": "tick",
+          "settings": {
+            "text": "Same day or next day",
+            "link": ""
+          }
+        },
+        "tick4": {
+          "type": "tick",
+          "settings": {
+            "text": "All insurance providers accepted",
+            "link": "/pages/insurance"
+          }
+        },
+        "tick5": {
+          "type": "tick",
+          "settings": {
+            "text": "Cars, SUVs and trucks",
+            "link": ""
+          }
+        },
+        "tick6": {
+          "type": "tick",
+          "settings": {
+            "text": "Windshield replacement when a repair won't do",
+            "link": "/pages/windshield-replacement"
+          }
+        }
+      },
+      "block_order": [
+        "tick1",
+        "tick2",
+        "tick3",
+        "tick4",
+        "tick5",
+        "tick6"
+      ],
+      "settings": {
+        "bundled": "svc-chip",
+        "image_alt": "",
+        "tag": "Repair or replace",
+        "heading": "Fix the chip before it spreads.",
+        "highlight": "before it spreads.",
+        "text": "A small chip in a windshield can often be repaired instead of replaced, which keeps the original glass in the vehicle. A chip can grow into a crack, so it is worth looking at soon. Geaux Auto Glass repairs minor chips on cars, SUVs and trucks, at your home or work or in our shops in Lafayette and Kenner. Tell us where the chip is and how big it looks when you request a quote, and we will tell you whether it can be repaired or needs a new windshield.",
+        "link_label": "",
+        "link": "",
+        "ground": "paper",
+        "anchor_id": ""
+      }
+    },
+    "steps": {
+      "type": "steps",
+      "blocks": {
+        "step1": {
+          "type": "step",
+          "settings": {
+            "title": "Request a quote",
+            "text": "Call or request a quote online with the year, make and model, where the chip is and how big it looks."
+          }
+        },
+        "step2": {
+          "type": "step",
+          "settings": {
+            "title": "Repair or replace",
+            "text": "We tell you whether the chip can be repaired or the windshield needs replacing."
+          }
+        },
+        "step3": {
+          "type": "step",
+          "settings": {
+            "title": "Pick the place",
+            "text": "Free mobile service at your home or work, or bring the vehicle to our shop in Lafayette or Kenner."
+          }
+        },
+        "step4": {
+          "type": "step",
+          "settings": {
+            "title": "Chip repaired",
+            "text": "We repair it by appointment, the same day or the next day."
+          }
+        }
+      },
+      "block_order": [
+        "step1",
+        "step2",
+        "step3",
+        "step4"
+      ],
+      "settings": {
+        "tag": "How it works",
+        "heading": "Four steps to a repaired chip.",
+        "highlight": "repaired chip.",
+        "text": "",
+        "ground": "paper-2",
+        "anchor_id": ""
+      }
+    },
+    "strip": {
+      "type": "insurer-strip",
+      "settings": {
+        "heading": "We work with all insurance providers",
+        "anchor_id": ""
+      },
+      "blocks": {
+        "carrier1": {
+          "type": "carrier",
+          "settings": {
+            "name": "State Farm",
+            "bundled": "statefarm",
+            "size": "w"
+          }
+        },
+        "carrier2": {
+          "type": "carrier",
+          "settings": {
+            "name": "Progressive",
+            "bundled": "progressive",
+            "size": "w"
+          }
+        },
+        "carrier3": {
+          "type": "carrier",
+          "settings": {
+            "name": "GEICO",
+            "bundled": "geico",
+            "size": "m"
+          }
+        },
+        "carrier4": {
+          "type": "carrier",
+          "settings": {
+            "name": "Allstate",
+            "bundled": "allstate",
+            "size": "m"
+          }
+        },
+        "carrier5": {
+          "type": "carrier",
+          "settings": {
+            "name": "Liberty Mutual",
+            "bundled": "libertymutual",
+            "size": "t"
+          }
+        }
+      },
+      "block_order": [
+        "carrier1",
+        "carrier2",
+        "carrier3",
+        "carrier4",
+        "carrier5"
+      ]
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "question1": {
+          "type": "question",
+          "settings": {
+            "question": "Can my chip be repaired?",
+            "answer": "<p>Minor chips usually can. Larger chips, long cracks, or damage that has spread may need a new windshield. Request a quote and we will tell you which yours needs.</p>"
+          }
+        },
+        "question2": {
+          "type": "question",
+          "settings": {
+            "question": "Do you come to me for a chip repair?",
+            "answer": "<p>Yes. Mobile service is free: we come to your home or work, or you can bring the vehicle to our shop at 409A Mecca Street in Lafayette or 2837 Tifton St Unit B in Kenner.</p>"
+          }
+        },
+        "question3": {
+          "type": "question",
+          "settings": {
+            "question": "How soon can you repair it?",
+            "answer": "<p>Same day or next day. We work by appointment, so call or request a quote to get on the schedule.</p>"
+          }
+        },
+        "question4": {
+          "type": "question",
+          "settings": {
+            "question": "Does insurance cover chip repair?",
+            "answer": "<p>Comprehensive coverage covers glass damage. Call your insurance to confirm your coverage, then use the company name Geaux Auto Glass to begin the filing, and we handle the rest. <a href=\"/pages/insurance\">See the four steps to file a claim</a>.</p>"
+          }
+        },
+        "question5": {
+          "type": "question",
+          "settings": {
+            "question": "What if the chip has turned into a crack?",
+            "answer": "<p>Then the windshield may need replacing. We replace windshields too, the same day or the next day. <a href=\"/pages/windshield-replacement\">About windshield replacement</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question1",
+        "question2",
+        "question3",
+        "question4",
+        "question5"
+      ],
+      "settings": {
+        "tag": "Questions",
+        "heading": "Chip repair, answered.",
+        "highlight": "answered.",
+        "text": "",
+        "open_first": true,
+        "structured_data": true,
+        "ground": "paper",
+        "anchor_id": "faq"
+      }
+    },
+    "more": {
+      "type": "mini-services",
+      "blocks": {
+        "item1": {
+          "type": "item",
+          "settings": {
+            "title": "Windshield replacement",
+            "link": "/pages/windshield-replacement",
+            "bundled": "svc-windshield",
+            "image_alt": ""
+          }
+        },
+        "item2": {
+          "type": "item",
+          "settings": {
+            "title": "ADAS recalibration",
+            "link": "/pages/adas-recalibration",
+            "bundled": "svc-adas",
+            "image_alt": ""
+          }
+        },
+        "item3": {
+          "type": "item",
+          "settings": {
+            "title": "Back glass",
+            "link": "/pages/services#back-glass",
+            "bundled": "svc-back",
+            "image_alt": ""
+          }
+        },
+        "item4": {
+          "type": "item",
+          "settings": {
+            "title": "Door glass",
+            "link": "/pages/services#door-glass",
+            "bundled": "svc-door",
+            "image_alt": ""
+          }
+        }
+      },
+      "block_order": [
+        "item1",
+        "item2",
+        "item3",
+        "item4"
+      ],
+      "settings": {
+        "tag": "More services",
+        "heading": "All car, SUV and truck glass.",
+        "highlight": "truck glass.",
+        "text": "",
+        "ground": "paper-2",
+        "anchor_id": ""
+      }
+    },
+    "cta": {
+      "type": "cta-band",
+      "settings": {
+        "heading": "Get your chip repaired today.",
+        "btn_1_label": "Get a quote",
+        "btn_1_action": "quote",
+        "btn_1_link": "",
+        "btn_2_label": "",
+        "btn_2_action": "call_lafayette",
+        "btn_2_link": "",
+        "anchor_id": ""
+      }
+    }
+  },
+  "order": [
+    "head",
+    "answer",
+    "steps",
+    "strip",
+    "faq",
+    "more",
+    "cta"
+  ]
+}

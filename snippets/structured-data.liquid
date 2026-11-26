@@ -41,6 +41,15 @@
   endfor
   assign services = services | split: '|'
 
+  # Pages on a service template (page.service-*.json) describe one service.
+  assign is_service_page = false
+  if request.page_type == 'page'
+    assign suffix_start = template.suffix | slice: 0, 8
+    if suffix_start == 'service-'
+      assign is_service_page = true
+    endif
+  endif
+
   assign areas = ''
   assign area_lines = settings.seo_areas_served | newline_to_br | strip_newlines | split: '<br />'
   for line in area_lines
@@ -138,6 +147,23 @@
       "publisher": { "@id": {{ biz_id | json }} }
     }
     {%- endif %}
+    {%- if is_service_page -%}
+    ,
+    {
+      "@type": "Service",
+      "@id": {{ canonical_url | append: '#service' | json }},
+      "name": {{ page.title | json }},
+      "serviceType": {{ page.title | json }},
+      {%- if seo_description != blank %}
+      "description": {{ seo_description | json }},
+      {%- endif -%}
+      {%- if areas.size > 0 %}
+      "areaServed": {{ areas_json | strip }},
+      {%- endif %}
+      "provider": { "@id": {{ biz_id | json }} },
+      "url": {{ canonical_url | json }}
+    }
+    {%- endif %}
     {%- comment -%}
       Breadcrumb trail for inner pages: Home, an optional parent, then this page.
       Mirrors the crumbs the page head shows.
@@ -152,6 +178,10 @@
           if template.suffix contains 'location' and template.suffix != 'locations' and pages['locations'].title != blank
             assign crumb_parent_name = pages['locations'].title
             assign crumb_parent_url = routes.root_url | append: 'pages/locations'
+          endif
+          if is_service_page and pages['services'].title != blank
+            assign crumb_parent_name = pages['services'].title
+            assign crumb_parent_url = routes.root_url | append: 'pages/services'
           endif
         when 'product'
           assign crumb_name = product.title

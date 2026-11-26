@@ -112,7 +112,7 @@
         "type": "text",
         "id": "seo_home_title",
         "label": "Home page title",
-        "default": "Windshield replacement in Lafayette & New Orleans",
+        "default": "Auto glass repair in Lafayette & New Orleans",
         "info": "The business name is added after it. Keep the two together under about 65 characters so Google shows it whole. Used unless Online Store > Preferences sets a home page title."
       },
       {

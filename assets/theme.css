@@ -16,6 +16,8 @@
 /* ===== PORTABLE: engine floor ===== */
 /* ---- motion off (theme setting) or no JS: nothing waits for the engine ---- */
 .no-js [data-sc-cue], [data-br-motion="off"] [data-sc-cue] { opacity: 1; }
+/* The hero copy sits at full strength at scroll 0, so it paints with the first frame instead of waiting for scrollcraft.js. */
+.act-hero [data-sc-cue] { opacity: 1; }
 .no-js [data-sc-in], .no-js [data-sc-stagger] > *,
 [data-br-motion="off"] [data-sc-in], [data-br-motion="off"] [data-sc-stagger] > * { opacity: 1; transform: none; }
 /* Pre-mount floor. The engine adds .sc-stage and sets each pinned act's height

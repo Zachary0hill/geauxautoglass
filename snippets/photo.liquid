@@ -11,6 +11,7 @@
   assign w = 1200
   assign h = 1200
   assign default_alt = ''
+  assign webp = ''
   case bundled
     when 'hero'
       assign file = 'hero.jpg'
@@ -95,9 +96,16 @@
       assign h = 930
       assign default_alt = 'Black Geaux Auto Glass van with the New Orleans number 504.920.3065 on its side'
   endcase
+  comment
+    Every bundled photo ships as WebP files too (assets/<name>-<width>.webp, encoded at quality 70):
+    about half the weight of the CDN's resize of the JPG. Re-encode them when a JPG changes.
+  endcomment
+  if file contains '.jpg'
+    assign webp = file | remove: '.jpg'
+  endif
   assign alt_text = alt
   if alt_text == blank and image == blank
     assign alt_text = default_alt
   endif
-  render 'media-image', image: image, fallback: file, fallback_w: w, fallback_h: h, alt: alt_text, class: class, sizes: sizes, loading: loading, priority: priority, style: style, attrs: attrs
+  render 'media-image', image: image, fallback: file, webp: webp, fallback_w: w, fallback_h: h, alt: alt_text, class: class, sizes: sizes, loading: loading, priority: priority, style: style, attrs: attrs
 -%}

@@ -21,10 +21,20 @@
       started = true;
       gtag('js', new Date());
       gtag('config', tagId, { allow_google_signals: false, allow_ad_personalization_signals: false });
-      var script = document.createElement('script');
-      script.async = true;
-      script.src = 'https://www.googletagmanager.com/gtag/js?id=' + tagId;
-      document.head.appendChild(script);
+      // The tag is ~185 KB. Fetching it after load keeps it off the hero photo's bandwidth;
+      // the config and any events above already sit in dataLayer and send once it runs.
+      var inject = function () {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=' + tagId;
+        document.head.appendChild(script);
+      };
+      var later = function () {
+        if ('requestIdleCallback' in window) requestIdleCallback(inject, { timeout: 2000 });
+        else setTimeout(inject, 200);
+      };
+      if (document.readyState === 'complete') later();
+      else window.addEventListener('load', later, { once: true });
     }
 
     document.addEventListener('visitorConsentCollected', syncConsent);

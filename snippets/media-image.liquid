@@ -9,6 +9,9 @@
     class     class for the img
     loading   'lazy' (default) or 'eager'
     priority  true adds fetchpriority="high" (the hero only)
+    webp      base name of pre-encoded WebP files in assets/ ('hero' → hero-400.webp … hero-2000.webp),
+              one per width in 400/800/1200/1600/2000 below the file's own, plus the file's own width.
+              Used for the bundled fallback instead of the CDN resize, which comes out about twice as heavy.
     style     inline style, e.g. '--pos: 50% 34%'
     attrs     extra attributes printed as is, e.g. 'data-sc-parallax="-0.08"'
 {%- endcomment -%}
@@ -42,7 +45,22 @@
     assign fw = fallback_w | default: 1200
     assign fh = fallback_h | default: 900
   -%}
-  {%- if fallback contains '.svg' -%}
+  {%- if webp != blank -%}
+    {%- liquid
+      assign wsrc = fw
+      if fw > 800
+        assign wsrc = 800
+      endif
+    -%}
+    {%- capture wsrcset -%}
+      {%- for w in widths -%}
+        {%- assign px = w | plus: 0 -%}
+        {%- if px < fw -%}{{ webp | append: '-' | append: w | append: '.webp' | asset_url }} {{ px }}w, {% endif -%}
+      {%- endfor -%}
+      {{- webp | append: '-' | append: fw | append: '.webp' | asset_url }} {{ fw }}w
+    {%- endcapture -%}
+    <img src="{{ webp | append: '-' | append: wsrc | append: '.webp' | asset_url }}" srcset="{{ wsrcset }}" width="{{ fw }}" height="{{ fh }}"{{ common }}>
+  {%- elsif fallback contains '.svg' -%}
     <img src="{{ fallback | asset_url }}" width="{{ fw }}" height="{{ fh }}"{{ common }}>
   {%- else -%}
     {%- comment -%} Shopify's CDN resizes theme assets, so the bundled photos get a srcset too. {%- endcomment -%}

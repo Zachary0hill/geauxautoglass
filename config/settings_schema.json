@@ -445,6 +445,23 @@
       },
       {
         "type": "header",
+        "content": "Business listings",
+        "info": "Sent to search engines in the business data only. Not shown on the site. Use the Lafayette shop's listings; the Kenner listings go on its location page."
+      },
+      {
+        "type": "text",
+        "id": "yelp_url",
+        "label": "Yelp",
+        "default": "https://www.yelp.com/biz/geaux-auto-glass-lafayette-3"
+      },
+      {
+        "type": "text",
+        "id": "bbb_url",
+        "label": "BBB",
+        "default": "https://www.bbb.org/us/la/lafayette/profile/general-services/geaux-auto-glass-1045-90036221"
+      },
+      {
+        "type": "header",
         "content": "Counts"
       },
       {

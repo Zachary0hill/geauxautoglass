@@ -25,6 +25,18 @@
   assign hours = section.settings.hours | newline_to_br | strip_newlines | split: '<br />'
   assign map_title = 'sections.locations.map_title' | t: name: section.settings.map_name
   assign areas = section.settings.areas | split: ','
+  assign profile_links = section.settings.profile_links | newline_to_br | strip_newlines | split: '<br />'
+  assign profiles = ''
+  for line in profile_links
+    assign link = line | strip
+    if link != blank
+      if profiles != blank
+        assign profiles = profiles | append: '|'
+      endif
+      assign profiles = profiles | append: link
+    endif
+  endfor
+  assign profiles = profiles | split: '|'
   if section.settings.image != blank
     assign ld_image = section.settings.image | image_url: width: 1200 | prepend: 'https:'
   else
@@ -129,6 +141,9 @@
   {%- if directions != blank %}
   "hasMap": {{ directions | json }},
   {%- endif %}
+  {%- if profiles.size > 0 %}
+  "sameAs": {{ profiles | json }},
+  {%- endif %}
   "parentOrganization": { "@type": "AutoRepair", "@id": {{ site_url | append: '/#business' | json }}, "name": {{ settings.brand_name | default: shop.name | json }}, "url": {{ site_url | json }} },
   "url": {{ canonical_url | json }}
 }
@@ -166,6 +181,7 @@
     { "type": "checkbox", "id": "schema_main", "label": "This is the main shop", "info": "The main shop's address is already sent from Theme settings > Search and local SEO. Tick this on its page so the hours here are added to that entry instead of listing the shop twice.", "default": false },
     { "type": "image_picker", "id": "image", "label": "Shop photo", "info": "Empty: the bundled Kenner shop photo." },
     { "type": "text", "id": "areas", "label": "Areas served", "info": "Separate with commas.", "default": "New Orleans, Kenner, Louisiana" },
+    { "type": "textarea", "id": "profile_links", "label": "This shop's listings", "info": "One link per line, like Yelp, BBB or Nextdoor for this address. Sent to search engines only. Not used when this is the main shop: its listings are in Theme settings > Social media." },
     { "type": "text", "id": "weekday_opens", "label": "Monday to Friday opens", "info": "24 hour time, like 08:00", "default": "08:00" },
     { "type": "text", "id": "weekday_closes", "label": "Monday to Friday closes", "default": "17:00" },
     { "type": "text", "id": "saturday_opens", "label": "Saturday opens", "info": "Empty: closed.", "default": "08:00" },

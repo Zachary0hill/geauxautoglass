@@ -64,7 +64,7 @@
   assign areas = areas | split: '|'
 
   assign same_as = ''
-  assign social_keys = 'facebook,instagram,tiktok' | split: ','
+  assign social_keys = 'facebook,instagram,tiktok,yelp,bbb' | split: ','
   for key in social_keys
     assign setting_id = key | append: '_url'
     assign link = settings[setting_id]

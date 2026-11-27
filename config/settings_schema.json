@@ -78,13 +78,13 @@
         "type": "text",
         "id": "google_lafayette_url",
         "label": "Google link, Lafayette",
-        "default": "https://www.google.com/maps/search/?api=1&query=Geaux+Auto+Glass+409A+Mecca+St+Lafayette+LA+70508"
+        "default": "https://www.google.com/maps?cid=4569708723731853702"
       },
       {
         "type": "text",
         "id": "google_new_orleans_url",
         "label": "Google link, New Orleans",
-        "default": "https://www.google.com/maps/search/?api=1&query=Geaux+Auto+Glass+2837+Tifton+St+Kenner+LA+70062"
+        "default": "https://www.google.com/maps?cid=10839888666477480912"
       },
       {
         "type": "header",
@@ -459,6 +459,13 @@
         "id": "bbb_url",
         "label": "BBB",
         "default": "https://www.bbb.org/us/la/lafayette/profile/general-services/geaux-auto-glass-1045-90036221"
+      },
+      {
+        "type": "text",
+        "id": "google_profile_url",
+        "label": "Google Business Profile share link",
+        "info": "From the profile's Share button.",
+        "default": "https://share.google/HJinLk7sOqid37VPG"
       },
       {
         "type": "header",

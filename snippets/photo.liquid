@@ -97,7 +97,7 @@
       assign default_alt = 'Black Geaux Auto Glass van with the New Orleans number 504.920.3065 on its side'
   endcase
   comment
-    Every bundled photo ships as WebP files too (assets/<name>-<width>.webp, encoded at quality 70):
+    Every bundled photo ships as WebP files too (assets/<name>-<width>.webp, encoded at quality 70; the hero at 60):
     about half the weight of the CDN's resize of the JPG. Re-encode them when a JPG changes.
   endcomment
   if file contains '.jpg'
